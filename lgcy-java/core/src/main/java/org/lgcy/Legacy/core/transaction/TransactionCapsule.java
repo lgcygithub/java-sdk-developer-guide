@@ -2,30 +2,20 @@ package org.lgcy.Legacy.core.transaction;
 
 import com.google.protobuf.Any;
 import com.google.protobuf.ByteString;
-import com.google.protobuf.InvalidProtocolBufferException;
+
 import org.lgcy.Legacy.core.utils.ByteArray;
 import org.lgcy.Legacy.proto.Chain;
-import org.lgcy.Legacy.proto.Contract;
 
-import static org.lgcy.Legacy.core.ApiWrapper.toHex;
 
 public class TransactionCapsule {
 
-  public TransactionCapsule(com.google.protobuf.Message message, Chain.Transaction.Contract.ContractType contractType) throws InvalidProtocolBufferException {
-    System.out.println("message"+message);
+  public TransactionCapsule(com.google.protobuf.Message message, Chain.Transaction.Contract.ContractType contractType) {
     Chain.Transaction.raw.Builder transactionBuilder = Chain.Transaction.raw.newBuilder().addContract(
-        Chain.Transaction.Contract.newBuilder().setType(contractType).setParameter(
-            (message instanceof Any ? (Any) message : Any.pack(message))).build());
-     // Any any = Any.parseFrom(transactionBuilder.getContractBuilderList().listIterator().next().getParameter().getValue());
-
-    // Deserialize the Any object to TransferContract
-    Contract.TransferContract transferContract = transactionBuilder.getContractBuilderList().listIterator().next().getParameter().unpack(Contract.TransferContract.class);
-    System.out.println("transferContract"+transferContract);
-    System.out.println("Hex"+toHex(transactionBuilder.getContractBuilderList().listIterator().next().getParameter().getValue()));
-    System.out.println("input"+transactionBuilder.getContractBuilderList().listIterator().next().getParameter().getValue());
+            Chain.Transaction.Contract.newBuilder().setType(contractType).setParameter(
+                    (message instanceof Any ? (Any) message : Any.pack(message))).build());
     transaction = Chain.Transaction.newBuilder().setRawData(transactionBuilder.build()).build();
-
   }
+
 
   private Chain.Transaction transaction;
 

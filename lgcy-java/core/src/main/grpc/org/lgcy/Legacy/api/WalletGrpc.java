@@ -337,6 +337,37 @@ public final class WalletGrpc {
     return getCreateTransaction2Method;
   }
 
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransaction3Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateTransaction3",
+      requestType = org.lgcy.Legacy.proto.Contract.TransferContract.class,
+      responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransaction3Method() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransaction3Method;
+    if ((getCreateTransaction3Method = WalletGrpc.getCreateTransaction3Method) == null) {
+      synchronized (WalletGrpc.class) {
+        if ((getCreateTransaction3Method = WalletGrpc.getCreateTransaction3Method) == null) {
+          WalletGrpc.getCreateTransaction3Method = getCreateTransaction3Method =
+              io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateTransaction3"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.lgcy.Legacy.proto.Contract.TransferContract.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateTransaction3"))
+              .build();
+        }
+      }
+    }
+    return getCreateTransaction3Method;
+  }
+
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AssetIssueContract,
       org.lgcy.Legacy.proto.Chain.Transaction> getCreateAssetIssueMethod;
 
@@ -3780,6 +3811,13 @@ public final class WalletGrpc {
 
     /**
      */
+    public void createTransaction3(org.lgcy.Legacy.proto.Contract.TransferContract request,
+        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
+      asyncUnimplementedUnaryCall(getCreateTransaction3Method(), responseObserver);
+    }
+
+    /**
+     */
     public void createAssetIssue(org.lgcy.Legacy.proto.Contract.AssetIssueContract request,
         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateAssetIssueMethod(), responseObserver);
@@ -4649,6 +4687,13 @@ public final class WalletGrpc {
                 org.lgcy.Legacy.proto.Response.TransactionExtention>(
                   this, METHODID_CREATE_TRANSACTION2)))
           .addMethod(
+            getCreateTransaction3Method(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                org.lgcy.Legacy.proto.Contract.TransferContract,
+                org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
+                  this, METHODID_CREATE_TRANSACTION3)))
+          .addMethod(
             getCreateAssetIssueMethod(),
             asyncUnaryCall(
               new MethodHandlers<
@@ -5499,6 +5544,14 @@ public final class WalletGrpc {
         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getCreateTransaction2Method(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void createTransaction3(org.lgcy.Legacy.proto.Contract.TransferContract request,
+        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getCreateTransaction3Method(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -6499,6 +6552,13 @@ public final class WalletGrpc {
 
     /**
      */
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction createTransaction3(org.lgcy.Legacy.proto.Contract.TransferContract request) {
+      return blockingUnaryCall(
+          getChannel(), getCreateTransaction3Method(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public org.lgcy.Legacy.proto.Chain.Transaction createAssetIssue(org.lgcy.Legacy.proto.Contract.AssetIssueContract request) {
       return blockingUnaryCall(
           getChannel(), getCreateAssetIssueMethod(), getCallOptions(), request);
@@ -7394,6 +7454,14 @@ public final class WalletGrpc {
         org.lgcy.Legacy.proto.Contract.TransferContract request) {
       return futureUnaryCall(
           getChannel().newCall(getCreateTransaction2Method(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> createTransaction3(
+        org.lgcy.Legacy.proto.Contract.TransferContract request) {
+      return futureUnaryCall(
+          getChannel().newCall(getCreateTransaction3Method(), getCallOptions()), request);
     }
 
     /**
@@ -8312,113 +8380,114 @@ public final class WalletGrpc {
   private static final int METHODID_ACCOUNT_PERMISSION_UPDATE = 7;
   private static final int METHODID_CREATE_TRANSACTION = 8;
   private static final int METHODID_CREATE_TRANSACTION2 = 9;
-  private static final int METHODID_CREATE_ASSET_ISSUE = 10;
-  private static final int METHODID_CREATE_ASSET_ISSUE2 = 11;
-  private static final int METHODID_UPDATE_ASSET = 12;
-  private static final int METHODID_UPDATE_ASSET2 = 13;
-  private static final int METHODID_TRANSFER_ASSET = 14;
-  private static final int METHODID_TRANSFER_ASSET2 = 15;
-  private static final int METHODID_PARTICIPATE_ASSET_ISSUE = 16;
-  private static final int METHODID_PARTICIPATE_ASSET_ISSUE2 = 17;
-  private static final int METHODID_UNFREEZE_ASSET = 18;
-  private static final int METHODID_UNFREEZE_ASSET2 = 19;
-  private static final int METHODID_CREATE_WITNESS = 20;
-  private static final int METHODID_CREATE_WITNESS2 = 21;
-  private static final int METHODID_UPDATE_WITNESS = 22;
-  private static final int METHODID_UPDATE_WITNESS2 = 23;
-  private static final int METHODID_UPDATE_BROKERAGE = 24;
-  private static final int METHODID_VOTE_WITNESS_ACCOUNT = 25;
-  private static final int METHODID_VOTE_WITNESS_ACCOUNT2 = 26;
-  private static final int METHODID_FREEZE_BALANCE = 27;
-  private static final int METHODID_FREEZE_BALANCE2 = 28;
-  private static final int METHODID_UNFREEZE_BALANCE = 29;
-  private static final int METHODID_UNFREEZE_BALANCE2 = 30;
-  private static final int METHODID_WITHDRAW_BALANCE = 31;
-  private static final int METHODID_WITHDRAW_BALANCE2 = 32;
-  private static final int METHODID_PROPOSAL_CREATE = 33;
-  private static final int METHODID_PROPOSAL_APPROVE = 34;
-  private static final int METHODID_PROPOSAL_DELETE = 35;
-  private static final int METHODID_DEPLOY_CONTRACT = 36;
-  private static final int METHODID_TRIGGER_CONTRACT = 37;
-  private static final int METHODID_TRIGGER_CONSTANT_CONTRACT = 38;
-  private static final int METHODID_GET_NODE_INFO = 39;
-  private static final int METHODID_LIST_NODES = 40;
-  private static final int METHODID_GET_CHAIN_PARAMETERS = 41;
-  private static final int METHODID_TOTAL_TRANSACTION = 42;
-  private static final int METHODID_GET_NEXT_MAINTENANCE_TIME = 43;
-  private static final int METHODID_GET_TRANSACTION_SIGN_WEIGHT = 44;
-  private static final int METHODID_GET_TRANSACTION_APPROVED_LIST = 45;
-  private static final int METHODID_GET_ACCOUNT = 46;
-  private static final int METHODID_GET_ACCOUNT_BY_ID = 47;
-  private static final int METHODID_GET_ACCOUNT_NET = 48;
-  private static final int METHODID_GET_ACCOUNT_RESOURCE = 49;
-  private static final int METHODID_GET_ASSET_ISSUE_BY_ACCOUNT = 50;
-  private static final int METHODID_GET_ASSET_ISSUE_BY_NAME = 51;
-  private static final int METHODID_GET_ASSET_ISSUE_LIST_BY_NAME = 52;
-  private static final int METHODID_GET_ASSET_ISSUE_BY_ID = 53;
-  private static final int METHODID_GET_ASSET_ISSUE_LIST = 54;
-  private static final int METHODID_GET_PAGINATED_ASSET_ISSUE_LIST = 55;
-  private static final int METHODID_GET_NOW_BLOCK = 56;
-  private static final int METHODID_GET_NOW_BLOCK2 = 57;
-  private static final int METHODID_GET_BLOCK_BY_NUM = 58;
-  private static final int METHODID_GET_BLOCK_BY_NUM2 = 59;
-  private static final int METHODID_GET_BLOCK_BY_ID = 60;
-  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT = 61;
-  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT2 = 62;
-  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM = 63;
-  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM2 = 64;
-  private static final int METHODID_GET_TRANSACTION_COUNT_BY_BLOCK_NUM = 65;
-  private static final int METHODID_GET_TRANSACTION_BY_ID = 66;
-  private static final int METHODID_GET_TRANSACTION_INFO_BY_ID = 67;
-  private static final int METHODID_GET_TRANSACTION_INFO_BY_BLOCK_NUM = 68;
-  private static final int METHODID_GET_CONTRACT = 69;
-  private static final int METHODID_GET_CONTRACT_INFO = 70;
-  private static final int METHODID_LIST_WITNESSES = 71;
-  private static final int METHODID_GET_BROKERAGE_INFO = 72;
-  private static final int METHODID_GET_BROKERAGE = 73;
-  private static final int METHODID_GET_REWARD_INFO = 74;
-  private static final int METHODID_GET_DELEGATED_RESOURCE = 75;
-  private static final int METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX = 76;
-  private static final int METHODID_LIST_PROPOSALS = 77;
-  private static final int METHODID_GET_PROPOSAL_BY_ID = 78;
-  private static final int METHODID_GET_PAGINATED_PROPOSAL_LIST = 79;
-  private static final int METHODID_LIST_EXCHANGES = 80;
-  private static final int METHODID_GET_EXCHANGE_BY_ID = 81;
-  private static final int METHODID_GET_PAGINATED_EXCHANGE_LIST = 82;
-  private static final int METHODID_SCAN_SHIELDED_TRC20NOTES_BY_IVK = 83;
-  private static final int METHODID_SCAN_SHIELDED_TRC20NOTES_BY_OVK = 84;
-  private static final int METHODID_IS_SHIELDED_TRC20CONTRACT_NOTE_SPENT = 85;
-  private static final int METHODID_GET_MARKET_ORDER_BY_ACCOUNT = 86;
-  private static final int METHODID_GET_MARKET_ORDER_BY_ID = 87;
-  private static final int METHODID_GET_MARKET_PRICE_BY_PAIR = 88;
-  private static final int METHODID_GET_MARKET_ORDER_LIST_BY_PAIR = 89;
-  private static final int METHODID_GET_MARKET_PAIR_LIST = 90;
-  private static final int METHODID_GET_TRANSACTION_SIGN = 91;
-  private static final int METHODID_GET_TRANSACTION_SIGN2 = 92;
-  private static final int METHODID_EASY_TRANSFER_ASSET = 93;
-  private static final int METHODID_EASY_TRANSFER_ASSET_BY_PRIVATE = 94;
-  private static final int METHODID_EASY_TRANSFER = 95;
-  private static final int METHODID_EASY_TRANSFER_BY_PRIVATE = 96;
-  private static final int METHODID_CREATE_ADDRESS = 97;
-  private static final int METHODID_GENERATE_ADDRESS = 98;
-  private static final int METHODID_ADD_SIGN = 99;
-  private static final int METHODID_GET_SPENDING_KEY = 100;
-  private static final int METHODID_GET_EXPANDED_SPENDING_KEY = 101;
-  private static final int METHODID_GET_AK_FROM_ASK = 102;
-  private static final int METHODID_GET_NK_FROM_NSK = 103;
-  private static final int METHODID_GET_INCOMING_VIEWING_KEY = 104;
-  private static final int METHODID_GET_DIVERSIFIER = 105;
-  private static final int METHODID_GET_ZEN_PAYMENT_ADDRESS = 106;
-  private static final int METHODID_GET_NEW_SHIELDED_ADDRESS = 107;
-  private static final int METHODID_GET_RCM = 108;
-  private static final int METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS = 109;
-  private static final int METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS_WITHOUT_ASK = 110;
-  private static final int METHODID_GET_TRIGGER_INPUT_FOR_SHIELDED_TRC20CONTRACT = 111;
-  private static final int METHODID_GET_AVAILABLE_UNFREEZE_COUNT = 112;
-  private static final int METHODID_GET_CAN_WITHDRAW_UNFREEZE_AMOUNT = 113;
-  private static final int METHODID_GET_CAN_DELEGATED_MAX_SIZE = 114;
-  private static final int METHODID_GET_DELEGATED_RESOURCE_V2 = 115;
-  private static final int METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX_V2 = 116;
+  private static final int METHODID_CREATE_TRANSACTION3 = 10;
+  private static final int METHODID_CREATE_ASSET_ISSUE = 11;
+  private static final int METHODID_CREATE_ASSET_ISSUE2 = 12;
+  private static final int METHODID_UPDATE_ASSET = 13;
+  private static final int METHODID_UPDATE_ASSET2 = 14;
+  private static final int METHODID_TRANSFER_ASSET = 15;
+  private static final int METHODID_TRANSFER_ASSET2 = 16;
+  private static final int METHODID_PARTICIPATE_ASSET_ISSUE = 17;
+  private static final int METHODID_PARTICIPATE_ASSET_ISSUE2 = 18;
+  private static final int METHODID_UNFREEZE_ASSET = 19;
+  private static final int METHODID_UNFREEZE_ASSET2 = 20;
+  private static final int METHODID_CREATE_WITNESS = 21;
+  private static final int METHODID_CREATE_WITNESS2 = 22;
+  private static final int METHODID_UPDATE_WITNESS = 23;
+  private static final int METHODID_UPDATE_WITNESS2 = 24;
+  private static final int METHODID_UPDATE_BROKERAGE = 25;
+  private static final int METHODID_VOTE_WITNESS_ACCOUNT = 26;
+  private static final int METHODID_VOTE_WITNESS_ACCOUNT2 = 27;
+  private static final int METHODID_FREEZE_BALANCE = 28;
+  private static final int METHODID_FREEZE_BALANCE2 = 29;
+  private static final int METHODID_UNFREEZE_BALANCE = 30;
+  private static final int METHODID_UNFREEZE_BALANCE2 = 31;
+  private static final int METHODID_WITHDRAW_BALANCE = 32;
+  private static final int METHODID_WITHDRAW_BALANCE2 = 33;
+  private static final int METHODID_PROPOSAL_CREATE = 34;
+  private static final int METHODID_PROPOSAL_APPROVE = 35;
+  private static final int METHODID_PROPOSAL_DELETE = 36;
+  private static final int METHODID_DEPLOY_CONTRACT = 37;
+  private static final int METHODID_TRIGGER_CONTRACT = 38;
+  private static final int METHODID_TRIGGER_CONSTANT_CONTRACT = 39;
+  private static final int METHODID_GET_NODE_INFO = 40;
+  private static final int METHODID_LIST_NODES = 41;
+  private static final int METHODID_GET_CHAIN_PARAMETERS = 42;
+  private static final int METHODID_TOTAL_TRANSACTION = 43;
+  private static final int METHODID_GET_NEXT_MAINTENANCE_TIME = 44;
+  private static final int METHODID_GET_TRANSACTION_SIGN_WEIGHT = 45;
+  private static final int METHODID_GET_TRANSACTION_APPROVED_LIST = 46;
+  private static final int METHODID_GET_ACCOUNT = 47;
+  private static final int METHODID_GET_ACCOUNT_BY_ID = 48;
+  private static final int METHODID_GET_ACCOUNT_NET = 49;
+  private static final int METHODID_GET_ACCOUNT_RESOURCE = 50;
+  private static final int METHODID_GET_ASSET_ISSUE_BY_ACCOUNT = 51;
+  private static final int METHODID_GET_ASSET_ISSUE_BY_NAME = 52;
+  private static final int METHODID_GET_ASSET_ISSUE_LIST_BY_NAME = 53;
+  private static final int METHODID_GET_ASSET_ISSUE_BY_ID = 54;
+  private static final int METHODID_GET_ASSET_ISSUE_LIST = 55;
+  private static final int METHODID_GET_PAGINATED_ASSET_ISSUE_LIST = 56;
+  private static final int METHODID_GET_NOW_BLOCK = 57;
+  private static final int METHODID_GET_NOW_BLOCK2 = 58;
+  private static final int METHODID_GET_BLOCK_BY_NUM = 59;
+  private static final int METHODID_GET_BLOCK_BY_NUM2 = 60;
+  private static final int METHODID_GET_BLOCK_BY_ID = 61;
+  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT = 62;
+  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT2 = 63;
+  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM = 64;
+  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM2 = 65;
+  private static final int METHODID_GET_TRANSACTION_COUNT_BY_BLOCK_NUM = 66;
+  private static final int METHODID_GET_TRANSACTION_BY_ID = 67;
+  private static final int METHODID_GET_TRANSACTION_INFO_BY_ID = 68;
+  private static final int METHODID_GET_TRANSACTION_INFO_BY_BLOCK_NUM = 69;
+  private static final int METHODID_GET_CONTRACT = 70;
+  private static final int METHODID_GET_CONTRACT_INFO = 71;
+  private static final int METHODID_LIST_WITNESSES = 72;
+  private static final int METHODID_GET_BROKERAGE_INFO = 73;
+  private static final int METHODID_GET_BROKERAGE = 74;
+  private static final int METHODID_GET_REWARD_INFO = 75;
+  private static final int METHODID_GET_DELEGATED_RESOURCE = 76;
+  private static final int METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX = 77;
+  private static final int METHODID_LIST_PROPOSALS = 78;
+  private static final int METHODID_GET_PROPOSAL_BY_ID = 79;
+  private static final int METHODID_GET_PAGINATED_PROPOSAL_LIST = 80;
+  private static final int METHODID_LIST_EXCHANGES = 81;
+  private static final int METHODID_GET_EXCHANGE_BY_ID = 82;
+  private static final int METHODID_GET_PAGINATED_EXCHANGE_LIST = 83;
+  private static final int METHODID_SCAN_SHIELDED_TRC20NOTES_BY_IVK = 84;
+  private static final int METHODID_SCAN_SHIELDED_TRC20NOTES_BY_OVK = 85;
+  private static final int METHODID_IS_SHIELDED_TRC20CONTRACT_NOTE_SPENT = 86;
+  private static final int METHODID_GET_MARKET_ORDER_BY_ACCOUNT = 87;
+  private static final int METHODID_GET_MARKET_ORDER_BY_ID = 88;
+  private static final int METHODID_GET_MARKET_PRICE_BY_PAIR = 89;
+  private static final int METHODID_GET_MARKET_ORDER_LIST_BY_PAIR = 90;
+  private static final int METHODID_GET_MARKET_PAIR_LIST = 91;
+  private static final int METHODID_GET_TRANSACTION_SIGN = 92;
+  private static final int METHODID_GET_TRANSACTION_SIGN2 = 93;
+  private static final int METHODID_EASY_TRANSFER_ASSET = 94;
+  private static final int METHODID_EASY_TRANSFER_ASSET_BY_PRIVATE = 95;
+  private static final int METHODID_EASY_TRANSFER = 96;
+  private static final int METHODID_EASY_TRANSFER_BY_PRIVATE = 97;
+  private static final int METHODID_CREATE_ADDRESS = 98;
+  private static final int METHODID_GENERATE_ADDRESS = 99;
+  private static final int METHODID_ADD_SIGN = 100;
+  private static final int METHODID_GET_SPENDING_KEY = 101;
+  private static final int METHODID_GET_EXPANDED_SPENDING_KEY = 102;
+  private static final int METHODID_GET_AK_FROM_ASK = 103;
+  private static final int METHODID_GET_NK_FROM_NSK = 104;
+  private static final int METHODID_GET_INCOMING_VIEWING_KEY = 105;
+  private static final int METHODID_GET_DIVERSIFIER = 106;
+  private static final int METHODID_GET_ZEN_PAYMENT_ADDRESS = 107;
+  private static final int METHODID_GET_NEW_SHIELDED_ADDRESS = 108;
+  private static final int METHODID_GET_RCM = 109;
+  private static final int METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS = 110;
+  private static final int METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS_WITHOUT_ASK = 111;
+  private static final int METHODID_GET_TRIGGER_INPUT_FOR_SHIELDED_TRC20CONTRACT = 112;
+  private static final int METHODID_GET_AVAILABLE_UNFREEZE_COUNT = 113;
+  private static final int METHODID_GET_CAN_WITHDRAW_UNFREEZE_AMOUNT = 114;
+  private static final int METHODID_GET_CAN_DELEGATED_MAX_SIZE = 115;
+  private static final int METHODID_GET_DELEGATED_RESOURCE_V2 = 116;
+  private static final int METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX_V2 = 117;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -8476,6 +8545,10 @@ public final class WalletGrpc {
         case METHODID_CREATE_TRANSACTION2:
           serviceImpl.createTransaction2((org.lgcy.Legacy.proto.Contract.TransferContract) request,
               (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+          break;
+        case METHODID_CREATE_TRANSACTION3:
+          serviceImpl.createTransaction3((org.lgcy.Legacy.proto.Contract.TransferContract) request,
+              (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_CREATE_ASSET_ISSUE:
           serviceImpl.createAssetIssue((org.lgcy.Legacy.proto.Contract.AssetIssueContract) request,
@@ -8976,6 +9049,7 @@ public final class WalletGrpc {
               .addMethod(getAccountPermissionUpdateMethod())
               .addMethod(getCreateTransactionMethod())
               .addMethod(getCreateTransaction2Method())
+              .addMethod(getCreateTransaction3Method())
               .addMethod(getCreateAssetIssueMethod())
               .addMethod(getCreateAssetIssue2Method())
               .addMethod(getUpdateAssetMethod())

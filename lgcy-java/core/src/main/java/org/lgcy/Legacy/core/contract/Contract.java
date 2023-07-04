@@ -38,14 +38,14 @@ public class Contract {
     protected ByteString cntrAddr = ByteString.EMPTY;
     protected ABI abi;
     protected ByteString bytecode;
-    //the amount of deposit TRX, default is 0
+    //the amount of deposit USDL, default is 0
     protected long callValue = 0;
     //the energy percent user consumes, default is 100%
     protected long consumeUserResourcePercent = 100;
     protected String name = "";
     protected long originEnergyLimit = 1;
     protected ByteString codeHash = ByteString.EMPTY;
-    protected ByteString trxHash = ByteString.EMPTY;
+    protected ByteString usdlHash = ByteString.EMPTY;
     //Current transaction owner's address, to call or trigger contract"
     protected ByteString ownerAddr = ByteString.EMPTY;
     protected List<ContractFunction> functions = new ArrayList();
@@ -62,7 +62,7 @@ public class Contract {
         this.name = cntr.getName();
         this.originEnergyLimit = cntr.getOriginEnergyLimit();
         this.codeHash = cntr.getCodeHash();
-        this.trxHash = cntr.getTrxHash();
+        this.usdlHash = cntr.getUsdlHash();
         this.ownerAddr = ApiWrapper.parseAddress(ownerAddr);
         this.wrapper = wrapper;
     }
@@ -175,12 +175,12 @@ public class Contract {
         this.codeHash = codeHash;
     }
 
-    public ByteString getTrxHash() {
-        return trxHash;
+    public ByteString getUsdlHash() {
+        return usdlHash;
     }
 
-    public void setTrxHash(ByteString trxHash) {
-        this.trxHash = trxHash;
+    public void setUsdlHash(ByteString usdlHash) {
+        this.usdlHash = usdlHash;
     }
 
     public ByteString getOwnerAddr() {
@@ -214,7 +214,7 @@ public class Contract {
         protected String name = "";
         protected long originEnergyLimit = 1;
         protected ByteString codeHash = ByteString.EMPTY;
-        protected ByteString trxHash = ByteString.EMPTY;
+        protected ByteString usdlHash = ByteString.EMPTY;
         protected ByteString ownerAddr = ByteString.EMPTY;
 
         public Builder setWrapper(ApiWrapper wrapper) {
@@ -364,7 +364,7 @@ public class Contract {
                    .setConsumeUserResourcePercent(consumeUserResourcePercent)
                    .setName(name)
                    .setOriginEnergyLimit(originEnergyLimit)
-                   .setTrxHash(trxHash)
+                   .setUsdlHash(usdlHash)
                    .build();
     }
 

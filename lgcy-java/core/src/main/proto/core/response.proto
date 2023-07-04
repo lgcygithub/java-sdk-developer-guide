@@ -93,14 +93,14 @@ message InternalTransaction {
     // internalTransaction identity, the root InternalTransaction hash
     // should equals to root transaction id.
     bytes hash = 1;
-    // the one send trx (TBD: or token) via function
+    // the one send usdl (TBD: or token) via function
     bytes caller_address = 2;
-    // the one recieve trx (TBD: or token) via function
+    // the one recieve usdl (TBD: or token) via function
     bytes transferTo_address = 3;
     message CallValueInfo {
-        // trx (TBD: or token) value
+        // usdl (TBD: or token) value
         int64 callValue = 1;
-        // TBD: tokenName, trx should be empty
+        // TBD: tokenName, usdl should be empty
         string tokenId = 2;
     }
     repeated CallValueInfo callValueInfo = 4;
@@ -175,7 +175,7 @@ message Witness {
 message Account {
     /* frozen balance */
     message Frozen {
-        int64 frozen_balance = 1;  // the frozen trx balance
+        int64 frozen_balance = 1;  // the frozen usdl balance
         int64 expire_time = 2;     // the expire time
     }
     // account nick name
@@ -183,7 +183,7 @@ message Account {
     AccountType type = 2;
     // the create address
     bytes address = 3;
-    // the trx balance
+    // the usdl balance
     int64 balance = 4;
     // the votes
     repeated Vote votes = 5;
@@ -202,8 +202,8 @@ message Account {
     // Freeze and provide balances to other accounts
     int64 delegated_frozen_balance_for_bandwidth = 42;
 
-    int64 old_tron_power = 46;
-    Frozen tron_power = 47;
+    int64 old_usdl_power = 46;
+    Frozen usdl_power = 47;
 
     bool asset_optimized = 60;
 
@@ -607,9 +607,9 @@ message AccountResourceMessage {
     int64 TotalNetLimit = 7;
     int64 TotalNetWeight = 8;
 
-    int64 TotalTronPowerWeight = 9;
-    int64 tronPowerUsed = 10;
-    int64 tronPowerLimit = 11;
+    int64 TotalUsdlPowerWeight = 9;
+    int64 UsdlPowerUsed = 10;
+    int64 UsdlPowerLimit = 11;
 
     int64 EnergyUsed = 13;
     int64 EnergyLimit = 14;

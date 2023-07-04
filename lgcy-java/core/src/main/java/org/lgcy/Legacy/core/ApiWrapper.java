@@ -36,6 +36,7 @@ import org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract;
 import org.lgcy.Legacy.proto.Contract.ParticipateAssetIssueContract;
 import org.lgcy.Legacy.proto.Contract.UnfreezeAssetContract;
 import org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract;
+import org.lgcy.Legacy.proto.NewTransactionOuterClass;
 import org.lgcy.Legacy.proto.Response;
 import org.lgcy.Legacy.proto.Response.TransactionExtention;
 import org.lgcy.Legacy.proto.Response.TransactionReturn;
@@ -45,8 +46,7 @@ import org.lgcy.Legacy.proto.Response.BlockExtention;
 import org.lgcy.Legacy.proto.Response.BlockListExtention;
 import org.lgcy.Legacy.proto.Response.Proposal;
 import org.lgcy.Legacy.proto.Response.Exchange;
-import org.lgcy.Legacy.proto.Response.DelegatedResourceMessage;
-import org.lgcy.Legacy.proto.Response.DelegatedResourceList;
+
 import org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex;
 import org.lgcy.Legacy.api.GrpcAPI.NumberMessage;
 import org.lgcy.Legacy.api.GrpcAPI.EmptyMessage;
@@ -55,14 +55,13 @@ import org.lgcy.Legacy.api.GrpcAPI.AccountIdMessage;
 import org.lgcy.Legacy.api.GrpcAPI.BlockLimit;
 import org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage;
 import org.lgcy.Legacy.utils.Base58Check;
-import org.lgcy.Legacy.proto.Contract.DelegateResourceContract;
+
 import org.lgcy.Legacy.proto.Contract.UnDelegateResourceContract;
 import org.lgcy.Legacy.proto.Contract.WithdrawExpireUnfreezeContract;
 import com.google.protobuf.ByteString;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.Metadata;
-import io.grpc.stub.MetadataUtils;
+
 
 import java.nio.ByteBuffer;
 import java.util.*;
@@ -82,6 +81,8 @@ import org.lgcy.Legacy.proto.Response.ExchangeList;
 import org.lgcy.Legacy.proto.Response.TransactionSignWeight;
 import org.lgcy.Legacy.proto.Response.TransactionApprovedList;
 
+import javax.xml.bind.DatatypeConverter;
+
 /**
  * A {@code ApiWrapper} object is the entry point for calling the functions.
  *
@@ -96,7 +97,7 @@ import org.lgcy.Legacy.proto.Response.TransactionApprovedList;
  */
 
 public class ApiWrapper {
-    public static final long TRANSACTION_DEFAULT_EXPIRATION_TIME = 60 * 1_000L; //60 seconds
+    public static final long TRANSACTION_DEFAULT_EXPIRATION_TIME = 120 * 1_000L; //60 seconds
 
     public final WalletGrpc.WalletBlockingStub blockingStub;
 
@@ -134,6 +135,11 @@ public class ApiWrapper {
      */
     public static ApiWrapper testNet(String hexPrivateKey) {
         return new ApiWrapper(Constant.TESTNET_GRPC_SERVER, hexPrivateKey);
+    }
+
+
+    public static ApiWrapper mainNet(String hexPrivateKey) {
+        return new ApiWrapper(Constant.MAINNET_GRPC_SERVER, hexPrivateKey);
     }
 
 
@@ -226,50 +232,58 @@ public class ApiWrapper {
 
 
     private TransactionCapsule createTransactionCapsuleWithoutValidate(
-        Message message, Transaction.Contract.ContractType contractType) throws Exception {
-        TransactionCapsule usdl_power = new TransactionCapsule(message, contractType);
+            Message message, Transaction.Contract.ContractType contractType,BlockExtention solidHeadBlock, BlockExtention headBlock) throws Exception {
+        TransactionCapsule usdl = new TransactionCapsule(message, contractType);
 
-                if (contractType == Transaction.Contract.ContractType.CreateSmartContract) {
-                    usdl_power.setTransactionCreate(true);
-            org.lgcy.Legacy.proto.Contract.CreateSmartContract contract = Utils.getSmartContractFromTransaction(usdl_power.getTransaction());
+        if (contractType == Transaction.Contract.ContractType.CreateSmartContract) {
+            usdl.setTransactionCreate(true);
+            org.lgcy.Legacy.proto.Contract.CreateSmartContract contract = Utils.getSmartContractFromTransaction(usdl.getTransaction());
             long percent = contract.getNewContract().getConsumeUserResourcePercent();
             if (percent < 0 || percent > 100) {
                 throw new Exception("percent must be >= 0 and <= 100");
             }
         }
         //build transaction
-        usdl_power.setTransactionCreate(false);
-        BlockExtention solidHeadBlock = blockingStub.getNowBlock2(EmptyMessage.getDefaultInstance());
+        usdl.setTransactionCreate(false);
         //get solid head blockId
         byte[] blockHash = Utils.getBlockId(solidHeadBlock).getBytes();
-        usdl_power.setReference(solidHeadBlock.getBlockHeader().getRawData().getNumber(), blockHash);
+        usdl.setReference(solidHeadBlock.getBlockHeader().getRawData().getNumber(), blockHash);
 
         //get expiration time from head block timestamp
-        BlockExtention headBlock = blockingStub.getNowBlock2(EmptyMessage.getDefaultInstance());
         long expiration = headBlock.getBlockHeader().getRawData().getTimestamp() + TRANSACTION_DEFAULT_EXPIRATION_TIME;
-        usdl_power.setExpiration(expiration);
-        usdl_power.setTimestamp();
-        return usdl_power;
+        usdl.setExpiration(expiration);
+        usdl.setTimestamp();
+
+        return usdl;
     }
+
+    private TransactionCapsule createTransaction(
+            Message message, Transaction.Contract.ContractType contractType) throws Exception {
+        BlockExtention solidHeadBlock = blockingStub.getNowBlock2(EmptyMessage.getDefaultInstance());
+        BlockExtention headBlock = blockingStub.getNowBlock2(EmptyMessage.getDefaultInstance());
+
+        return createTransactionCapsuleWithoutValidate(message,contractType,solidHeadBlock,headBlock);
+    }
+
+
     /**
      * build Transaction Extention in local.
      * @param contractType transaction type.
      * @param request transaction message object.
      */
     public TransactionExtention createTransactionExtention(Message request, Transaction.Contract.ContractType contractType) throws IllegalException {
-        TransactionExtention.Builder trxExtBuilder = TransactionExtention.newBuilder();
+        TransactionExtention.Builder usdlExtBuilder = TransactionExtention.newBuilder();
+
         try {
-            TransactionCapsule usdl_power = createTransactionCapsuleWithoutValidate(request, contractType);
-            trxExtBuilder.setTransaction(usdl_power.getTransaction());
-            trxExtBuilder.setTxid(ByteString.copyFrom(Sha256Hash.hash(true, usdl_power.getTransaction().getRawData().toByteArray())));
+            TransactionCapsule usdl = createTransaction(request, contractType);
+            usdlExtBuilder.setTransaction(usdl.getTransaction());
+            usdlExtBuilder.setTxid(ByteString.copyFrom(Sha256Hash.hash(true, usdl.getTransaction().getRawData().toByteArray())));
         } catch (Exception e) {
             throw new IllegalException("createTransactionExtention error,"+e.getMessage());
         }
 
-        return trxExtBuilder.build();
+        return usdlExtBuilder.build();
     }
-
-
 
 
 
@@ -328,20 +342,29 @@ public class ApiWrapper {
      * @throws RuntimeException if broadcastin fails
      */
     public String broadcastTransaction(Transaction txn) throws RuntimeException{
+        System.out.println("txnDDDDD"+txn);
 
+
+        byte[] byteArray = txn.getRawData().getRefBlockHash().toByteArray();
+
+        // Convert byte array to hexadecimal string
+        String hexString = DatatypeConverter.printHexBinary(byteArray);
+
+        System.out.println("datasssssssssssssss"+hexString);
+
+        System.out.println(toHex(txn.getRawData().getRefBlockHash()));
         TransactionReturn ret = blockingStub.broadcastTransaction(txn);
-
         if (!ret.getResult()) {
             String message = resolveResultCode(ret.getCodeValue()) + ", " + ret.getMessage();
             throw new RuntimeException(message);
         } else {
             byte[] txid = calculateTransactionHash(txn);
-            return ByteString.copyFrom(Hex.encode(txid)).toStringUtf8();          
+            return ByteString.copyFrom(Hex.encode(txid)).toStringUtf8();
         }
     }
 
     /**
-     * Transfer USDL. amount in SUN
+     * Transfer USDL. amount
      * @param fromAddress owner address
      * @param toAddress receive balance
      * @param amount transfer amount
@@ -363,15 +386,7 @@ public class ApiWrapper {
         return txnExt;
     }
 
-    /**
-     * Transfers TRC10 Asset
-     * @param fromAddress owner address
-     * @param toAddress receive balance
-     * @param tokenId asset name
-     * @param amount transfer amount
-     * @return TransactionExtention
-     * @throws IllegalException if fail to transfer trc10
-     */
+
     public TransactionExtention transferTrc10(String fromAddress, String toAddress, int tokenId, long amount) throws IllegalException {
 
         ByteString rawFrom = parseAddress(fromAddress);
@@ -474,6 +489,23 @@ public class ApiWrapper {
         TransactionExtention txnExt = createTransactionExtention(unfreeze, Transaction.Contract.ContractType.UnfreezeBalanceContract);
 
         return txnExt;
+    }
+
+//new impl for create transaction
+    public NewTransactionOuterClass.NewTransaction createTransaction3(String ownerAddress, String toAddress, long amount) throws IllegalException {
+
+        ByteString rawFrom = parseAddress(ownerAddress);
+        ByteString rawTo = parseAddress(toAddress);
+
+        TransferContract req = TransferContract.newBuilder()
+                .setOwnerAddress(rawFrom)
+                .setToAddress(rawTo)
+                .setAmount(amount)
+                .build();
+
+        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.createTransaction3(req);
+
+        return newTransaction;
     }
 
 
@@ -1213,7 +1245,7 @@ public class ApiWrapper {
      * @param name Token name, default hexString
      * @param abbr Token name abbreviation, default hexString
      * @param totalSupply Token total supply
-     * @param trxNum Define the price by the ratio of usdl_num/num
+     * @param usdlNum Define the price by the ratio of usdl_num/num
      * @param icoNum Define the price by the ratio of usdl_num/num
      * @param startTime ICO start time
      * @param endTime ICO end time
@@ -1251,7 +1283,7 @@ public class ApiWrapper {
                 .setName(ByteString.copyFrom(name.getBytes()))
                 .setAbbr(ByteString.copyFrom(abbr.getBytes()))
                 .setTotalSupply(totalSupply)
-                .setTrxNum(usdlNum)
+                .setUsdlNum(usdlNum)
                 .setNum(icoNum)
                 .setStartTime(startTime)
                 .setEndTime(endTime)

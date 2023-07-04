@@ -28,13 +28,9 @@ public final class Common {
      */
     ENERGY(1),
     /**
-     * <code>TRON_POWER = 2;</code>
+     * <code>USDL_POWER = 2;</code>
      */
-    TRON_POWER(2),
-    /**
-     * <code>USDL_POWER = 3;</code>
-     */
-    USDL_POWER(3),
+    USDL_POWER(2),
     UNRECOGNIZED(-1),
     ;
 
@@ -47,13 +43,9 @@ public final class Common {
      */
     public static final int ENERGY_VALUE = 1;
     /**
-     * <code>TRON_POWER = 2;</code>
+     * <code>USDL_POWER = 2;</code>
      */
-    public static final int TRON_POWER_VALUE = 2;
-    /**
-     * <code>USDL_POWER = 3;</code>
-     */
-    public static final int USDL_POWER_VALUE = 3;
+    public static final int USDL_POWER_VALUE = 2;
 
 
     public final int getNumber() {
@@ -82,8 +74,7 @@ public final class Common {
       switch (value) {
         case 0: return BANDWIDTH;
         case 1: return ENERGY;
-        case 2: return TRON_POWER;
-        case 3: return USDL_POWER;
+        case 2: return USDL_POWER;
         default: return null;
       }
     }
@@ -3647,10 +3638,10 @@ public final class Common {
     com.google.protobuf.ByteString getCodeHash();
 
     /**
-     * <code>bytes trx_hash = 10;</code>
-     * @return The trxHash.
+     * <code>bytes usdl_hash = 10;</code>
+     * @return The usdlHash.
      */
-    com.google.protobuf.ByteString getTrxHash();
+    com.google.protobuf.ByteString getUsdlHash();
   }
   /**
    * Protobuf type {@code protocol.SmartContract}
@@ -3670,7 +3661,7 @@ public final class Common {
       bytecode_ = com.google.protobuf.ByteString.EMPTY;
       name_ = "";
       codeHash_ = com.google.protobuf.ByteString.EMPTY;
-      trxHash_ = com.google.protobuf.ByteString.EMPTY;
+      usdlHash_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -3759,7 +3750,7 @@ public final class Common {
             }
             case 82: {
 
-              trxHash_ = input.readBytes();
+              usdlHash_ = input.readBytes();
               break;
             }
             default: {
@@ -7565,15 +7556,15 @@ public final class Common {
       return codeHash_;
     }
 
-    public static final int TRX_HASH_FIELD_NUMBER = 10;
-    private com.google.protobuf.ByteString trxHash_;
+    public static final int USDL_HASH_FIELD_NUMBER = 10;
+    private com.google.protobuf.ByteString usdlHash_;
     /**
-     * <code>bytes trx_hash = 10;</code>
-     * @return The trxHash.
+     * <code>bytes usdl_hash = 10;</code>
+     * @return The usdlHash.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getTrxHash() {
-      return trxHash_;
+    public com.google.protobuf.ByteString getUsdlHash() {
+      return usdlHash_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7617,8 +7608,8 @@ public final class Common {
       if (!codeHash_.isEmpty()) {
         output.writeBytes(9, codeHash_);
       }
-      if (!trxHash_.isEmpty()) {
-        output.writeBytes(10, trxHash_);
+      if (!usdlHash_.isEmpty()) {
+        output.writeBytes(10, usdlHash_);
       }
       unknownFields.writeTo(output);
     }
@@ -7664,9 +7655,9 @@ public final class Common {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(9, codeHash_);
       }
-      if (!trxHash_.isEmpty()) {
+      if (!usdlHash_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, trxHash_);
+          .computeBytesSize(10, usdlHash_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7704,8 +7695,8 @@ public final class Common {
           != other.getOriginEnergyLimit()) return false;
       if (!getCodeHash()
           .equals(other.getCodeHash())) return false;
-      if (!getTrxHash()
-          .equals(other.getTrxHash())) return false;
+      if (!getUsdlHash()
+          .equals(other.getUsdlHash())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7740,8 +7731,8 @@ public final class Common {
           getOriginEnergyLimit());
       hash = (37 * hash) + CODE_HASH_FIELD_NUMBER;
       hash = (53 * hash) + getCodeHash().hashCode();
-      hash = (37 * hash) + TRX_HASH_FIELD_NUMBER;
-      hash = (53 * hash) + getTrxHash().hashCode();
+      hash = (37 * hash) + USDL_HASH_FIELD_NUMBER;
+      hash = (53 * hash) + getUsdlHash().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7897,7 +7888,7 @@ public final class Common {
 
         codeHash_ = com.google.protobuf.ByteString.EMPTY;
 
-        trxHash_ = com.google.protobuf.ByteString.EMPTY;
+        usdlHash_ = com.google.protobuf.ByteString.EMPTY;
 
         return this;
       }
@@ -7938,7 +7929,7 @@ public final class Common {
         result.name_ = name_;
         result.originEnergyLimit_ = originEnergyLimit_;
         result.codeHash_ = codeHash_;
-        result.trxHash_ = trxHash_;
+        result.usdlHash_ = usdlHash_;
         onBuilt();
         return result;
       }
@@ -8015,8 +8006,8 @@ public final class Common {
         if (other.getCodeHash() != com.google.protobuf.ByteString.EMPTY) {
           setCodeHash(other.getCodeHash());
         }
-        if (other.getTrxHash() != com.google.protobuf.ByteString.EMPTY) {
-          setTrxHash(other.getTrxHash());
+        if (other.getUsdlHash() != com.google.protobuf.ByteString.EMPTY) {
+          setUsdlHash(other.getUsdlHash());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8471,36 +8462,36 @@ public final class Common {
         return this;
       }
 
-      private com.google.protobuf.ByteString trxHash_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.ByteString usdlHash_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes trx_hash = 10;</code>
-       * @return The trxHash.
+       * <code>bytes usdl_hash = 10;</code>
+       * @return The usdlHash.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString getTrxHash() {
-        return trxHash_;
+      public com.google.protobuf.ByteString getUsdlHash() {
+        return usdlHash_;
       }
       /**
-       * <code>bytes trx_hash = 10;</code>
-       * @param value The trxHash to set.
+       * <code>bytes usdl_hash = 10;</code>
+       * @param value The usdlHash to set.
        * @return This builder for chaining.
        */
-      public Builder setTrxHash(com.google.protobuf.ByteString value) {
+      public Builder setUsdlHash(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        trxHash_ = value;
+        usdlHash_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bytes trx_hash = 10;</code>
+       * <code>bytes usdl_hash = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTrxHash() {
+      public Builder clearUsdlHash() {
         
-        trxHash_ = getDefaultInstance().getTrxHash();
+        usdlHash_ = getDefaultInstance().getUsdlHash();
         onChanged();
         return this;
       }
@@ -9996,37 +9987,37 @@ public final class Common {
       "n_name\030\003 \001(\t\022\021\n\tthreshold\030\004 \001(\003\022\021\n\tparen" +
       "t_id\030\005 \001(\005\022\022\n\noperations\030\006 \001(\014\022\033\n\004keys\030\007" +
       " \003(\0132\r.protocol.Key\"4\n\016PermissionType\022\t\n" +
-      "\005Owner\020\000\022\013\n\007Witness\020\001\022\n\n\006Active\020\002\"\203\007\n\rSm" +
+      "\005Owner\020\000\022\013\n\007Witness\020\001\022\n\n\006Active\020\002\"\204\007\n\rSm" +
       "artContract\022\026\n\016origin_address\030\001 \001(\014\022\030\n\020c" +
       "ontract_address\030\002 \001(\014\022(\n\003abi\030\003 \001(\0132\033.pro" +
       "tocol.SmartContract.ABI\022\020\n\010bytecode\030\004 \001(" +
       "\014\022\022\n\ncall_value\030\005 \001(\003\022%\n\035consume_user_re" +
       "source_percent\030\006 \001(\003\022\014\n\004name\030\007 \001(\t\022\033\n\023or" +
       "igin_energy_limit\030\010 \001(\003\022\021\n\tcode_hash\030\t \001" +
-      "(\014\022\020\n\010trx_hash\030\n \001(\014\032\370\004\n\003ABI\0221\n\006entrys\030\001" +
-      " \003(\0132!.protocol.SmartContract.ABI.Entry\032" +
-      "\275\004\n\005Entry\022\021\n\tanonymous\030\001 \001(\010\022\020\n\010constant" +
-      "\030\002 \001(\010\022\014\n\004name\030\003 \001(\t\0227\n\006inputs\030\004 \003(\0132\'.p" +
-      "rotocol.SmartContract.ABI.Entry.Param\0228\n" +
-      "\007outputs\030\005 \003(\0132\'.protocol.SmartContract." +
-      "ABI.Entry.Param\0229\n\004type\030\006 \001(\0162+.protocol" +
-      ".SmartContract.ABI.Entry.EntryType\022\017\n\007pa" +
-      "yable\030\007 \001(\010\022N\n\017stateMutability\030\010 \001(\01625.p" +
-      "rotocol.SmartContract.ABI.Entry.StateMut" +
-      "abilityType\0324\n\005Param\022\017\n\007indexed\030\001 \001(\010\022\014\n" +
-      "\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\"Y\n\tEntryType\022\024" +
-      "\n\020UnknownEntryType\020\000\022\017\n\013Constructor\020\001\022\014\n" +
-      "\010Function\020\002\022\t\n\005Event\020\003\022\014\n\010Fallback\020\004\"a\n\023" +
-      "StateMutabilityType\022\031\n\025UnknownMutability" +
-      "Type\020\000\022\010\n\004Pure\020\001\022\010\n\004View\020\002\022\016\n\nNonpayable" +
-      "\020\003\022\013\n\007Payable\020\004\"0\n\004Vote\022\024\n\014vote_address\030" +
-      "\001 \001(\014\022\022\n\nvote_count\030\002 \001(\003\"I\n\004Note\022\r\n\005val" +
-      "ue\030\001 \001(\003\022\027\n\017payment_address\030\002 \001(\t\022\013\n\003rcm" +
-      "\030\003 \001(\014\022\014\n\004memo\030\004 \001(\014*I\n\014ResourceCode\022\r\n\t" +
-      "BANDWIDTH\020\000\022\n\n\006ENERGY\020\001\022\016\n\nTRON_POWER\020\002\022" +
-      "\016\n\nUSDL_POWER\020\003*7\n\013AccountType\022\n\n\006Normal" +
-      "\020\000\022\016\n\nAssetIssue\020\001\022\014\n\010Contract\020\002B\027\n\025org." +
-      "lgcy.Legacy.protob\006proto3"
+      "(\014\022\021\n\tusdl_hash\030\n \001(\014\032\370\004\n\003ABI\0221\n\006entrys\030" +
+      "\001 \003(\0132!.protocol.SmartContract.ABI.Entry" +
+      "\032\275\004\n\005Entry\022\021\n\tanonymous\030\001 \001(\010\022\020\n\010constan" +
+      "t\030\002 \001(\010\022\014\n\004name\030\003 \001(\t\0227\n\006inputs\030\004 \003(\0132\'." +
+      "protocol.SmartContract.ABI.Entry.Param\0228" +
+      "\n\007outputs\030\005 \003(\0132\'.protocol.SmartContract" +
+      ".ABI.Entry.Param\0229\n\004type\030\006 \001(\0162+.protoco" +
+      "l.SmartContract.ABI.Entry.EntryType\022\017\n\007p" +
+      "ayable\030\007 \001(\010\022N\n\017stateMutability\030\010 \001(\01625." +
+      "protocol.SmartContract.ABI.Entry.StateMu" +
+      "tabilityType\0324\n\005Param\022\017\n\007indexed\030\001 \001(\010\022\014" +
+      "\n\004name\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\"Y\n\tEntryType\022" +
+      "\024\n\020UnknownEntryType\020\000\022\017\n\013Constructor\020\001\022\014" +
+      "\n\010Function\020\002\022\t\n\005Event\020\003\022\014\n\010Fallback\020\004\"a\n" +
+      "\023StateMutabilityType\022\031\n\025UnknownMutabilit" +
+      "yType\020\000\022\010\n\004Pure\020\001\022\010\n\004View\020\002\022\016\n\nNonpayabl" +
+      "e\020\003\022\013\n\007Payable\020\004\"0\n\004Vote\022\024\n\014vote_address" +
+      "\030\001 \001(\014\022\022\n\nvote_count\030\002 \001(\003\"I\n\004Note\022\r\n\005va" +
+      "lue\030\001 \001(\003\022\027\n\017payment_address\030\002 \001(\t\022\013\n\003rc" +
+      "m\030\003 \001(\014\022\014\n\004memo\030\004 \001(\014*9\n\014ResourceCode\022\r\n" +
+      "\tBANDWIDTH\020\000\022\n\n\006ENERGY\020\001\022\016\n\nUSDL_POWER\020\002" +
+      "*7\n\013AccountType\022\n\n\006Normal\020\000\022\016\n\nAssetIssu" +
+      "e\020\001\022\014\n\010Contract\020\002B\027\n\025org.lgcy.Legacy.pro" +
+      "tob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10061,7 +10052,7 @@ public final class Common {
     internal_static_protocol_SmartContract_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_SmartContract_descriptor,
-        new java.lang.String[] { "OriginAddress", "ContractAddress", "Abi", "Bytecode", "CallValue", "ConsumeUserResourcePercent", "Name", "OriginEnergyLimit", "CodeHash", "TrxHash", });
+        new java.lang.String[] { "OriginAddress", "ContractAddress", "Abi", "Bytecode", "CallValue", "ConsumeUserResourcePercent", "Name", "OriginEnergyLimit", "CodeHash", "UsdlHash", });
     internal_static_protocol_SmartContract_ABI_descriptor =
       internal_static_protocol_SmartContract_descriptor.getNestedTypes().get(0);
     internal_static_protocol_SmartContract_ABI_fieldAccessorTable = new

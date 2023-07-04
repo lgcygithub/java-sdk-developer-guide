@@ -85,6 +85,12 @@ public final class Chain {
      */
     org.lgcy.Legacy.proto.Chain.Transaction.ResultOrBuilder getRetOrBuilder(
         int index);
+
+    /**
+     * <code>bytes txID = 6;</code>
+     * @return The txID.
+     */
+    com.google.protobuf.ByteString getTxID();
   }
   /**
    * Protobuf type {@code protocol.Transaction}
@@ -101,6 +107,7 @@ public final class Chain {
     private Transaction() {
       signature_ = java.util.Collections.emptyList();
       ret_ = java.util.Collections.emptyList();
+      txID_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     @java.lang.Override
@@ -162,6 +169,11 @@ public final class Chain {
               }
               ret_.add(
                   input.readMessage(org.lgcy.Legacy.proto.Chain.Transaction.Result.parser(), extensionRegistry));
+              break;
+            }
+            case 50: {
+
+              txID_ = input.readBytes();
               break;
             }
             default: {
@@ -5354,6 +5366,17 @@ public final class Chain {
       return ret_.get(index);
     }
 
+    public static final int TXID_FIELD_NUMBER = 6;
+    private com.google.protobuf.ByteString txID_;
+    /**
+     * <code>bytes txID = 6;</code>
+     * @return The txID.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTxID() {
+      return txID_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5376,6 +5399,9 @@ public final class Chain {
       }
       for (int i = 0; i < ret_.size(); i++) {
         output.writeMessage(5, ret_.get(i));
+      }
+      if (!txID_.isEmpty()) {
+        output.writeBytes(6, txID_);
       }
       unknownFields.writeTo(output);
     }
@@ -5403,6 +5429,10 @@ public final class Chain {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, ret_.get(i));
       }
+      if (!txID_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, txID_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5427,6 +5457,8 @@ public final class Chain {
           .equals(other.getSignatureList())) return false;
       if (!getRetList()
           .equals(other.getRetList())) return false;
+      if (!getTxID()
+          .equals(other.getTxID())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5450,6 +5482,8 @@ public final class Chain {
         hash = (37 * hash) + RET_FIELD_NUMBER;
         hash = (53 * hash) + getRetList().hashCode();
       }
+      hash = (37 * hash) + TXID_FIELD_NUMBER;
+      hash = (53 * hash) + getTxID().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5598,6 +5632,8 @@ public final class Chain {
         } else {
           retBuilder_.clear();
         }
+        txID_ = com.google.protobuf.ByteString.EMPTY;
+
         return this;
       }
 
@@ -5644,6 +5680,7 @@ public final class Chain {
         } else {
           result.ret_ = retBuilder_.build();
         }
+        result.txID_ = txID_;
         onBuilt();
         return result;
       }
@@ -5730,6 +5767,9 @@ public final class Chain {
               retBuilder_.addAllMessages(other.ret_);
             }
           }
+        }
+        if (other.getTxID() != com.google.protobuf.ByteString.EMPTY) {
+          setTxID(other.getTxID());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6231,6 +6271,40 @@ public final class Chain {
           ret_ = null;
         }
         return retBuilder_;
+      }
+
+      private com.google.protobuf.ByteString txID_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes txID = 6;</code>
+       * @return The txID.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTxID() {
+        return txID_;
+      }
+      /**
+       * <code>bytes txID = 6;</code>
+       * @param value The txID to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTxID(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        txID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes txID = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTxID() {
+        
+        txID_ = getDefaultInstance().getTxID();
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -9237,78 +9311,79 @@ public final class Chain {
   static {
     java.lang.String[] descriptorData = {
       "\n\020core/chain.proto\022\010protocol\032\031google/pro" +
-      "tobuf/any.proto\032\021core/common.proto\"\202\023\n\013T" +
+      "tobuf/any.proto\032\021core/common.proto\"\220\023\n\013T" +
       "ransaction\022+\n\010raw_data\030\001 \001(\0132\031.protocol." +
       "Transaction.raw\022\021\n\tsignature\030\002 \003(\014\022)\n\003re" +
-      "t\030\005 \003(\0132\034.protocol.Transaction.Result\032\227\n" +
-      "\n\010Contract\0229\n\004type\030\001 \001(\0162+.protocol.Tran" +
-      "saction.Contract.ContractType\022\'\n\tparamet" +
-      "er\030\002 \001(\0132\024.google.protobuf.Any\022\020\n\010provid" +
-      "er\030\003 \001(\014\022\024\n\014ContractName\030\004 \001(\014\022\025\n\rPermis" +
-      "sion_id\030\005 \001(\005\"\347\010\n\014ContractType\022\031\n\025Accoun" +
-      "tCreateContract\020\000\022\024\n\020TransferContract\020\001\022" +
-      "\031\n\025TransferAssetContract\020\002\022\025\n\021VoteAssetC" +
-      "ontract\020\003\022\027\n\023VoteWitnessContract\020\004\022\031\n\025Wi" +
-      "tnessCreateContract\020\005\022\026\n\022AssetIssueContr" +
-      "act\020\006\022\031\n\025WitnessUpdateContract\020\010\022!\n\035Part" +
-      "icipateAssetIssueContract\020\t\022\031\n\025AccountUp" +
-      "dateContract\020\n\022\031\n\025FreezeBalanceContract\020" +
-      "\013\022\033\n\027UnfreezeBalanceContract\020\014\022\033\n\027Withdr" +
-      "awBalanceContract\020\r\022\031\n\025UnfreezeAssetCont" +
-      "ract\020\016\022\027\n\023UpdateAssetContract\020\017\022\032\n\026Propo" +
-      "salCreateContract\020\020\022\033\n\027ProposalApproveCo" +
-      "ntract\020\021\022\032\n\026ProposalDeleteContract\020\022\022\030\n\024" +
-      "SetAccountIdContract\020\023\022\022\n\016CustomContract" +
-      "\020\024\022\027\n\023CreateSmartContract\020\036\022\030\n\024TriggerSm" +
-      "artContract\020\037\022\017\n\013GetContract\020 \022\031\n\025Update" +
-      "SettingContract\020!\022\032\n\026ExchangeCreateContr" +
-      "act\020)\022\032\n\026ExchangeInjectContract\020*\022\034\n\030Exc" +
-      "hangeWithdrawContract\020+\022\037\n\033ExchangeTrans" +
-      "actionContract\020,\022\035\n\031UpdateEnergyLimitCon" +
-      "tract\020-\022#\n\037AccountPermissionUpdateContra" +
-      "ct\020.\022\024\n\020ClearABIContract\0200\022\033\n\027UpdateBrok" +
-      "erageContract\0201\022\034\n\030ShieldedTransferContr" +
-      "act\0203\022\033\n\027MarketSellAssetContract\0204\022\035\n\031Ma" +
-      "rketCancelOrderContract\0205\022\033\n\027FreezeBalan" +
-      "ceV2Contract\0206\022\035\n\031UnfreezeBalanceV2Contr" +
-      "act\0207\022\"\n\036WithdrawExpireUnfreezeContract\020" +
-      "8\022\034\n\030DelegateResourceContract\0209\022\036\n\032UnDel" +
-      "egateResourceContract\020:\032\356\005\n\006Result\022\013\n\003fe" +
-      "e\030\001 \001(\003\022.\n\003ret\030\002 \001(\0162!.protocol.Transact" +
-      "ion.Result.code\022@\n\013contractRet\030\003 \001(\0162+.p" +
-      "rotocol.Transaction.Result.contractResul" +
-      "t\022\024\n\014assetIssueID\030\016 \001(\t\022\027\n\017withdraw_amou" +
-      "nt\030\017 \001(\003\022\027\n\017unfreeze_amount\030\020 \001(\003\022 \n\030exc" +
-      "hange_received_amount\030\022 \001(\003\022&\n\036exchange_" +
-      "inject_another_amount\030\023 \001(\003\022(\n exchange_" +
-      "withdraw_another_amount\030\024 \001(\003\022\023\n\013exchang" +
-      "e_id\030\025 \001(\003\022 \n\030shielded_transaction_fee\030\026" +
-      " \001(\003\022\036\n\026withdraw_expire_amount\030\033 \001(\003\"\036\n\004" +
-      "code\022\n\n\006SUCESS\020\000\022\n\n\006FAILED\020\001\"\261\002\n\016contrac" +
-      "tResult\022\013\n\007DEFAULT\020\000\022\013\n\007SUCCESS\020\001\022\n\n\006REV" +
-      "ERT\020\002\022\030\n\024BAD_JUMP_DESTINATION\020\003\022\021\n\rOUT_O" +
-      "F_MEMORY\020\004\022\030\n\024PRECOMPILED_CONTRACT\020\005\022\023\n\017" +
-      "STACK_TOO_SMALL\020\006\022\023\n\017STACK_TOO_LARGE\020\007\022\025" +
-      "\n\021ILLEGAL_OPERATION\020\010\022\022\n\016STACK_OVERFLOW\020" +
-      "\t\022\021\n\rOUT_OF_ENERGY\020\n\022\017\n\013OUT_OF_TIME\020\013\022\027\n" +
-      "\023JVM_STACK_OVER_FLOW\020\014\022\013\n\007UNKNOWN\020\r\022\023\n\017T" +
-      "RANSFER_FAILED\020\016\032\374\001\n\003raw\022\027\n\017ref_block_by" +
-      "tes\030\001 \001(\014\022\025\n\rref_block_num\030\003 \001(\003\022\026\n\016ref_" +
-      "block_hash\030\004 \001(\014\022\022\n\nexpiration\030\010 \001(\003\022\"\n\005" +
-      "auths\030\t \003(\0132\023.protocol.authority\022\014\n\004data" +
-      "\030\n \001(\014\0220\n\010contract\030\013 \003(\0132\036.protocol.Tran" +
-      "saction.Contract\022\017\n\007scripts\030\014 \001(\014\022\021\n\ttim" +
-      "estamp\030\016 \001(\003\022\021\n\tfee_limit\030\022 \001(\003\"\200\002\n\013Bloc" +
-      "kHeader\022+\n\010raw_data\030\001 \001(\0132\031.protocol.Blo" +
-      "ckHeader.raw\022\031\n\021witness_signature\030\002 \001(\014\032" +
-      "\250\001\n\003raw\022\021\n\ttimestamp\030\001 \001(\003\022\022\n\ntxTrieRoot" +
-      "\030\002 \001(\014\022\022\n\nparentHash\030\003 \001(\014\022\016\n\006number\030\007 \001" +
-      "(\003\022\022\n\nwitness_id\030\010 \001(\003\022\027\n\017witness_addres" +
-      "s\030\t \001(\014\022\017\n\007version\030\n \001(\005\022\030\n\020accountState" +
-      "Root\030\013 \001(\014\"r\n\005Block\022+\n\014transactions\030\001 \003(" +
-      "\0132\025.protocol.Transaction\022+\n\014block_header" +
-      "\030\002 \001(\0132\025.protocol.BlockHeader\022\017\n\007blockID" +
-      "\030\003 \001(\tB\027\n\025org.lgcy.Legacy.protob\006proto3"
+      "t\030\005 \003(\0132\034.protocol.Transaction.Result\022\014\n" +
+      "\004txID\030\006 \001(\014\032\227\n\n\010Contract\0229\n\004type\030\001 \001(\0162+" +
+      ".protocol.Transaction.Contract.ContractT" +
+      "ype\022\'\n\tparameter\030\002 \001(\0132\024.google.protobuf" +
+      ".Any\022\020\n\010provider\030\003 \001(\014\022\024\n\014ContractName\030\004" +
+      " \001(\014\022\025\n\rPermission_id\030\005 \001(\005\"\347\010\n\014Contract" +
+      "Type\022\031\n\025AccountCreateContract\020\000\022\024\n\020Trans" +
+      "ferContract\020\001\022\031\n\025TransferAssetContract\020\002" +
+      "\022\025\n\021VoteAssetContract\020\003\022\027\n\023VoteWitnessCo" +
+      "ntract\020\004\022\031\n\025WitnessCreateContract\020\005\022\026\n\022A" +
+      "ssetIssueContract\020\006\022\031\n\025WitnessUpdateCont" +
+      "ract\020\010\022!\n\035ParticipateAssetIssueContract\020" +
+      "\t\022\031\n\025AccountUpdateContract\020\n\022\031\n\025FreezeBa" +
+      "lanceContract\020\013\022\033\n\027UnfreezeBalanceContra" +
+      "ct\020\014\022\033\n\027WithdrawBalanceContract\020\r\022\031\n\025Unf" +
+      "reezeAssetContract\020\016\022\027\n\023UpdateAssetContr" +
+      "act\020\017\022\032\n\026ProposalCreateContract\020\020\022\033\n\027Pro" +
+      "posalApproveContract\020\021\022\032\n\026ProposalDelete" +
+      "Contract\020\022\022\030\n\024SetAccountIdContract\020\023\022\022\n\016" +
+      "CustomContract\020\024\022\027\n\023CreateSmartContract\020" +
+      "\036\022\030\n\024TriggerSmartContract\020\037\022\017\n\013GetContra" +
+      "ct\020 \022\031\n\025UpdateSettingContract\020!\022\032\n\026Excha" +
+      "ngeCreateContract\020)\022\032\n\026ExchangeInjectCon" +
+      "tract\020*\022\034\n\030ExchangeWithdrawContract\020+\022\037\n" +
+      "\033ExchangeTransactionContract\020,\022\035\n\031Update" +
+      "EnergyLimitContract\020-\022#\n\037AccountPermissi" +
+      "onUpdateContract\020.\022\024\n\020ClearABIContract\0200" +
+      "\022\033\n\027UpdateBrokerageContract\0201\022\034\n\030Shielde" +
+      "dTransferContract\0203\022\033\n\027MarketSellAssetCo" +
+      "ntract\0204\022\035\n\031MarketCancelOrderContract\0205\022" +
+      "\033\n\027FreezeBalanceV2Contract\0206\022\035\n\031Unfreeze" +
+      "BalanceV2Contract\0207\022\"\n\036WithdrawExpireUnf" +
+      "reezeContract\0208\022\034\n\030DelegateResourceContr" +
+      "act\0209\022\036\n\032UnDelegateResourceContract\020:\032\356\005" +
+      "\n\006Result\022\013\n\003fee\030\001 \001(\003\022.\n\003ret\030\002 \001(\0162!.pro" +
+      "tocol.Transaction.Result.code\022@\n\013contrac" +
+      "tRet\030\003 \001(\0162+.protocol.Transaction.Result" +
+      ".contractResult\022\024\n\014assetIssueID\030\016 \001(\t\022\027\n" +
+      "\017withdraw_amount\030\017 \001(\003\022\027\n\017unfreeze_amoun" +
+      "t\030\020 \001(\003\022 \n\030exchange_received_amount\030\022 \001(" +
+      "\003\022&\n\036exchange_inject_another_amount\030\023 \001(" +
+      "\003\022(\n exchange_withdraw_another_amount\030\024 " +
+      "\001(\003\022\023\n\013exchange_id\030\025 \001(\003\022 \n\030shielded_tra" +
+      "nsaction_fee\030\026 \001(\003\022\036\n\026withdraw_expire_am" +
+      "ount\030\033 \001(\003\"\036\n\004code\022\n\n\006SUCESS\020\000\022\n\n\006FAILED" +
+      "\020\001\"\261\002\n\016contractResult\022\013\n\007DEFAULT\020\000\022\013\n\007SU" +
+      "CCESS\020\001\022\n\n\006REVERT\020\002\022\030\n\024BAD_JUMP_DESTINAT" +
+      "ION\020\003\022\021\n\rOUT_OF_MEMORY\020\004\022\030\n\024PRECOMPILED_" +
+      "CONTRACT\020\005\022\023\n\017STACK_TOO_SMALL\020\006\022\023\n\017STACK" +
+      "_TOO_LARGE\020\007\022\025\n\021ILLEGAL_OPERATION\020\010\022\022\n\016S" +
+      "TACK_OVERFLOW\020\t\022\021\n\rOUT_OF_ENERGY\020\n\022\017\n\013OU" +
+      "T_OF_TIME\020\013\022\027\n\023JVM_STACK_OVER_FLOW\020\014\022\013\n\007" +
+      "UNKNOWN\020\r\022\023\n\017TRANSFER_FAILED\020\016\032\374\001\n\003raw\022\027" +
+      "\n\017ref_block_bytes\030\001 \001(\014\022\025\n\rref_block_num" +
+      "\030\003 \001(\003\022\026\n\016ref_block_hash\030\004 \001(\014\022\022\n\nexpira" +
+      "tion\030\010 \001(\003\022\"\n\005auths\030\t \003(\0132\023.protocol.aut" +
+      "hority\022\014\n\004data\030\n \001(\014\0220\n\010contract\030\013 \003(\0132\036" +
+      ".protocol.Transaction.Contract\022\017\n\007script" +
+      "s\030\014 \001(\014\022\021\n\ttimestamp\030\016 \001(\003\022\021\n\tfee_limit\030" +
+      "\022 \001(\003\"\200\002\n\013BlockHeader\022+\n\010raw_data\030\001 \001(\0132" +
+      "\031.protocol.BlockHeader.raw\022\031\n\021witness_si" +
+      "gnature\030\002 \001(\014\032\250\001\n\003raw\022\021\n\ttimestamp\030\001 \001(\003" +
+      "\022\022\n\ntxTrieRoot\030\002 \001(\014\022\022\n\nparentHash\030\003 \001(\014" +
+      "\022\016\n\006number\030\007 \001(\003\022\022\n\nwitness_id\030\010 \001(\003\022\027\n\017" +
+      "witness_address\030\t \001(\014\022\017\n\007version\030\n \001(\005\022\030" +
+      "\n\020accountStateRoot\030\013 \001(\014\"r\n\005Block\022+\n\014tra" +
+      "nsactions\030\001 \003(\0132\025.protocol.Transaction\022+" +
+      "\n\014block_header\030\002 \001(\0132\025.protocol.BlockHea" +
+      "der\022\017\n\007blockID\030\003 \001(\tB\027\n\025org.lgcy.Legacy." +
+      "protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9321,7 +9396,7 @@ public final class Chain {
     internal_static_protocol_Transaction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_Transaction_descriptor,
-        new java.lang.String[] { "RawData", "Signature", "Ret", });
+        new java.lang.String[] { "RawData", "Signature", "Ret", "TxID", });
     internal_static_protocol_Transaction_Contract_descriptor =
       internal_static_protocol_Transaction_descriptor.getNestedTypes().get(0);
     internal_static_protocol_Transaction_Contract_fieldAccessorTable = new
