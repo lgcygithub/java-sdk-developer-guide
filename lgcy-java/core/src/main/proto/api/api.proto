@@ -9,6 +9,7 @@ import "core/common.proto";
 import "core/chain.proto";
 import "core/contract.proto";
 import "core/response.proto";
+import "core/newTransaction.proto";
 
 service Wallet {
   // Transactions:
@@ -30,6 +31,7 @@ service Wallet {
 
   rpc CreateTransaction(TransferContract) returns (Transaction) {}
   rpc CreateTransaction2(TransferContract) returns (TransactionExtention) {}
+  rpc CreateTransaction3(TransferContract) returns (NewTransaction) {}
 
   rpc CreateAssetIssue(AssetIssueContract) returns (Transaction) {}
   rpc CreateAssetIssue2(AssetIssueContract) returns (TransactionExtention) {}

@@ -12395,7 +12395,7 @@ public final class Response {
 
     /**
      * <pre>
-     * the one send trx (TBD: or token) via function
+     * the one send usdl (TBD: or token) via function
      * </pre>
      *
      * <code>bytes caller_address = 2;</code>
@@ -12405,7 +12405,7 @@ public final class Response {
 
     /**
      * <pre>
-     * the one recieve trx (TBD: or token) via function
+     * the one recieve usdl (TBD: or token) via function
      * </pre>
      *
      * <code>bytes transferTo_address = 3;</code>
@@ -12575,7 +12575,7 @@ public final class Response {
 
       /**
        * <pre>
-       * trx (TBD: or token) value
+       * usdl (TBD: or token) value
        * </pre>
        *
        * <code>int64 callValue = 1;</code>
@@ -12585,7 +12585,7 @@ public final class Response {
 
       /**
        * <pre>
-       * TBD: tokenName, trx should be empty
+       * TBD: tokenName, usdl should be empty
        * </pre>
        *
        * <code>string tokenId = 2;</code>
@@ -12594,7 +12594,7 @@ public final class Response {
       java.lang.String getTokenId();
       /**
        * <pre>
-       * TBD: tokenName, trx should be empty
+       * TBD: tokenName, usdl should be empty
        * </pre>
        *
        * <code>string tokenId = 2;</code>
@@ -12696,7 +12696,7 @@ public final class Response {
       private long callValue_;
       /**
        * <pre>
-       * trx (TBD: or token) value
+       * usdl (TBD: or token) value
        * </pre>
        *
        * <code>int64 callValue = 1;</code>
@@ -12711,7 +12711,7 @@ public final class Response {
       private volatile java.lang.Object tokenId_;
       /**
        * <pre>
-       * TBD: tokenName, trx should be empty
+       * TBD: tokenName, usdl should be empty
        * </pre>
        *
        * <code>string tokenId = 2;</code>
@@ -12732,7 +12732,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * TBD: tokenName, trx should be empty
+       * TBD: tokenName, usdl should be empty
        * </pre>
        *
        * <code>string tokenId = 2;</code>
@@ -13076,7 +13076,7 @@ public final class Response {
         private long callValue_ ;
         /**
          * <pre>
-         * trx (TBD: or token) value
+         * usdl (TBD: or token) value
          * </pre>
          *
          * <code>int64 callValue = 1;</code>
@@ -13088,7 +13088,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * trx (TBD: or token) value
+         * usdl (TBD: or token) value
          * </pre>
          *
          * <code>int64 callValue = 1;</code>
@@ -13103,7 +13103,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * trx (TBD: or token) value
+         * usdl (TBD: or token) value
          * </pre>
          *
          * <code>int64 callValue = 1;</code>
@@ -13119,7 +13119,7 @@ public final class Response {
         private java.lang.Object tokenId_ = "";
         /**
          * <pre>
-         * TBD: tokenName, trx should be empty
+         * TBD: tokenName, usdl should be empty
          * </pre>
          *
          * <code>string tokenId = 2;</code>
@@ -13139,7 +13139,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * TBD: tokenName, trx should be empty
+         * TBD: tokenName, usdl should be empty
          * </pre>
          *
          * <code>string tokenId = 2;</code>
@@ -13160,7 +13160,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * TBD: tokenName, trx should be empty
+         * TBD: tokenName, usdl should be empty
          * </pre>
          *
          * <code>string tokenId = 2;</code>
@@ -13179,7 +13179,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * TBD: tokenName, trx should be empty
+         * TBD: tokenName, usdl should be empty
          * </pre>
          *
          * <code>string tokenId = 2;</code>
@@ -13193,7 +13193,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * TBD: tokenName, trx should be empty
+         * TBD: tokenName, usdl should be empty
          * </pre>
          *
          * <code>string tokenId = 2;</code>
@@ -13284,7 +13284,7 @@ public final class Response {
     private com.google.protobuf.ByteString callerAddress_;
     /**
      * <pre>
-     * the one send trx (TBD: or token) via function
+     * the one send usdl (TBD: or token) via function
      * </pre>
      *
      * <code>bytes caller_address = 2;</code>
@@ -13299,7 +13299,7 @@ public final class Response {
     private com.google.protobuf.ByteString transferToAddress_;
     /**
      * <pre>
-     * the one recieve trx (TBD: or token) via function
+     * the one recieve usdl (TBD: or token) via function
      * </pre>
      *
      * <code>bytes transferTo_address = 3;</code>
@@ -13852,7 +13852,7 @@ public final class Response {
       private com.google.protobuf.ByteString callerAddress_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * the one send trx (TBD: or token) via function
+       * the one send usdl (TBD: or token) via function
        * </pre>
        *
        * <code>bytes caller_address = 2;</code>
@@ -13864,7 +13864,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * the one send trx (TBD: or token) via function
+       * the one send usdl (TBD: or token) via function
        * </pre>
        *
        * <code>bytes caller_address = 2;</code>
@@ -13882,7 +13882,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * the one send trx (TBD: or token) via function
+       * the one send usdl (TBD: or token) via function
        * </pre>
        *
        * <code>bytes caller_address = 2;</code>
@@ -13898,7 +13898,7 @@ public final class Response {
       private com.google.protobuf.ByteString transferToAddress_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
-       * the one recieve trx (TBD: or token) via function
+       * the one recieve usdl (TBD: or token) via function
        * </pre>
        *
        * <code>bytes transferTo_address = 3;</code>
@@ -13910,7 +13910,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * the one recieve trx (TBD: or token) via function
+       * the one recieve usdl (TBD: or token) via function
        * </pre>
        *
        * <code>bytes transferTo_address = 3;</code>
@@ -13928,7 +13928,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * the one recieve trx (TBD: or token) via function
+       * the one recieve usdl (TBD: or token) via function
        * </pre>
        *
        * <code>bytes transferTo_address = 3;</code>
@@ -20719,7 +20719,7 @@ public final class Response {
 
     /**
      * <pre>
-     * the trx balance
+     * the usdl balance
      * </pre>
      *
      * <code>int64 balance = 4;</code>
@@ -20954,25 +20954,25 @@ public final class Response {
     long getDelegatedFrozenBalanceForBandwidth();
 
     /**
-     * <code>int64 old_tron_power = 46;</code>
-     * @return The oldTronPower.
+     * <code>int64 old_usdl_power = 46;</code>
+     * @return The oldUsdlPower.
      */
-    long getOldTronPower();
+    long getOldUsdlPower();
 
     /**
-     * <code>.protocol.Account.Frozen tron_power = 47;</code>
-     * @return Whether the tronPower field is set.
+     * <code>.protocol.Account.Frozen usdl_power = 47;</code>
+     * @return Whether the usdlPower field is set.
      */
-    boolean hasTronPower();
+    boolean hasUsdlPower();
     /**
-     * <code>.protocol.Account.Frozen tron_power = 47;</code>
-     * @return The tronPower.
+     * <code>.protocol.Account.Frozen usdl_power = 47;</code>
+     * @return The usdlPower.
      */
-    org.lgcy.Legacy.proto.Response.Account.Frozen getTronPower();
+    org.lgcy.Legacy.proto.Response.Account.Frozen getUsdlPower();
     /**
-     * <code>.protocol.Account.Frozen tron_power = 47;</code>
+     * <code>.protocol.Account.Frozen usdl_power = 47;</code>
      */
-    org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder getTronPowerOrBuilder();
+    org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder getUsdlPowerOrBuilder();
 
     /**
      * <code>bool asset_optimized = 60;</code>
@@ -21722,18 +21722,18 @@ public final class Response {
             }
             case 368: {
 
-              oldTronPower_ = input.readInt64();
+              oldUsdlPower_ = input.readInt64();
               break;
             }
             case 378: {
               org.lgcy.Legacy.proto.Response.Account.Frozen.Builder subBuilder = null;
-              if (tronPower_ != null) {
-                subBuilder = tronPower_.toBuilder();
+              if (usdlPower_ != null) {
+                subBuilder = usdlPower_.toBuilder();
               }
-              tronPower_ = input.readMessage(org.lgcy.Legacy.proto.Response.Account.Frozen.parser(), extensionRegistry);
+              usdlPower_ = input.readMessage(org.lgcy.Legacy.proto.Response.Account.Frozen.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(tronPower_);
-                tronPower_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(usdlPower_);
+                usdlPower_ = subBuilder.buildPartial();
               }
 
               break;
@@ -21865,7 +21865,7 @@ public final class Response {
 
       /**
        * <pre>
-       * the frozen trx balance
+       * the frozen usdl balance
        * </pre>
        *
        * <code>int64 frozen_balance = 1;</code>
@@ -21978,7 +21978,7 @@ public final class Response {
       private long frozenBalance_;
       /**
        * <pre>
-       * the frozen trx balance
+       * the frozen usdl balance
        * </pre>
        *
        * <code>int64 frozen_balance = 1;</code>
@@ -22332,7 +22332,7 @@ public final class Response {
         private long frozenBalance_ ;
         /**
          * <pre>
-         * the frozen trx balance
+         * the frozen usdl balance
          * </pre>
          *
          * <code>int64 frozen_balance = 1;</code>
@@ -22344,7 +22344,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * the frozen trx balance
+         * the frozen usdl balance
          * </pre>
          *
          * <code>int64 frozen_balance = 1;</code>
@@ -22359,7 +22359,7 @@ public final class Response {
         }
         /**
          * <pre>
-         * the frozen trx balance
+         * the frozen usdl balance
          * </pre>
          *
          * <code>int64 frozen_balance = 1;</code>
@@ -25325,7 +25325,7 @@ public final class Response {
     private long balance_;
     /**
      * <pre>
-     * the trx balance
+     * the usdl balance
      * </pre>
      *
      * <code>int64 balance = 4;</code>
@@ -25695,41 +25695,41 @@ public final class Response {
       return delegatedFrozenBalanceForBandwidth_;
     }
 
-    public static final int OLD_TRON_POWER_FIELD_NUMBER = 46;
-    private long oldTronPower_;
+    public static final int OLD_USDL_POWER_FIELD_NUMBER = 46;
+    private long oldUsdlPower_;
     /**
-     * <code>int64 old_tron_power = 46;</code>
-     * @return The oldTronPower.
+     * <code>int64 old_usdl_power = 46;</code>
+     * @return The oldUsdlPower.
      */
     @java.lang.Override
-    public long getOldTronPower() {
-      return oldTronPower_;
+    public long getOldUsdlPower() {
+      return oldUsdlPower_;
     }
 
-    public static final int TRON_POWER_FIELD_NUMBER = 47;
-    private org.lgcy.Legacy.proto.Response.Account.Frozen tronPower_;
+    public static final int USDL_POWER_FIELD_NUMBER = 47;
+    private org.lgcy.Legacy.proto.Response.Account.Frozen usdlPower_;
     /**
-     * <code>.protocol.Account.Frozen tron_power = 47;</code>
-     * @return Whether the tronPower field is set.
+     * <code>.protocol.Account.Frozen usdl_power = 47;</code>
+     * @return Whether the usdlPower field is set.
      */
     @java.lang.Override
-    public boolean hasTronPower() {
-      return tronPower_ != null;
+    public boolean hasUsdlPower() {
+      return usdlPower_ != null;
     }
     /**
-     * <code>.protocol.Account.Frozen tron_power = 47;</code>
-     * @return The tronPower.
+     * <code>.protocol.Account.Frozen usdl_power = 47;</code>
+     * @return The usdlPower.
      */
     @java.lang.Override
-    public org.lgcy.Legacy.proto.Response.Account.Frozen getTronPower() {
-      return tronPower_ == null ? org.lgcy.Legacy.proto.Response.Account.Frozen.getDefaultInstance() : tronPower_;
+    public org.lgcy.Legacy.proto.Response.Account.Frozen getUsdlPower() {
+      return usdlPower_ == null ? org.lgcy.Legacy.proto.Response.Account.Frozen.getDefaultInstance() : usdlPower_;
     }
     /**
-     * <code>.protocol.Account.Frozen tron_power = 47;</code>
+     * <code>.protocol.Account.Frozen usdl_power = 47;</code>
      */
     @java.lang.Override
-    public org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder getTronPowerOrBuilder() {
-      return getTronPower();
+    public org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder getUsdlPowerOrBuilder() {
+      return getUsdlPower();
     }
 
     public static final int ASSET_OPTIMIZED_FIELD_NUMBER = 60;
@@ -26669,11 +26669,11 @@ public final class Response {
       if (delegatedFrozenBalanceForBandwidth_ != 0L) {
         output.writeInt64(42, delegatedFrozenBalanceForBandwidth_);
       }
-      if (oldTronPower_ != 0L) {
-        output.writeInt64(46, oldTronPower_);
+      if (oldUsdlPower_ != 0L) {
+        output.writeInt64(46, oldUsdlPower_);
       }
-      if (tronPower_ != null) {
-        output.writeMessage(47, getTronPower());
+      if (usdlPower_ != null) {
+        output.writeMessage(47, getUsdlPower());
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
@@ -26866,13 +26866,13 @@ public final class Response {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(42, delegatedFrozenBalanceForBandwidth_);
       }
-      if (oldTronPower_ != 0L) {
+      if (oldUsdlPower_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(46, oldTronPower_);
+          .computeInt64Size(46, oldUsdlPower_);
       }
-      if (tronPower_ != null) {
+      if (usdlPower_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(47, getTronPower());
+          .computeMessageSize(47, getUsdlPower());
       }
       for (java.util.Map.Entry<java.lang.String, java.lang.Long> entry
            : internalGetAssetV2().getMap().entrySet()) {
@@ -26948,12 +26948,12 @@ public final class Response {
           != other.getAcquiredDelegatedFrozenBalanceForBandwidth()) return false;
       if (getDelegatedFrozenBalanceForBandwidth()
           != other.getDelegatedFrozenBalanceForBandwidth()) return false;
-      if (getOldTronPower()
-          != other.getOldTronPower()) return false;
-      if (hasTronPower() != other.hasTronPower()) return false;
-      if (hasTronPower()) {
-        if (!getTronPower()
-            .equals(other.getTronPower())) return false;
+      if (getOldUsdlPower()
+          != other.getOldUsdlPower()) return false;
+      if (hasUsdlPower() != other.hasUsdlPower()) return false;
+      if (hasUsdlPower()) {
+        if (!getUsdlPower()
+            .equals(other.getUsdlPower())) return false;
       }
       if (getAssetOptimized()
           != other.getAssetOptimized()) return false;
@@ -27067,12 +27067,12 @@ public final class Response {
       hash = (37 * hash) + DELEGATED_FROZEN_BALANCE_FOR_BANDWIDTH_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getDelegatedFrozenBalanceForBandwidth());
-      hash = (37 * hash) + OLD_TRON_POWER_FIELD_NUMBER;
+      hash = (37 * hash) + OLD_USDL_POWER_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getOldTronPower());
-      if (hasTronPower()) {
-        hash = (37 * hash) + TRON_POWER_FIELD_NUMBER;
-        hash = (53 * hash) + getTronPower().hashCode();
+          getOldUsdlPower());
+      if (hasUsdlPower()) {
+        hash = (37 * hash) + USDL_POWER_FIELD_NUMBER;
+        hash = (53 * hash) + getUsdlPower().hashCode();
       }
       hash = (37 * hash) + ASSET_OPTIMIZED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
@@ -27380,13 +27380,13 @@ public final class Response {
 
         delegatedFrozenBalanceForBandwidth_ = 0L;
 
-        oldTronPower_ = 0L;
+        oldUsdlPower_ = 0L;
 
-        if (tronPowerBuilder_ == null) {
-          tronPower_ = null;
+        if (usdlPowerBuilder_ == null) {
+          usdlPower_ = null;
         } else {
-          tronPower_ = null;
-          tronPowerBuilder_ = null;
+          usdlPower_ = null;
+          usdlPowerBuilder_ = null;
         }
         assetOptimized_ = false;
 
@@ -27526,11 +27526,11 @@ public final class Response {
         result.netUsage_ = netUsage_;
         result.acquiredDelegatedFrozenBalanceForBandwidth_ = acquiredDelegatedFrozenBalanceForBandwidth_;
         result.delegatedFrozenBalanceForBandwidth_ = delegatedFrozenBalanceForBandwidth_;
-        result.oldTronPower_ = oldTronPower_;
-        if (tronPowerBuilder_ == null) {
-          result.tronPower_ = tronPower_;
+        result.oldUsdlPower_ = oldUsdlPower_;
+        if (usdlPowerBuilder_ == null) {
+          result.usdlPower_ = usdlPower_;
         } else {
-          result.tronPower_ = tronPowerBuilder_.build();
+          result.usdlPower_ = usdlPowerBuilder_.build();
         }
         result.assetOptimized_ = assetOptimized_;
         result.createTime_ = createTime_;
@@ -27734,11 +27734,11 @@ public final class Response {
         if (other.getDelegatedFrozenBalanceForBandwidth() != 0L) {
           setDelegatedFrozenBalanceForBandwidth(other.getDelegatedFrozenBalanceForBandwidth());
         }
-        if (other.getOldTronPower() != 0L) {
-          setOldTronPower(other.getOldTronPower());
+        if (other.getOldUsdlPower() != 0L) {
+          setOldUsdlPower(other.getOldUsdlPower());
         }
-        if (other.hasTronPower()) {
-          mergeTronPower(other.getTronPower());
+        if (other.hasUsdlPower()) {
+          mergeUsdlPower(other.getUsdlPower());
         }
         if (other.getAssetOptimized() != false) {
           setAssetOptimized(other.getAssetOptimized());
@@ -28094,7 +28094,7 @@ public final class Response {
       private long balance_ ;
       /**
        * <pre>
-       * the trx balance
+       * the usdl balance
        * </pre>
        *
        * <code>int64 balance = 4;</code>
@@ -28106,7 +28106,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * the trx balance
+       * the usdl balance
        * </pre>
        *
        * <code>int64 balance = 4;</code>
@@ -28121,7 +28121,7 @@ public final class Response {
       }
       /**
        * <pre>
-       * the trx balance
+       * the usdl balance
        * </pre>
        *
        * <code>int64 balance = 4;</code>
@@ -29199,154 +29199,154 @@ public final class Response {
         return this;
       }
 
-      private long oldTronPower_ ;
+      private long oldUsdlPower_ ;
       /**
-       * <code>int64 old_tron_power = 46;</code>
-       * @return The oldTronPower.
+       * <code>int64 old_usdl_power = 46;</code>
+       * @return The oldUsdlPower.
        */
       @java.lang.Override
-      public long getOldTronPower() {
-        return oldTronPower_;
+      public long getOldUsdlPower() {
+        return oldUsdlPower_;
       }
       /**
-       * <code>int64 old_tron_power = 46;</code>
-       * @param value The oldTronPower to set.
+       * <code>int64 old_usdl_power = 46;</code>
+       * @param value The oldUsdlPower to set.
        * @return This builder for chaining.
        */
-      public Builder setOldTronPower(long value) {
+      public Builder setOldUsdlPower(long value) {
         
-        oldTronPower_ = value;
+        oldUsdlPower_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 old_tron_power = 46;</code>
+       * <code>int64 old_usdl_power = 46;</code>
        * @return This builder for chaining.
        */
-      public Builder clearOldTronPower() {
+      public Builder clearOldUsdlPower() {
         
-        oldTronPower_ = 0L;
+        oldUsdlPower_ = 0L;
         onChanged();
         return this;
       }
 
-      private org.lgcy.Legacy.proto.Response.Account.Frozen tronPower_;
+      private org.lgcy.Legacy.proto.Response.Account.Frozen usdlPower_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          org.lgcy.Legacy.proto.Response.Account.Frozen, org.lgcy.Legacy.proto.Response.Account.Frozen.Builder, org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder> tronPowerBuilder_;
+          org.lgcy.Legacy.proto.Response.Account.Frozen, org.lgcy.Legacy.proto.Response.Account.Frozen.Builder, org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder> usdlPowerBuilder_;
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
-       * @return Whether the tronPower field is set.
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
+       * @return Whether the usdlPower field is set.
        */
-      public boolean hasTronPower() {
-        return tronPowerBuilder_ != null || tronPower_ != null;
+      public boolean hasUsdlPower() {
+        return usdlPowerBuilder_ != null || usdlPower_ != null;
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
-       * @return The tronPower.
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
+       * @return The usdlPower.
        */
-      public org.lgcy.Legacy.proto.Response.Account.Frozen getTronPower() {
-        if (tronPowerBuilder_ == null) {
-          return tronPower_ == null ? org.lgcy.Legacy.proto.Response.Account.Frozen.getDefaultInstance() : tronPower_;
+      public org.lgcy.Legacy.proto.Response.Account.Frozen getUsdlPower() {
+        if (usdlPowerBuilder_ == null) {
+          return usdlPower_ == null ? org.lgcy.Legacy.proto.Response.Account.Frozen.getDefaultInstance() : usdlPower_;
         } else {
-          return tronPowerBuilder_.getMessage();
+          return usdlPowerBuilder_.getMessage();
         }
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
-      public Builder setTronPower(org.lgcy.Legacy.proto.Response.Account.Frozen value) {
-        if (tronPowerBuilder_ == null) {
+      public Builder setUsdlPower(org.lgcy.Legacy.proto.Response.Account.Frozen value) {
+        if (usdlPowerBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          tronPower_ = value;
+          usdlPower_ = value;
           onChanged();
         } else {
-          tronPowerBuilder_.setMessage(value);
+          usdlPowerBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
-      public Builder setTronPower(
+      public Builder setUsdlPower(
           org.lgcy.Legacy.proto.Response.Account.Frozen.Builder builderForValue) {
-        if (tronPowerBuilder_ == null) {
-          tronPower_ = builderForValue.build();
+        if (usdlPowerBuilder_ == null) {
+          usdlPower_ = builderForValue.build();
           onChanged();
         } else {
-          tronPowerBuilder_.setMessage(builderForValue.build());
+          usdlPowerBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
-      public Builder mergeTronPower(org.lgcy.Legacy.proto.Response.Account.Frozen value) {
-        if (tronPowerBuilder_ == null) {
-          if (tronPower_ != null) {
-            tronPower_ =
-              org.lgcy.Legacy.proto.Response.Account.Frozen.newBuilder(tronPower_).mergeFrom(value).buildPartial();
+      public Builder mergeUsdlPower(org.lgcy.Legacy.proto.Response.Account.Frozen value) {
+        if (usdlPowerBuilder_ == null) {
+          if (usdlPower_ != null) {
+            usdlPower_ =
+              org.lgcy.Legacy.proto.Response.Account.Frozen.newBuilder(usdlPower_).mergeFrom(value).buildPartial();
           } else {
-            tronPower_ = value;
+            usdlPower_ = value;
           }
           onChanged();
         } else {
-          tronPowerBuilder_.mergeFrom(value);
+          usdlPowerBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
-      public Builder clearTronPower() {
-        if (tronPowerBuilder_ == null) {
-          tronPower_ = null;
+      public Builder clearUsdlPower() {
+        if (usdlPowerBuilder_ == null) {
+          usdlPower_ = null;
           onChanged();
         } else {
-          tronPower_ = null;
-          tronPowerBuilder_ = null;
+          usdlPower_ = null;
+          usdlPowerBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
-      public org.lgcy.Legacy.proto.Response.Account.Frozen.Builder getTronPowerBuilder() {
+      public org.lgcy.Legacy.proto.Response.Account.Frozen.Builder getUsdlPowerBuilder() {
         
         onChanged();
-        return getTronPowerFieldBuilder().getBuilder();
+        return getUsdlPowerFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
-      public org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder getTronPowerOrBuilder() {
-        if (tronPowerBuilder_ != null) {
-          return tronPowerBuilder_.getMessageOrBuilder();
+      public org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder getUsdlPowerOrBuilder() {
+        if (usdlPowerBuilder_ != null) {
+          return usdlPowerBuilder_.getMessageOrBuilder();
         } else {
-          return tronPower_ == null ?
-              org.lgcy.Legacy.proto.Response.Account.Frozen.getDefaultInstance() : tronPower_;
+          return usdlPower_ == null ?
+              org.lgcy.Legacy.proto.Response.Account.Frozen.getDefaultInstance() : usdlPower_;
         }
       }
       /**
-       * <code>.protocol.Account.Frozen tron_power = 47;</code>
+       * <code>.protocol.Account.Frozen usdl_power = 47;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.lgcy.Legacy.proto.Response.Account.Frozen, org.lgcy.Legacy.proto.Response.Account.Frozen.Builder, org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder> 
-          getTronPowerFieldBuilder() {
-        if (tronPowerBuilder_ == null) {
-          tronPowerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getUsdlPowerFieldBuilder() {
+        if (usdlPowerBuilder_ == null) {
+          usdlPowerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               org.lgcy.Legacy.proto.Response.Account.Frozen, org.lgcy.Legacy.proto.Response.Account.Frozen.Builder, org.lgcy.Legacy.proto.Response.Account.FrozenOrBuilder>(
-                  getTronPower(),
+                  getUsdlPower(),
                   getParentForChildren(),
                   isClean());
-          tronPower_ = null;
+          usdlPower_ = null;
         }
-        return tronPowerBuilder_;
+        return usdlPowerBuilder_;
       }
 
       private boolean assetOptimized_ ;
@@ -66111,22 +66111,22 @@ public final class Response {
     long getTotalNetWeight();
 
     /**
-     * <code>int64 TotalTronPowerWeight = 9;</code>
-     * @return The totalTronPowerWeight.
+     * <code>int64 TotalUsdlPowerWeight = 9;</code>
+     * @return The totalUsdlPowerWeight.
      */
-    long getTotalTronPowerWeight();
+    long getTotalUsdlPowerWeight();
 
     /**
-     * <code>int64 tronPowerUsed = 10;</code>
-     * @return The tronPowerUsed.
+     * <code>int64 UsdlPowerUsed = 10;</code>
+     * @return The usdlPowerUsed.
      */
-    long getTronPowerUsed();
+    long getUsdlPowerUsed();
 
     /**
-     * <code>int64 tronPowerLimit = 11;</code>
-     * @return The tronPowerLimit.
+     * <code>int64 UsdlPowerLimit = 11;</code>
+     * @return The usdlPowerLimit.
      */
-    long getTronPowerLimit();
+    long getUsdlPowerLimit();
 
     /**
      * <code>int64 EnergyUsed = 13;</code>
@@ -66268,17 +66268,17 @@ public final class Response {
             }
             case 72: {
 
-              totalTronPowerWeight_ = input.readInt64();
+              totalUsdlPowerWeight_ = input.readInt64();
               break;
             }
             case 80: {
 
-              tronPowerUsed_ = input.readInt64();
+              usdlPowerUsed_ = input.readInt64();
               break;
             }
             case 88: {
 
-              tronPowerLimit_ = input.readInt64();
+              usdlPowerLimit_ = input.readInt64();
               break;
             }
             case 104: {
@@ -67806,37 +67806,37 @@ public final class Response {
       return totalNetWeight_;
     }
 
-    public static final int TOTALTRONPOWERWEIGHT_FIELD_NUMBER = 9;
-    private long totalTronPowerWeight_;
+    public static final int TOTALUSDLPOWERWEIGHT_FIELD_NUMBER = 9;
+    private long totalUsdlPowerWeight_;
     /**
-     * <code>int64 TotalTronPowerWeight = 9;</code>
-     * @return The totalTronPowerWeight.
+     * <code>int64 TotalUsdlPowerWeight = 9;</code>
+     * @return The totalUsdlPowerWeight.
      */
     @java.lang.Override
-    public long getTotalTronPowerWeight() {
-      return totalTronPowerWeight_;
+    public long getTotalUsdlPowerWeight() {
+      return totalUsdlPowerWeight_;
     }
 
-    public static final int TRONPOWERUSED_FIELD_NUMBER = 10;
-    private long tronPowerUsed_;
+    public static final int USDLPOWERUSED_FIELD_NUMBER = 10;
+    private long usdlPowerUsed_;
     /**
-     * <code>int64 tronPowerUsed = 10;</code>
-     * @return The tronPowerUsed.
+     * <code>int64 UsdlPowerUsed = 10;</code>
+     * @return The usdlPowerUsed.
      */
     @java.lang.Override
-    public long getTronPowerUsed() {
-      return tronPowerUsed_;
+    public long getUsdlPowerUsed() {
+      return usdlPowerUsed_;
     }
 
-    public static final int TRONPOWERLIMIT_FIELD_NUMBER = 11;
-    private long tronPowerLimit_;
+    public static final int USDLPOWERLIMIT_FIELD_NUMBER = 11;
+    private long usdlPowerLimit_;
     /**
-     * <code>int64 tronPowerLimit = 11;</code>
-     * @return The tronPowerLimit.
+     * <code>int64 UsdlPowerLimit = 11;</code>
+     * @return The usdlPowerLimit.
      */
     @java.lang.Override
-    public long getTronPowerLimit() {
-      return tronPowerLimit_;
+    public long getUsdlPowerLimit() {
+      return usdlPowerLimit_;
     }
 
     public static final int ENERGYUSED_FIELD_NUMBER = 13;
@@ -67954,14 +67954,14 @@ public final class Response {
       if (totalNetWeight_ != 0L) {
         output.writeInt64(8, totalNetWeight_);
       }
-      if (totalTronPowerWeight_ != 0L) {
-        output.writeInt64(9, totalTronPowerWeight_);
+      if (totalUsdlPowerWeight_ != 0L) {
+        output.writeInt64(9, totalUsdlPowerWeight_);
       }
-      if (tronPowerUsed_ != 0L) {
-        output.writeInt64(10, tronPowerUsed_);
+      if (usdlPowerUsed_ != 0L) {
+        output.writeInt64(10, usdlPowerUsed_);
       }
-      if (tronPowerLimit_ != 0L) {
-        output.writeInt64(11, tronPowerLimit_);
+      if (usdlPowerLimit_ != 0L) {
+        output.writeInt64(11, usdlPowerLimit_);
       }
       if (energyUsed_ != 0L) {
         output.writeInt64(13, energyUsed_);
@@ -68025,17 +68025,17 @@ public final class Response {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(8, totalNetWeight_);
       }
-      if (totalTronPowerWeight_ != 0L) {
+      if (totalUsdlPowerWeight_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(9, totalTronPowerWeight_);
+          .computeInt64Size(9, totalUsdlPowerWeight_);
       }
-      if (tronPowerUsed_ != 0L) {
+      if (usdlPowerUsed_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(10, tronPowerUsed_);
+          .computeInt64Size(10, usdlPowerUsed_);
       }
-      if (tronPowerLimit_ != 0L) {
+      if (usdlPowerLimit_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(11, tronPowerLimit_);
+          .computeInt64Size(11, usdlPowerLimit_);
       }
       if (energyUsed_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -68096,12 +68096,12 @@ public final class Response {
           != other.getTotalNetLimit()) return false;
       if (getTotalNetWeight()
           != other.getTotalNetWeight()) return false;
-      if (getTotalTronPowerWeight()
-          != other.getTotalTronPowerWeight()) return false;
-      if (getTronPowerUsed()
-          != other.getTronPowerUsed()) return false;
-      if (getTronPowerLimit()
-          != other.getTronPowerLimit()) return false;
+      if (getTotalUsdlPowerWeight()
+          != other.getTotalUsdlPowerWeight()) return false;
+      if (getUsdlPowerUsed()
+          != other.getUsdlPowerUsed()) return false;
+      if (getUsdlPowerLimit()
+          != other.getUsdlPowerLimit()) return false;
       if (getEnergyUsed()
           != other.getEnergyUsed()) return false;
       if (getEnergyLimit()
@@ -68153,15 +68153,15 @@ public final class Response {
       hash = (37 * hash) + TOTALNETWEIGHT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTotalNetWeight());
-      hash = (37 * hash) + TOTALTRONPOWERWEIGHT_FIELD_NUMBER;
+      hash = (37 * hash) + TOTALUSDLPOWERWEIGHT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTotalTronPowerWeight());
-      hash = (37 * hash) + TRONPOWERUSED_FIELD_NUMBER;
+          getTotalUsdlPowerWeight());
+      hash = (37 * hash) + USDLPOWERUSED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTronPowerUsed());
-      hash = (37 * hash) + TRONPOWERLIMIT_FIELD_NUMBER;
+          getUsdlPowerUsed());
+      hash = (37 * hash) + USDLPOWERLIMIT_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getTronPowerLimit());
+          getUsdlPowerLimit());
       hash = (37 * hash) + ENERGYUSED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getEnergyUsed());
@@ -68341,11 +68341,11 @@ public final class Response {
 
         totalNetWeight_ = 0L;
 
-        totalTronPowerWeight_ = 0L;
+        totalUsdlPowerWeight_ = 0L;
 
-        tronPowerUsed_ = 0L;
+        usdlPowerUsed_ = 0L;
 
-        tronPowerLimit_ = 0L;
+        usdlPowerLimit_ = 0L;
 
         energyUsed_ = 0L;
 
@@ -68412,9 +68412,9 @@ public final class Response {
         }
         result.totalNetLimit_ = totalNetLimit_;
         result.totalNetWeight_ = totalNetWeight_;
-        result.totalTronPowerWeight_ = totalTronPowerWeight_;
-        result.tronPowerUsed_ = tronPowerUsed_;
-        result.tronPowerLimit_ = tronPowerLimit_;
+        result.totalUsdlPowerWeight_ = totalUsdlPowerWeight_;
+        result.usdlPowerUsed_ = usdlPowerUsed_;
+        result.usdlPowerLimit_ = usdlPowerLimit_;
         result.energyUsed_ = energyUsed_;
         result.energyLimit_ = energyLimit_;
         result.totalEnergyLimit_ = totalEnergyLimit_;
@@ -68540,14 +68540,14 @@ public final class Response {
         if (other.getTotalNetWeight() != 0L) {
           setTotalNetWeight(other.getTotalNetWeight());
         }
-        if (other.getTotalTronPowerWeight() != 0L) {
-          setTotalTronPowerWeight(other.getTotalTronPowerWeight());
+        if (other.getTotalUsdlPowerWeight() != 0L) {
+          setTotalUsdlPowerWeight(other.getTotalUsdlPowerWeight());
         }
-        if (other.getTronPowerUsed() != 0L) {
-          setTronPowerUsed(other.getTronPowerUsed());
+        if (other.getUsdlPowerUsed() != 0L) {
+          setUsdlPowerUsed(other.getUsdlPowerUsed());
         }
-        if (other.getTronPowerLimit() != 0L) {
-          setTronPowerLimit(other.getTronPowerLimit());
+        if (other.getUsdlPowerLimit() != 0L) {
+          setUsdlPowerLimit(other.getUsdlPowerLimit());
         }
         if (other.getEnergyUsed() != 0L) {
           setEnergyUsed(other.getEnergyUsed());
@@ -69374,95 +69374,95 @@ public final class Response {
         return this;
       }
 
-      private long totalTronPowerWeight_ ;
+      private long totalUsdlPowerWeight_ ;
       /**
-       * <code>int64 TotalTronPowerWeight = 9;</code>
-       * @return The totalTronPowerWeight.
+       * <code>int64 TotalUsdlPowerWeight = 9;</code>
+       * @return The totalUsdlPowerWeight.
        */
       @java.lang.Override
-      public long getTotalTronPowerWeight() {
-        return totalTronPowerWeight_;
+      public long getTotalUsdlPowerWeight() {
+        return totalUsdlPowerWeight_;
       }
       /**
-       * <code>int64 TotalTronPowerWeight = 9;</code>
-       * @param value The totalTronPowerWeight to set.
+       * <code>int64 TotalUsdlPowerWeight = 9;</code>
+       * @param value The totalUsdlPowerWeight to set.
        * @return This builder for chaining.
        */
-      public Builder setTotalTronPowerWeight(long value) {
+      public Builder setTotalUsdlPowerWeight(long value) {
         
-        totalTronPowerWeight_ = value;
+        totalUsdlPowerWeight_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 TotalTronPowerWeight = 9;</code>
+       * <code>int64 TotalUsdlPowerWeight = 9;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTotalTronPowerWeight() {
+      public Builder clearTotalUsdlPowerWeight() {
         
-        totalTronPowerWeight_ = 0L;
+        totalUsdlPowerWeight_ = 0L;
         onChanged();
         return this;
       }
 
-      private long tronPowerUsed_ ;
+      private long usdlPowerUsed_ ;
       /**
-       * <code>int64 tronPowerUsed = 10;</code>
-       * @return The tronPowerUsed.
+       * <code>int64 UsdlPowerUsed = 10;</code>
+       * @return The usdlPowerUsed.
        */
       @java.lang.Override
-      public long getTronPowerUsed() {
-        return tronPowerUsed_;
+      public long getUsdlPowerUsed() {
+        return usdlPowerUsed_;
       }
       /**
-       * <code>int64 tronPowerUsed = 10;</code>
-       * @param value The tronPowerUsed to set.
+       * <code>int64 UsdlPowerUsed = 10;</code>
+       * @param value The usdlPowerUsed to set.
        * @return This builder for chaining.
        */
-      public Builder setTronPowerUsed(long value) {
+      public Builder setUsdlPowerUsed(long value) {
         
-        tronPowerUsed_ = value;
+        usdlPowerUsed_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 tronPowerUsed = 10;</code>
+       * <code>int64 UsdlPowerUsed = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTronPowerUsed() {
+      public Builder clearUsdlPowerUsed() {
         
-        tronPowerUsed_ = 0L;
+        usdlPowerUsed_ = 0L;
         onChanged();
         return this;
       }
 
-      private long tronPowerLimit_ ;
+      private long usdlPowerLimit_ ;
       /**
-       * <code>int64 tronPowerLimit = 11;</code>
-       * @return The tronPowerLimit.
+       * <code>int64 UsdlPowerLimit = 11;</code>
+       * @return The usdlPowerLimit.
        */
       @java.lang.Override
-      public long getTronPowerLimit() {
-        return tronPowerLimit_;
+      public long getUsdlPowerLimit() {
+        return usdlPowerLimit_;
       }
       /**
-       * <code>int64 tronPowerLimit = 11;</code>
-       * @param value The tronPowerLimit to set.
+       * <code>int64 UsdlPowerLimit = 11;</code>
+       * @param value The usdlPowerLimit to set.
        * @return This builder for chaining.
        */
-      public Builder setTronPowerLimit(long value) {
+      public Builder setUsdlPowerLimit(long value) {
         
-        tronPowerLimit_ = value;
+        usdlPowerLimit_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int64 tronPowerLimit = 11;</code>
+       * <code>int64 UsdlPowerLimit = 11;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTronPowerLimit() {
+      public Builder clearUsdlPowerLimit() {
         
-        tronPowerLimit_ = 0L;
+        usdlPowerLimit_ = 0L;
         onChanged();
         return this;
       }
@@ -70188,8 +70188,8 @@ public final class Response {
       "Account.Frozen\022\021\n\tnet_usage\030\010 \001(\003\0227\n/acq" +
       "uired_delegated_frozen_balance_for_bandw" +
       "idth\030) \001(\003\022.\n&delegated_frozen_balance_f" +
-      "or_bandwidth\030* \001(\003\022\026\n\016old_tron_power\030. \001" +
-      "(\003\022,\n\ntron_power\030/ \001(\0132\030.protocol.Accoun" +
+      "or_bandwidth\030* \001(\003\022\026\n\016old_usdl_power\030. \001" +
+      "(\003\022,\n\nusdl_power\030/ \001(\0132\030.protocol.Accoun" +
       "t.Frozen\022\027\n\017asset_optimized\030< \001(\010\022\023\n\013cre" +
       "ate_time\030\t \001(\003\022\034\n\024latest_opration_time\030\n" +
       " \001(\003\022\021\n\tallowance\030\013 \001(\003\022\034\n\024latest_withdr" +
@@ -70401,8 +70401,8 @@ public final class Response {
       "ssetnetused\022E\n\rassetNetLimit\030\006 \003(\0132..pro" +
       "tocol.AccountResourceMessage.Assetnetlim" +
       "it\022\025\n\rTotalNetLimit\030\007 \001(\003\022\026\n\016TotalNetWei" +
-      "ght\030\010 \001(\003\022\034\n\024TotalTronPowerWeight\030\t \001(\003\022" +
-      "\025\n\rtronPowerUsed\030\n \001(\003\022\026\n\016tronPowerLimit" +
+      "ght\030\010 \001(\003\022\034\n\024TotalUsdlPowerWeight\030\t \001(\003\022" +
+      "\025\n\rUsdlPowerUsed\030\n \001(\003\022\026\n\016UsdlPowerLimit" +
       "\030\013 \001(\003\022\022\n\nEnergyUsed\030\r \001(\003\022\023\n\013EnergyLimi" +
       "t\030\016 \001(\003\022\030\n\020TotalEnergyLimit\030\017 \001(\003\022\031\n\021Tot" +
       "alEnergyWeight\030\020 \001(\003\022\023\n\013storageUsed\030\025 \001(" +
@@ -70550,7 +70550,7 @@ public final class Response {
     internal_static_protocol_Account_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_Account_descriptor,
-        new java.lang.String[] { "AccountName", "Type", "Address", "Balance", "Votes", "Asset", "AssetV2", "Frozen", "NetUsage", "AcquiredDelegatedFrozenBalanceForBandwidth", "DelegatedFrozenBalanceForBandwidth", "OldTronPower", "TronPower", "AssetOptimized", "CreateTime", "LatestOprationTime", "Allowance", "LatestWithdrawTime", "Code", "IsWitness", "IsCommittee", "FrozenSupply", "AssetIssuedName", "AssetIssuedID", "LatestAssetOperationTime", "LatestAssetOperationTimeV2", "FreeNetUsage", "FreeAssetNetUsage", "FreeAssetNetUsageV2", "LatestConsumeTime", "LatestConsumeFreeTime", "AccountId", "NetWindowSize", "AccountResource", "CodeHash", "OwnerPermission", "WitnessPermission", "ActivePermission", "FrozenV2", "UnfrozenV2", "DelegatedFrozenV2BalanceForBandwidth", "AcquiredDelegatedFrozenV2BalanceForBandwidth", });
+        new java.lang.String[] { "AccountName", "Type", "Address", "Balance", "Votes", "Asset", "AssetV2", "Frozen", "NetUsage", "AcquiredDelegatedFrozenBalanceForBandwidth", "DelegatedFrozenBalanceForBandwidth", "OldUsdlPower", "UsdlPower", "AssetOptimized", "CreateTime", "LatestOprationTime", "Allowance", "LatestWithdrawTime", "Code", "IsWitness", "IsCommittee", "FrozenSupply", "AssetIssuedName", "AssetIssuedID", "LatestAssetOperationTime", "LatestAssetOperationTimeV2", "FreeNetUsage", "FreeAssetNetUsage", "FreeAssetNetUsageV2", "LatestConsumeTime", "LatestConsumeFreeTime", "AccountId", "NetWindowSize", "AccountResource", "CodeHash", "OwnerPermission", "WitnessPermission", "ActivePermission", "FrozenV2", "UnfrozenV2", "DelegatedFrozenV2BalanceForBandwidth", "AcquiredDelegatedFrozenV2BalanceForBandwidth", });
     internal_static_protocol_Account_Frozen_descriptor =
       internal_static_protocol_Account_descriptor.getNestedTypes().get(0);
     internal_static_protocol_Account_Frozen_fieldAccessorTable = new
@@ -70832,7 +70832,7 @@ public final class Response {
     internal_static_protocol_AccountResourceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_AccountResourceMessage_descriptor,
-        new java.lang.String[] { "FreeNetUsed", "FreeNetLimit", "NetUsed", "NetLimit", "AssetNetUsed", "AssetNetLimit", "TotalNetLimit", "TotalNetWeight", "TotalTronPowerWeight", "TronPowerUsed", "TronPowerLimit", "EnergyUsed", "EnergyLimit", "TotalEnergyLimit", "TotalEnergyWeight", "StorageUsed", "StorageLimit", "TotalKandyWeight", });
+        new java.lang.String[] { "FreeNetUsed", "FreeNetLimit", "NetUsed", "NetLimit", "AssetNetUsed", "AssetNetLimit", "TotalNetLimit", "TotalNetWeight", "TotalUsdlPowerWeight", "UsdlPowerUsed", "UsdlPowerLimit", "EnergyUsed", "EnergyLimit", "TotalEnergyLimit", "TotalEnergyWeight", "StorageUsed", "StorageLimit", "TotalKandyWeight", });
     internal_static_protocol_AccountResourceMessage_Assetnetused_descriptor =
       internal_static_protocol_AccountResourceMessage_descriptor.getNestedTypes().get(0);
     internal_static_protocol_AccountResourceMessage_Assetnetused_fieldAccessorTable = new

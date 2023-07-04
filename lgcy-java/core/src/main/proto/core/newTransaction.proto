@@ -1,0 +1,37 @@
+syntax = "proto3";
+package protocol;
+option java_package = "org.lgcy.Legacy.proto";
+import "core/chain.proto";
+
+
+message NewTransaction {
+
+  message Value {
+    uint32 amount = 1;
+    string owner_address = 2;
+    string to_address = 3;
+  }
+
+  message Parameter {
+    Value value = 1;
+    string type_url = 2;
+  }
+
+  message Contract {
+    Parameter parameter = 1;
+    Transaction.Contract.ContractType type  = 2;
+  }
+
+  message Raw_data {
+    repeated Contract contract = 1;
+    string ref_block_bytes = 2;
+    string ref_block_hash = 3;
+    uint64 expiration = 4;
+    uint64 timestamp = 5;
+  }
+
+  bool visible = 1;
+  string txID = 2;
+  Raw_data raw_data = 3;
+  string raw_data_hex = 4;
+}

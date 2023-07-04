@@ -6,8 +6,7 @@ option java_package = "org.lgcy.Legacy.proto";
 enum ResourceCode {
   BANDWIDTH = 0x00;
   ENERGY = 0x01;
-  TRON_POWER = 0x02;
-  USDL_POWER =0x03;
+  USDL_POWER =0x02;
 }
 
 enum AccountType {
@@ -90,7 +89,7 @@ message SmartContract {
   string name = 7;
   int64 origin_energy_limit = 8;
   bytes code_hash = 9;
-  bytes trx_hash = 10;
+  bytes usdl_hash = 10;
 }
 
 message Vote {

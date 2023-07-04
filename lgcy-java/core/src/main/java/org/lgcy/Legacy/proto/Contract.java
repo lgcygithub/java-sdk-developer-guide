@@ -3407,10 +3407,10 @@ public final class Contract {
         int index);
 
     /**
-     * <code>int32 trx_num = 6;</code>
-     * @return The trxNum.
+     * <code>int32 usdl_num = 6;</code>
+     * @return The usdlNum.
      */
-    int getTrxNum();
+    int getUsdlNum();
 
     /**
      * <code>int32 precision = 7;</code>
@@ -3572,7 +3572,7 @@ public final class Contract {
             }
             case 48: {
 
-              trxNum_ = input.readInt32();
+              usdlNum_ = input.readInt32();
               break;
             }
             case 56: {
@@ -4358,15 +4358,15 @@ public final class Contract {
       return frozenSupply_.get(index);
     }
 
-    public static final int TRX_NUM_FIELD_NUMBER = 6;
-    private int trxNum_;
+    public static final int USDL_NUM_FIELD_NUMBER = 6;
+    private int usdlNum_;
     /**
-     * <code>int32 trx_num = 6;</code>
-     * @return The trxNum.
+     * <code>int32 usdl_num = 6;</code>
+     * @return The usdlNum.
      */
     @java.lang.Override
-    public int getTrxNum() {
-      return trxNum_;
+    public int getUsdlNum() {
+      return usdlNum_;
     }
 
     public static final int PRECISION_FIELD_NUMBER = 7;
@@ -4534,8 +4534,8 @@ public final class Contract {
       for (int i = 0; i < frozenSupply_.size(); i++) {
         output.writeMessage(5, frozenSupply_.get(i));
       }
-      if (trxNum_ != 0) {
-        output.writeInt32(6, trxNum_);
+      if (usdlNum_ != 0) {
+        output.writeInt32(6, usdlNum_);
       }
       if (precision_ != 0) {
         output.writeInt32(7, precision_);
@@ -4605,9 +4605,9 @@ public final class Contract {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, frozenSupply_.get(i));
       }
-      if (trxNum_ != 0) {
+      if (usdlNum_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, trxNum_);
+          .computeInt32Size(6, usdlNum_);
       }
       if (precision_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -4687,8 +4687,8 @@ public final class Contract {
           != other.getTotalSupply()) return false;
       if (!getFrozenSupplyList()
           .equals(other.getFrozenSupplyList())) return false;
-      if (getTrxNum()
-          != other.getTrxNum()) return false;
+      if (getUsdlNum()
+          != other.getUsdlNum()) return false;
       if (getPrecision()
           != other.getPrecision()) return false;
       if (getNum()
@@ -4739,8 +4739,8 @@ public final class Contract {
         hash = (37 * hash) + FROZEN_SUPPLY_FIELD_NUMBER;
         hash = (53 * hash) + getFrozenSupplyList().hashCode();
       }
-      hash = (37 * hash) + TRX_NUM_FIELD_NUMBER;
-      hash = (53 * hash) + getTrxNum();
+      hash = (37 * hash) + USDL_NUM_FIELD_NUMBER;
+      hash = (53 * hash) + getUsdlNum();
       hash = (37 * hash) + PRECISION_FIELD_NUMBER;
       hash = (53 * hash) + getPrecision();
       hash = (37 * hash) + NUM_FIELD_NUMBER;
@@ -4922,7 +4922,7 @@ public final class Contract {
         } else {
           frozenSupplyBuilder_.clear();
         }
-        trxNum_ = 0;
+        usdlNum_ = 0;
 
         precision_ = 0;
 
@@ -4989,7 +4989,7 @@ public final class Contract {
         } else {
           result.frozenSupply_ = frozenSupplyBuilder_.build();
         }
-        result.trxNum_ = trxNum_;
+        result.usdlNum_ = usdlNum_;
         result.precision_ = precision_;
         result.num_ = num_;
         result.startTime_ = startTime_;
@@ -5092,8 +5092,8 @@ public final class Contract {
             }
           }
         }
-        if (other.getTrxNum() != 0) {
-          setTrxNum(other.getTrxNum());
+        if (other.getUsdlNum() != 0) {
+          setUsdlNum(other.getUsdlNum());
         }
         if (other.getPrecision() != 0) {
           setPrecision(other.getPrecision());
@@ -5610,33 +5610,33 @@ public final class Contract {
         return frozenSupplyBuilder_;
       }
 
-      private int trxNum_ ;
+      private int usdlNum_ ;
       /**
-       * <code>int32 trx_num = 6;</code>
-       * @return The trxNum.
+       * <code>int32 usdl_num = 6;</code>
+       * @return The usdlNum.
        */
       @java.lang.Override
-      public int getTrxNum() {
-        return trxNum_;
+      public int getUsdlNum() {
+        return usdlNum_;
       }
       /**
-       * <code>int32 trx_num = 6;</code>
-       * @param value The trxNum to set.
+       * <code>int32 usdl_num = 6;</code>
+       * @param value The usdlNum to set.
        * @return This builder for chaining.
        */
-      public Builder setTrxNum(int value) {
+      public Builder setUsdlNum(int value) {
         
-        trxNum_ = value;
+        usdlNum_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 trx_num = 6;</code>
+       * <code>int32 usdl_num = 6;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTrxNum() {
+      public Builder clearUsdlNum() {
         
-        trxNum_ = 0;
+        usdlNum_ = 0;
         onChanged();
         return this;
       }
@@ -29361,109 +29361,109 @@ public final class Contract {
       "pdateContract\022\025\n\rowner_address\030\001 \001(\014\022#\n\005" +
       "owner\030\002 \001(\0132\024.protocol.Permission\022%\n\007wit" +
       "ness\030\003 \001(\0132\024.protocol.Permission\022%\n\007acti" +
-      "ves\030\004 \003(\0132\024.protocol.Permission\"\220\004\n\022Asse" +
+      "ves\030\004 \003(\0132\024.protocol.Permission\"\221\004\n\022Asse" +
       "tIssueContract\022\n\n\002id\030) \001(\t\022\025\n\rowner_addr" +
       "ess\030\001 \001(\014\022\014\n\004name\030\002 \001(\014\022\014\n\004abbr\030\003 \001(\014\022\024\n" +
       "\014total_supply\030\004 \001(\003\022@\n\rfrozen_supply\030\005 \003" +
       "(\0132).protocol.AssetIssueContract.FrozenS" +
-      "upply\022\017\n\007trx_num\030\006 \001(\005\022\021\n\tprecision\030\007 \001(" +
-      "\005\022\013\n\003num\030\010 \001(\005\022\022\n\nstart_time\030\t \001(\003\022\020\n\010en" +
-      "d_time\030\n \001(\003\022\r\n\005order\030\013 \001(\003\022\022\n\nvote_scor" +
-      "e\030\020 \001(\005\022\023\n\013description\030\024 \001(\014\022\013\n\003url\030\025 \001(" +
-      "\014\022\034\n\024free_asset_net_limit\030\026 \001(\003\022#\n\033publi" +
-      "c_free_asset_net_limit\030\027 \001(\003\022#\n\033public_f" +
-      "ree_asset_net_usage\030\030 \001(\003\022#\n\033public_late" +
-      "st_free_net_time\030\031 \001(\003\032:\n\014FrozenSupply\022\025" +
-      "\n\rfrozen_amount\030\001 \001(\003\022\023\n\013frozen_days\030\002 \001" +
-      "(\003\"f\n\025TransferAssetContract\022\022\n\nasset_nam" +
-      "e\030\001 \001(\014\022\025\n\rowner_address\030\002 \001(\014\022\022\n\nto_add" +
-      "ress\030\003 \001(\014\022\016\n\006amount\030\004 \001(\003\".\n\025UnfreezeAs" +
-      "setContract\022\025\n\rowner_address\030\001 \001(\014\"{\n\023Up" +
-      "dateAssetContract\022\025\n\rowner_address\030\001 \001(\014" +
-      "\022\023\n\013description\030\002 \001(\014\022\013\n\003url\030\003 \001(\014\022\021\n\tne" +
-      "w_limit\030\004 \001(\003\022\030\n\020new_public_limit\030\005 \001(\003\"" +
-      "n\n\035ParticipateAssetIssueContract\022\025\n\rowne" +
-      "r_address\030\001 \001(\014\022\022\n\nto_address\030\002 \001(\014\022\022\n\na" +
-      "sset_name\030\003 \001(\014\022\016\n\006amount\030\004 \001(\003\"\243\001\n\025Free" +
-      "zeBalanceContract\022\025\n\rowner_address\030\001 \001(\014" +
-      "\022\026\n\016frozen_balance\030\002 \001(\003\022\027\n\017frozen_durat" +
-      "ion\030\003 \001(\003\022(\n\010resource\030\n \001(\0162\026.protocol.R" +
-      "esourceCode\022\030\n\020receiver_address\030\017 \001(\014\"Z\n" +
-      "\027UnfreezeBalanceContract\022\025\n\rowner_addres" +
-      "s\030\001 \001(\014\022(\n\010resource\030\n \001(\0162\026.protocol.Res" +
-      "ourceCode\"0\n\027WithdrawBalanceContract\022\025\n\r" +
-      "owner_address\030\001 \001(\014\"M\n\020TransferContract\022" +
-      "\025\n\rowner_address\030\001 \001(\014\022\022\n\nto_address\030\002 \001" +
-      "(\014\022\016\n\006amount\030\003 \001(\003\"\255\001\n\027MarketSellAssetCo" +
-      "ntract\022\025\n\rowner_address\030\001 \001(\014\022\025\n\rsell_to" +
-      "ken_id\030\002 \001(\014\022\033\n\023sell_token_quantity\030\003 \001(" +
-      "\003\022\024\n\014buy_token_id\030\004 \001(\014\022\032\n\022buy_token_qua" +
-      "ntity\030\005 \001(\003\022\025\n\rpre_price_key\030\006 \001(\014\"D\n\031Ma" +
-      "rketCancelOrderContract\022\025\n\rowner_address" +
-      "\030\001 \001(\014\022\020\n\010order_id\030\002 \001(\014\"^\n\027ProposalAppr" +
-      "oveContract\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013pr" +
-      "oposal_id\030\002 \001(\003\022\027\n\017is_add_approval\030\003 \001(\010" +
-      "\"\250\001\n\026ProposalCreateContract\022\025\n\rowner_add" +
-      "ress\030\001 \001(\014\022D\n\nparameters\030\002 \003(\01320.protoco" +
-      "l.ProposalCreateContract.ParametersEntry" +
-      "\0321\n\017ParametersEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005valu" +
-      "e\030\002 \001(\003:\0028\001\"D\n\026ProposalDeleteContract\022\025\n" +
-      "\rowner_address\030\001 \001(\014\022\023\n\013proposal_id\030\002 \001(" +
-      "\003\"\207\001\n\023CreateSmartContract\022\025\n\rowner_addre" +
-      "ss\030\001 \001(\014\022-\n\014new_contract\030\002 \001(\0132\027.protoco" +
-      "l.SmartContract\022\030\n\020call_token_value\030\003 \001(" +
-      "\003\022\020\n\010token_id\030\004 \001(\003\"\303\001\n\024TriggerSmartCont" +
-      "ract\022\025\n\rowner_address\030\001 \001(\014\022\030\n\020contract_" +
-      "address\030\002 \001(\014\022\022\n\ncall_value\030\003 \001(\003\022\014\n\004dat" +
-      "a\030\004 \001(\014\022\030\n\020call_token_value\030\005 \001(\003\022\020\n\010tok" +
-      "en_id\030\006 \001(\003\022\031\n\021function_selector\030\007 \001(\t\022\021" +
-      "\n\tparameter\030\010 \001(\014\"C\n\020ClearABIContract\022\025\n" +
-      "\rowner_address\030\001 \001(\014\022\030\n\020contract_address" +
-      "\030\002 \001(\014\"o\n\025UpdateSettingContract\022\025\n\rowner" +
-      "_address\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(\014" +
-      "\022%\n\035consume_user_resource_percent\030\003 \001(\003\"" +
-      "i\n\031UpdateEnergyLimitContract\022\025\n\rowner_ad" +
-      "dress\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(\014\022\033\n" +
-      "\023origin_energy_limit\030\003 \001(\003\"C\n\027UpdateBrok" +
-      "erageContract\022\025\n\rowner_address\030\001 \001(\014\022\021\n\t" +
-      "brokerage\030\002 \001(\005\"`\n\021VoteAssetContract\022\025\n\r" +
-      "owner_address\030\001 \001(\014\022\024\n\014vote_address\030\002 \003(" +
-      "\014\022\017\n\007support\030\003 \001(\010\022\r\n\005count\030\005 \001(\005\";\n\025Wit" +
-      "nessCreateContract\022\025\n\rowner_address\030\001 \001(" +
-      "\014\022\013\n\003url\030\002 \001(\014\"B\n\025WitnessUpdateContract\022" +
-      "\025\n\rowner_address\030\001 \001(\014\022\022\n\nupdate_url\030\014 \001" +
-      "(\014\"\242\001\n\023VoteWitnessContract\022\025\n\rowner_addr" +
-      "ess\030\001 \001(\014\0221\n\005votes\030\002 \003(\0132\".protocol.Vote" +
-      "WitnessContract.Vote\022\017\n\007support\030\003 \001(\010\0320\n" +
-      "\004Vote\022\024\n\014vote_address\030\001 \001(\014\022\022\n\nvote_coun" +
-      "t\030\002 \001(\003\"\233\001\n\026ExchangeCreateContract\022\025\n\row" +
-      "ner_address\030\001 \001(\014\022\026\n\016first_token_id\030\002 \001(" +
-      "\014\022\033\n\023first_token_balance\030\003 \001(\003\022\027\n\017second" +
-      "_token_id\030\004 \001(\014\022\034\n\024second_token_balance\030" +
-      "\005 \001(\003\"e\n\026ExchangeInjectContract\022\025\n\rowner" +
-      "_address\030\001 \001(\014\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010t" +
-      "oken_id\030\003 \001(\014\022\r\n\005quant\030\004 \001(\003\"g\n\030Exchange" +
-      "WithdrawContract\022\025\n\rowner_address\030\001 \001(\014\022" +
-      "\023\n\013exchange_id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022\r" +
-      "\n\005quant\030\004 \001(\003\"|\n\033ExchangeTransactionCont" +
-      "ract\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013exchange_" +
-      "id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022\r\n\005quant\030\004 \001(" +
-      "\003\022\020\n\010expected\030\005 \001(\003\"r\n\027FreezeBalanceV2Co" +
-      "ntract\022\025\n\rowner_address\030\001 \001(\014\022\026\n\016frozen_" +
-      "balance\030\002 \001(\003\022(\n\010resource\030\003 \001(\0162\026.protoc" +
-      "ol.ResourceCode\"v\n\031UnfreezeBalanceV2Cont" +
-      "ract\022\025\n\rowner_address\030\001 \001(\014\022\030\n\020unfreeze_" +
-      "balance\030\002 \001(\003\022(\n\010resource\030\003 \001(\0162\026.protoc" +
-      "ol.ResourceCode\"\224\001\n\030DelegateResourceCont" +
-      "ract\022\025\n\rowner_address\030\001 \001(\014\022(\n\010resource\030" +
-      "\002 \001(\0162\026.protocol.ResourceCode\022\017\n\007balance" +
-      "\030\003 \001(\003\022\030\n\020receiver_address\030\004 \001(\014\022\014\n\004lock" +
-      "\030\005 \001(\010\"\210\001\n\032UnDelegateResourceContract\022\025\n" +
-      "\rowner_address\030\001 \001(\014\022(\n\010resource\030\002 \001(\0162\026" +
-      ".protocol.ResourceCode\022\017\n\007balance\030\003 \001(\003\022" +
-      "\030\n\020receiver_address\030\004 \001(\014\"7\n\036WithdrawExp" +
-      "ireUnfreezeContract\022\025\n\rowner_address\030\001 \001" +
-      "(\014B\027\n\025org.lgcy.Legacy.protob\006proto3"
+      "upply\022\020\n\010usdl_num\030\006 \001(\005\022\021\n\tprecision\030\007 \001" +
+      "(\005\022\013\n\003num\030\010 \001(\005\022\022\n\nstart_time\030\t \001(\003\022\020\n\010e" +
+      "nd_time\030\n \001(\003\022\r\n\005order\030\013 \001(\003\022\022\n\nvote_sco" +
+      "re\030\020 \001(\005\022\023\n\013description\030\024 \001(\014\022\013\n\003url\030\025 \001" +
+      "(\014\022\034\n\024free_asset_net_limit\030\026 \001(\003\022#\n\033publ" +
+      "ic_free_asset_net_limit\030\027 \001(\003\022#\n\033public_" +
+      "free_asset_net_usage\030\030 \001(\003\022#\n\033public_lat" +
+      "est_free_net_time\030\031 \001(\003\032:\n\014FrozenSupply\022" +
+      "\025\n\rfrozen_amount\030\001 \001(\003\022\023\n\013frozen_days\030\002 " +
+      "\001(\003\"f\n\025TransferAssetContract\022\022\n\nasset_na" +
+      "me\030\001 \001(\014\022\025\n\rowner_address\030\002 \001(\014\022\022\n\nto_ad" +
+      "dress\030\003 \001(\014\022\016\n\006amount\030\004 \001(\003\".\n\025UnfreezeA" +
+      "ssetContract\022\025\n\rowner_address\030\001 \001(\014\"{\n\023U" +
+      "pdateAssetContract\022\025\n\rowner_address\030\001 \001(" +
+      "\014\022\023\n\013description\030\002 \001(\014\022\013\n\003url\030\003 \001(\014\022\021\n\tn" +
+      "ew_limit\030\004 \001(\003\022\030\n\020new_public_limit\030\005 \001(\003" +
+      "\"n\n\035ParticipateAssetIssueContract\022\025\n\rown" +
+      "er_address\030\001 \001(\014\022\022\n\nto_address\030\002 \001(\014\022\022\n\n" +
+      "asset_name\030\003 \001(\014\022\016\n\006amount\030\004 \001(\003\"\243\001\n\025Fre" +
+      "ezeBalanceContract\022\025\n\rowner_address\030\001 \001(" +
+      "\014\022\026\n\016frozen_balance\030\002 \001(\003\022\027\n\017frozen_dura" +
+      "tion\030\003 \001(\003\022(\n\010resource\030\n \001(\0162\026.protocol." +
+      "ResourceCode\022\030\n\020receiver_address\030\017 \001(\014\"Z" +
+      "\n\027UnfreezeBalanceContract\022\025\n\rowner_addre" +
+      "ss\030\001 \001(\014\022(\n\010resource\030\n \001(\0162\026.protocol.Re" +
+      "sourceCode\"0\n\027WithdrawBalanceContract\022\025\n" +
+      "\rowner_address\030\001 \001(\014\"M\n\020TransferContract" +
+      "\022\025\n\rowner_address\030\001 \001(\014\022\022\n\nto_address\030\002 " +
+      "\001(\014\022\016\n\006amount\030\003 \001(\003\"\255\001\n\027MarketSellAssetC" +
+      "ontract\022\025\n\rowner_address\030\001 \001(\014\022\025\n\rsell_t" +
+      "oken_id\030\002 \001(\014\022\033\n\023sell_token_quantity\030\003 \001" +
+      "(\003\022\024\n\014buy_token_id\030\004 \001(\014\022\032\n\022buy_token_qu" +
+      "antity\030\005 \001(\003\022\025\n\rpre_price_key\030\006 \001(\014\"D\n\031M" +
+      "arketCancelOrderContract\022\025\n\rowner_addres" +
+      "s\030\001 \001(\014\022\020\n\010order_id\030\002 \001(\014\"^\n\027ProposalApp" +
+      "roveContract\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013p" +
+      "roposal_id\030\002 \001(\003\022\027\n\017is_add_approval\030\003 \001(" +
+      "\010\"\250\001\n\026ProposalCreateContract\022\025\n\rowner_ad" +
+      "dress\030\001 \001(\014\022D\n\nparameters\030\002 \003(\01320.protoc" +
+      "ol.ProposalCreateContract.ParametersEntr" +
+      "y\0321\n\017ParametersEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005val" +
+      "ue\030\002 \001(\003:\0028\001\"D\n\026ProposalDeleteContract\022\025" +
+      "\n\rowner_address\030\001 \001(\014\022\023\n\013proposal_id\030\002 \001" +
+      "(\003\"\207\001\n\023CreateSmartContract\022\025\n\rowner_addr" +
+      "ess\030\001 \001(\014\022-\n\014new_contract\030\002 \001(\0132\027.protoc" +
+      "ol.SmartContract\022\030\n\020call_token_value\030\003 \001" +
+      "(\003\022\020\n\010token_id\030\004 \001(\003\"\303\001\n\024TriggerSmartCon" +
+      "tract\022\025\n\rowner_address\030\001 \001(\014\022\030\n\020contract" +
+      "_address\030\002 \001(\014\022\022\n\ncall_value\030\003 \001(\003\022\014\n\004da" +
+      "ta\030\004 \001(\014\022\030\n\020call_token_value\030\005 \001(\003\022\020\n\010to" +
+      "ken_id\030\006 \001(\003\022\031\n\021function_selector\030\007 \001(\t\022" +
+      "\021\n\tparameter\030\010 \001(\014\"C\n\020ClearABIContract\022\025" +
+      "\n\rowner_address\030\001 \001(\014\022\030\n\020contract_addres" +
+      "s\030\002 \001(\014\"o\n\025UpdateSettingContract\022\025\n\rowne" +
+      "r_address\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(" +
+      "\014\022%\n\035consume_user_resource_percent\030\003 \001(\003" +
+      "\"i\n\031UpdateEnergyLimitContract\022\025\n\rowner_a" +
+      "ddress\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(\014\022\033" +
+      "\n\023origin_energy_limit\030\003 \001(\003\"C\n\027UpdateBro" +
+      "kerageContract\022\025\n\rowner_address\030\001 \001(\014\022\021\n" +
+      "\tbrokerage\030\002 \001(\005\"`\n\021VoteAssetContract\022\025\n" +
+      "\rowner_address\030\001 \001(\014\022\024\n\014vote_address\030\002 \003" +
+      "(\014\022\017\n\007support\030\003 \001(\010\022\r\n\005count\030\005 \001(\005\";\n\025Wi" +
+      "tnessCreateContract\022\025\n\rowner_address\030\001 \001" +
+      "(\014\022\013\n\003url\030\002 \001(\014\"B\n\025WitnessUpdateContract" +
+      "\022\025\n\rowner_address\030\001 \001(\014\022\022\n\nupdate_url\030\014 " +
+      "\001(\014\"\242\001\n\023VoteWitnessContract\022\025\n\rowner_add" +
+      "ress\030\001 \001(\014\0221\n\005votes\030\002 \003(\0132\".protocol.Vot" +
+      "eWitnessContract.Vote\022\017\n\007support\030\003 \001(\010\0320" +
+      "\n\004Vote\022\024\n\014vote_address\030\001 \001(\014\022\022\n\nvote_cou" +
+      "nt\030\002 \001(\003\"\233\001\n\026ExchangeCreateContract\022\025\n\ro" +
+      "wner_address\030\001 \001(\014\022\026\n\016first_token_id\030\002 \001" +
+      "(\014\022\033\n\023first_token_balance\030\003 \001(\003\022\027\n\017secon" +
+      "d_token_id\030\004 \001(\014\022\034\n\024second_token_balance" +
+      "\030\005 \001(\003\"e\n\026ExchangeInjectContract\022\025\n\rowne" +
+      "r_address\030\001 \001(\014\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010" +
+      "token_id\030\003 \001(\014\022\r\n\005quant\030\004 \001(\003\"g\n\030Exchang" +
+      "eWithdrawContract\022\025\n\rowner_address\030\001 \001(\014" +
+      "\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022" +
+      "\r\n\005quant\030\004 \001(\003\"|\n\033ExchangeTransactionCon" +
+      "tract\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013exchange" +
+      "_id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022\r\n\005quant\030\004 \001" +
+      "(\003\022\020\n\010expected\030\005 \001(\003\"r\n\027FreezeBalanceV2C" +
+      "ontract\022\025\n\rowner_address\030\001 \001(\014\022\026\n\016frozen" +
+      "_balance\030\002 \001(\003\022(\n\010resource\030\003 \001(\0162\026.proto" +
+      "col.ResourceCode\"v\n\031UnfreezeBalanceV2Con" +
+      "tract\022\025\n\rowner_address\030\001 \001(\014\022\030\n\020unfreeze" +
+      "_balance\030\002 \001(\003\022(\n\010resource\030\003 \001(\0162\026.proto" +
+      "col.ResourceCode\"\224\001\n\030DelegateResourceCon" +
+      "tract\022\025\n\rowner_address\030\001 \001(\014\022(\n\010resource" +
+      "\030\002 \001(\0162\026.protocol.ResourceCode\022\017\n\007balanc" +
+      "e\030\003 \001(\003\022\030\n\020receiver_address\030\004 \001(\014\022\014\n\004loc" +
+      "k\030\005 \001(\010\"\210\001\n\032UnDelegateResourceContract\022\025" +
+      "\n\rowner_address\030\001 \001(\014\022(\n\010resource\030\002 \001(\0162" +
+      "\026.protocol.ResourceCode\022\017\n\007balance\030\003 \001(\003" +
+      "\022\030\n\020receiver_address\030\004 \001(\014\"7\n\036WithdrawEx" +
+      "pireUnfreezeContract\022\025\n\rowner_address\030\001 " +
+      "\001(\014B\027\n\025org.lgcy.Legacy.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -29499,7 +29499,7 @@ public final class Contract {
     internal_static_protocol_AssetIssueContract_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_AssetIssueContract_descriptor,
-        new java.lang.String[] { "Id", "OwnerAddress", "Name", "Abbr", "TotalSupply", "FrozenSupply", "TrxNum", "Precision", "Num", "StartTime", "EndTime", "Order", "VoteScore", "Description", "Url", "FreeAssetNetLimit", "PublicFreeAssetNetLimit", "PublicFreeAssetNetUsage", "PublicLatestFreeNetTime", });
+        new java.lang.String[] { "Id", "OwnerAddress", "Name", "Abbr", "TotalSupply", "FrozenSupply", "UsdlNum", "Precision", "Num", "StartTime", "EndTime", "Order", "VoteScore", "Description", "Url", "FreeAssetNetLimit", "PublicFreeAssetNetLimit", "PublicFreeAssetNetUsage", "PublicLatestFreeNetTime", });
     internal_static_protocol_AssetIssueContract_FrozenSupply_descriptor =
       internal_static_protocol_AssetIssueContract_descriptor.getNestedTypes().get(0);
     internal_static_protocol_AssetIssueContract_FrozenSupply_fieldAccessorTable = new

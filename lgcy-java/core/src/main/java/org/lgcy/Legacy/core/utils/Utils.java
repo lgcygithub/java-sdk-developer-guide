@@ -19,9 +19,9 @@ public class Utils {
     return blockId;
   }
 
-  public static Contract.CreateSmartContract getSmartContractFromTransaction(Chain.Transaction trx) {
+  public static Contract.CreateSmartContract getSmartContractFromTransaction(Chain.Transaction usdl) {
     try {
-      Any any = trx.getRawData().getContract(0).getParameter();
+      Any any = usdl.getRawData().getContract(0).getParameter();
       Contract.CreateSmartContract createSmartContract = any.unpack(Contract.CreateSmartContract.class);
       return createSmartContract;
     } catch (InvalidProtocolBufferException e) {

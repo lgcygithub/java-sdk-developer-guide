@@ -35,8 +35,8 @@ public final class Convert {
     }
 
     public enum Unit {
-        SUN("sun", 0),
-        TRX("trx", 6);
+
+        USDL("usdl", 6);
 
         private String name;
         private BigDecimal sunFactor;

@@ -29640,350 +29640,352 @@ public final class GrpcAPI {
     java.lang.String[] descriptorData = {
       "\n\rapi/api.proto\022\010protocol\032\021core/common.p" +
       "roto\032\020core/chain.proto\032\023core/contract.pr" +
-      "oto\032\023core/response.proto\"%\n\020BrokerageMes" +
-      "sage\022\021\n\tbrokerage\030\001 \001(\r\"!\n\016InputBrokerag" +
-      "e\022\017\n\007address\030\001 \001(\t\"+\n\032Transactioncountby" +
-      "blocknum\022\r\n\005count\030\001 \001(\r\"\016\n\014EmptyMessage\"" +
-      "\034\n\rNumberMessage\022\013\n\003num\030\001 \001(\003\"\035\n\014BytesMe" +
-      "ssage\022\r\n\005value\030\001 \001(\014\"\033\n\rProposalInput\022\n\n" +
-      "\002id\030\001 \001(\r\".\n\nBlockLimit\022\020\n\010startNum\030\001 \001(" +
-      "\003\022\016\n\006endNum\030\002 \001(\003\"(\n\025AccountAddressMessa" +
-      "ge\022\017\n\007address\030\003 \001(\014\"\036\n\020AccountIdMessage\022" +
-      "\n\n\002id\030\027 \001(\014\"1\n\020PaginatedMessage\022\016\n\006offse" +
-      "t\030\001 \001(\003\022\r\n\005limit\030\002 \001(\003\"L\n\023EasyTransferMe" +
-      "ssage\022\022\n\npassPhrase\030\001 \001(\014\022\021\n\ttoAddress\030\002" +
-      " \001(\014\022\016\n\006amount\030\003 \001(\003\"b\n\030EasyTransferAsse" +
-      "tMessage\022\022\n\npassPhrase\030\001 \001(\014\022\021\n\ttoAddres" +
-      "s\030\002 \001(\014\022\017\n\007assetId\030\003 \001(\t\022\016\n\006amount\030\004 \001(\003" +
-      "\"U\n\034EasyTransferByPrivateMessage\022\022\n\npriv" +
-      "ateKey\030\001 \001(\014\022\021\n\ttoAddress\030\002 \001(\014\022\016\n\006amoun" +
-      "t\030\003 \001(\003\"k\n!EasyTransferAssetByPrivateMes" +
-      "sage\022\022\n\nprivateKey\030\001 \001(\014\022\021\n\ttoAddress\030\002 " +
-      "\001(\014\022\017\n\007assetId\030\003 \001(\t\022\016\n\006amount\030\004 \001(\003\"+\n\021" +
-      "ViewingKeyMessage\022\n\n\002ak\030\001 \001(\014\022\n\n\002nk\030\002 \001(" +
-      "\014\"\236\001\n\023ShieldedAddressInfo\022\n\n\002sk\030\001 \001(\014\022\013\n" +
-      "\003ask\030\002 \001(\014\022\013\n\003nsk\030\003 \001(\014\022\013\n\003ovk\030\004 \001(\014\022\n\n\002" +
-      "ak\030\005 \001(\014\022\n\n\002nk\030\006 \001(\014\022\013\n\003ivk\030\007 \001(\014\022\t\n\001d\030\010" +
-      " \001(\014\022\013\n\003pkD\030\t \001(\014\022\027\n\017payment_address\030\n \001" +
-      "(\t\"f\n\025PaymentAddressMessage\022\'\n\001d\030\001 \001(\0132\034" +
-      ".protocol.DiversifierMessage\022\013\n\003pkD\030\002 \001(" +
-      "\014\022\027\n\017payment_address\030\003 \001(\t\"\037\n\022Diversifie" +
-      "rMessage\022\t\n\001d\030\001 \001(\014\"C\n\032ExpandedSpendingK" +
-      "eyMessage\022\013\n\003ask\030\001 \001(\014\022\013\n\003nsk\030\002 \001(\014\022\013\n\003o" +
-      "vk\030\003 \001(\014\"(\n\031IncomingViewingKeyMessage\022\013\n" +
-      "\003ivk\030\001 \001(\014\"\201\001\n$IncomingViewingKeyDiversi" +
-      "fierMessage\0220\n\003ivk\030\001 \001(\0132#.protocol.Inco" +
-      "mingViewingKeyMessage\022\'\n\001d\030\002 \001(\0132\034.proto" +
-      "col.DiversifierMessage\"+\n\013ReceiveNote\022\034\n" +
-      "\004note\030\001 \001(\0132\016.protocol.Note\"f\n\016SpendNote" +
-      "TRC20\022\034\n\004note\030\001 \001(\0132\016.protocol.Note\022\r\n\005a" +
-      "lpha\030\002 \001(\014\022\014\n\004root\030\003 \001(\014\022\014\n\004path\030\004 \001(\014\022\013" +
-      "\n\003pos\030\005 \001(\003\"\235\002\n\036PrivateShieldedTRC20Para" +
-      "meters\022\013\n\003ask\030\001 \001(\014\022\013\n\003nsk\030\002 \001(\014\022\013\n\003ovk\030" +
-      "\003 \001(\014\022\023\n\013from_amount\030\004 \001(\t\0221\n\017shielded_s" +
-      "pends\030\005 \003(\0132\030.protocol.SpendNoteTRC20\0220\n" +
-      "\021shielded_receives\030\006 \003(\0132\025.protocol.Rece" +
-      "iveNote\022\036\n\026transparent_to_address\030\007 \001(\014\022" +
-      "\021\n\tto_amount\030\010 \001(\t\022\'\n\037shielded_TRC20_con" +
-      "tract_address\030\t \001(\014\"\246\002\n(PrivateShieldedT" +
-      "RC20ParametersWithoutAsk\022\n\n\002ak\030\001 \001(\014\022\013\n\003" +
-      "nsk\030\002 \001(\014\022\013\n\003ovk\030\003 \001(\014\022\023\n\013from_amount\030\004 " +
-      "\001(\t\0221\n\017shielded_spends\030\005 \003(\0132\030.protocol." +
-      "SpendNoteTRC20\0220\n\021shielded_receives\030\006 \003(" +
-      "\0132\025.protocol.ReceiveNote\022\036\n\026transparent_" +
-      "to_address\030\007 \001(\014\022\021\n\tto_amount\030\010 \001(\t\022\'\n\037s" +
-      "hielded_TRC20_contract_address\030\t \001(\014\"\217\001\n" +
-      "\020SpendDescription\022\030\n\020value_commitment\030\001 " +
-      "\001(\014\022\016\n\006anchor\030\002 \001(\014\022\021\n\tnullifier\030\003 \001(\014\022\n" +
-      "\n\002rk\030\004 \001(\014\022\017\n\007zkproof\030\005 \001(\014\022!\n\031spend_aut" +
-      "hority_signature\030\006 \001(\014\"\203\001\n\022ReceiveDescri" +
-      "ption\022\030\n\020value_commitment\030\001 \001(\014\022\027\n\017note_" +
-      "commitment\030\002 \001(\014\022\013\n\003epk\030\003 \001(\014\022\r\n\005c_enc\030\004" +
-      " \001(\014\022\r\n\005c_out\030\005 \001(\014\022\017\n\007zkproof\030\006 \001(\014\"\364\001\n" +
-      "\027ShieldedTRC20Parameters\0225\n\021spend_descri" +
-      "ption\030\001 \003(\0132\032.protocol.SpendDescription\022" +
-      "9\n\023receive_description\030\002 \003(\0132\034.protocol." +
-      "ReceiveDescription\022\031\n\021binding_signature\030" +
-      "\003 \001(\014\022\024\n\014message_hash\030\004 \001(\014\022\036\n\026trigger_c" +
-      "ontract_input\030\005 \001(\t\022\026\n\016parameter_type\030\006 " +
-      "\001(\t\"\255\001\n\031IvkDecryptTRC20Parameters\022\031\n\021sta" +
-      "rt_block_index\030\001 \001(\003\022\027\n\017end_block_index\030" +
-      "\002 \001(\003\022\'\n\037shielded_TRC20_contract_address" +
-      "\030\003 \001(\014\022\013\n\003ivk\030\004 \001(\014\022\n\n\002ak\030\005 \001(\014\022\n\n\002nk\030\006 " +
-      "\001(\014\022\016\n\006events\030\007 \003(\t\"\225\001\n\031OvkDecryptTRC20P" +
-      "arameters\022\031\n\021start_block_index\030\001 \001(\003\022\027\n\017" +
-      "end_block_index\030\002 \001(\003\022\013\n\003ovk\030\003 \001(\014\022\'\n\037sh" +
-      "ielded_TRC20_contract_address\030\004 \001(\014\022\016\n\006e" +
-      "vents\030\005 \003(\t\"\204\001\n\021NfTRC20Parameters\022\034\n\004not" +
-      "e\030\001 \001(\0132\016.protocol.Note\022\n\n\002ak\030\002 \001(\014\022\n\n\002n" +
-      "k\030\003 \001(\014\022\020\n\010position\030\004 \001(\003\022\'\n\037shielded_TR" +
-      "C20_contract_address\030\005 \001(\014\"\331\001\n&ShieldedT" +
-      "RC20TriggerContractParameters\022D\n\031shielde" +
-      "d_TRC20_Parameters\030\001 \001(\0132!.protocol.Shie" +
-      "ldedTRC20Parameters\0229\n\031spend_authority_s" +
-      "ignature\030\002 \003(\0132\026.protocol.BytesMessage\022\016" +
-      "\n\006amount\030\003 \001(\t\022\036\n\026transparent_to_address" +
-      "\030\004 \001(\014\"S\n\'CanWithdrawUnfreezeAmountReque" +
-      "stMessage\022\025\n\rowner_address\030\001 \001(\014\022\021\n\ttime" +
-      "stamp\030\002 \001(\003\"@\n\'GetAvailableUnfreezeCount" +
-      "RequestMessage\022\025\n\rowner_address\030\001 \001(\014\"9\n" +
-      "(GetAvailableUnfreezeCountResponseMessag" +
-      "e\022\r\n\005count\030\001 \001(\003\":\n(CanWithdrawUnfreezeA" +
-      "mountResponseMessage\022\016\n\006amount\030\001 \001(\003\"H\n!" +
-      "CanDelegatedMaxSizeRequestMessage\022\014\n\004typ" +
-      "e\030\001 \001(\005\022\025\n\rowner_address\030\002 \001(\014\"6\n\"CanDel" +
-      "egatedMaxSizeResponseMessage\022\020\n\010max_size" +
-      "\030\001 \001(\0032\277K\n\006Wallet\022L\n\024BroadcastTransactio" +
-      "n\022\025.protocol.Transaction\032\033.protocol.Tran" +
-      "sactionReturn\"\000\022R\n\027CreateCommonTransacti" +
-      "on\022\025.protocol.Transaction\032\036.protocol.Tra" +
-      "nsactionExtention\"\000\022I\n\rCreateAccount\022\037.p" +
-      "rotocol.AccountCreateContract\032\025.protocol" +
-      ".Transaction\"\000\022S\n\016CreateAccount2\022\037.proto" +
-      "col.AccountCreateContract\032\036.protocol.Tra" +
-      "nsactionExtention\"\000\022I\n\rUpdateAccount\022\037.p" +
-      "rotocol.AccountUpdateContract\032\025.protocol" +
-      ".Transaction\"\000\022S\n\016UpdateAccount2\022\037.proto" +
-      "col.AccountUpdateContract\032\036.protocol.Tra" +
-      "nsactionExtention\"\000\022G\n\014SetAccountId\022\036.pr" +
-      "otocol.SetAccountIdContract\032\025.protocol.T" +
-      "ransaction\"\000\022f\n\027AccountPermissionUpdate\022" +
-      ").protocol.AccountPermissionUpdateContra" +
-      "ct\032\036.protocol.TransactionExtention\"\000\022H\n\021" +
-      "CreateTransaction\022\032.protocol.TransferCon" +
-      "tract\032\025.protocol.Transaction\"\000\022R\n\022Create" +
-      "Transaction2\022\032.protocol.TransferContract" +
-      "\032\036.protocol.TransactionExtention\"\000\022I\n\020Cr" +
-      "eateAssetIssue\022\034.protocol.AssetIssueCont" +
-      "ract\032\025.protocol.Transaction\"\000\022S\n\021CreateA" +
-      "ssetIssue2\022\034.protocol.AssetIssueContract" +
-      "\032\036.protocol.TransactionExtention\"\000\022E\n\013Up" +
-      "dateAsset\022\035.protocol.UpdateAssetContract" +
-      "\032\025.protocol.Transaction\"\000\022O\n\014UpdateAsset" +
-      "2\022\035.protocol.UpdateAssetContract\032\036.proto" +
-      "col.TransactionExtention\"\000\022I\n\rTransferAs" +
-      "set\022\037.protocol.TransferAssetContract\032\025.p" +
-      "rotocol.Transaction\"\000\022S\n\016TransferAsset2\022" +
-      "\037.protocol.TransferAssetContract\032\036.proto" +
-      "col.TransactionExtention\"\000\022Y\n\025Participat" +
-      "eAssetIssue\022\'.protocol.ParticipateAssetI" +
-      "ssueContract\032\025.protocol.Transaction\"\000\022c\n" +
-      "\026ParticipateAssetIssue2\022\'.protocol.Parti" +
-      "cipateAssetIssueContract\032\036.protocol.Tran" +
-      "sactionExtention\"\000\022I\n\rUnfreezeAsset\022\037.pr" +
-      "otocol.UnfreezeAssetContract\032\025.protocol." +
-      "Transaction\"\000\022S\n\016UnfreezeAsset2\022\037.protoc" +
-      "ol.UnfreezeAssetContract\032\036.protocol.Tran" +
-      "sactionExtention\"\000\022I\n\rCreateWitness\022\037.pr" +
-      "otocol.WitnessCreateContract\032\025.protocol." +
-      "Transaction\"\000\022S\n\016CreateWitness2\022\037.protoc" +
-      "ol.WitnessCreateContract\032\036.protocol.Tran" +
-      "sactionExtention\"\000\022I\n\rUpdateWitness\022\037.pr" +
-      "otocol.WitnessUpdateContract\032\025.protocol." +
-      "Transaction\"\000\022S\n\016UpdateWitness2\022\037.protoc" +
-      "ol.WitnessUpdateContract\032\036.protocol.Tran" +
-      "sactionExtention\"\000\022V\n\017UpdateBrokerage\022!." +
-      "protocol.UpdateBrokerageContract\032\036.proto" +
-      "col.TransactionExtention\"\000\022L\n\022VoteWitnes" +
-      "sAccount\022\035.protocol.VoteWitnessContract\032" +
-      "\025.protocol.Transaction\"\000\022V\n\023VoteWitnessA" +
-      "ccount2\022\035.protocol.VoteWitnessContract\032\036" +
-      ".protocol.TransactionExtention\"\000\022I\n\rFree" +
-      "zeBalance\022\037.protocol.FreezeBalanceContra" +
-      "ct\032\025.protocol.Transaction\"\000\022S\n\016FreezeBal" +
-      "ance2\022\037.protocol.FreezeBalanceContract\032\036" +
-      ".protocol.TransactionExtention\"\000\022M\n\017Unfr" +
-      "eezeBalance\022!.protocol.UnfreezeBalanceCo" +
-      "ntract\032\025.protocol.Transaction\"\000\022W\n\020Unfre" +
-      "ezeBalance2\022!.protocol.UnfreezeBalanceCo" +
-      "ntract\032\036.protocol.TransactionExtention\"\000" +
-      "\022M\n\017WithdrawBalance\022!.protocol.WithdrawB" +
-      "alanceContract\032\025.protocol.Transaction\"\000\022" +
-      "W\n\020WithdrawBalance2\022!.protocol.WithdrawB" +
-      "alanceContract\032\036.protocol.TransactionExt" +
-      "ention\"\000\022T\n\016ProposalCreate\022 .protocol.Pr" +
-      "oposalCreateContract\032\036.protocol.Transact" +
-      "ionExtention\"\000\022V\n\017ProposalApprove\022!.prot" +
-      "ocol.ProposalApproveContract\032\036.protocol." +
-      "TransactionExtention\"\000\022T\n\016ProposalDelete" +
-      "\022 .protocol.ProposalDeleteContract\032\036.pro" +
-      "tocol.TransactionExtention\"\000\022Q\n\016DeployCo" +
-      "ntract\022\035.protocol.CreateSmartContract\032\036." +
-      "protocol.TransactionExtention\"\000\022S\n\017Trigg" +
-      "erContract\022\036.protocol.TriggerSmartContra" +
-      "ct\032\036.protocol.TransactionExtention\"\000\022[\n\027" +
-      "TriggerConstantContract\022\036.protocol.Trigg" +
-      "erSmartContract\032\036.protocol.TransactionEx" +
-      "tention\"\000\022;\n\013GetNodeInfo\022\026.protocol.Empt" +
-      "yMessage\032\022.protocol.NodeInfo\"\000\0229\n\tListNo" +
-      "des\022\026.protocol.EmptyMessage\032\022.protocol.N" +
-      "odeList\"\000\022I\n\022GetChainParameters\022\026.protoc" +
-      "ol.EmptyMessage\032\031.protocol.ChainParamete" +
-      "rs\"\000\022E\n\020TotalTransaction\022\026.protocol.Empt" +
-      "yMessage\032\027.protocol.NumberMessage\"\000\022K\n\026G" +
-      "etNextMaintenanceTime\022\026.protocol.EmptyMe" +
-      "ssage\032\027.protocol.NumberMessage\"\000\022T\n\030GetT" +
-      "ransactionSignWeight\022\025.protocol.Transact" +
-      "ion\032\037.protocol.TransactionSignWeight\"\000\022X" +
-      "\n\032GetTransactionApprovedList\022\025.protocol." +
-      "Transaction\032!.protocol.TransactionApprov" +
-      "edList\"\000\022B\n\nGetAccount\022\037.protocol.Accoun" +
-      "tAddressMessage\032\021.protocol.Account\"\000\022A\n\016" +
-      "GetAccountById\022\032.protocol.AccountIdMessa" +
-      "ge\032\021.protocol.Account\"\000\022O\n\rGetAccountNet" +
-      "\022\037.protocol.AccountAddressMessage\032\033.prot" +
-      "ocol.AccountNetMessage\"\000\022Y\n\022GetAccountRe" +
-      "source\022\037.protocol.AccountAddressMessage\032" +
-      " .protocol.AccountResourceMessage\"\000\022U\n\026G" +
-      "etAssetIssueByAccount\022\037.protocol.Account" +
-      "AddressMessage\032\030.protocol.AssetIssueList" +
-      "\"\000\022M\n\023GetAssetIssueByName\022\026.protocol.Byt" +
-      "esMessage\032\034.protocol.AssetIssueContract\"" +
-      "\000\022M\n\027GetAssetIssueListByName\022\026.protocol." +
-      "BytesMessage\032\030.protocol.AssetIssueList\"\000" +
-      "\022K\n\021GetAssetIssueById\022\026.protocol.BytesMe" +
-      "ssage\032\034.protocol.AssetIssueContract\"\000\022G\n" +
-      "\021GetAssetIssueList\022\026.protocol.EmptyMessa" +
-      "ge\032\030.protocol.AssetIssueList\"\000\022T\n\032GetPag" +
-      "inatedAssetIssueList\022\032.protocol.Paginate" +
-      "dMessage\032\030.protocol.AssetIssueList\"\000\0228\n\013" +
-      "GetNowBlock\022\026.protocol.EmptyMessage\032\017.pr" +
-      "otocol.Block\"\000\022B\n\014GetNowBlock2\022\026.protoco" +
-      "l.EmptyMessage\032\030.protocol.BlockExtention" +
-      "\"\000\022;\n\rGetBlockByNum\022\027.protocol.NumberMes" +
-      "sage\032\017.protocol.Block\"\000\022E\n\016GetBlockByNum" +
-      "2\022\027.protocol.NumberMessage\032\030.protocol.Bl" +
-      "ockExtention\"\000\0229\n\014GetBlockById\022\026.protoco" +
-      "l.BytesMessage\032\017.protocol.Block\"\000\022B\n\023Get" +
-      "BlockByLimitNext\022\024.protocol.BlockLimit\032\023" +
-      ".protocol.BlockList\"\000\022L\n\024GetBlockByLimit" +
-      "Next2\022\024.protocol.BlockLimit\032\034.protocol.B" +
-      "lockListExtention\"\000\022E\n\023GetBlockByLatestN" +
-      "um\022\027.protocol.NumberMessage\032\023.protocol.B" +
-      "lockList\"\000\022O\n\024GetBlockByLatestNum2\022\027.pro" +
-      "tocol.NumberMessage\032\034.protocol.BlockList" +
-      "Extention\"\000\022`\n\035GetTransactionCountByBloc" +
-      "kNum\022\027.protocol.NumberMessage\032$.protocol" +
-      ".Transactioncountbyblocknum\"\000\022E\n\022GetTran" +
-      "sactionById\022\026.protocol.BytesMessage\032\025.pr" +
-      "otocol.Transaction\"\000\022M\n\026GetTransactionIn" +
-      "foById\022\026.protocol.BytesMessage\032\031.protoco" +
-      "l.TransactionInfo\"\000\022X\n\034GetTransactionInf" +
-      "oByBlockNum\022\027.protocol.NumberMessage\032\035.p" +
-      "rotocol.TransactionInfoList\"\000\022@\n\013GetCont" +
-      "ract\022\026.protocol.BytesMessage\032\027.protocol." +
-      "SmartContract\"\000\022O\n\017GetContractInfo\022\026.pro" +
-      "tocol.BytesMessage\032\".protocol.SmartContr" +
-      "actDataWrapper\"\000\022@\n\rListWitnesses\022\026.prot" +
-      "ocol.EmptyMessage\032\025.protocol.WitnessList" +
-      "\"\000\022E\n\020GetBrokerageInfo\022\026.protocol.BytesM" +
-      "essage\032\027.protocol.NumberMessage\"\000\022F\n\014Get" +
-      "Brokerage\022\030.protocol.InputBrokerage\032\032.pr" +
-      "otocol.BrokerageMessage\"\000\022B\n\rGetRewardIn" +
-      "fo\022\026.protocol.BytesMessage\032\027.protocol.Nu" +
-      "mberMessage\"\000\022]\n\024GetDelegatedResource\022\"." +
-      "protocol.DelegatedResourceMessage\032\037.prot" +
-      "ocol.DelegatedResourceList\"\000\022e\n GetDeleg" +
-      "atedResourceAccountIndex\022\026.protocol.Byte" +
-      "sMessage\032\'.protocol.DelegatedResourceAcc" +
-      "ountIndex\"\000\022A\n\rListProposals\022\026.protocol." +
-      "EmptyMessage\032\026.protocol.ProposalList\"\000\022@" +
-      "\n\017GetProposalById\022\027.protocol.ProposalInp" +
-      "ut\032\022.protocol.Proposal\"\000\022P\n\030GetPaginated" +
-      "ProposalList\022\032.protocol.PaginatedMessage" +
-      "\032\026.protocol.ProposalList\"\000\022A\n\rListExchan" +
-      "ges\022\026.protocol.EmptyMessage\032\026.protocol.E" +
-      "xchangeList\"\000\022?\n\017GetExchangeById\022\026.proto" +
-      "col.BytesMessage\032\022.protocol.Exchange\"\000\022P" +
-      "\n\030GetPaginatedExchangeList\022\032.protocol.Pa" +
-      "ginatedMessage\032\026.protocol.ExchangeList\"\000" +
-      "\022a\n\033ScanShieldedTRC20NotesByIvk\022#.protoc" +
-      "ol.IvkDecryptTRC20Parameters\032\033.protocol." +
-      "DecryptNotesTRC20\"\000\022a\n\033ScanShieldedTRC20" +
-      "NotesByOvk\022#.protocol.OvkDecryptTRC20Par" +
-      "ameters\032\033.protocol.DecryptNotesTRC20\"\000\022\\" +
-      "\n IsShieldedTRC20ContractNoteSpent\022\033.pro" +
-      "tocol.NfTRC20Parameters\032\031.protocol.Nulli" +
-      "fierResult\"\000\022N\n\027GetMarketOrderByAccount\022" +
-      "\026.protocol.BytesMessage\032\031.protocol.Marke" +
-      "tOrderList\"\000\022E\n\022GetMarketOrderById\022\026.pro" +
-      "tocol.BytesMessage\032\025.protocol.MarketOrde" +
-      "r\"\000\022N\n\024GetMarketPriceByPair\022\031.protocol.M" +
-      "arketOrderPair\032\031.protocol.MarketPriceLis" +
-      "t\"\000\022R\n\030GetMarketOrderListByPair\022\031.protoc" +
-      "ol.MarketOrderPair\032\031.protocol.MarketOrde" +
-      "rList\"\000\022L\n\021GetMarketPairList\022\026.protocol." +
-      "EmptyMessage\032\035.protocol.MarketOrderPairL" +
-      "ist\"\000\022H\n\022GetTransactionSign\022\031.protocol.T" +
-      "ransactionSign\032\025.protocol.Transaction\"\000\022" +
-      "R\n\023GetTransactionSign2\022\031.protocol.Transa" +
-      "ctionSign\032\036.protocol.TransactionExtentio" +
-      "n\"\000\022Y\n\021EasyTransferAsset\022\".protocol.Easy" +
-      "TransferAssetMessage\032\036.protocol.EasyTran" +
-      "sferResponse\"\000\022k\n\032EasyTransferAssetByPri" +
-      "vate\022+.protocol.EasyTransferAssetByPriva" +
-      "teMessage\032\036.protocol.EasyTransferRespons" +
-      "e\"\000\022O\n\014EasyTransfer\022\035.protocol.EasyTrans" +
-      "ferMessage\032\036.protocol.EasyTransferRespon" +
-      "se\"\000\022a\n\025EasyTransferByPrivate\022&.protocol" +
-      ".EasyTransferByPrivateMessage\032\036.protocol" +
-      ".EasyTransferResponse\"\000\022A\n\rCreateAddress" +
-      "\022\026.protocol.BytesMessage\032\026.protocol.Byte" +
-      "sMessage\"\000\022N\n\017GenerateAddress\022\026.protocol" +
-      ".EmptyMessage\032!.protocol.AddressPrKeyPai" +
-      "rMessage\"\000\022F\n\007AddSign\022\031.protocol.Transac" +
-      "tionSign\032\036.protocol.TransactionExtention" +
-      "\"\000\022B\n\016GetSpendingKey\022\026.protocol.EmptyMes" +
-      "sage\032\026.protocol.BytesMessage\"\000\022X\n\026GetExp" +
-      "andedSpendingKey\022\026.protocol.BytesMessage" +
-      "\032$.protocol.ExpandedSpendingKeyMessage\"\000" +
-      "\022@\n\014GetAkFromAsk\022\026.protocol.BytesMessage" +
-      "\032\026.protocol.BytesMessage\"\000\022@\n\014GetNkFromN" +
-      "sk\022\026.protocol.BytesMessage\032\026.protocol.By" +
-      "tesMessage\"\000\022[\n\025GetIncomingViewingKey\022\033." +
-      "protocol.ViewingKeyMessage\032#.protocol.In" +
-      "comingViewingKeyMessage\"\000\022H\n\016GetDiversif" +
-      "ier\022\026.protocol.EmptyMessage\032\034.protocol.D" +
-      "iversifierMessage\"\000\022i\n\024GetZenPaymentAddr" +
-      "ess\022..protocol.IncomingViewingKeyDiversi" +
-      "fierMessage\032\037.protocol.PaymentAddressMes" +
-      "sage\"\000\022P\n\025GetNewShieldedAddress\022\026.protoc" +
-      "ol.EmptyMessage\032\035.protocol.ShieldedAddre" +
-      "ssInfo\"\000\022:\n\006GetRcm\022\026.protocol.EmptyMessa" +
-      "ge\032\026.protocol.BytesMessage\"\000\022q\n CreateSh" +
-      "ieldedContractParameters\022(.protocol.Priv" +
-      "ateShieldedTRC20Parameters\032!.protocol.Sh" +
-      "ieldedTRC20Parameters\"\000\022\205\001\n*CreateShield" +
-      "edContractParametersWithoutAsk\0222.protoco" +
-      "l.PrivateShieldedTRC20ParametersWithoutA" +
-      "sk\032!.protocol.ShieldedTRC20Parameters\"\000\022" +
-      "u\n\'GetTriggerInputForShieldedTRC20Contra" +
-      "ct\0220.protocol.ShieldedTRC20TriggerContra" +
-      "ctParameters\032\026.protocol.BytesMessage\"\000\022\204" +
-      "\001\n\031GetAvailableUnfreezeCount\0221.protocol." +
-      "GetAvailableUnfreezeCountRequestMessage\032" +
-      "2.protocol.GetAvailableUnfreezeCountResp" +
-      "onseMessage\"\000\022\207\001\n\034GetCanWithdrawUnfreeze" +
-      "Amount\0221.protocol.CanWithdrawUnfreezeAmo" +
-      "untRequestMessage\0322.protocol.CanWithdraw" +
-      "UnfreezeAmountResponseMessage\"\000\022u\n\026GetCa" +
-      "nDelegatedMaxSize\022+.protocol.CanDelegate" +
-      "dMaxSizeRequestMessage\032,.protocol.CanDel" +
-      "egatedMaxSizeResponseMessage\"\000\022_\n\026GetDel" +
-      "egatedResourceV2\022\".protocol.DelegatedRes" +
-      "ourceMessage\032\037.protocol.DelegatedResourc" +
-      "eList\"\000\022g\n\"GetDelegatedResourceAccountIn" +
-      "dexV2\022\026.protocol.BytesMessage\032\'.protocol" +
-      ".DelegatedResourceAccountIndex\"\0002\243\002\n\016Wal" +
-      "letSolidity\022B\n\nGetAccount\022\037.protocol.Acc" +
-      "ountAddressMessage\032\021.protocol.Account\"\000\022" +
+      "oto\032\023core/response.proto\032\031core/newTransa" +
+      "ction.proto\"%\n\020BrokerageMessage\022\021\n\tbroke" +
+      "rage\030\001 \001(\r\"!\n\016InputBrokerage\022\017\n\007address\030" +
+      "\001 \001(\t\"+\n\032Transactioncountbyblocknum\022\r\n\005c" +
+      "ount\030\001 \001(\r\"\016\n\014EmptyMessage\"\034\n\rNumberMess" +
+      "age\022\013\n\003num\030\001 \001(\003\"\035\n\014BytesMessage\022\r\n\005valu" +
+      "e\030\001 \001(\014\"\033\n\rProposalInput\022\n\n\002id\030\001 \001(\r\".\n\n" +
+      "BlockLimit\022\020\n\010startNum\030\001 \001(\003\022\016\n\006endNum\030\002" +
+      " \001(\003\"(\n\025AccountAddressMessage\022\017\n\007address" +
+      "\030\003 \001(\014\"\036\n\020AccountIdMessage\022\n\n\002id\030\027 \001(\014\"1" +
+      "\n\020PaginatedMessage\022\016\n\006offset\030\001 \001(\003\022\r\n\005li" +
+      "mit\030\002 \001(\003\"L\n\023EasyTransferMessage\022\022\n\npass" +
+      "Phrase\030\001 \001(\014\022\021\n\ttoAddress\030\002 \001(\014\022\016\n\006amoun" +
+      "t\030\003 \001(\003\"b\n\030EasyTransferAssetMessage\022\022\n\np" +
+      "assPhrase\030\001 \001(\014\022\021\n\ttoAddress\030\002 \001(\014\022\017\n\007as" +
+      "setId\030\003 \001(\t\022\016\n\006amount\030\004 \001(\003\"U\n\034EasyTrans" +
+      "ferByPrivateMessage\022\022\n\nprivateKey\030\001 \001(\014\022" +
+      "\021\n\ttoAddress\030\002 \001(\014\022\016\n\006amount\030\003 \001(\003\"k\n!Ea" +
+      "syTransferAssetByPrivateMessage\022\022\n\npriva" +
+      "teKey\030\001 \001(\014\022\021\n\ttoAddress\030\002 \001(\014\022\017\n\007assetI" +
+      "d\030\003 \001(\t\022\016\n\006amount\030\004 \001(\003\"+\n\021ViewingKeyMes" +
+      "sage\022\n\n\002ak\030\001 \001(\014\022\n\n\002nk\030\002 \001(\014\"\236\001\n\023Shielde" +
+      "dAddressInfo\022\n\n\002sk\030\001 \001(\014\022\013\n\003ask\030\002 \001(\014\022\013\n" +
+      "\003nsk\030\003 \001(\014\022\013\n\003ovk\030\004 \001(\014\022\n\n\002ak\030\005 \001(\014\022\n\n\002n" +
+      "k\030\006 \001(\014\022\013\n\003ivk\030\007 \001(\014\022\t\n\001d\030\010 \001(\014\022\013\n\003pkD\030\t" +
+      " \001(\014\022\027\n\017payment_address\030\n \001(\t\"f\n\025Payment" +
+      "AddressMessage\022\'\n\001d\030\001 \001(\0132\034.protocol.Div" +
+      "ersifierMessage\022\013\n\003pkD\030\002 \001(\014\022\027\n\017payment_" +
+      "address\030\003 \001(\t\"\037\n\022DiversifierMessage\022\t\n\001d" +
+      "\030\001 \001(\014\"C\n\032ExpandedSpendingKeyMessage\022\013\n\003" +
+      "ask\030\001 \001(\014\022\013\n\003nsk\030\002 \001(\014\022\013\n\003ovk\030\003 \001(\014\"(\n\031I" +
+      "ncomingViewingKeyMessage\022\013\n\003ivk\030\001 \001(\014\"\201\001" +
+      "\n$IncomingViewingKeyDiversifierMessage\0220" +
+      "\n\003ivk\030\001 \001(\0132#.protocol.IncomingViewingKe" +
+      "yMessage\022\'\n\001d\030\002 \001(\0132\034.protocol.Diversifi" +
+      "erMessage\"+\n\013ReceiveNote\022\034\n\004note\030\001 \001(\0132\016" +
+      ".protocol.Note\"f\n\016SpendNoteTRC20\022\034\n\004note" +
+      "\030\001 \001(\0132\016.protocol.Note\022\r\n\005alpha\030\002 \001(\014\022\014\n" +
+      "\004root\030\003 \001(\014\022\014\n\004path\030\004 \001(\014\022\013\n\003pos\030\005 \001(\003\"\235" +
+      "\002\n\036PrivateShieldedTRC20Parameters\022\013\n\003ask" +
+      "\030\001 \001(\014\022\013\n\003nsk\030\002 \001(\014\022\013\n\003ovk\030\003 \001(\014\022\023\n\013from" +
+      "_amount\030\004 \001(\t\0221\n\017shielded_spends\030\005 \003(\0132\030" +
+      ".protocol.SpendNoteTRC20\0220\n\021shielded_rec" +
+      "eives\030\006 \003(\0132\025.protocol.ReceiveNote\022\036\n\026tr" +
+      "ansparent_to_address\030\007 \001(\014\022\021\n\tto_amount\030" +
+      "\010 \001(\t\022\'\n\037shielded_TRC20_contract_address" +
+      "\030\t \001(\014\"\246\002\n(PrivateShieldedTRC20Parameter" +
+      "sWithoutAsk\022\n\n\002ak\030\001 \001(\014\022\013\n\003nsk\030\002 \001(\014\022\013\n\003" +
+      "ovk\030\003 \001(\014\022\023\n\013from_amount\030\004 \001(\t\0221\n\017shield" +
+      "ed_spends\030\005 \003(\0132\030.protocol.SpendNoteTRC2" +
+      "0\0220\n\021shielded_receives\030\006 \003(\0132\025.protocol." +
+      "ReceiveNote\022\036\n\026transparent_to_address\030\007 " +
+      "\001(\014\022\021\n\tto_amount\030\010 \001(\t\022\'\n\037shielded_TRC20" +
+      "_contract_address\030\t \001(\014\"\217\001\n\020SpendDescrip" +
+      "tion\022\030\n\020value_commitment\030\001 \001(\014\022\016\n\006anchor" +
+      "\030\002 \001(\014\022\021\n\tnullifier\030\003 \001(\014\022\n\n\002rk\030\004 \001(\014\022\017\n" +
+      "\007zkproof\030\005 \001(\014\022!\n\031spend_authority_signat" +
+      "ure\030\006 \001(\014\"\203\001\n\022ReceiveDescription\022\030\n\020valu" +
+      "e_commitment\030\001 \001(\014\022\027\n\017note_commitment\030\002 " +
+      "\001(\014\022\013\n\003epk\030\003 \001(\014\022\r\n\005c_enc\030\004 \001(\014\022\r\n\005c_out" +
+      "\030\005 \001(\014\022\017\n\007zkproof\030\006 \001(\014\"\364\001\n\027ShieldedTRC2" +
+      "0Parameters\0225\n\021spend_description\030\001 \003(\0132\032" +
+      ".protocol.SpendDescription\0229\n\023receive_de" +
+      "scription\030\002 \003(\0132\034.protocol.ReceiveDescri" +
+      "ption\022\031\n\021binding_signature\030\003 \001(\014\022\024\n\014mess" +
+      "age_hash\030\004 \001(\014\022\036\n\026trigger_contract_input" +
+      "\030\005 \001(\t\022\026\n\016parameter_type\030\006 \001(\t\"\255\001\n\031IvkDe" +
+      "cryptTRC20Parameters\022\031\n\021start_block_inde" +
+      "x\030\001 \001(\003\022\027\n\017end_block_index\030\002 \001(\003\022\'\n\037shie" +
+      "lded_TRC20_contract_address\030\003 \001(\014\022\013\n\003ivk" +
+      "\030\004 \001(\014\022\n\n\002ak\030\005 \001(\014\022\n\n\002nk\030\006 \001(\014\022\016\n\006events" +
+      "\030\007 \003(\t\"\225\001\n\031OvkDecryptTRC20Parameters\022\031\n\021" +
+      "start_block_index\030\001 \001(\003\022\027\n\017end_block_ind" +
+      "ex\030\002 \001(\003\022\013\n\003ovk\030\003 \001(\014\022\'\n\037shielded_TRC20_" +
+      "contract_address\030\004 \001(\014\022\016\n\006events\030\005 \003(\t\"\204" +
+      "\001\n\021NfTRC20Parameters\022\034\n\004note\030\001 \001(\0132\016.pro" +
+      "tocol.Note\022\n\n\002ak\030\002 \001(\014\022\n\n\002nk\030\003 \001(\014\022\020\n\010po" +
+      "sition\030\004 \001(\003\022\'\n\037shielded_TRC20_contract_" +
+      "address\030\005 \001(\014\"\331\001\n&ShieldedTRC20TriggerCo" +
+      "ntractParameters\022D\n\031shielded_TRC20_Param" +
+      "eters\030\001 \001(\0132!.protocol.ShieldedTRC20Para" +
+      "meters\0229\n\031spend_authority_signature\030\002 \003(" +
+      "\0132\026.protocol.BytesMessage\022\016\n\006amount\030\003 \001(" +
+      "\t\022\036\n\026transparent_to_address\030\004 \001(\014\"S\n\'Can" +
+      "WithdrawUnfreezeAmountRequestMessage\022\025\n\r" +
+      "owner_address\030\001 \001(\014\022\021\n\ttimestamp\030\002 \001(\003\"@" +
+      "\n\'GetAvailableUnfreezeCountRequestMessag" +
+      "e\022\025\n\rowner_address\030\001 \001(\014\"9\n(GetAvailable" +
+      "UnfreezeCountResponseMessage\022\r\n\005count\030\001 " +
+      "\001(\003\":\n(CanWithdrawUnfreezeAmountResponse" +
+      "Message\022\016\n\006amount\030\001 \001(\003\"H\n!CanDelegatedM" +
+      "axSizeRequestMessage\022\014\n\004type\030\001 \001(\005\022\025\n\row" +
+      "ner_address\030\002 \001(\014\"6\n\"CanDelegatedMaxSize" +
+      "ResponseMessage\022\020\n\010max_size\030\001 \001(\0032\215L\n\006Wa" +
+      "llet\022L\n\024BroadcastTransaction\022\025.protocol." +
+      "Transaction\032\033.protocol.TransactionReturn" +
+      "\"\000\022R\n\027CreateCommonTransaction\022\025.protocol" +
+      ".Transaction\032\036.protocol.TransactionExten" +
+      "tion\"\000\022I\n\rCreateAccount\022\037.protocol.Accou" +
+      "ntCreateContract\032\025.protocol.Transaction\"" +
+      "\000\022S\n\016CreateAccount2\022\037.protocol.AccountCr" +
+      "eateContract\032\036.protocol.TransactionExten" +
+      "tion\"\000\022I\n\rUpdateAccount\022\037.protocol.Accou" +
+      "ntUpdateContract\032\025.protocol.Transaction\"" +
+      "\000\022S\n\016UpdateAccount2\022\037.protocol.AccountUp" +
+      "dateContract\032\036.protocol.TransactionExten" +
+      "tion\"\000\022G\n\014SetAccountId\022\036.protocol.SetAcc" +
+      "ountIdContract\032\025.protocol.Transaction\"\000\022" +
+      "f\n\027AccountPermissionUpdate\022).protocol.Ac" +
+      "countPermissionUpdateContract\032\036.protocol" +
+      ".TransactionExtention\"\000\022H\n\021CreateTransac" +
+      "tion\022\032.protocol.TransferContract\032\025.proto" +
+      "col.Transaction\"\000\022R\n\022CreateTransaction2\022" +
+      "\032.protocol.TransferContract\032\036.protocol.T" +
+      "ransactionExtention\"\000\022L\n\022CreateTransacti" +
+      "on3\022\032.protocol.TransferContract\032\030.protoc" +
+      "ol.NewTransaction\"\000\022I\n\020CreateAssetIssue\022" +
+      "\034.protocol.AssetIssueContract\032\025.protocol" +
+      ".Transaction\"\000\022S\n\021CreateAssetIssue2\022\034.pr" +
+      "otocol.AssetIssueContract\032\036.protocol.Tra" +
+      "nsactionExtention\"\000\022E\n\013UpdateAsset\022\035.pro" +
+      "tocol.UpdateAssetContract\032\025.protocol.Tra" +
+      "nsaction\"\000\022O\n\014UpdateAsset2\022\035.protocol.Up" +
+      "dateAssetContract\032\036.protocol.Transaction" +
+      "Extention\"\000\022I\n\rTransferAsset\022\037.protocol." +
+      "TransferAssetContract\032\025.protocol.Transac" +
+      "tion\"\000\022S\n\016TransferAsset2\022\037.protocol.Tran" +
+      "sferAssetContract\032\036.protocol.Transaction" +
+      "Extention\"\000\022Y\n\025ParticipateAssetIssue\022\'.p" +
+      "rotocol.ParticipateAssetIssueContract\032\025." +
+      "protocol.Transaction\"\000\022c\n\026ParticipateAss" +
+      "etIssue2\022\'.protocol.ParticipateAssetIssu" +
+      "eContract\032\036.protocol.TransactionExtentio" +
+      "n\"\000\022I\n\rUnfreezeAsset\022\037.protocol.Unfreeze" +
+      "AssetContract\032\025.protocol.Transaction\"\000\022S" +
+      "\n\016UnfreezeAsset2\022\037.protocol.UnfreezeAsse" +
+      "tContract\032\036.protocol.TransactionExtentio" +
+      "n\"\000\022I\n\rCreateWitness\022\037.protocol.WitnessC" +
+      "reateContract\032\025.protocol.Transaction\"\000\022S" +
+      "\n\016CreateWitness2\022\037.protocol.WitnessCreat" +
+      "eContract\032\036.protocol.TransactionExtentio" +
+      "n\"\000\022I\n\rUpdateWitness\022\037.protocol.WitnessU" +
+      "pdateContract\032\025.protocol.Transaction\"\000\022S" +
+      "\n\016UpdateWitness2\022\037.protocol.WitnessUpdat" +
+      "eContract\032\036.protocol.TransactionExtentio" +
+      "n\"\000\022V\n\017UpdateBrokerage\022!.protocol.Update" +
+      "BrokerageContract\032\036.protocol.Transaction" +
+      "Extention\"\000\022L\n\022VoteWitnessAccount\022\035.prot" +
+      "ocol.VoteWitnessContract\032\025.protocol.Tran" +
+      "saction\"\000\022V\n\023VoteWitnessAccount2\022\035.proto" +
+      "col.VoteWitnessContract\032\036.protocol.Trans" +
+      "actionExtention\"\000\022I\n\rFreezeBalance\022\037.pro" +
+      "tocol.FreezeBalanceContract\032\025.protocol.T" +
+      "ransaction\"\000\022S\n\016FreezeBalance2\022\037.protoco" +
+      "l.FreezeBalanceContract\032\036.protocol.Trans" +
+      "actionExtention\"\000\022M\n\017UnfreezeBalance\022!.p" +
+      "rotocol.UnfreezeBalanceContract\032\025.protoc" +
+      "ol.Transaction\"\000\022W\n\020UnfreezeBalance2\022!.p" +
+      "rotocol.UnfreezeBalanceContract\032\036.protoc" +
+      "ol.TransactionExtention\"\000\022M\n\017WithdrawBal" +
+      "ance\022!.protocol.WithdrawBalanceContract\032" +
+      "\025.protocol.Transaction\"\000\022W\n\020WithdrawBala" +
+      "nce2\022!.protocol.WithdrawBalanceContract\032" +
+      "\036.protocol.TransactionExtention\"\000\022T\n\016Pro" +
+      "posalCreate\022 .protocol.ProposalCreateCon" +
+      "tract\032\036.protocol.TransactionExtention\"\000\022" +
+      "V\n\017ProposalApprove\022!.protocol.ProposalAp" +
+      "proveContract\032\036.protocol.TransactionExte" +
+      "ntion\"\000\022T\n\016ProposalDelete\022 .protocol.Pro" +
+      "posalDeleteContract\032\036.protocol.Transacti" +
+      "onExtention\"\000\022Q\n\016DeployContract\022\035.protoc" +
+      "ol.CreateSmartContract\032\036.protocol.Transa" +
+      "ctionExtention\"\000\022S\n\017TriggerContract\022\036.pr" +
+      "otocol.TriggerSmartContract\032\036.protocol.T" +
+      "ransactionExtention\"\000\022[\n\027TriggerConstant" +
+      "Contract\022\036.protocol.TriggerSmartContract" +
+      "\032\036.protocol.TransactionExtention\"\000\022;\n\013Ge" +
+      "tNodeInfo\022\026.protocol.EmptyMessage\032\022.prot" +
+      "ocol.NodeInfo\"\000\0229\n\tListNodes\022\026.protocol." +
+      "EmptyMessage\032\022.protocol.NodeList\"\000\022I\n\022Ge" +
+      "tChainParameters\022\026.protocol.EmptyMessage" +
+      "\032\031.protocol.ChainParameters\"\000\022E\n\020TotalTr" +
+      "ansaction\022\026.protocol.EmptyMessage\032\027.prot" +
+      "ocol.NumberMessage\"\000\022K\n\026GetNextMaintenan" +
+      "ceTime\022\026.protocol.EmptyMessage\032\027.protoco" +
+      "l.NumberMessage\"\000\022T\n\030GetTransactionSignW" +
+      "eight\022\025.protocol.Transaction\032\037.protocol." +
+      "TransactionSignWeight\"\000\022X\n\032GetTransactio" +
+      "nApprovedList\022\025.protocol.Transaction\032!.p" +
+      "rotocol.TransactionApprovedList\"\000\022B\n\nGet" +
+      "Account\022\037.protocol.AccountAddressMessage" +
+      "\032\021.protocol.Account\"\000\022A\n\016GetAccountById\022" +
+      "\032.protocol.AccountIdMessage\032\021.protocol.A" +
+      "ccount\"\000\022O\n\rGetAccountNet\022\037.protocol.Acc" +
+      "ountAddressMessage\032\033.protocol.AccountNet" +
+      "Message\"\000\022Y\n\022GetAccountResource\022\037.protoc" +
+      "ol.AccountAddressMessage\032 .protocol.Acco" +
+      "untResourceMessage\"\000\022U\n\026GetAssetIssueByA" +
+      "ccount\022\037.protocol.AccountAddressMessage\032" +
+      "\030.protocol.AssetIssueList\"\000\022M\n\023GetAssetI" +
+      "ssueByName\022\026.protocol.BytesMessage\032\034.pro" +
+      "tocol.AssetIssueContract\"\000\022M\n\027GetAssetIs" +
+      "sueListByName\022\026.protocol.BytesMessage\032\030." +
+      "protocol.AssetIssueList\"\000\022K\n\021GetAssetIss" +
+      "ueById\022\026.protocol.BytesMessage\032\034.protoco" +
+      "l.AssetIssueContract\"\000\022G\n\021GetAssetIssueL" +
+      "ist\022\026.protocol.EmptyMessage\032\030.protocol.A" +
+      "ssetIssueList\"\000\022T\n\032GetPaginatedAssetIssu" +
+      "eList\022\032.protocol.PaginatedMessage\032\030.prot" +
+      "ocol.AssetIssueList\"\000\0228\n\013GetNowBlock\022\026.p" +
+      "rotocol.EmptyMessage\032\017.protocol.Block\"\000\022" +
       "B\n\014GetNowBlock2\022\026.protocol.EmptyMessage\032" +
-      "\030.protocol.BlockExtention\"\000\022E\n\022GetTransa" +
-      "ctionById\022\026.protocol.BytesMessage\032\025.prot" +
-      "ocol.Transaction\"\000\022B\n\rGetRewardInfo\022\026.pr" +
-      "otocol.BytesMessage\032\027.protocol.NumberMes" +
-      "sage\"\000B\036\n\023org.lgcy.Legacy.apiB\007GrpcAPIb\006" +
-      "proto3"
+      "\030.protocol.BlockExtention\"\000\022;\n\rGetBlockB" +
+      "yNum\022\027.protocol.NumberMessage\032\017.protocol" +
+      ".Block\"\000\022E\n\016GetBlockByNum2\022\027.protocol.Nu" +
+      "mberMessage\032\030.protocol.BlockExtention\"\000\022" +
+      "9\n\014GetBlockById\022\026.protocol.BytesMessage\032" +
+      "\017.protocol.Block\"\000\022B\n\023GetBlockByLimitNex" +
+      "t\022\024.protocol.BlockLimit\032\023.protocol.Block" +
+      "List\"\000\022L\n\024GetBlockByLimitNext2\022\024.protoco" +
+      "l.BlockLimit\032\034.protocol.BlockListExtenti" +
+      "on\"\000\022E\n\023GetBlockByLatestNum\022\027.protocol.N" +
+      "umberMessage\032\023.protocol.BlockList\"\000\022O\n\024G" +
+      "etBlockByLatestNum2\022\027.protocol.NumberMes" +
+      "sage\032\034.protocol.BlockListExtention\"\000\022`\n\035" +
+      "GetTransactionCountByBlockNum\022\027.protocol" +
+      ".NumberMessage\032$.protocol.Transactioncou" +
+      "ntbyblocknum\"\000\022E\n\022GetTransactionById\022\026.p" +
+      "rotocol.BytesMessage\032\025.protocol.Transact" +
+      "ion\"\000\022M\n\026GetTransactionInfoById\022\026.protoc" +
+      "ol.BytesMessage\032\031.protocol.TransactionIn" +
+      "fo\"\000\022X\n\034GetTransactionInfoByBlockNum\022\027.p" +
+      "rotocol.NumberMessage\032\035.protocol.Transac" +
+      "tionInfoList\"\000\022@\n\013GetContract\022\026.protocol" +
+      ".BytesMessage\032\027.protocol.SmartContract\"\000" +
+      "\022O\n\017GetContractInfo\022\026.protocol.BytesMess" +
+      "age\032\".protocol.SmartContractDataWrapper\"" +
+      "\000\022@\n\rListWitnesses\022\026.protocol.EmptyMessa" +
+      "ge\032\025.protocol.WitnessList\"\000\022E\n\020GetBroker" +
+      "ageInfo\022\026.protocol.BytesMessage\032\027.protoc" +
+      "ol.NumberMessage\"\000\022F\n\014GetBrokerage\022\030.pro" +
+      "tocol.InputBrokerage\032\032.protocol.Brokerag" +
+      "eMessage\"\000\022B\n\rGetRewardInfo\022\026.protocol.B" +
+      "ytesMessage\032\027.protocol.NumberMessage\"\000\022]" +
+      "\n\024GetDelegatedResource\022\".protocol.Delega" +
+      "tedResourceMessage\032\037.protocol.DelegatedR" +
+      "esourceList\"\000\022e\n GetDelegatedResourceAcc" +
+      "ountIndex\022\026.protocol.BytesMessage\032\'.prot" +
+      "ocol.DelegatedResourceAccountIndex\"\000\022A\n\r" +
+      "ListProposals\022\026.protocol.EmptyMessage\032\026." +
+      "protocol.ProposalList\"\000\022@\n\017GetProposalBy" +
+      "Id\022\027.protocol.ProposalInput\032\022.protocol.P" +
+      "roposal\"\000\022P\n\030GetPaginatedProposalList\022\032." +
+      "protocol.PaginatedMessage\032\026.protocol.Pro" +
+      "posalList\"\000\022A\n\rListExchanges\022\026.protocol." +
+      "EmptyMessage\032\026.protocol.ExchangeList\"\000\022?" +
+      "\n\017GetExchangeById\022\026.protocol.BytesMessag" +
+      "e\032\022.protocol.Exchange\"\000\022P\n\030GetPaginatedE" +
+      "xchangeList\022\032.protocol.PaginatedMessage\032" +
+      "\026.protocol.ExchangeList\"\000\022a\n\033ScanShielde" +
+      "dTRC20NotesByIvk\022#.protocol.IvkDecryptTR" +
+      "C20Parameters\032\033.protocol.DecryptNotesTRC" +
+      "20\"\000\022a\n\033ScanShieldedTRC20NotesByOvk\022#.pr" +
+      "otocol.OvkDecryptTRC20Parameters\032\033.proto" +
+      "col.DecryptNotesTRC20\"\000\022\\\n IsShieldedTRC" +
+      "20ContractNoteSpent\022\033.protocol.NfTRC20Pa" +
+      "rameters\032\031.protocol.NullifierResult\"\000\022N\n" +
+      "\027GetMarketOrderByAccount\022\026.protocol.Byte" +
+      "sMessage\032\031.protocol.MarketOrderList\"\000\022E\n" +
+      "\022GetMarketOrderById\022\026.protocol.BytesMess" +
+      "age\032\025.protocol.MarketOrder\"\000\022N\n\024GetMarke" +
+      "tPriceByPair\022\031.protocol.MarketOrderPair\032" +
+      "\031.protocol.MarketPriceList\"\000\022R\n\030GetMarke" +
+      "tOrderListByPair\022\031.protocol.MarketOrderP" +
+      "air\032\031.protocol.MarketOrderList\"\000\022L\n\021GetM" +
+      "arketPairList\022\026.protocol.EmptyMessage\032\035." +
+      "protocol.MarketOrderPairList\"\000\022H\n\022GetTra" +
+      "nsactionSign\022\031.protocol.TransactionSign\032" +
+      "\025.protocol.Transaction\"\000\022R\n\023GetTransacti" +
+      "onSign2\022\031.protocol.TransactionSign\032\036.pro" +
+      "tocol.TransactionExtention\"\000\022Y\n\021EasyTran" +
+      "sferAsset\022\".protocol.EasyTransferAssetMe" +
+      "ssage\032\036.protocol.EasyTransferResponse\"\000\022" +
+      "k\n\032EasyTransferAssetByPrivate\022+.protocol" +
+      ".EasyTransferAssetByPrivateMessage\032\036.pro" +
+      "tocol.EasyTransferResponse\"\000\022O\n\014EasyTran" +
+      "sfer\022\035.protocol.EasyTransferMessage\032\036.pr" +
+      "otocol.EasyTransferResponse\"\000\022a\n\025EasyTra" +
+      "nsferByPrivate\022&.protocol.EasyTransferBy" +
+      "PrivateMessage\032\036.protocol.EasyTransferRe" +
+      "sponse\"\000\022A\n\rCreateAddress\022\026.protocol.Byt" +
+      "esMessage\032\026.protocol.BytesMessage\"\000\022N\n\017G" +
+      "enerateAddress\022\026.protocol.EmptyMessage\032!" +
+      ".protocol.AddressPrKeyPairMessage\"\000\022F\n\007A" +
+      "ddSign\022\031.protocol.TransactionSign\032\036.prot" +
+      "ocol.TransactionExtention\"\000\022B\n\016GetSpendi" +
+      "ngKey\022\026.protocol.EmptyMessage\032\026.protocol" +
+      ".BytesMessage\"\000\022X\n\026GetExpandedSpendingKe" +
+      "y\022\026.protocol.BytesMessage\032$.protocol.Exp" +
+      "andedSpendingKeyMessage\"\000\022@\n\014GetAkFromAs" +
+      "k\022\026.protocol.BytesMessage\032\026.protocol.Byt" +
+      "esMessage\"\000\022@\n\014GetNkFromNsk\022\026.protocol.B" +
+      "ytesMessage\032\026.protocol.BytesMessage\"\000\022[\n" +
+      "\025GetIncomingViewingKey\022\033.protocol.Viewin" +
+      "gKeyMessage\032#.protocol.IncomingViewingKe" +
+      "yMessage\"\000\022H\n\016GetDiversifier\022\026.protocol." +
+      "EmptyMessage\032\034.protocol.DiversifierMessa" +
+      "ge\"\000\022i\n\024GetZenPaymentAddress\022..protocol." +
+      "IncomingViewingKeyDiversifierMessage\032\037.p" +
+      "rotocol.PaymentAddressMessage\"\000\022P\n\025GetNe" +
+      "wShieldedAddress\022\026.protocol.EmptyMessage" +
+      "\032\035.protocol.ShieldedAddressInfo\"\000\022:\n\006Get" +
+      "Rcm\022\026.protocol.EmptyMessage\032\026.protocol.B" +
+      "ytesMessage\"\000\022q\n CreateShieldedContractP" +
+      "arameters\022(.protocol.PrivateShieldedTRC2" +
+      "0Parameters\032!.protocol.ShieldedTRC20Para" +
+      "meters\"\000\022\205\001\n*CreateShieldedContractParam" +
+      "etersWithoutAsk\0222.protocol.PrivateShield" +
+      "edTRC20ParametersWithoutAsk\032!.protocol.S" +
+      "hieldedTRC20Parameters\"\000\022u\n\'GetTriggerIn" +
+      "putForShieldedTRC20Contract\0220.protocol.S" +
+      "hieldedTRC20TriggerContractParameters\032\026." +
+      "protocol.BytesMessage\"\000\022\204\001\n\031GetAvailable" +
+      "UnfreezeCount\0221.protocol.GetAvailableUnf" +
+      "reezeCountRequestMessage\0322.protocol.GetA" +
+      "vailableUnfreezeCountResponseMessage\"\000\022\207" +
+      "\001\n\034GetCanWithdrawUnfreezeAmount\0221.protoc" +
+      "ol.CanWithdrawUnfreezeAmountRequestMessa" +
+      "ge\0322.protocol.CanWithdrawUnfreezeAmountR" +
+      "esponseMessage\"\000\022u\n\026GetCanDelegatedMaxSi" +
+      "ze\022+.protocol.CanDelegatedMaxSizeRequest" +
+      "Message\032,.protocol.CanDelegatedMaxSizeRe" +
+      "sponseMessage\"\000\022_\n\026GetDelegatedResourceV" +
+      "2\022\".protocol.DelegatedResourceMessage\032\037." +
+      "protocol.DelegatedResourceList\"\000\022g\n\"GetD" +
+      "elegatedResourceAccountIndexV2\022\026.protoco" +
+      "l.BytesMessage\032\'.protocol.DelegatedResou" +
+      "rceAccountIndex\"\0002\243\002\n\016WalletSolidity\022B\n\n" +
+      "GetAccount\022\037.protocol.AccountAddressMess" +
+      "age\032\021.protocol.Account\"\000\022B\n\014GetNowBlock2" +
+      "\022\026.protocol.EmptyMessage\032\030.protocol.Bloc" +
+      "kExtention\"\000\022E\n\022GetTransactionById\022\026.pro" +
+      "tocol.BytesMessage\032\025.protocol.Transactio" +
+      "n\"\000\022B\n\rGetRewardInfo\022\026.protocol.BytesMes" +
+      "sage\032\027.protocol.NumberMessage\"\000B\036\n\023org.l" +
+      "gcy.Legacy.apiB\007GrpcAPIb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -29992,6 +29994,7 @@ public final class GrpcAPI {
           org.lgcy.Legacy.proto.Chain.getDescriptor(),
           org.lgcy.Legacy.proto.Contract.getDescriptor(),
           org.lgcy.Legacy.proto.Response.getDescriptor(),
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.getDescriptor(),
         });
     internal_static_protocol_BrokerageMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -30231,6 +30234,7 @@ public final class GrpcAPI {
     org.lgcy.Legacy.proto.Chain.getDescriptor();
     org.lgcy.Legacy.proto.Contract.getDescriptor();
     org.lgcy.Legacy.proto.Response.getDescriptor();
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
