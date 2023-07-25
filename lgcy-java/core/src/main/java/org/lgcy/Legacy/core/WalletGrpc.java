@@ -58,6 +58,37 @@ public final class WalletGrpc {
     return getBroadcastTransactionMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction,
+          org.lgcy.Legacy.proto.Chain.TransactionReturnData> getBroadcastTransactionDataMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+          fullMethodName = SERVICE_NAME + '/' + "BroadcastTransactionData",
+          requestType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
+          responseType = org.lgcy.Legacy.proto.Chain.TransactionReturnData.class,
+          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction,
+          org.lgcy.Legacy.proto.Chain.TransactionReturnData> getBroadcastTransactionDataMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.Chain.TransactionReturnData> getBroadcastTransactionDataMethod;
+    if ((getBroadcastTransactionDataMethod = WalletGrpc.getBroadcastTransactionDataMethod) == null) {
+      synchronized (WalletGrpc.class) {
+        if ((getBroadcastTransactionDataMethod = WalletGrpc.getBroadcastTransactionDataMethod) == null) {
+          WalletGrpc.getBroadcastTransactionDataMethod = getBroadcastTransactionDataMethod =
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.Chain.TransactionReturnData>newBuilder()
+                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "BroadcastTransactionData"))
+                          .setSampledToLocalTracing(true)
+                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
+                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                  org.lgcy.Legacy.proto.Chain.TransactionReturnData.getDefaultInstance()))
+                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("BroadcastTransactionData"))
+                          .build();
+        }
+      }
+    }
+    return getBroadcastTransactionDataMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Chain.Transaction,
           org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateCommonTransactionMethod;
 
@@ -90,28 +121,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountCreateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getCreateAccountMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateAccountMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "CreateAccount",
           requestType = org.lgcy.Legacy.proto.Contract.AccountCreateContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountCreateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getCreateAccountMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountCreateContract, org.lgcy.Legacy.proto.Chain.Transaction> getCreateAccountMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateAccountMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountCreateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateAccountMethod;
     if ((getCreateAccountMethod = WalletGrpc.getCreateAccountMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getCreateAccountMethod = WalletGrpc.getCreateAccountMethod) == null) {
           WalletGrpc.getCreateAccountMethod = getCreateAccountMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountCreateContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountCreateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateAccount"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.AccountCreateContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateAccount"))
                           .build();
         }
@@ -152,65 +183,34 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getUpdateAccountMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateAccountMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "UpdateAccount",
           requestType = org.lgcy.Legacy.proto.Contract.AccountUpdateContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getUpdateAccountMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract, org.lgcy.Legacy.proto.Chain.Transaction> getUpdateAccountMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateAccountMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateAccountMethod;
     if ((getUpdateAccountMethod = WalletGrpc.getUpdateAccountMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getUpdateAccountMethod = WalletGrpc.getUpdateAccountMethod) == null) {
           WalletGrpc.getUpdateAccountMethod = getUpdateAccountMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountUpdateContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountUpdateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateAccount"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.AccountUpdateContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UpdateAccount"))
                           .build();
         }
       }
     }
     return getUpdateAccountMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateAccount2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "UpdateAccount2",
-          requestType = org.lgcy.Legacy.proto.Contract.AccountUpdateContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateAccount2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountUpdateContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateAccount2Method;
-    if ((getUpdateAccount2Method = WalletGrpc.getUpdateAccount2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getUpdateAccount2Method = WalletGrpc.getUpdateAccount2Method) == null) {
-          WalletGrpc.getUpdateAccount2Method = getUpdateAccount2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountUpdateContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateAccount2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.AccountUpdateContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UpdateAccount2"))
-                          .build();
-        }
-      }
-    }
-    return getUpdateAccount2Method;
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.SetAccountIdContract,
@@ -245,28 +245,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getAccountPermissionUpdateMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getAccountPermissionUpdateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "AccountPermissionUpdate",
           requestType = org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getAccountPermissionUpdateMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getAccountPermissionUpdateMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getAccountPermissionUpdateMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getAccountPermissionUpdateMethod;
     if ((getAccountPermissionUpdateMethod = WalletGrpc.getAccountPermissionUpdateMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getAccountPermissionUpdateMethod = WalletGrpc.getAccountPermissionUpdateMethod) == null) {
           WalletGrpc.getAccountPermissionUpdateMethod = getAccountPermissionUpdateMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AccountPermissionUpdate"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("AccountPermissionUpdate"))
                           .build();
         }
@@ -276,28 +276,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getCreateTransactionMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransactionMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "CreateTransaction",
           requestType = org.lgcy.Legacy.proto.Contract.TransferContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getCreateTransactionMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.Chain.Transaction> getCreateTransactionMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransactionMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransactionMethod;
     if ((getCreateTransactionMethod = WalletGrpc.getCreateTransactionMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getCreateTransactionMethod = WalletGrpc.getCreateTransactionMethod) == null) {
           WalletGrpc.getCreateTransactionMethod = getCreateTransactionMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateTransaction"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.TransferContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateTransaction"))
                           .build();
         }
@@ -306,66 +306,35 @@ public final class WalletGrpc {
     return getCreateTransactionMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateTransaction2Method;
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getSignTransactionCreationMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "CreateTransaction2",
-          requestType = org.lgcy.Legacy.proto.Contract.TransferContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateTransaction2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateTransaction2Method;
-    if ((getCreateTransaction2Method = WalletGrpc.getCreateTransaction2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getCreateTransaction2Method = WalletGrpc.getCreateTransaction2Method) == null) {
-          WalletGrpc.getCreateTransaction2Method = getCreateTransaction2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateTransaction2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.TransferContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateTransaction2"))
-                          .build();
-        }
-      }
-    }
-    return getCreateTransaction2Method;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
-          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransaction3Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "CreateTransaction3",
-          requestType = org.lgcy.Legacy.proto.Contract.TransferContract.class,
+          fullMethodName = SERVICE_NAME + '/' + "SignTransactionCreation",
+          requestType = org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.class,
           responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract,
-          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransaction3Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateTransaction3Method;
-    if ((getCreateTransaction3Method = WalletGrpc.getCreateTransaction3Method) == null) {
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getSignTransactionCreationMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getSignTransactionCreationMethod;
+    if ((getSignTransactionCreationMethod = WalletGrpc.getSignTransactionCreationMethod) == null) {
       synchronized (WalletGrpc.class) {
-        if ((getCreateTransaction3Method = WalletGrpc.getCreateTransaction3Method) == null) {
-          WalletGrpc.getCreateTransaction3Method = getCreateTransaction3Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.TransferContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
+        if ((getSignTransactionCreationMethod = WalletGrpc.getSignTransactionCreationMethod) == null) {
+          WalletGrpc.getSignTransactionCreationMethod = getSignTransactionCreationMethod =
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateTransaction3"))
+                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SignTransactionCreation"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.TransferContract.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateTransaction3"))
+                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("SignTransactionCreation"))
                           .build();
         }
       }
     }
-    return getCreateTransaction3Method;
+    return getSignTransactionCreationMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.AssetIssueContract,
@@ -679,28 +648,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getCreateWitnessMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateWitnessMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "CreateWitness",
           requestType = org.lgcy.Legacy.proto.Contract.WitnessCreateContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getCreateWitnessMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract, org.lgcy.Legacy.proto.Chain.Transaction> getCreateWitnessMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateWitnessMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getCreateWitnessMethod;
     if ((getCreateWitnessMethod = WalletGrpc.getCreateWitnessMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getCreateWitnessMethod = WalletGrpc.getCreateWitnessMethod) == null) {
           WalletGrpc.getCreateWitnessMethod = getCreateWitnessMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WitnessCreateContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WitnessCreateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateWitness"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.WitnessCreateContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateWitness"))
                           .build();
         }
@@ -709,60 +678,29 @@ public final class WalletGrpc {
     return getCreateWitnessMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateWitness2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "CreateWitness2",
-          requestType = org.lgcy.Legacy.proto.Contract.WitnessCreateContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateWitness2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessCreateContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getCreateWitness2Method;
-    if ((getCreateWitness2Method = WalletGrpc.getCreateWitness2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getCreateWitness2Method = WalletGrpc.getCreateWitness2Method) == null) {
-          WalletGrpc.getCreateWitness2Method = getCreateWitness2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WitnessCreateContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateWitness2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.WitnessCreateContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateWitness2"))
-                          .build();
-        }
-      }
-    }
-    return getCreateWitness2Method;
-  }
-
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getUpdateWitnessMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateWitnessMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "UpdateWitness",
           requestType = org.lgcy.Legacy.proto.Contract.WitnessUpdateContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getUpdateWitnessMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract, org.lgcy.Legacy.proto.Chain.Transaction> getUpdateWitnessMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateWitnessMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateWitnessMethod;
     if ((getUpdateWitnessMethod = WalletGrpc.getUpdateWitnessMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getUpdateWitnessMethod = WalletGrpc.getUpdateWitnessMethod) == null) {
           WalletGrpc.getUpdateWitnessMethod = getUpdateWitnessMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateWitness"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.WitnessUpdateContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UpdateWitness"))
                           .build();
         }
@@ -771,60 +709,29 @@ public final class WalletGrpc {
     return getUpdateWitnessMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateWitness2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "UpdateWitness2",
-          requestType = org.lgcy.Legacy.proto.Contract.WitnessUpdateContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateWitness2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateWitness2Method;
-    if ((getUpdateWitness2Method = WalletGrpc.getUpdateWitness2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getUpdateWitness2Method = WalletGrpc.getUpdateWitness2Method) == null) {
-          WalletGrpc.getUpdateWitness2Method = getUpdateWitness2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WitnessUpdateContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateWitness2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.WitnessUpdateContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UpdateWitness2"))
-                          .build();
-        }
-      }
-    }
-    return getUpdateWitness2Method;
-  }
-
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateBrokerageMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateBrokerageMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "UpdateBrokerage",
           requestType = org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateBrokerageMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getUpdateBrokerageMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateBrokerageMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateBrokerageMethod;
     if ((getUpdateBrokerageMethod = WalletGrpc.getUpdateBrokerageMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getUpdateBrokerageMethod = WalletGrpc.getUpdateBrokerageMethod) == null) {
           WalletGrpc.getUpdateBrokerageMethod = getUpdateBrokerageMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateBrokerage"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UpdateBrokerage"))
                           .build();
         }
@@ -834,28 +741,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getVoteWitnessAccountMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getVoteWitnessAccountMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "VoteWitnessAccount",
           requestType = org.lgcy.Legacy.proto.Contract.VoteWitnessContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getVoteWitnessAccountMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract, org.lgcy.Legacy.proto.Chain.Transaction> getVoteWitnessAccountMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getVoteWitnessAccountMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getVoteWitnessAccountMethod;
     if ((getVoteWitnessAccountMethod = WalletGrpc.getVoteWitnessAccountMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getVoteWitnessAccountMethod = WalletGrpc.getVoteWitnessAccountMethod) == null) {
           WalletGrpc.getVoteWitnessAccountMethod = getVoteWitnessAccountMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.VoteWitnessContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.VoteWitnessContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "VoteWitnessAccount"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.VoteWitnessContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("VoteWitnessAccount"))
                           .build();
         }
@@ -864,60 +771,29 @@ public final class WalletGrpc {
     return getVoteWitnessAccountMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getVoteWitnessAccount2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "VoteWitnessAccount2",
-          requestType = org.lgcy.Legacy.proto.Contract.VoteWitnessContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getVoteWitnessAccount2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.VoteWitnessContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getVoteWitnessAccount2Method;
-    if ((getVoteWitnessAccount2Method = WalletGrpc.getVoteWitnessAccount2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getVoteWitnessAccount2Method = WalletGrpc.getVoteWitnessAccount2Method) == null) {
-          WalletGrpc.getVoteWitnessAccount2Method = getVoteWitnessAccount2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.VoteWitnessContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "VoteWitnessAccount2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.VoteWitnessContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("VoteWitnessAccount2"))
-                          .build();
-        }
-      }
-    }
-    return getVoteWitnessAccount2Method;
-  }
-
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getFreezeBalanceMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getFreezeBalanceMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "FreezeBalance",
           requestType = org.lgcy.Legacy.proto.Contract.FreezeBalanceContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getFreezeBalanceMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract, org.lgcy.Legacy.proto.Chain.Transaction> getFreezeBalanceMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getFreezeBalanceMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getFreezeBalanceMethod;
     if ((getFreezeBalanceMethod = WalletGrpc.getFreezeBalanceMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getFreezeBalanceMethod = WalletGrpc.getFreezeBalanceMethod) == null) {
           WalletGrpc.getFreezeBalanceMethod = getFreezeBalanceMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FreezeBalance"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.FreezeBalanceContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("FreezeBalance"))
                           .build();
         }
@@ -926,60 +802,29 @@ public final class WalletGrpc {
     return getFreezeBalanceMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getFreezeBalance2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "FreezeBalance2",
-          requestType = org.lgcy.Legacy.proto.Contract.FreezeBalanceContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getFreezeBalance2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getFreezeBalance2Method;
-    if ((getFreezeBalance2Method = WalletGrpc.getFreezeBalance2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getFreezeBalance2Method = WalletGrpc.getFreezeBalance2Method) == null) {
-          WalletGrpc.getFreezeBalance2Method = getFreezeBalance2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.FreezeBalanceContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "FreezeBalance2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.FreezeBalanceContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("FreezeBalance2"))
-                          .build();
-        }
-      }
-    }
-    return getFreezeBalance2Method;
-  }
-
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getUnfreezeBalanceMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUnfreezeBalanceMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "UnfreezeBalance",
           requestType = org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getUnfreezeBalanceMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract, org.lgcy.Legacy.proto.Chain.Transaction> getUnfreezeBalanceMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUnfreezeBalanceMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUnfreezeBalanceMethod;
     if ((getUnfreezeBalanceMethod = WalletGrpc.getUnfreezeBalanceMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getUnfreezeBalanceMethod = WalletGrpc.getUnfreezeBalanceMethod) == null) {
           WalletGrpc.getUnfreezeBalanceMethod = getUnfreezeBalanceMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UnfreezeBalance"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UnfreezeBalance"))
                           .build();
         }
@@ -988,60 +833,29 @@ public final class WalletGrpc {
     return getUnfreezeBalanceMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUnfreezeBalance2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "UnfreezeBalance2",
-          requestType = org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getUnfreezeBalance2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getUnfreezeBalance2Method;
-    if ((getUnfreezeBalance2Method = WalletGrpc.getUnfreezeBalance2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getUnfreezeBalance2Method = WalletGrpc.getUnfreezeBalance2Method) == null) {
-          WalletGrpc.getUnfreezeBalance2Method = getUnfreezeBalance2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UnfreezeBalance2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UnfreezeBalance2"))
-                          .build();
-        }
-      }
-    }
-    return getUnfreezeBalance2Method;
-  }
-
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getWithdrawBalanceMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getWithdrawBalanceMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "WithdrawBalance",
           requestType = org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract.class,
-          responseType = org.lgcy.Legacy.proto.Chain.Transaction.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract,
-          org.lgcy.Legacy.proto.Chain.Transaction> getWithdrawBalanceMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract, org.lgcy.Legacy.proto.Chain.Transaction> getWithdrawBalanceMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getWithdrawBalanceMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getWithdrawBalanceMethod;
     if ((getWithdrawBalanceMethod = WalletGrpc.getWithdrawBalanceMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getWithdrawBalanceMethod = WalletGrpc.getWithdrawBalanceMethod) == null) {
           WalletGrpc.getWithdrawBalanceMethod = getWithdrawBalanceMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract, org.lgcy.Legacy.proto.Chain.Transaction>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WithdrawBalance"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Chain.Transaction.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("WithdrawBalance"))
                           .build();
         }
@@ -1050,60 +864,60 @@ public final class WalletGrpc {
     return getWithdrawBalanceMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getWithdrawBalance2Method;
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateSettingContract,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateSettingMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "WithdrawBalance2",
-          requestType = org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
+          fullMethodName = SERVICE_NAME + '/' + "UpdateSetting",
+          requestType = org.lgcy.Legacy.proto.Contract.UpdateSettingContract.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getWithdrawBalance2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getWithdrawBalance2Method;
-    if ((getWithdrawBalance2Method = WalletGrpc.getWithdrawBalance2Method) == null) {
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateSettingContract,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateSettingMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.UpdateSettingContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getUpdateSettingMethod;
+    if ((getUpdateSettingMethod = WalletGrpc.getUpdateSettingMethod) == null) {
       synchronized (WalletGrpc.class) {
-        if ((getWithdrawBalance2Method = WalletGrpc.getWithdrawBalance2Method) == null) {
-          WalletGrpc.getWithdrawBalance2Method = getWithdrawBalance2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
+        if ((getUpdateSettingMethod = WalletGrpc.getUpdateSettingMethod) == null) {
+          WalletGrpc.getUpdateSettingMethod = getUpdateSettingMethod =
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.UpdateSettingContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "WithdrawBalance2"))
+                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateSetting"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.Contract.UpdateSettingContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("WithdrawBalance2"))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
+                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("UpdateSetting"))
                           .build();
         }
       }
     }
-    return getWithdrawBalance2Method;
+    return getUpdateSettingMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalCreateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalCreateMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalCreateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "ProposalCreate",
           requestType = org.lgcy.Legacy.proto.Contract.ProposalCreateContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalCreateContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalCreateMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalCreateContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalCreateMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalCreateMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalCreateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalCreateMethod;
     if ((getProposalCreateMethod = WalletGrpc.getProposalCreateMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getProposalCreateMethod = WalletGrpc.getProposalCreateMethod) == null) {
           WalletGrpc.getProposalCreateMethod = getProposalCreateMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.ProposalCreateContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.ProposalCreateContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProposalCreate"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.ProposalCreateContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("ProposalCreate"))
                           .build();
         }
@@ -1113,28 +927,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalApproveContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalApproveMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalApproveMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "ProposalApprove",
           requestType = org.lgcy.Legacy.proto.Contract.ProposalApproveContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalApproveContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalApproveMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalApproveContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalApproveMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalApproveMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalApproveContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalApproveMethod;
     if ((getProposalApproveMethod = WalletGrpc.getProposalApproveMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getProposalApproveMethod = WalletGrpc.getProposalApproveMethod) == null) {
           WalletGrpc.getProposalApproveMethod = getProposalApproveMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.ProposalApproveContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.ProposalApproveContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProposalApprove"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.ProposalApproveContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("ProposalApprove"))
                           .build();
         }
@@ -1144,28 +958,28 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalDeleteContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalDeleteMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
           fullMethodName = SERVICE_NAME + '/' + "ProposalDelete",
           requestType = org.lgcy.Legacy.proto.Contract.ProposalDeleteContract.class,
-          responseType = org.lgcy.Legacy.proto.Response.TransactionExtention.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalDeleteContract,
-          org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalDeleteMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalDeleteContract, org.lgcy.Legacy.proto.Response.TransactionExtention> getProposalDeleteMethod;
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalDeleteMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.ProposalDeleteContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getProposalDeleteMethod;
     if ((getProposalDeleteMethod = WalletGrpc.getProposalDeleteMethod) == null) {
       synchronized (WalletGrpc.class) {
         if ((getProposalDeleteMethod = WalletGrpc.getProposalDeleteMethod) == null) {
           WalletGrpc.getProposalDeleteMethod = getProposalDeleteMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.ProposalDeleteContract, org.lgcy.Legacy.proto.Response.TransactionExtention>newBuilder()
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.ProposalDeleteContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
                           .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProposalDelete"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                                   org.lgcy.Legacy.proto.Contract.ProposalDeleteContract.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.TransactionExtention.getDefaultInstance()))
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
                           .setSchemaDescriptor(new WalletMethodDescriptorSupplier("ProposalDelete"))
                           .build();
         }
@@ -1265,6 +1079,37 @@ public final class WalletGrpc {
       }
     }
     return getTriggerConstantContractMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TriggerSmartContract,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2> getTriggerConstantContract2Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+          fullMethodName = SERVICE_NAME + '/' + "TriggerConstantContract2",
+          requestType = org.lgcy.Legacy.proto.Contract.TriggerSmartContract.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.class,
+          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TriggerSmartContract,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2> getTriggerConstantContract2Method() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Contract.TriggerSmartContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2> getTriggerConstantContract2Method;
+    if ((getTriggerConstantContract2Method = WalletGrpc.getTriggerConstantContract2Method) == null) {
+      synchronized (WalletGrpc.class) {
+        if ((getTriggerConstantContract2Method = WalletGrpc.getTriggerConstantContract2Method) == null) {
+          WalletGrpc.getTriggerConstantContract2Method = getTriggerConstantContract2Method =
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Contract.TriggerSmartContract, org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2>newBuilder()
+                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "TriggerConstantContract2"))
+                          .setSampledToLocalTracing(true)
+                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                  org.lgcy.Legacy.proto.Contract.TriggerSmartContract.getDefaultInstance()))
+                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.getDefaultInstance()))
+                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("TriggerConstantContract2"))
+                          .build();
+        }
+      }
+    }
+    return getTriggerConstantContract2Method;
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
@@ -2136,6 +1981,37 @@ public final class WalletGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getGetTransactionById3Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+          fullMethodName = SERVICE_NAME + '/' + "GetTransactionById3",
+          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
+          responseType = org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class,
+          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getGetTransactionById3Method() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getGetTransactionById3Method;
+    if ((getGetTransactionById3Method = WalletGrpc.getGetTransactionById3Method) == null) {
+      synchronized (WalletGrpc.class) {
+        if ((getGetTransactionById3Method = WalletGrpc.getGetTransactionById3Method) == null) {
+          WalletGrpc.getGetTransactionById3Method = getGetTransactionById3Method =
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>newBuilder()
+                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTransactionById3"))
+                          .setSampledToLocalTracing(true)
+                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
+                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance()))
+                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetTransactionById3"))
+                          .build();
+        }
+      }
+    }
+    return getGetTransactionById3Method;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
           org.lgcy.Legacy.proto.Response.TransactionInfo> getGetTransactionInfoByIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
@@ -2383,66 +2259,35 @@ public final class WalletGrpc {
     return getGetRewardInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceList> getGetDelegatedResourceMethod;
+  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.RewardMessage,
+          org.lgcy.Legacy.api.GrpcAPI.RewardOutput> getGetRewardMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetDelegatedResource",
-          requestType = org.lgcy.Legacy.proto.Response.DelegatedResourceMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.DelegatedResourceList.class,
+          fullMethodName = SERVICE_NAME + '/' + "GetReward",
+          requestType = org.lgcy.Legacy.api.GrpcAPI.RewardMessage.class,
+          responseType = org.lgcy.Legacy.api.GrpcAPI.RewardOutput.class,
           methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceList> getGetDelegatedResourceMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceList> getGetDelegatedResourceMethod;
-    if ((getGetDelegatedResourceMethod = WalletGrpc.getGetDelegatedResourceMethod) == null) {
+  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.RewardMessage,
+          org.lgcy.Legacy.api.GrpcAPI.RewardOutput> getGetRewardMethod() {
+    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.RewardMessage, org.lgcy.Legacy.api.GrpcAPI.RewardOutput> getGetRewardMethod;
+    if ((getGetRewardMethod = WalletGrpc.getGetRewardMethod) == null) {
       synchronized (WalletGrpc.class) {
-        if ((getGetDelegatedResourceMethod = WalletGrpc.getGetDelegatedResourceMethod) == null) {
-          WalletGrpc.getGetDelegatedResourceMethod = getGetDelegatedResourceMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceList>newBuilder()
+        if ((getGetRewardMethod = WalletGrpc.getGetRewardMethod) == null) {
+          WalletGrpc.getGetRewardMethod = getGetRewardMethod =
+                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.RewardMessage, org.lgcy.Legacy.api.GrpcAPI.RewardOutput>newBuilder()
                           .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDelegatedResource"))
+                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetReward"))
                           .setSampledToLocalTracing(true)
                           .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DelegatedResourceMessage.getDefaultInstance()))
+                                  org.lgcy.Legacy.api.GrpcAPI.RewardMessage.getDefaultInstance()))
                           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DelegatedResourceList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetDelegatedResource"))
+                                  org.lgcy.Legacy.api.GrpcAPI.RewardOutput.getDefaultInstance()))
+                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetReward"))
                           .build();
         }
       }
     }
-    return getGetDelegatedResourceMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getGetDelegatedResourceAccountIndexMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetDelegatedResourceAccountIndex",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getGetDelegatedResourceAccountIndexMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getGetDelegatedResourceAccountIndexMethod;
-    if ((getGetDelegatedResourceAccountIndexMethod = WalletGrpc.getGetDelegatedResourceAccountIndexMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetDelegatedResourceAccountIndexMethod = WalletGrpc.getGetDelegatedResourceAccountIndexMethod) == null) {
-          WalletGrpc.getGetDelegatedResourceAccountIndexMethod = getGetDelegatedResourceAccountIndexMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDelegatedResourceAccountIndex"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetDelegatedResourceAccountIndex"))
-                          .build();
-        }
-      }
-    }
-    return getGetDelegatedResourceAccountIndexMethod;
+    return getGetRewardMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
@@ -2538,37 +2383,6 @@ public final class WalletGrpc {
     return getGetPaginatedProposalListMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.proto.Response.ExchangeList> getListExchangesMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "ListExchanges",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.ExchangeList.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.proto.Response.ExchangeList> getListExchangesMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.proto.Response.ExchangeList> getListExchangesMethod;
-    if ((getListExchangesMethod = WalletGrpc.getListExchangesMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getListExchangesMethod = WalletGrpc.getListExchangesMethod) == null) {
-          WalletGrpc.getListExchangesMethod = getListExchangesMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.proto.Response.ExchangeList>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListExchanges"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.ExchangeList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("ListExchanges"))
-                          .build();
-        }
-      }
-    }
-    return getListExchangesMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
           org.lgcy.Legacy.proto.Response.Exchange> getGetExchangeByIdMethod;
 
@@ -2629,254 +2443,6 @@ public final class WalletGrpc {
       }
     }
     return getGetPaginatedExchangeListMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters,
-          org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> getScanShieldedTRC20NotesByIvkMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "ScanShieldedTRC20NotesByIvk",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters.class,
-          responseType = org.lgcy.Legacy.proto.Response.DecryptNotesTRC20.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters,
-          org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> getScanShieldedTRC20NotesByIvkMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters, org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> getScanShieldedTRC20NotesByIvkMethod;
-    if ((getScanShieldedTRC20NotesByIvkMethod = WalletGrpc.getScanShieldedTRC20NotesByIvkMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getScanShieldedTRC20NotesByIvkMethod = WalletGrpc.getScanShieldedTRC20NotesByIvkMethod) == null) {
-          WalletGrpc.getScanShieldedTRC20NotesByIvkMethod = getScanShieldedTRC20NotesByIvkMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters, org.lgcy.Legacy.proto.Response.DecryptNotesTRC20>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ScanShieldedTRC20NotesByIvk"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DecryptNotesTRC20.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("ScanShieldedTRC20NotesByIvk"))
-                          .build();
-        }
-      }
-    }
-    return getScanShieldedTRC20NotesByIvkMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters,
-          org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> getScanShieldedTRC20NotesByOvkMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "ScanShieldedTRC20NotesByOvk",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters.class,
-          responseType = org.lgcy.Legacy.proto.Response.DecryptNotesTRC20.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters,
-          org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> getScanShieldedTRC20NotesByOvkMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters, org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> getScanShieldedTRC20NotesByOvkMethod;
-    if ((getScanShieldedTRC20NotesByOvkMethod = WalletGrpc.getScanShieldedTRC20NotesByOvkMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getScanShieldedTRC20NotesByOvkMethod = WalletGrpc.getScanShieldedTRC20NotesByOvkMethod) == null) {
-          WalletGrpc.getScanShieldedTRC20NotesByOvkMethod = getScanShieldedTRC20NotesByOvkMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters, org.lgcy.Legacy.proto.Response.DecryptNotesTRC20>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ScanShieldedTRC20NotesByOvk"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DecryptNotesTRC20.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("ScanShieldedTRC20NotesByOvk"))
-                          .build();
-        }
-      }
-    }
-    return getScanShieldedTRC20NotesByOvkMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters,
-          org.lgcy.Legacy.proto.Response.NullifierResult> getIsShieldedTRC20ContractNoteSpentMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "IsShieldedTRC20ContractNoteSpent",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters.class,
-          responseType = org.lgcy.Legacy.proto.Response.NullifierResult.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters,
-          org.lgcy.Legacy.proto.Response.NullifierResult> getIsShieldedTRC20ContractNoteSpentMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters, org.lgcy.Legacy.proto.Response.NullifierResult> getIsShieldedTRC20ContractNoteSpentMethod;
-    if ((getIsShieldedTRC20ContractNoteSpentMethod = WalletGrpc.getIsShieldedTRC20ContractNoteSpentMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getIsShieldedTRC20ContractNoteSpentMethod = WalletGrpc.getIsShieldedTRC20ContractNoteSpentMethod) == null) {
-          WalletGrpc.getIsShieldedTRC20ContractNoteSpentMethod = getIsShieldedTRC20ContractNoteSpentMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters, org.lgcy.Legacy.proto.Response.NullifierResult>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "IsShieldedTRC20ContractNoteSpent"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.NullifierResult.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("IsShieldedTRC20ContractNoteSpent"))
-                          .build();
-        }
-      }
-    }
-    return getIsShieldedTRC20ContractNoteSpentMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.MarketOrderList> getGetMarketOrderByAccountMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetMarketOrderByAccount",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.MarketOrderList.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.MarketOrderList> getGetMarketOrderByAccountMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.MarketOrderList> getGetMarketOrderByAccountMethod;
-    if ((getGetMarketOrderByAccountMethod = WalletGrpc.getGetMarketOrderByAccountMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetMarketOrderByAccountMethod = WalletGrpc.getGetMarketOrderByAccountMethod) == null) {
-          WalletGrpc.getGetMarketOrderByAccountMethod = getGetMarketOrderByAccountMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.MarketOrderList>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMarketOrderByAccount"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketOrderList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetMarketOrderByAccount"))
-                          .build();
-        }
-      }
-    }
-    return getGetMarketOrderByAccountMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.MarketOrder> getGetMarketOrderByIdMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetMarketOrderById",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.MarketOrder.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.MarketOrder> getGetMarketOrderByIdMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.MarketOrder> getGetMarketOrderByIdMethod;
-    if ((getGetMarketOrderByIdMethod = WalletGrpc.getGetMarketOrderByIdMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetMarketOrderByIdMethod = WalletGrpc.getGetMarketOrderByIdMethod) == null) {
-          WalletGrpc.getGetMarketOrderByIdMethod = getGetMarketOrderByIdMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.MarketOrder>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMarketOrderById"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketOrder.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetMarketOrderById"))
-                          .build();
-        }
-      }
-    }
-    return getGetMarketOrderByIdMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.MarketOrderPair,
-          org.lgcy.Legacy.proto.Response.MarketPriceList> getGetMarketPriceByPairMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetMarketPriceByPair",
-          requestType = org.lgcy.Legacy.proto.Response.MarketOrderPair.class,
-          responseType = org.lgcy.Legacy.proto.Response.MarketPriceList.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.MarketOrderPair,
-          org.lgcy.Legacy.proto.Response.MarketPriceList> getGetMarketPriceByPairMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.MarketOrderPair, org.lgcy.Legacy.proto.Response.MarketPriceList> getGetMarketPriceByPairMethod;
-    if ((getGetMarketPriceByPairMethod = WalletGrpc.getGetMarketPriceByPairMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetMarketPriceByPairMethod = WalletGrpc.getGetMarketPriceByPairMethod) == null) {
-          WalletGrpc.getGetMarketPriceByPairMethod = getGetMarketPriceByPairMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Response.MarketOrderPair, org.lgcy.Legacy.proto.Response.MarketPriceList>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMarketPriceByPair"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketOrderPair.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketPriceList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetMarketPriceByPair"))
-                          .build();
-        }
-      }
-    }
-    return getGetMarketPriceByPairMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.MarketOrderPair,
-          org.lgcy.Legacy.proto.Response.MarketOrderList> getGetMarketOrderListByPairMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetMarketOrderListByPair",
-          requestType = org.lgcy.Legacy.proto.Response.MarketOrderPair.class,
-          responseType = org.lgcy.Legacy.proto.Response.MarketOrderList.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.MarketOrderPair,
-          org.lgcy.Legacy.proto.Response.MarketOrderList> getGetMarketOrderListByPairMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.MarketOrderPair, org.lgcy.Legacy.proto.Response.MarketOrderList> getGetMarketOrderListByPairMethod;
-    if ((getGetMarketOrderListByPairMethod = WalletGrpc.getGetMarketOrderListByPairMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetMarketOrderListByPairMethod = WalletGrpc.getGetMarketOrderListByPairMethod) == null) {
-          WalletGrpc.getGetMarketOrderListByPairMethod = getGetMarketOrderListByPairMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Response.MarketOrderPair, org.lgcy.Legacy.proto.Response.MarketOrderList>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMarketOrderListByPair"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketOrderPair.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketOrderList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetMarketOrderListByPair"))
-                          .build();
-        }
-      }
-    }
-    return getGetMarketOrderListByPairMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.proto.Response.MarketOrderPairList> getGetMarketPairListMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetMarketPairList",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.MarketOrderPairList.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.proto.Response.MarketOrderPairList> getGetMarketPairListMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.proto.Response.MarketOrderPairList> getGetMarketPairListMethod;
-    if ((getGetMarketPairListMethod = WalletGrpc.getGetMarketPairListMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetMarketPairListMethod = WalletGrpc.getGetMarketPairListMethod) == null) {
-          WalletGrpc.getGetMarketPairListMethod = getGetMarketPairListMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.proto.Response.MarketOrderPairList>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMarketPairList"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.MarketOrderPairList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetMarketPairList"))
-                          .build();
-        }
-      }
-    }
-    return getGetMarketPairListMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.TransactionSign,
@@ -3158,533 +2724,6 @@ public final class WalletGrpc {
     return getAddSignMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetSpendingKeyMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetSpendingKey",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetSpendingKeyMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetSpendingKeyMethod;
-    if ((getGetSpendingKeyMethod = WalletGrpc.getGetSpendingKeyMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetSpendingKeyMethod = WalletGrpc.getGetSpendingKeyMethod) == null) {
-          WalletGrpc.getGetSpendingKeyMethod = getGetSpendingKeyMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetSpendingKey"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetSpendingKey"))
-                          .build();
-        }
-      }
-    }
-    return getGetSpendingKeyMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage> getGetExpandedSpendingKeyMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetExpandedSpendingKey",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage> getGetExpandedSpendingKeyMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage> getGetExpandedSpendingKeyMethod;
-    if ((getGetExpandedSpendingKeyMethod = WalletGrpc.getGetExpandedSpendingKeyMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetExpandedSpendingKeyMethod = WalletGrpc.getGetExpandedSpendingKeyMethod) == null) {
-          WalletGrpc.getGetExpandedSpendingKeyMethod = getGetExpandedSpendingKeyMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetExpandedSpendingKey"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetExpandedSpendingKey"))
-                          .build();
-        }
-      }
-    }
-    return getGetExpandedSpendingKeyMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetAkFromAskMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetAkFromAsk",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetAkFromAskMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetAkFromAskMethod;
-    if ((getGetAkFromAskMethod = WalletGrpc.getGetAkFromAskMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetAkFromAskMethod = WalletGrpc.getGetAkFromAskMethod) == null) {
-          WalletGrpc.getGetAkFromAskMethod = getGetAkFromAskMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAkFromAsk"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetAkFromAsk"))
-                          .build();
-        }
-      }
-    }
-    return getGetAkFromAskMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetNkFromNskMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetNkFromNsk",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetNkFromNskMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetNkFromNskMethod;
-    if ((getGetNkFromNskMethod = WalletGrpc.getGetNkFromNskMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetNkFromNskMethod = WalletGrpc.getGetNkFromNskMethod) == null) {
-          WalletGrpc.getGetNkFromNskMethod = getGetNkFromNskMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNkFromNsk"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetNkFromNsk"))
-                          .build();
-        }
-      }
-    }
-    return getGetNkFromNskMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage> getGetIncomingViewingKeyMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetIncomingViewingKey",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage> getGetIncomingViewingKeyMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage, org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage> getGetIncomingViewingKeyMethod;
-    if ((getGetIncomingViewingKeyMethod = WalletGrpc.getGetIncomingViewingKeyMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetIncomingViewingKeyMethod = WalletGrpc.getGetIncomingViewingKeyMethod) == null) {
-          WalletGrpc.getGetIncomingViewingKeyMethod = getGetIncomingViewingKeyMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage, org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetIncomingViewingKey"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetIncomingViewingKey"))
-                          .build();
-        }
-      }
-    }
-    return getGetIncomingViewingKeyMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage> getGetDiversifierMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetDiversifier",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage> getGetDiversifierMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage> getGetDiversifierMethod;
-    if ((getGetDiversifierMethod = WalletGrpc.getGetDiversifierMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetDiversifierMethod = WalletGrpc.getGetDiversifierMethod) == null) {
-          WalletGrpc.getGetDiversifierMethod = getGetDiversifierMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDiversifier"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetDiversifier"))
-                          .build();
-        }
-      }
-    }
-    return getGetDiversifierMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage,
-          org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage> getGetZenPaymentAddressMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetZenPaymentAddress",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage,
-          org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage> getGetZenPaymentAddressMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage, org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage> getGetZenPaymentAddressMethod;
-    if ((getGetZenPaymentAddressMethod = WalletGrpc.getGetZenPaymentAddressMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetZenPaymentAddressMethod = WalletGrpc.getGetZenPaymentAddressMethod) == null) {
-          WalletGrpc.getGetZenPaymentAddressMethod = getGetZenPaymentAddressMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage, org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetZenPaymentAddress"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetZenPaymentAddress"))
-                          .build();
-        }
-      }
-    }
-    return getGetZenPaymentAddressMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo> getGetNewShieldedAddressMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetNewShieldedAddress",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo> getGetNewShieldedAddressMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo> getGetNewShieldedAddressMethod;
-    if ((getGetNewShieldedAddressMethod = WalletGrpc.getGetNewShieldedAddressMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetNewShieldedAddressMethod = WalletGrpc.getGetNewShieldedAddressMethod) == null) {
-          WalletGrpc.getGetNewShieldedAddressMethod = getGetNewShieldedAddressMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNewShieldedAddress"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetNewShieldedAddress"))
-                          .build();
-        }
-      }
-    }
-    return getGetNewShieldedAddressMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetRcmMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetRcm",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetRcmMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetRcmMethod;
-    if ((getGetRcmMethod = WalletGrpc.getGetRcmMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetRcmMethod = WalletGrpc.getGetRcmMethod) == null) {
-          WalletGrpc.getGetRcmMethod = getGetRcmMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.EmptyMessage, org.lgcy.Legacy.api.GrpcAPI.BytesMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetRcm"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.EmptyMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetRcm"))
-                          .build();
-        }
-      }
-    }
-    return getGetRcmMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters,
-          org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> getCreateShieldedContractParametersMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "CreateShieldedContractParameters",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters,
-          org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> getCreateShieldedContractParametersMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters, org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> getCreateShieldedContractParametersMethod;
-    if ((getCreateShieldedContractParametersMethod = WalletGrpc.getCreateShieldedContractParametersMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getCreateShieldedContractParametersMethod = WalletGrpc.getCreateShieldedContractParametersMethod) == null) {
-          WalletGrpc.getCreateShieldedContractParametersMethod = getCreateShieldedContractParametersMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters, org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateShieldedContractParameters"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateShieldedContractParameters"))
-                          .build();
-        }
-      }
-    }
-    return getCreateShieldedContractParametersMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk,
-          org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> getCreateShieldedContractParametersWithoutAskMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "CreateShieldedContractParametersWithoutAsk",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk,
-          org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> getCreateShieldedContractParametersWithoutAskMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk, org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> getCreateShieldedContractParametersWithoutAskMethod;
-    if ((getCreateShieldedContractParametersWithoutAskMethod = WalletGrpc.getCreateShieldedContractParametersWithoutAskMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getCreateShieldedContractParametersWithoutAskMethod = WalletGrpc.getCreateShieldedContractParametersWithoutAskMethod) == null) {
-          WalletGrpc.getCreateShieldedContractParametersWithoutAskMethod = getCreateShieldedContractParametersWithoutAskMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk, org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateShieldedContractParametersWithoutAsk"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("CreateShieldedContractParametersWithoutAsk"))
-                          .build();
-        }
-      }
-    }
-    return getCreateShieldedContractParametersWithoutAskMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetTriggerInputForShieldedTRC20ContractMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetTriggerInputForShieldedTRC20Contract",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters,
-          org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetTriggerInputForShieldedTRC20ContractMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters, org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getGetTriggerInputForShieldedTRC20ContractMethod;
-    if ((getGetTriggerInputForShieldedTRC20ContractMethod = WalletGrpc.getGetTriggerInputForShieldedTRC20ContractMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetTriggerInputForShieldedTRC20ContractMethod = WalletGrpc.getGetTriggerInputForShieldedTRC20ContractMethod) == null) {
-          WalletGrpc.getGetTriggerInputForShieldedTRC20ContractMethod = getGetTriggerInputForShieldedTRC20ContractMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters, org.lgcy.Legacy.api.GrpcAPI.BytesMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTriggerInputForShieldedTRC20Contract"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetTriggerInputForShieldedTRC20Contract"))
-                          .build();
-        }
-      }
-    }
-    return getGetTriggerInputForShieldedTRC20ContractMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage,
-          org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage> getGetAvailableUnfreezeCountMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetAvailableUnfreezeCount",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage,
-          org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage> getGetAvailableUnfreezeCountMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage, org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage> getGetAvailableUnfreezeCountMethod;
-    if ((getGetAvailableUnfreezeCountMethod = WalletGrpc.getGetAvailableUnfreezeCountMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetAvailableUnfreezeCountMethod = WalletGrpc.getGetAvailableUnfreezeCountMethod) == null) {
-          WalletGrpc.getGetAvailableUnfreezeCountMethod = getGetAvailableUnfreezeCountMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage, org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAvailableUnfreezeCount"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetAvailableUnfreezeCount"))
-                          .build();
-        }
-      }
-    }
-    return getGetAvailableUnfreezeCountMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage,
-          org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage> getGetCanWithdrawUnfreezeAmountMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetCanWithdrawUnfreezeAmount",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage,
-          org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage> getGetCanWithdrawUnfreezeAmountMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage, org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage> getGetCanWithdrawUnfreezeAmountMethod;
-    if ((getGetCanWithdrawUnfreezeAmountMethod = WalletGrpc.getGetCanWithdrawUnfreezeAmountMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetCanWithdrawUnfreezeAmountMethod = WalletGrpc.getGetCanWithdrawUnfreezeAmountMethod) == null) {
-          WalletGrpc.getGetCanWithdrawUnfreezeAmountMethod = getGetCanWithdrawUnfreezeAmountMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage, org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCanWithdrawUnfreezeAmount"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetCanWithdrawUnfreezeAmount"))
-                          .build();
-        }
-      }
-    }
-    return getGetCanWithdrawUnfreezeAmountMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage,
-          org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage> getGetCanDelegatedMaxSizeMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetCanDelegatedMaxSize",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage.class,
-          responseType = org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage,
-          org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage> getGetCanDelegatedMaxSizeMethod() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage, org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage> getGetCanDelegatedMaxSizeMethod;
-    if ((getGetCanDelegatedMaxSizeMethod = WalletGrpc.getGetCanDelegatedMaxSizeMethod) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetCanDelegatedMaxSizeMethod = WalletGrpc.getGetCanDelegatedMaxSizeMethod) == null) {
-          WalletGrpc.getGetCanDelegatedMaxSizeMethod = getGetCanDelegatedMaxSizeMethod =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage, org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCanDelegatedMaxSize"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetCanDelegatedMaxSize"))
-                          .build();
-        }
-      }
-    }
-    return getGetCanDelegatedMaxSizeMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceList> getGetDelegatedResourceV2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetDelegatedResourceV2",
-          requestType = org.lgcy.Legacy.proto.Response.DelegatedResourceMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.DelegatedResourceList.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceList> getGetDelegatedResourceV2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceList> getGetDelegatedResourceV2Method;
-    if ((getGetDelegatedResourceV2Method = WalletGrpc.getGetDelegatedResourceV2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetDelegatedResourceV2Method = WalletGrpc.getGetDelegatedResourceV2Method) == null) {
-          WalletGrpc.getGetDelegatedResourceV2Method = getGetDelegatedResourceV2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.proto.Response.DelegatedResourceMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceList>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDelegatedResourceV2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DelegatedResourceMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DelegatedResourceList.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetDelegatedResourceV2"))
-                          .build();
-        }
-      }
-    }
-    return getGetDelegatedResourceV2Method;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getGetDelegatedResourceAccountIndexV2Method;
-
-  @io.grpc.stub.annotations.RpcMethod(
-          fullMethodName = SERVICE_NAME + '/' + "GetDelegatedResourceAccountIndexV2",
-          requestType = org.lgcy.Legacy.api.GrpcAPI.BytesMessage.class,
-          responseType = org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex.class,
-          methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-          org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getGetDelegatedResourceAccountIndexV2Method() {
-    io.grpc.MethodDescriptor<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getGetDelegatedResourceAccountIndexV2Method;
-    if ((getGetDelegatedResourceAccountIndexV2Method = WalletGrpc.getGetDelegatedResourceAccountIndexV2Method) == null) {
-      synchronized (WalletGrpc.class) {
-        if ((getGetDelegatedResourceAccountIndexV2Method = WalletGrpc.getGetDelegatedResourceAccountIndexV2Method) == null) {
-          WalletGrpc.getGetDelegatedResourceAccountIndexV2Method = getGetDelegatedResourceAccountIndexV2Method =
-                  io.grpc.MethodDescriptor.<org.lgcy.Legacy.api.GrpcAPI.BytesMessage, org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex>newBuilder()
-                          .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-                          .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDelegatedResourceAccountIndexV2"))
-                          .setSampledToLocalTracing(true)
-                          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.api.GrpcAPI.BytesMessage.getDefaultInstance()))
-                          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                                  org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex.getDefaultInstance()))
-                          .setSchemaDescriptor(new WalletMethodDescriptorSupplier("GetDelegatedResourceAccountIndexV2"))
-                          .build();
-        }
-      }
-    }
-    return getGetDelegatedResourceAccountIndexV2Method;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -3744,9 +2783,13 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  change to local build instead of remote build
-     * </pre>
+     */
+    public void broadcastTransactionData(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction request,
+                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.TransactionReturnData> responseObserver) {
+      asyncUnimplementedUnaryCall(getBroadcastTransactionDataMethod(), responseObserver);
+    }
+
+    /**
      */
     public void createCommonTransaction(org.lgcy.Legacy.proto.Chain.Transaction request,
                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
@@ -3756,7 +2799,7 @@ public final class WalletGrpc {
     /**
      */
     public void createAccount(org.lgcy.Legacy.proto.Contract.AccountCreateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateAccountMethod(), responseObserver);
     }
 
@@ -3770,15 +2813,8 @@ public final class WalletGrpc {
     /**
      */
     public void updateAccount(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateAccountMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void updateAccount2(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getUpdateAccount2Method(), responseObserver);
     }
 
     /**
@@ -3791,29 +2827,22 @@ public final class WalletGrpc {
     /**
      */
     public void accountPermissionUpdate(org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract request,
-                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getAccountPermissionUpdateMethod(), responseObserver);
     }
 
     /**
      */
     public void createTransaction(org.lgcy.Legacy.proto.Contract.TransferContract request,
-                                  io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                  io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateTransactionMethod(), responseObserver);
     }
 
     /**
      */
-    public void createTransaction2(org.lgcy.Legacy.proto.Contract.TransferContract request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getCreateTransaction2Method(), responseObserver);
-    }
-
-    /**
-     */
-    public void createTransaction3(org.lgcy.Legacy.proto.Contract.TransferContract request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
-      asyncUnimplementedUnaryCall(getCreateTransaction3Method(), responseObserver);
+    public void signTransactionCreation(org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension request,
+                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
+      asyncUnimplementedUnaryCall(getSignTransactionCreationMethod(), responseObserver);
     }
 
     /**
@@ -3889,112 +2918,77 @@ public final class WalletGrpc {
     /**
      */
     public void createWitness(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getCreateWitnessMethod(), responseObserver);
     }
 
     /**
      */
-    public void createWitness2(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getCreateWitness2Method(), responseObserver);
-    }
-
-    /**
-     */
     public void updateWitness(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateWitnessMethod(), responseObserver);
     }
 
     /**
      */
-    public void updateWitness2(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getUpdateWitness2Method(), responseObserver);
-    }
-
-    /**
-     */
     public void updateBrokerage(org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateBrokerageMethod(), responseObserver);
     }
 
     /**
      */
     public void voteWitnessAccount(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getVoteWitnessAccountMethod(), responseObserver);
     }
 
     /**
      */
-    public void voteWitnessAccount2(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request,
-                                    io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getVoteWitnessAccount2Method(), responseObserver);
-    }
-
-    /**
-     */
     public void freezeBalance(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getFreezeBalanceMethod(), responseObserver);
     }
 
     /**
      */
-    public void freezeBalance2(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getFreezeBalance2Method(), responseObserver);
-    }
-
-    /**
-     */
     public void unfreezeBalance(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getUnfreezeBalanceMethod(), responseObserver);
     }
 
     /**
      */
-    public void unfreezeBalance2(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request,
-                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getUnfreezeBalance2Method(), responseObserver);
-    }
-
-    /**
-     */
     public void withdrawBalance(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getWithdrawBalanceMethod(), responseObserver);
     }
 
     /**
      */
-    public void withdrawBalance2(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request,
-                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnimplementedUnaryCall(getWithdrawBalance2Method(), responseObserver);
+    public void updateSetting(org.lgcy.Legacy.proto.Contract.UpdateSettingContract request,
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdateSettingMethod(), responseObserver);
     }
 
     /**
      */
     public void proposalCreate(org.lgcy.Legacy.proto.Contract.ProposalCreateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getProposalCreateMethod(), responseObserver);
     }
 
     /**
      */
     public void proposalApprove(org.lgcy.Legacy.proto.Contract.ProposalApproveContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getProposalApproveMethod(), responseObserver);
     }
 
     /**
      */
     public void proposalDelete(org.lgcy.Legacy.proto.Contract.ProposalDeleteContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnimplementedUnaryCall(getProposalDeleteMethod(), responseObserver);
     }
 
@@ -4006,11 +3000,6 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc UpdateSetting(UpdateSettingContract) returns (TransactionExtention) {}          // consume_user_resource_percent
-     *  rpc UpdateEnergyLimit(UpdateEnergyLimitContract) returns (TransactionExtention) {}  // origin_energy_limit
-     *  rpc ClearContractABI(ClearABIContract) returns (TransactionExtention) {}
-     * </pre>
      */
     public void triggerContract(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request,
                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
@@ -4022,6 +3011,13 @@ public final class WalletGrpc {
     public void triggerConstantContract(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request,
                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
       asyncUnimplementedUnaryCall(getTriggerConstantContractMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void triggerConstantContract2(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request,
+                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2> responseObserver) {
+      asyncUnimplementedUnaryCall(getTriggerConstantContract2Method(), responseObserver);
     }
 
     /**
@@ -4237,6 +3233,13 @@ public final class WalletGrpc {
 
     /**
      */
+    public void getTransactionById3(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
+                                    io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetTransactionById3Method(), responseObserver);
+    }
+
+    /**
+     */
     public void getTransactionInfoById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionInfo> responseObserver) {
       asyncUnimplementedUnaryCall(getGetTransactionInfoByIdMethod(), responseObserver);
@@ -4299,16 +3302,9 @@ public final class WalletGrpc {
 
     /**
      */
-    public void getDelegatedResource(org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request,
-                                     io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetDelegatedResourceMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getDelegatedResourceAccountIndex(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetDelegatedResourceAccountIndexMethod(), responseObserver);
+    public void getReward(org.lgcy.Legacy.api.GrpcAPI.RewardMessage request,
+                          io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.RewardOutput> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetRewardMethod(), responseObserver);
     }
 
     /**
@@ -4338,13 +3334,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public void listExchanges(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ExchangeList> responseObserver) {
-      asyncUnimplementedUnaryCall(getListExchangesMethod(), responseObserver);
-    }
-
-    /**
-     */
     public void getExchangeById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.Exchange> responseObserver) {
       asyncUnimplementedUnaryCall(getGetExchangeByIdMethod(), responseObserver);
@@ -4355,68 +3344,6 @@ public final class WalletGrpc {
     public void getPaginatedExchangeList(org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage request,
                                          io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ExchangeList> responseObserver) {
       asyncUnimplementedUnaryCall(getGetPaginatedExchangeListMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Shielded helpers:
-     * </pre>
-     */
-    public void scanShieldedTRC20NotesByIvk(org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters request,
-                                            io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> responseObserver) {
-      asyncUnimplementedUnaryCall(getScanShieldedTRC20NotesByIvkMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void scanShieldedTRC20NotesByOvk(org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters request,
-                                            io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> responseObserver) {
-      asyncUnimplementedUnaryCall(getScanShieldedTRC20NotesByOvkMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void isShieldedTRC20ContractNoteSpent(org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters request,
-                                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.NullifierResult> responseObserver) {
-      asyncUnimplementedUnaryCall(getIsShieldedTRC20ContractNoteSpentMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Market API:
-     * </pre>
-     */
-    public void getMarketOrderByAccount(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetMarketOrderByAccountMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketOrderById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrder> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetMarketOrderByIdMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketPriceByPair(org.lgcy.Legacy.proto.Response.MarketOrderPair request,
-                                     io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketPriceList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetMarketPriceByPairMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketOrderListByPair(org.lgcy.Legacy.proto.Response.MarketOrderPair request,
-                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetMarketOrderListByPairMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketPairList(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                                  io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderPairList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetMarketPairListMethod(), responseObserver);
     }
 
     /**
@@ -4485,135 +3412,6 @@ public final class WalletGrpc {
       asyncUnimplementedUnaryCall(getAddSignMethod(), responseObserver);
     }
 
-    /**
-     * <pre>
-     * FLAW: Unsafe shielded junk(should be implemented offline).
-     * </pre>
-     */
-    public void getSpendingKey(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetSpendingKeyMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getExpandedSpendingKey(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetExpandedSpendingKeyMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getAkFromAsk(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                             io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAkFromAskMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getNkFromNsk(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                             io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetNkFromNskMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getIncomingViewingKey(org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage request,
-                                      io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetIncomingViewingKeyMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getDiversifier(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetDiversifierMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getZenPaymentAddress(org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage request,
-                                     io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetZenPaymentAddressMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getNewShieldedAddress(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                                      io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetNewShieldedAddressMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getRcm(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetRcmMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void createShieldedContractParameters(org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters request,
-                                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> responseObserver) {
-      asyncUnimplementedUnaryCall(getCreateShieldedContractParametersMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void createShieldedContractParametersWithoutAsk(org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk request,
-                                                           io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> responseObserver) {
-      asyncUnimplementedUnaryCall(getCreateShieldedContractParametersWithoutAskMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getTriggerInputForShieldedTRC20Contract(org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters request,
-                                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetTriggerInputForShieldedTRC20ContractMethod(), responseObserver);
-    }
-
-    /**
-     * <pre>
-     *  rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
-     * </pre>
-     */
-    public void getAvailableUnfreezeCount(org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage request,
-                                          io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetAvailableUnfreezeCountMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getCanWithdrawUnfreezeAmount(org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage request,
-                                             io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetCanWithdrawUnfreezeAmountMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getCanDelegatedMaxSize(org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage request,
-                                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetCanDelegatedMaxSizeMethod(), responseObserver);
-    }
-
-    /**
-     */
-    public void getDelegatedResourceV2(org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request,
-                                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceList> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetDelegatedResourceV2Method(), responseObserver);
-    }
-
-    /**
-     */
-    public void getDelegatedResourceAccountIndexV2(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> responseObserver) {
-      asyncUnimplementedUnaryCall(getGetDelegatedResourceAccountIndexV2Method(), responseObserver);
-    }
-
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
               .addMethod(
@@ -4623,6 +3421,13 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.proto.Chain.Transaction,
                                       org.lgcy.Legacy.proto.Response.TransactionReturn>(
                                       this, METHODID_BROADCAST_TRANSACTION)))
+              .addMethod(
+                      getBroadcastTransactionDataMethod(),
+                      asyncUnaryCall(
+                              new MethodHandlers<
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction,
+                                      org.lgcy.Legacy.proto.Chain.TransactionReturnData>(
+                                      this, METHODID_BROADCAST_TRANSACTION_DATA)))
               .addMethod(
                       getCreateCommonTransactionMethod(),
                       asyncUnaryCall(
@@ -4635,7 +3440,7 @@ public final class WalletGrpc {
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.AccountCreateContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_CREATE_ACCOUNT)))
               .addMethod(
                       getCreateAccount2Method(),
@@ -4649,15 +3454,8 @@ public final class WalletGrpc {
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.AccountUpdateContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_UPDATE_ACCOUNT)))
-              .addMethod(
-                      getUpdateAccount2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.AccountUpdateContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_UPDATE_ACCOUNT2)))
               .addMethod(
                       getSetAccountIdMethod(),
                       asyncUnaryCall(
@@ -4670,29 +3468,22 @@ public final class WalletGrpc {
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_ACCOUNT_PERMISSION_UPDATE)))
               .addMethod(
                       getCreateTransactionMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.TransferContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_CREATE_TRANSACTION)))
               .addMethod(
-                      getCreateTransaction2Method(),
+                      getSignTransactionCreationMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.TransferContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_CREATE_TRANSACTION2)))
-              .addMethod(
-                      getCreateTransaction3Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.TransferContract,
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension,
                                       org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
-                                      this, METHODID_CREATE_TRANSACTION3)))
+                                      this, METHODID_SIGN_TRANSACTION_CREATION)))
               .addMethod(
                       getCreateAssetIssueMethod(),
                       asyncUnaryCall(
@@ -4768,112 +3559,77 @@ public final class WalletGrpc {
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.WitnessCreateContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_CREATE_WITNESS)))
-              .addMethod(
-                      getCreateWitness2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.WitnessCreateContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_CREATE_WITNESS2)))
               .addMethod(
                       getUpdateWitnessMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.WitnessUpdateContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_UPDATE_WITNESS)))
-              .addMethod(
-                      getUpdateWitness2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.WitnessUpdateContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_UPDATE_WITNESS2)))
               .addMethod(
                       getUpdateBrokerageMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_UPDATE_BROKERAGE)))
               .addMethod(
                       getVoteWitnessAccountMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.VoteWitnessContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_VOTE_WITNESS_ACCOUNT)))
-              .addMethod(
-                      getVoteWitnessAccount2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.VoteWitnessContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_VOTE_WITNESS_ACCOUNT2)))
               .addMethod(
                       getFreezeBalanceMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.FreezeBalanceContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_FREEZE_BALANCE)))
-              .addMethod(
-                      getFreezeBalance2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.FreezeBalanceContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_FREEZE_BALANCE2)))
               .addMethod(
                       getUnfreezeBalanceMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_UNFREEZE_BALANCE)))
-              .addMethod(
-                      getUnfreezeBalance2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_UNFREEZE_BALANCE2)))
               .addMethod(
                       getWithdrawBalanceMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract,
-                                      org.lgcy.Legacy.proto.Chain.Transaction>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_WITHDRAW_BALANCE)))
               .addMethod(
-                      getWithdrawBalance2Method(),
+                      getUpdateSettingMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
-                                      this, METHODID_WITHDRAW_BALANCE2)))
+                                      org.lgcy.Legacy.proto.Contract.UpdateSettingContract,
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
+                                      this, METHODID_UPDATE_SETTING)))
               .addMethod(
                       getProposalCreateMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.ProposalCreateContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_PROPOSAL_CREATE)))
               .addMethod(
                       getProposalApproveMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.ProposalApproveContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_PROPOSAL_APPROVE)))
               .addMethod(
                       getProposalDeleteMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
                                       org.lgcy.Legacy.proto.Contract.ProposalDeleteContract,
-                                      org.lgcy.Legacy.proto.Response.TransactionExtention>(
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
                                       this, METHODID_PROPOSAL_DELETE)))
               .addMethod(
                       getDeployContractMethod(),
@@ -4896,6 +3652,13 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.proto.Contract.TriggerSmartContract,
                                       org.lgcy.Legacy.proto.Response.TransactionExtention>(
                                       this, METHODID_TRIGGER_CONSTANT_CONTRACT)))
+              .addMethod(
+                      getTriggerConstantContract2Method(),
+                      asyncUnaryCall(
+                              new MethodHandlers<
+                                      org.lgcy.Legacy.proto.Contract.TriggerSmartContract,
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2>(
+                                      this, METHODID_TRIGGER_CONSTANT_CONTRACT2)))
               .addMethod(
                       getGetNodeInfoMethod(),
                       asyncUnaryCall(
@@ -5093,6 +3856,13 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.proto.Chain.Transaction>(
                                       this, METHODID_GET_TRANSACTION_BY_ID)))
               .addMethod(
+                      getGetTransactionById3Method(),
+                      asyncUnaryCall(
+                              new MethodHandlers<
+                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
+                                      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>(
+                                      this, METHODID_GET_TRANSACTION_BY_ID3)))
+              .addMethod(
                       getGetTransactionInfoByIdMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
@@ -5149,19 +3919,12 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.api.GrpcAPI.NumberMessage>(
                                       this, METHODID_GET_REWARD_INFO)))
               .addMethod(
-                      getGetDelegatedResourceMethod(),
+                      getGetRewardMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Response.DelegatedResourceMessage,
-                                      org.lgcy.Legacy.proto.Response.DelegatedResourceList>(
-                                      this, METHODID_GET_DELEGATED_RESOURCE)))
-              .addMethod(
-                      getGetDelegatedResourceAccountIndexMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex>(
-                                      this, METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX)))
+                                      org.lgcy.Legacy.api.GrpcAPI.RewardMessage,
+                                      org.lgcy.Legacy.api.GrpcAPI.RewardOutput>(
+                                      this, METHODID_GET_REWARD)))
               .addMethod(
                       getListProposalsMethod(),
                       asyncUnaryCall(
@@ -5184,13 +3947,6 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.proto.Response.ProposalList>(
                                       this, METHODID_GET_PAGINATED_PROPOSAL_LIST)))
               .addMethod(
-                      getListExchangesMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-                                      org.lgcy.Legacy.proto.Response.ExchangeList>(
-                                      this, METHODID_LIST_EXCHANGES)))
-              .addMethod(
                       getGetExchangeByIdMethod(),
                       asyncUnaryCall(
                               new MethodHandlers<
@@ -5204,62 +3960,6 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage,
                                       org.lgcy.Legacy.proto.Response.ExchangeList>(
                                       this, METHODID_GET_PAGINATED_EXCHANGE_LIST)))
-              .addMethod(
-                      getScanShieldedTRC20NotesByIvkMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters,
-                                      org.lgcy.Legacy.proto.Response.DecryptNotesTRC20>(
-                                      this, METHODID_SCAN_SHIELDED_TRC20NOTES_BY_IVK)))
-              .addMethod(
-                      getScanShieldedTRC20NotesByOvkMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters,
-                                      org.lgcy.Legacy.proto.Response.DecryptNotesTRC20>(
-                                      this, METHODID_SCAN_SHIELDED_TRC20NOTES_BY_OVK)))
-              .addMethod(
-                      getIsShieldedTRC20ContractNoteSpentMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters,
-                                      org.lgcy.Legacy.proto.Response.NullifierResult>(
-                                      this, METHODID_IS_SHIELDED_TRC20CONTRACT_NOTE_SPENT)))
-              .addMethod(
-                      getGetMarketOrderByAccountMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.proto.Response.MarketOrderList>(
-                                      this, METHODID_GET_MARKET_ORDER_BY_ACCOUNT)))
-              .addMethod(
-                      getGetMarketOrderByIdMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.proto.Response.MarketOrder>(
-                                      this, METHODID_GET_MARKET_ORDER_BY_ID)))
-              .addMethod(
-                      getGetMarketPriceByPairMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Response.MarketOrderPair,
-                                      org.lgcy.Legacy.proto.Response.MarketPriceList>(
-                                      this, METHODID_GET_MARKET_PRICE_BY_PAIR)))
-              .addMethod(
-                      getGetMarketOrderListByPairMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Response.MarketOrderPair,
-                                      org.lgcy.Legacy.proto.Response.MarketOrderList>(
-                                      this, METHODID_GET_MARKET_ORDER_LIST_BY_PAIR)))
-              .addMethod(
-                      getGetMarketPairListMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-                                      org.lgcy.Legacy.proto.Response.MarketOrderPairList>(
-                                      this, METHODID_GET_MARKET_PAIR_LIST)))
               .addMethod(
                       getGetTransactionSignMethod(),
                       asyncUnaryCall(
@@ -5323,125 +4023,6 @@ public final class WalletGrpc {
                                       org.lgcy.Legacy.proto.Response.TransactionSign,
                                       org.lgcy.Legacy.proto.Response.TransactionExtention>(
                                       this, METHODID_ADD_SIGN)))
-              .addMethod(
-                      getGetSpendingKeyMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage>(
-                                      this, METHODID_GET_SPENDING_KEY)))
-              .addMethod(
-                      getGetExpandedSpendingKeyMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage>(
-                                      this, METHODID_GET_EXPANDED_SPENDING_KEY)))
-              .addMethod(
-                      getGetAkFromAskMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage>(
-                                      this, METHODID_GET_AK_FROM_ASK)))
-              .addMethod(
-                      getGetNkFromNskMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage>(
-                                      this, METHODID_GET_NK_FROM_NSK)))
-              .addMethod(
-                      getGetIncomingViewingKeyMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage>(
-                                      this, METHODID_GET_INCOMING_VIEWING_KEY)))
-              .addMethod(
-                      getGetDiversifierMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage>(
-                                      this, METHODID_GET_DIVERSIFIER)))
-              .addMethod(
-                      getGetZenPaymentAddressMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage>(
-                                      this, METHODID_GET_ZEN_PAYMENT_ADDRESS)))
-              .addMethod(
-                      getGetNewShieldedAddressMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo>(
-                                      this, METHODID_GET_NEW_SHIELDED_ADDRESS)))
-              .addMethod(
-                      getGetRcmMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.EmptyMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage>(
-                                      this, METHODID_GET_RCM)))
-              .addMethod(
-                      getCreateShieldedContractParametersMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters,
-                                      org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters>(
-                                      this, METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS)))
-              .addMethod(
-                      getCreateShieldedContractParametersWithoutAskMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk,
-                                      org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters>(
-                                      this, METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS_WITHOUT_ASK)))
-              .addMethod(
-                      getGetTriggerInputForShieldedTRC20ContractMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters,
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage>(
-                                      this, METHODID_GET_TRIGGER_INPUT_FOR_SHIELDED_TRC20CONTRACT)))
-              .addMethod(
-                      getGetAvailableUnfreezeCountMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage>(
-                                      this, METHODID_GET_AVAILABLE_UNFREEZE_COUNT)))
-              .addMethod(
-                      getGetCanWithdrawUnfreezeAmountMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage>(
-                                      this, METHODID_GET_CAN_WITHDRAW_UNFREEZE_AMOUNT)))
-              .addMethod(
-                      getGetCanDelegatedMaxSizeMethod(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage,
-                                      org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage>(
-                                      this, METHODID_GET_CAN_DELEGATED_MAX_SIZE)))
-              .addMethod(
-                      getGetDelegatedResourceV2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.proto.Response.DelegatedResourceMessage,
-                                      org.lgcy.Legacy.proto.Response.DelegatedResourceList>(
-                                      this, METHODID_GET_DELEGATED_RESOURCE_V2)))
-              .addMethod(
-                      getGetDelegatedResourceAccountIndexV2Method(),
-                      asyncUnaryCall(
-                              new MethodHandlers<
-                                      org.lgcy.Legacy.api.GrpcAPI.BytesMessage,
-                                      org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex>(
-                                      this, METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX_V2)))
               .build();
     }
   }
@@ -5472,9 +4053,14 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  change to local build instead of remote build
-     * </pre>
+     */
+    public void broadcastTransactionData(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction request,
+                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.TransactionReturnData> responseObserver) {
+      asyncUnaryCall(
+              getChannel().newCall(getBroadcastTransactionDataMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
      */
     public void createCommonTransaction(org.lgcy.Legacy.proto.Chain.Transaction request,
                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
@@ -5485,7 +4071,7 @@ public final class WalletGrpc {
     /**
      */
     public void createAccount(org.lgcy.Legacy.proto.Contract.AccountCreateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getCreateAccountMethod(), getCallOptions()), request, responseObserver);
     }
@@ -5501,17 +4087,9 @@ public final class WalletGrpc {
     /**
      */
     public void updateAccount(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getUpdateAccountMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void updateAccount2(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getUpdateAccount2Method(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -5525,7 +4103,7 @@ public final class WalletGrpc {
     /**
      */
     public void accountPermissionUpdate(org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract request,
-                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getAccountPermissionUpdateMethod(), getCallOptions()), request, responseObserver);
     }
@@ -5533,25 +4111,17 @@ public final class WalletGrpc {
     /**
      */
     public void createTransaction(org.lgcy.Legacy.proto.Contract.TransferContract request,
-                                  io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                  io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getCreateTransactionMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void createTransaction2(org.lgcy.Legacy.proto.Contract.TransferContract request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+    public void signTransactionCreation(org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension request,
+                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
-              getChannel().newCall(getCreateTransaction2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void createTransaction3(org.lgcy.Legacy.proto.Contract.TransferContract request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getCreateTransaction3Method(), getCallOptions()), request, responseObserver);
+              getChannel().newCall(getSignTransactionCreationMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -5637,39 +4207,23 @@ public final class WalletGrpc {
     /**
      */
     public void createWitness(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getCreateWitnessMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void createWitness2(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getCreateWitness2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void updateWitness(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getUpdateWitnessMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updateWitness2(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getUpdateWitness2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void updateBrokerage(org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getUpdateBrokerageMethod(), getCallOptions()), request, responseObserver);
     }
@@ -5677,71 +4231,47 @@ public final class WalletGrpc {
     /**
      */
     public void voteWitnessAccount(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getVoteWitnessAccountMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void voteWitnessAccount2(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request,
-                                    io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getVoteWitnessAccount2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void freezeBalance(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getFreezeBalanceMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void freezeBalance2(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getFreezeBalance2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void unfreezeBalance(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getUnfreezeBalanceMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void unfreezeBalance2(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request,
-                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getUnfreezeBalance2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void withdrawBalance(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getWithdrawBalanceMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void withdrawBalance2(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request,
-                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+    public void updateSetting(org.lgcy.Legacy.proto.Contract.UpdateSettingContract request,
+                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
-              getChannel().newCall(getWithdrawBalance2Method(), getCallOptions()), request, responseObserver);
+              getChannel().newCall(getUpdateSettingMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
     public void proposalCreate(org.lgcy.Legacy.proto.Contract.ProposalCreateContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getProposalCreateMethod(), getCallOptions()), request, responseObserver);
     }
@@ -5749,7 +4279,7 @@ public final class WalletGrpc {
     /**
      */
     public void proposalApprove(org.lgcy.Legacy.proto.Contract.ProposalApproveContract request,
-                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                                io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getProposalApproveMethod(), getCallOptions()), request, responseObserver);
     }
@@ -5757,7 +4287,7 @@ public final class WalletGrpc {
     /**
      */
     public void proposalDelete(org.lgcy.Legacy.proto.Contract.ProposalDeleteContract request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
+                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getProposalDeleteMethod(), getCallOptions()), request, responseObserver);
     }
@@ -5771,11 +4301,6 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc UpdateSetting(UpdateSettingContract) returns (TransactionExtention) {}          // consume_user_resource_percent
-     *  rpc UpdateEnergyLimit(UpdateEnergyLimitContract) returns (TransactionExtention) {}  // origin_energy_limit
-     *  rpc ClearContractABI(ClearABIContract) returns (TransactionExtention) {}
-     * </pre>
      */
     public void triggerContract(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request,
                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
@@ -5789,6 +4314,14 @@ public final class WalletGrpc {
                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getTriggerConstantContractMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void triggerConstantContract2(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request,
+                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2> responseObserver) {
+      asyncUnaryCall(
+              getChannel().newCall(getTriggerConstantContract2Method(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -6032,6 +4565,14 @@ public final class WalletGrpc {
 
     /**
      */
+    public void getTransactionById3(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
+                                    io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> responseObserver) {
+      asyncUnaryCall(
+              getChannel().newCall(getGetTransactionById3Method(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getTransactionInfoById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionInfo> responseObserver) {
       asyncUnaryCall(
@@ -6102,18 +4643,10 @@ public final class WalletGrpc {
 
     /**
      */
-    public void getDelegatedResource(org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request,
-                                     io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceList> responseObserver) {
+    public void getReward(org.lgcy.Legacy.api.GrpcAPI.RewardMessage request,
+                          io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.RewardOutput> responseObserver) {
       asyncUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getDelegatedResourceAccountIndex(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceAccountIndexMethod(), getCallOptions()), request, responseObserver);
+              getChannel().newCall(getGetRewardMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -6146,14 +4679,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public void listExchanges(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                              io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ExchangeList> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getListExchangesMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void getExchangeById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.Exchange> responseObserver) {
       asyncUnaryCall(
@@ -6166,76 +4691,6 @@ public final class WalletGrpc {
                                          io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ExchangeList> responseObserver) {
       asyncUnaryCall(
               getChannel().newCall(getGetPaginatedExchangeListMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Shielded helpers:
-     * </pre>
-     */
-    public void scanShieldedTRC20NotesByIvk(org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters request,
-                                            io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getScanShieldedTRC20NotesByIvkMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void scanShieldedTRC20NotesByOvk(org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters request,
-                                            io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getScanShieldedTRC20NotesByOvkMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void isShieldedTRC20ContractNoteSpent(org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters request,
-                                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.NullifierResult> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getIsShieldedTRC20ContractNoteSpentMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     * Market API:
-     * </pre>
-     */
-    public void getMarketOrderByAccount(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderList> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetMarketOrderByAccountMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketOrderById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrder> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetMarketOrderByIdMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketPriceByPair(org.lgcy.Legacy.proto.Response.MarketOrderPair request,
-                                     io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketPriceList> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetMarketPriceByPairMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketOrderListByPair(org.lgcy.Legacy.proto.Response.MarketOrderPair request,
-                                         io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderList> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetMarketOrderListByPairMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getMarketPairList(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                                  io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderPairList> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetMarketPairListMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -6312,152 +4767,6 @@ public final class WalletGrpc {
       asyncUnaryCall(
               getChannel().newCall(getAddSignMethod(), getCallOptions()), request, responseObserver);
     }
-
-    /**
-     * <pre>
-     * FLAW: Unsafe shielded junk(should be implemented offline).
-     * </pre>
-     */
-    public void getSpendingKey(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetSpendingKeyMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getExpandedSpendingKey(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetExpandedSpendingKeyMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getAkFromAsk(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                             io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetAkFromAskMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getNkFromNsk(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                             io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetNkFromNskMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getIncomingViewingKey(org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage request,
-                                      io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetIncomingViewingKeyMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getDiversifier(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                               io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetDiversifierMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getZenPaymentAddress(org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage request,
-                                     io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetZenPaymentAddressMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getNewShieldedAddress(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                                      io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetNewShieldedAddressMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getRcm(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request,
-                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetRcmMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void createShieldedContractParameters(org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters request,
-                                                 io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getCreateShieldedContractParametersMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void createShieldedContractParametersWithoutAsk(org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk request,
-                                                           io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getCreateShieldedContractParametersWithoutAskMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getTriggerInputForShieldedTRC20Contract(org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters request,
-                                                        io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetTriggerInputForShieldedTRC20ContractMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     * <pre>
-     *  rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
-     * </pre>
-     */
-    public void getAvailableUnfreezeCount(org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage request,
-                                          io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetAvailableUnfreezeCountMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getCanWithdrawUnfreezeAmount(org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage request,
-                                             io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetCanWithdrawUnfreezeAmountMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getCanDelegatedMaxSize(org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage request,
-                                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetCanDelegatedMaxSizeMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getDelegatedResourceV2(org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request,
-                                       io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceList> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceV2Method(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getDelegatedResourceAccountIndexV2(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request,
-                                                   io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> responseObserver) {
-      asyncUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceAccountIndexV2Method(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
@@ -6485,9 +4794,13 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  change to local build instead of remote build
-     * </pre>
+     */
+    public org.lgcy.Legacy.proto.Chain.TransactionReturnData broadcastTransactionData(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction request) {
+      return blockingUnaryCall(
+              getChannel(), getBroadcastTransactionDataMethod(), getCallOptions(), request);
+    }
+
+    /**
      */
     public org.lgcy.Legacy.proto.Response.TransactionExtention createCommonTransaction(org.lgcy.Legacy.proto.Chain.Transaction request) {
       return blockingUnaryCall(
@@ -6496,7 +4809,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public org.lgcy.Legacy.proto.Chain.Transaction createAccount(org.lgcy.Legacy.proto.Contract.AccountCreateContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction createAccount(org.lgcy.Legacy.proto.Contract.AccountCreateContract request) {
       return blockingUnaryCall(
               getChannel(), getCreateAccountMethod(), getCallOptions(), request);
     }
@@ -6510,16 +4823,9 @@ public final class WalletGrpc {
 
     /**
      */
-    public org.lgcy.Legacy.proto.Chain.Transaction updateAccount(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction updateAccount(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request) {
       return blockingUnaryCall(
               getChannel(), getUpdateAccountMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention updateAccount2(org.lgcy.Legacy.proto.Contract.AccountUpdateContract request) {
-      return blockingUnaryCall(
-              getChannel(), getUpdateAccount2Method(), getCallOptions(), request);
     }
 
     /**
@@ -6531,30 +4837,23 @@ public final class WalletGrpc {
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention accountPermissionUpdate(org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction accountPermissionUpdate(org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract request) {
       return blockingUnaryCall(
               getChannel(), getAccountPermissionUpdateMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Chain.Transaction createTransaction(org.lgcy.Legacy.proto.Contract.TransferContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction createTransaction(org.lgcy.Legacy.proto.Contract.TransferContract request) {
       return blockingUnaryCall(
               getChannel(), getCreateTransactionMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention createTransaction2(org.lgcy.Legacy.proto.Contract.TransferContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction signTransactionCreation(org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension request) {
       return blockingUnaryCall(
-              getChannel(), getCreateTransaction2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction createTransaction3(org.lgcy.Legacy.proto.Contract.TransferContract request) {
-      return blockingUnaryCall(
-              getChannel(), getCreateTransaction3Method(), getCallOptions(), request);
+              getChannel(), getSignTransactionCreationMethod(), getCallOptions(), request);
     }
 
     /**
@@ -6629,112 +4928,77 @@ public final class WalletGrpc {
 
     /**
      */
-    public org.lgcy.Legacy.proto.Chain.Transaction createWitness(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction createWitness(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request) {
       return blockingUnaryCall(
               getChannel(), getCreateWitnessMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention createWitness2(org.lgcy.Legacy.proto.Contract.WitnessCreateContract request) {
-      return blockingUnaryCall(
-              getChannel(), getCreateWitness2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Chain.Transaction updateWitness(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction updateWitness(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request) {
       return blockingUnaryCall(
               getChannel(), getUpdateWitnessMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention updateWitness2(org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request) {
-      return blockingUnaryCall(
-              getChannel(), getUpdateWitness2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention updateBrokerage(org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction updateBrokerage(org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract request) {
       return blockingUnaryCall(
               getChannel(), getUpdateBrokerageMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Chain.Transaction voteWitnessAccount(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction voteWitnessAccount(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request) {
       return blockingUnaryCall(
               getChannel(), getVoteWitnessAccountMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention voteWitnessAccount2(org.lgcy.Legacy.proto.Contract.VoteWitnessContract request) {
-      return blockingUnaryCall(
-              getChannel(), getVoteWitnessAccount2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Chain.Transaction freezeBalance(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction freezeBalance(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request) {
       return blockingUnaryCall(
               getChannel(), getFreezeBalanceMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention freezeBalance2(org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request) {
-      return blockingUnaryCall(
-              getChannel(), getFreezeBalance2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Chain.Transaction unfreezeBalance(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction unfreezeBalance(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request) {
       return blockingUnaryCall(
               getChannel(), getUnfreezeBalanceMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention unfreezeBalance2(org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request) {
-      return blockingUnaryCall(
-              getChannel(), getUnfreezeBalance2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Chain.Transaction withdrawBalance(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction withdrawBalance(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request) {
       return blockingUnaryCall(
               getChannel(), getWithdrawBalanceMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention withdrawBalance2(org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction updateSetting(org.lgcy.Legacy.proto.Contract.UpdateSettingContract request) {
       return blockingUnaryCall(
-              getChannel(), getWithdrawBalance2Method(), getCallOptions(), request);
+              getChannel(), getUpdateSettingMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention proposalCreate(org.lgcy.Legacy.proto.Contract.ProposalCreateContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction proposalCreate(org.lgcy.Legacy.proto.Contract.ProposalCreateContract request) {
       return blockingUnaryCall(
               getChannel(), getProposalCreateMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention proposalApprove(org.lgcy.Legacy.proto.Contract.ProposalApproveContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction proposalApprove(org.lgcy.Legacy.proto.Contract.ProposalApproveContract request) {
       return blockingUnaryCall(
               getChannel(), getProposalApproveMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.TransactionExtention proposalDelete(org.lgcy.Legacy.proto.Contract.ProposalDeleteContract request) {
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction proposalDelete(org.lgcy.Legacy.proto.Contract.ProposalDeleteContract request) {
       return blockingUnaryCall(
               getChannel(), getProposalDeleteMethod(), getCallOptions(), request);
     }
@@ -6747,11 +5011,6 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc UpdateSetting(UpdateSettingContract) returns (TransactionExtention) {}          // consume_user_resource_percent
-     *  rpc UpdateEnergyLimit(UpdateEnergyLimitContract) returns (TransactionExtention) {}  // origin_energy_limit
-     *  rpc ClearContractABI(ClearABIContract) returns (TransactionExtention) {}
-     * </pre>
      */
     public org.lgcy.Legacy.proto.Response.TransactionExtention triggerContract(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request) {
       return blockingUnaryCall(
@@ -6763,6 +5022,13 @@ public final class WalletGrpc {
     public org.lgcy.Legacy.proto.Response.TransactionExtention triggerConstantContract(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request) {
       return blockingUnaryCall(
               getChannel(), getTriggerConstantContractMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 triggerConstantContract2(org.lgcy.Legacy.proto.Contract.TriggerSmartContract request) {
+      return blockingUnaryCall(
+              getChannel(), getTriggerConstantContract2Method(), getCallOptions(), request);
     }
 
     /**
@@ -6978,6 +5244,13 @@ public final class WalletGrpc {
 
     /**
      */
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransactionById3(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
+      return blockingUnaryCall(
+              getChannel(), getGetTransactionById3Method(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public org.lgcy.Legacy.proto.Response.TransactionInfo getTransactionInfoById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
       return blockingUnaryCall(
               getChannel(), getGetTransactionInfoByIdMethod(), getCallOptions(), request);
@@ -7040,16 +5313,9 @@ public final class WalletGrpc {
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.DelegatedResourceList getDelegatedResource(org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request) {
+    public org.lgcy.Legacy.api.GrpcAPI.RewardOutput getReward(org.lgcy.Legacy.api.GrpcAPI.RewardMessage request) {
       return blockingUnaryCall(
-              getChannel(), getGetDelegatedResourceMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex getDelegatedResourceAccountIndex(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetDelegatedResourceAccountIndexMethod(), getCallOptions(), request);
+              getChannel(), getGetRewardMethod(), getCallOptions(), request);
     }
 
     /**
@@ -7079,13 +5345,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public org.lgcy.Legacy.proto.Response.ExchangeList listExchanges(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getListExchangesMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public org.lgcy.Legacy.proto.Response.Exchange getExchangeById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
       return blockingUnaryCall(
               getChannel(), getGetExchangeByIdMethod(), getCallOptions(), request);
@@ -7096,68 +5355,6 @@ public final class WalletGrpc {
     public org.lgcy.Legacy.proto.Response.ExchangeList getPaginatedExchangeList(org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage request) {
       return blockingUnaryCall(
               getChannel(), getGetPaginatedExchangeListMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Shielded helpers:
-     * </pre>
-     */
-    public org.lgcy.Legacy.proto.Response.DecryptNotesTRC20 scanShieldedTRC20NotesByIvk(org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters request) {
-      return blockingUnaryCall(
-              getChannel(), getScanShieldedTRC20NotesByIvkMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.DecryptNotesTRC20 scanShieldedTRC20NotesByOvk(org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters request) {
-      return blockingUnaryCall(
-              getChannel(), getScanShieldedTRC20NotesByOvkMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.NullifierResult isShieldedTRC20ContractNoteSpent(org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters request) {
-      return blockingUnaryCall(
-              getChannel(), getIsShieldedTRC20ContractNoteSpentMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     * Market API:
-     * </pre>
-     */
-    public org.lgcy.Legacy.proto.Response.MarketOrderList getMarketOrderByAccount(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetMarketOrderByAccountMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.MarketOrder getMarketOrderById(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetMarketOrderByIdMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.MarketPriceList getMarketPriceByPair(org.lgcy.Legacy.proto.Response.MarketOrderPair request) {
-      return blockingUnaryCall(
-              getChannel(), getGetMarketPriceByPairMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.MarketOrderList getMarketOrderListByPair(org.lgcy.Legacy.proto.Response.MarketOrderPair request) {
-      return blockingUnaryCall(
-              getChannel(), getGetMarketOrderListByPairMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.MarketOrderPairList getMarketPairList(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetMarketPairListMethod(), getCallOptions(), request);
     }
 
     /**
@@ -7225,135 +5422,6 @@ public final class WalletGrpc {
       return blockingUnaryCall(
               getChannel(), getAddSignMethod(), getCallOptions(), request);
     }
-
-    /**
-     * <pre>
-     * FLAW: Unsafe shielded junk(should be implemented offline).
-     * </pre>
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.BytesMessage getSpendingKey(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetSpendingKeyMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage getExpandedSpendingKey(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetExpandedSpendingKeyMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.BytesMessage getAkFromAsk(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetAkFromAskMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.BytesMessage getNkFromNsk(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetNkFromNskMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage getIncomingViewingKey(org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetIncomingViewingKeyMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage getDiversifier(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetDiversifierMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage getZenPaymentAddress(org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetZenPaymentAddressMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo getNewShieldedAddress(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetNewShieldedAddressMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.BytesMessage getRcm(org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetRcmMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters createShieldedContractParameters(org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters request) {
-      return blockingUnaryCall(
-              getChannel(), getCreateShieldedContractParametersMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters createShieldedContractParametersWithoutAsk(org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk request) {
-      return blockingUnaryCall(
-              getChannel(), getCreateShieldedContractParametersWithoutAskMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.BytesMessage getTriggerInputForShieldedTRC20Contract(org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters request) {
-      return blockingUnaryCall(
-              getChannel(), getGetTriggerInputForShieldedTRC20ContractMethod(), getCallOptions(), request);
-    }
-
-    /**
-     * <pre>
-     *  rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
-     * </pre>
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage getAvailableUnfreezeCount(org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetAvailableUnfreezeCountMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage getCanWithdrawUnfreezeAmount(org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetCanWithdrawUnfreezeAmountMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage getCanDelegatedMaxSize(org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetCanDelegatedMaxSizeMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.DelegatedResourceList getDelegatedResourceV2(org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetDelegatedResourceV2Method(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex getDelegatedResourceAccountIndexV2(org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return blockingUnaryCall(
-              getChannel(), getGetDelegatedResourceAccountIndexV2Method(), getCallOptions(), request);
-    }
   }
 
   /**
@@ -7382,9 +5450,14 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  change to local build instead of remote build
-     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.TransactionReturnData> broadcastTransactionData(
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction request) {
+      return futureUnaryCall(
+              getChannel().newCall(getBroadcastTransactionDataMethod(), getCallOptions()), request);
+    }
+
+    /**
      */
     public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> createCommonTransaction(
             org.lgcy.Legacy.proto.Chain.Transaction request) {
@@ -7394,7 +5467,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> createAccount(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> createAccount(
             org.lgcy.Legacy.proto.Contract.AccountCreateContract request) {
       return futureUnaryCall(
               getChannel().newCall(getCreateAccountMethod(), getCallOptions()), request);
@@ -7410,18 +5483,10 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> updateAccount(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> updateAccount(
             org.lgcy.Legacy.proto.Contract.AccountUpdateContract request) {
       return futureUnaryCall(
               getChannel().newCall(getUpdateAccountMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> updateAccount2(
-            org.lgcy.Legacy.proto.Contract.AccountUpdateContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getUpdateAccount2Method(), getCallOptions()), request);
     }
 
     /**
@@ -7434,7 +5499,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> accountPermissionUpdate(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> accountPermissionUpdate(
             org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract request) {
       return futureUnaryCall(
               getChannel().newCall(getAccountPermissionUpdateMethod(), getCallOptions()), request);
@@ -7442,7 +5507,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> createTransaction(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> createTransaction(
             org.lgcy.Legacy.proto.Contract.TransferContract request) {
       return futureUnaryCall(
               getChannel().newCall(getCreateTransactionMethod(), getCallOptions()), request);
@@ -7450,18 +5515,10 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> createTransaction2(
-            org.lgcy.Legacy.proto.Contract.TransferContract request) {
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> signTransactionCreation(
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension request) {
       return futureUnaryCall(
-              getChannel().newCall(getCreateTransaction2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> createTransaction3(
-            org.lgcy.Legacy.proto.Contract.TransferContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getCreateTransaction3Method(), getCallOptions()), request);
+              getChannel().newCall(getSignTransactionCreationMethod(), getCallOptions()), request);
     }
 
     /**
@@ -7546,7 +5603,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> createWitness(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> createWitness(
             org.lgcy.Legacy.proto.Contract.WitnessCreateContract request) {
       return futureUnaryCall(
               getChannel().newCall(getCreateWitnessMethod(), getCallOptions()), request);
@@ -7554,15 +5611,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> createWitness2(
-            org.lgcy.Legacy.proto.Contract.WitnessCreateContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getCreateWitness2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> updateWitness(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> updateWitness(
             org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request) {
       return futureUnaryCall(
               getChannel().newCall(getUpdateWitnessMethod(), getCallOptions()), request);
@@ -7570,15 +5619,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> updateWitness2(
-            org.lgcy.Legacy.proto.Contract.WitnessUpdateContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getUpdateWitness2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> updateBrokerage(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> updateBrokerage(
             org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract request) {
       return futureUnaryCall(
               getChannel().newCall(getUpdateBrokerageMethod(), getCallOptions()), request);
@@ -7586,7 +5627,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> voteWitnessAccount(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> voteWitnessAccount(
             org.lgcy.Legacy.proto.Contract.VoteWitnessContract request) {
       return futureUnaryCall(
               getChannel().newCall(getVoteWitnessAccountMethod(), getCallOptions()), request);
@@ -7594,15 +5635,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> voteWitnessAccount2(
-            org.lgcy.Legacy.proto.Contract.VoteWitnessContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getVoteWitnessAccount2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> freezeBalance(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> freezeBalance(
             org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request) {
       return futureUnaryCall(
               getChannel().newCall(getFreezeBalanceMethod(), getCallOptions()), request);
@@ -7610,15 +5643,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> freezeBalance2(
-            org.lgcy.Legacy.proto.Contract.FreezeBalanceContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getFreezeBalance2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> unfreezeBalance(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> unfreezeBalance(
             org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request) {
       return futureUnaryCall(
               getChannel().newCall(getUnfreezeBalanceMethod(), getCallOptions()), request);
@@ -7626,15 +5651,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> unfreezeBalance2(
-            org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract request) {
-      return futureUnaryCall(
-              getChannel().newCall(getUnfreezeBalance2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Chain.Transaction> withdrawBalance(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> withdrawBalance(
             org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request) {
       return futureUnaryCall(
               getChannel().newCall(getWithdrawBalanceMethod(), getCallOptions()), request);
@@ -7642,15 +5659,15 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> withdrawBalance2(
-            org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract request) {
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> updateSetting(
+            org.lgcy.Legacy.proto.Contract.UpdateSettingContract request) {
       return futureUnaryCall(
-              getChannel().newCall(getWithdrawBalance2Method(), getCallOptions()), request);
+              getChannel().newCall(getUpdateSettingMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> proposalCreate(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> proposalCreate(
             org.lgcy.Legacy.proto.Contract.ProposalCreateContract request) {
       return futureUnaryCall(
               getChannel().newCall(getProposalCreateMethod(), getCallOptions()), request);
@@ -7658,7 +5675,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> proposalApprove(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> proposalApprove(
             org.lgcy.Legacy.proto.Contract.ProposalApproveContract request) {
       return futureUnaryCall(
               getChannel().newCall(getProposalApproveMethod(), getCallOptions()), request);
@@ -7666,7 +5683,7 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> proposalDelete(
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> proposalDelete(
             org.lgcy.Legacy.proto.Contract.ProposalDeleteContract request) {
       return futureUnaryCall(
               getChannel().newCall(getProposalDeleteMethod(), getCallOptions()), request);
@@ -7681,11 +5698,6 @@ public final class WalletGrpc {
     }
 
     /**
-     * <pre>
-     *  rpc UpdateSetting(UpdateSettingContract) returns (TransactionExtention) {}          // consume_user_resource_percent
-     *  rpc UpdateEnergyLimit(UpdateEnergyLimitContract) returns (TransactionExtention) {}  // origin_energy_limit
-     *  rpc ClearContractABI(ClearABIContract) returns (TransactionExtention) {}
-     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionExtention> triggerContract(
             org.lgcy.Legacy.proto.Contract.TriggerSmartContract request) {
@@ -7699,6 +5711,14 @@ public final class WalletGrpc {
             org.lgcy.Legacy.proto.Contract.TriggerSmartContract request) {
       return futureUnaryCall(
               getChannel().newCall(getTriggerConstantContractMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2> triggerConstantContract2(
+            org.lgcy.Legacy.proto.Contract.TriggerSmartContract request) {
+      return futureUnaryCall(
+              getChannel().newCall(getTriggerConstantContract2Method(), getCallOptions()), request);
     }
 
     /**
@@ -7942,6 +5962,14 @@ public final class WalletGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction> getTransactionById3(
+            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
+      return futureUnaryCall(
+              getChannel().newCall(getGetTransactionById3Method(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.TransactionInfo> getTransactionInfoById(
             org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
       return futureUnaryCall(
@@ -8012,18 +6040,10 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.DelegatedResourceList> getDelegatedResource(
-            org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request) {
+    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.RewardOutput> getReward(
+            org.lgcy.Legacy.api.GrpcAPI.RewardMessage request) {
       return futureUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getDelegatedResourceAccountIndex(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceAccountIndexMethod(), getCallOptions()), request);
+              getChannel().newCall(getGetRewardMethod(), getCallOptions()), request);
     }
 
     /**
@@ -8056,14 +6076,6 @@ public final class WalletGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.ExchangeList> listExchanges(
-            org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getListExchangesMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.Exchange> getExchangeById(
             org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
       return futureUnaryCall(
@@ -8076,76 +6088,6 @@ public final class WalletGrpc {
             org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage request) {
       return futureUnaryCall(
               getChannel().newCall(getGetPaginatedExchangeListMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     * Shielded helpers:
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> scanShieldedTRC20NotesByIvk(
-            org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters request) {
-      return futureUnaryCall(
-              getChannel().newCall(getScanShieldedTRC20NotesByIvkMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20> scanShieldedTRC20NotesByOvk(
-            org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters request) {
-      return futureUnaryCall(
-              getChannel().newCall(getScanShieldedTRC20NotesByOvkMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.NullifierResult> isShieldedTRC20ContractNoteSpent(
-            org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters request) {
-      return futureUnaryCall(
-              getChannel().newCall(getIsShieldedTRC20ContractNoteSpentMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     * Market API:
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.MarketOrderList> getMarketOrderByAccount(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetMarketOrderByAccountMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.MarketOrder> getMarketOrderById(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetMarketOrderByIdMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.MarketPriceList> getMarketPriceByPair(
-            org.lgcy.Legacy.proto.Response.MarketOrderPair request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetMarketPriceByPairMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.MarketOrderList> getMarketOrderListByPair(
-            org.lgcy.Legacy.proto.Response.MarketOrderPair request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetMarketOrderListByPairMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.MarketOrderPairList> getMarketPairList(
-            org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetMarketPairListMethod(), getCallOptions()), request);
     }
 
     /**
@@ -8222,272 +6164,95 @@ public final class WalletGrpc {
       return futureUnaryCall(
               getChannel().newCall(getAddSignMethod(), getCallOptions()), request);
     }
-
-    /**
-     * <pre>
-     * FLAW: Unsafe shielded junk(should be implemented offline).
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getSpendingKey(
-            org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetSpendingKeyMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage> getExpandedSpendingKey(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetExpandedSpendingKeyMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getAkFromAsk(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetAkFromAskMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getNkFromNsk(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetNkFromNskMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage> getIncomingViewingKey(
-            org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetIncomingViewingKeyMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage> getDiversifier(
-            org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetDiversifierMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage> getZenPaymentAddress(
-            org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetZenPaymentAddressMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo> getNewShieldedAddress(
-            org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetNewShieldedAddressMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getRcm(
-            org.lgcy.Legacy.api.GrpcAPI.EmptyMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetRcmMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> createShieldedContractParameters(
-            org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters request) {
-      return futureUnaryCall(
-              getChannel().newCall(getCreateShieldedContractParametersMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters> createShieldedContractParametersWithoutAsk(
-            org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk request) {
-      return futureUnaryCall(
-              getChannel().newCall(getCreateShieldedContractParametersWithoutAskMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.BytesMessage> getTriggerInputForShieldedTRC20Contract(
-            org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetTriggerInputForShieldedTRC20ContractMethod(), getCallOptions()), request);
-    }
-
-    /**
-     * <pre>
-     *  rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
-     *  rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
-     *  rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage> getAvailableUnfreezeCount(
-            org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetAvailableUnfreezeCountMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage> getCanWithdrawUnfreezeAmount(
-            org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetCanWithdrawUnfreezeAmountMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage> getCanDelegatedMaxSize(
-            org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetCanDelegatedMaxSizeMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.DelegatedResourceList> getDelegatedResourceV2(
-            org.lgcy.Legacy.proto.Response.DelegatedResourceMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceV2Method(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex> getDelegatedResourceAccountIndexV2(
-            org.lgcy.Legacy.api.GrpcAPI.BytesMessage request) {
-      return futureUnaryCall(
-              getChannel().newCall(getGetDelegatedResourceAccountIndexV2Method(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_BROADCAST_TRANSACTION = 0;
-  private static final int METHODID_CREATE_COMMON_TRANSACTION = 1;
-  private static final int METHODID_CREATE_ACCOUNT = 2;
-  private static final int METHODID_CREATE_ACCOUNT2 = 3;
-  private static final int METHODID_UPDATE_ACCOUNT = 4;
-  private static final int METHODID_UPDATE_ACCOUNT2 = 5;
+  private static final int METHODID_BROADCAST_TRANSACTION_DATA = 1;
+  private static final int METHODID_CREATE_COMMON_TRANSACTION = 2;
+  private static final int METHODID_CREATE_ACCOUNT = 3;
+  private static final int METHODID_CREATE_ACCOUNT2 = 4;
+  private static final int METHODID_UPDATE_ACCOUNT = 5;
   private static final int METHODID_SET_ACCOUNT_ID = 6;
   private static final int METHODID_ACCOUNT_PERMISSION_UPDATE = 7;
   private static final int METHODID_CREATE_TRANSACTION = 8;
-  private static final int METHODID_CREATE_TRANSACTION2 = 9;
-  private static final int METHODID_CREATE_TRANSACTION3 = 10;
-  private static final int METHODID_CREATE_ASSET_ISSUE = 11;
-  private static final int METHODID_CREATE_ASSET_ISSUE2 = 12;
-  private static final int METHODID_UPDATE_ASSET = 13;
-  private static final int METHODID_UPDATE_ASSET2 = 14;
-  private static final int METHODID_TRANSFER_ASSET = 15;
-  private static final int METHODID_TRANSFER_ASSET2 = 16;
-  private static final int METHODID_PARTICIPATE_ASSET_ISSUE = 17;
-  private static final int METHODID_PARTICIPATE_ASSET_ISSUE2 = 18;
-  private static final int METHODID_UNFREEZE_ASSET = 19;
-  private static final int METHODID_UNFREEZE_ASSET2 = 20;
-  private static final int METHODID_CREATE_WITNESS = 21;
-  private static final int METHODID_CREATE_WITNESS2 = 22;
-  private static final int METHODID_UPDATE_WITNESS = 23;
-  private static final int METHODID_UPDATE_WITNESS2 = 24;
-  private static final int METHODID_UPDATE_BROKERAGE = 25;
-  private static final int METHODID_VOTE_WITNESS_ACCOUNT = 26;
-  private static final int METHODID_VOTE_WITNESS_ACCOUNT2 = 27;
-  private static final int METHODID_FREEZE_BALANCE = 28;
-  private static final int METHODID_FREEZE_BALANCE2 = 29;
-  private static final int METHODID_UNFREEZE_BALANCE = 30;
-  private static final int METHODID_UNFREEZE_BALANCE2 = 31;
-  private static final int METHODID_WITHDRAW_BALANCE = 32;
-  private static final int METHODID_WITHDRAW_BALANCE2 = 33;
-  private static final int METHODID_PROPOSAL_CREATE = 34;
-  private static final int METHODID_PROPOSAL_APPROVE = 35;
-  private static final int METHODID_PROPOSAL_DELETE = 36;
-  private static final int METHODID_DEPLOY_CONTRACT = 37;
-  private static final int METHODID_TRIGGER_CONTRACT = 38;
-  private static final int METHODID_TRIGGER_CONSTANT_CONTRACT = 39;
-  private static final int METHODID_GET_NODE_INFO = 40;
-  private static final int METHODID_LIST_NODES = 41;
-  private static final int METHODID_GET_CHAIN_PARAMETERS = 42;
-  private static final int METHODID_TOTAL_TRANSACTION = 43;
-  private static final int METHODID_GET_NEXT_MAINTENANCE_TIME = 44;
-  private static final int METHODID_GET_TRANSACTION_SIGN_WEIGHT = 45;
-  private static final int METHODID_GET_TRANSACTION_APPROVED_LIST = 46;
-  private static final int METHODID_GET_ACCOUNT = 47;
-  private static final int METHODID_GET_ACCOUNT_BY_ID = 48;
-  private static final int METHODID_GET_ACCOUNT_NET = 49;
-  private static final int METHODID_GET_ACCOUNT_RESOURCE = 50;
-  private static final int METHODID_GET_ASSET_ISSUE_BY_ACCOUNT = 51;
-  private static final int METHODID_GET_ASSET_ISSUE_BY_NAME = 52;
-  private static final int METHODID_GET_ASSET_ISSUE_LIST_BY_NAME = 53;
-  private static final int METHODID_GET_ASSET_ISSUE_BY_ID = 54;
-  private static final int METHODID_GET_ASSET_ISSUE_LIST = 55;
-  private static final int METHODID_GET_PAGINATED_ASSET_ISSUE_LIST = 56;
-  private static final int METHODID_GET_NOW_BLOCK = 57;
-  private static final int METHODID_GET_NOW_BLOCK2 = 58;
-  private static final int METHODID_GET_BLOCK_BY_NUM = 59;
-  private static final int METHODID_GET_BLOCK_BY_NUM2 = 60;
-  private static final int METHODID_GET_BLOCK_BY_ID = 61;
-  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT = 62;
-  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT2 = 63;
-  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM = 64;
-  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM2 = 65;
-  private static final int METHODID_GET_TRANSACTION_COUNT_BY_BLOCK_NUM = 66;
-  private static final int METHODID_GET_TRANSACTION_BY_ID = 67;
-  private static final int METHODID_GET_TRANSACTION_INFO_BY_ID = 68;
-  private static final int METHODID_GET_TRANSACTION_INFO_BY_BLOCK_NUM = 69;
-  private static final int METHODID_GET_CONTRACT = 70;
-  private static final int METHODID_GET_CONTRACT_INFO = 71;
-  private static final int METHODID_LIST_WITNESSES = 72;
-  private static final int METHODID_GET_BROKERAGE_INFO = 73;
-  private static final int METHODID_GET_BROKERAGE = 74;
-  private static final int METHODID_GET_REWARD_INFO = 75;
-  private static final int METHODID_GET_DELEGATED_RESOURCE = 76;
-  private static final int METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX = 77;
-  private static final int METHODID_LIST_PROPOSALS = 78;
-  private static final int METHODID_GET_PROPOSAL_BY_ID = 79;
-  private static final int METHODID_GET_PAGINATED_PROPOSAL_LIST = 80;
-  private static final int METHODID_LIST_EXCHANGES = 81;
-  private static final int METHODID_GET_EXCHANGE_BY_ID = 82;
-  private static final int METHODID_GET_PAGINATED_EXCHANGE_LIST = 83;
-  private static final int METHODID_SCAN_SHIELDED_TRC20NOTES_BY_IVK = 84;
-  private static final int METHODID_SCAN_SHIELDED_TRC20NOTES_BY_OVK = 85;
-  private static final int METHODID_IS_SHIELDED_TRC20CONTRACT_NOTE_SPENT = 86;
-  private static final int METHODID_GET_MARKET_ORDER_BY_ACCOUNT = 87;
-  private static final int METHODID_GET_MARKET_ORDER_BY_ID = 88;
-  private static final int METHODID_GET_MARKET_PRICE_BY_PAIR = 89;
-  private static final int METHODID_GET_MARKET_ORDER_LIST_BY_PAIR = 90;
-  private static final int METHODID_GET_MARKET_PAIR_LIST = 91;
-  private static final int METHODID_GET_TRANSACTION_SIGN = 92;
-  private static final int METHODID_GET_TRANSACTION_SIGN2 = 93;
-  private static final int METHODID_EASY_TRANSFER_ASSET = 94;
-  private static final int METHODID_EASY_TRANSFER_ASSET_BY_PRIVATE = 95;
-  private static final int METHODID_EASY_TRANSFER = 96;
-  private static final int METHODID_EASY_TRANSFER_BY_PRIVATE = 97;
-  private static final int METHODID_CREATE_ADDRESS = 98;
-  private static final int METHODID_GENERATE_ADDRESS = 99;
-  private static final int METHODID_ADD_SIGN = 100;
-  private static final int METHODID_GET_SPENDING_KEY = 101;
-  private static final int METHODID_GET_EXPANDED_SPENDING_KEY = 102;
-  private static final int METHODID_GET_AK_FROM_ASK = 103;
-  private static final int METHODID_GET_NK_FROM_NSK = 104;
-  private static final int METHODID_GET_INCOMING_VIEWING_KEY = 105;
-  private static final int METHODID_GET_DIVERSIFIER = 106;
-  private static final int METHODID_GET_ZEN_PAYMENT_ADDRESS = 107;
-  private static final int METHODID_GET_NEW_SHIELDED_ADDRESS = 108;
-  private static final int METHODID_GET_RCM = 109;
-  private static final int METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS = 110;
-  private static final int METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS_WITHOUT_ASK = 111;
-  private static final int METHODID_GET_TRIGGER_INPUT_FOR_SHIELDED_TRC20CONTRACT = 112;
-  private static final int METHODID_GET_AVAILABLE_UNFREEZE_COUNT = 113;
-  private static final int METHODID_GET_CAN_WITHDRAW_UNFREEZE_AMOUNT = 114;
-  private static final int METHODID_GET_CAN_DELEGATED_MAX_SIZE = 115;
-  private static final int METHODID_GET_DELEGATED_RESOURCE_V2 = 116;
-  private static final int METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX_V2 = 117;
+  private static final int METHODID_SIGN_TRANSACTION_CREATION = 9;
+  private static final int METHODID_CREATE_ASSET_ISSUE = 10;
+  private static final int METHODID_CREATE_ASSET_ISSUE2 = 11;
+  private static final int METHODID_UPDATE_ASSET = 12;
+  private static final int METHODID_UPDATE_ASSET2 = 13;
+  private static final int METHODID_TRANSFER_ASSET = 14;
+  private static final int METHODID_TRANSFER_ASSET2 = 15;
+  private static final int METHODID_PARTICIPATE_ASSET_ISSUE = 16;
+  private static final int METHODID_PARTICIPATE_ASSET_ISSUE2 = 17;
+  private static final int METHODID_UNFREEZE_ASSET = 18;
+  private static final int METHODID_UNFREEZE_ASSET2 = 19;
+  private static final int METHODID_CREATE_WITNESS = 20;
+  private static final int METHODID_UPDATE_WITNESS = 21;
+  private static final int METHODID_UPDATE_BROKERAGE = 22;
+  private static final int METHODID_VOTE_WITNESS_ACCOUNT = 23;
+  private static final int METHODID_FREEZE_BALANCE = 24;
+  private static final int METHODID_UNFREEZE_BALANCE = 25;
+  private static final int METHODID_WITHDRAW_BALANCE = 26;
+  private static final int METHODID_UPDATE_SETTING = 27;
+  private static final int METHODID_PROPOSAL_CREATE = 28;
+  private static final int METHODID_PROPOSAL_APPROVE = 29;
+  private static final int METHODID_PROPOSAL_DELETE = 30;
+  private static final int METHODID_DEPLOY_CONTRACT = 31;
+  private static final int METHODID_TRIGGER_CONTRACT = 32;
+  private static final int METHODID_TRIGGER_CONSTANT_CONTRACT = 33;
+  private static final int METHODID_TRIGGER_CONSTANT_CONTRACT2 = 34;
+  private static final int METHODID_GET_NODE_INFO = 35;
+  private static final int METHODID_LIST_NODES = 36;
+  private static final int METHODID_GET_CHAIN_PARAMETERS = 37;
+  private static final int METHODID_TOTAL_TRANSACTION = 38;
+  private static final int METHODID_GET_NEXT_MAINTENANCE_TIME = 39;
+  private static final int METHODID_GET_TRANSACTION_SIGN_WEIGHT = 40;
+  private static final int METHODID_GET_TRANSACTION_APPROVED_LIST = 41;
+  private static final int METHODID_GET_ACCOUNT = 42;
+  private static final int METHODID_GET_ACCOUNT_BY_ID = 43;
+  private static final int METHODID_GET_ACCOUNT_NET = 44;
+  private static final int METHODID_GET_ACCOUNT_RESOURCE = 45;
+  private static final int METHODID_GET_ASSET_ISSUE_BY_ACCOUNT = 46;
+  private static final int METHODID_GET_ASSET_ISSUE_BY_NAME = 47;
+  private static final int METHODID_GET_ASSET_ISSUE_LIST_BY_NAME = 48;
+  private static final int METHODID_GET_ASSET_ISSUE_BY_ID = 49;
+  private static final int METHODID_GET_ASSET_ISSUE_LIST = 50;
+  private static final int METHODID_GET_PAGINATED_ASSET_ISSUE_LIST = 51;
+  private static final int METHODID_GET_NOW_BLOCK = 52;
+  private static final int METHODID_GET_NOW_BLOCK2 = 53;
+  private static final int METHODID_GET_BLOCK_BY_NUM = 54;
+  private static final int METHODID_GET_BLOCK_BY_NUM2 = 55;
+  private static final int METHODID_GET_BLOCK_BY_ID = 56;
+  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT = 57;
+  private static final int METHODID_GET_BLOCK_BY_LIMIT_NEXT2 = 58;
+  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM = 59;
+  private static final int METHODID_GET_BLOCK_BY_LATEST_NUM2 = 60;
+  private static final int METHODID_GET_TRANSACTION_COUNT_BY_BLOCK_NUM = 61;
+  private static final int METHODID_GET_TRANSACTION_BY_ID = 62;
+  private static final int METHODID_GET_TRANSACTION_BY_ID3 = 63;
+  private static final int METHODID_GET_TRANSACTION_INFO_BY_ID = 64;
+  private static final int METHODID_GET_TRANSACTION_INFO_BY_BLOCK_NUM = 65;
+  private static final int METHODID_GET_CONTRACT = 66;
+  private static final int METHODID_GET_CONTRACT_INFO = 67;
+  private static final int METHODID_LIST_WITNESSES = 68;
+  private static final int METHODID_GET_BROKERAGE_INFO = 69;
+  private static final int METHODID_GET_BROKERAGE = 70;
+  private static final int METHODID_GET_REWARD_INFO = 71;
+  private static final int METHODID_GET_REWARD = 72;
+  private static final int METHODID_LIST_PROPOSALS = 73;
+  private static final int METHODID_GET_PROPOSAL_BY_ID = 74;
+  private static final int METHODID_GET_PAGINATED_PROPOSAL_LIST = 75;
+  private static final int METHODID_GET_EXCHANGE_BY_ID = 76;
+  private static final int METHODID_GET_PAGINATED_EXCHANGE_LIST = 77;
+  private static final int METHODID_GET_TRANSACTION_SIGN = 78;
+  private static final int METHODID_GET_TRANSACTION_SIGN2 = 79;
+  private static final int METHODID_EASY_TRANSFER_ASSET = 80;
+  private static final int METHODID_EASY_TRANSFER_ASSET_BY_PRIVATE = 81;
+  private static final int METHODID_EASY_TRANSFER = 82;
+  private static final int METHODID_EASY_TRANSFER_BY_PRIVATE = 83;
+  private static final int METHODID_CREATE_ADDRESS = 84;
+  private static final int METHODID_GENERATE_ADDRESS = 85;
+  private static final int METHODID_ADD_SIGN = 86;
 
   private static final class MethodHandlers<Req, Resp> implements
           io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -8510,13 +6275,17 @@ public final class WalletGrpc {
           serviceImpl.broadcastTransaction((org.lgcy.Legacy.proto.Chain.Transaction) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionReturn>) responseObserver);
           break;
+        case METHODID_BROADCAST_TRANSACTION_DATA:
+          serviceImpl.broadcastTransactionData((org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction) request,
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.TransactionReturnData>) responseObserver);
+          break;
         case METHODID_CREATE_COMMON_TRANSACTION:
           serviceImpl.createCommonTransaction((org.lgcy.Legacy.proto.Chain.Transaction) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
           break;
         case METHODID_CREATE_ACCOUNT:
           serviceImpl.createAccount((org.lgcy.Legacy.proto.Contract.AccountCreateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_CREATE_ACCOUNT2:
           serviceImpl.createAccount2((org.lgcy.Legacy.proto.Contract.AccountCreateContract) request,
@@ -8524,11 +6293,7 @@ public final class WalletGrpc {
           break;
         case METHODID_UPDATE_ACCOUNT:
           serviceImpl.updateAccount((org.lgcy.Legacy.proto.Contract.AccountUpdateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
-          break;
-        case METHODID_UPDATE_ACCOUNT2:
-          serviceImpl.updateAccount2((org.lgcy.Legacy.proto.Contract.AccountUpdateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_SET_ACCOUNT_ID:
           serviceImpl.setAccountId((org.lgcy.Legacy.proto.Contract.SetAccountIdContract) request,
@@ -8536,18 +6301,14 @@ public final class WalletGrpc {
           break;
         case METHODID_ACCOUNT_PERMISSION_UPDATE:
           serviceImpl.accountPermissionUpdate((org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_CREATE_TRANSACTION:
           serviceImpl.createTransaction((org.lgcy.Legacy.proto.Contract.TransferContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
-        case METHODID_CREATE_TRANSACTION2:
-          serviceImpl.createTransaction2((org.lgcy.Legacy.proto.Contract.TransferContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
-          break;
-        case METHODID_CREATE_TRANSACTION3:
-          serviceImpl.createTransaction3((org.lgcy.Legacy.proto.Contract.TransferContract) request,
+        case METHODID_SIGN_TRANSACTION_CREATION:
+          serviceImpl.signTransactionCreation((org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_CREATE_ASSET_ISSUE:
@@ -8592,67 +6353,47 @@ public final class WalletGrpc {
           break;
         case METHODID_CREATE_WITNESS:
           serviceImpl.createWitness((org.lgcy.Legacy.proto.Contract.WitnessCreateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
-          break;
-        case METHODID_CREATE_WITNESS2:
-          serviceImpl.createWitness2((org.lgcy.Legacy.proto.Contract.WitnessCreateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_UPDATE_WITNESS:
           serviceImpl.updateWitness((org.lgcy.Legacy.proto.Contract.WitnessUpdateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
-          break;
-        case METHODID_UPDATE_WITNESS2:
-          serviceImpl.updateWitness2((org.lgcy.Legacy.proto.Contract.WitnessUpdateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_UPDATE_BROKERAGE:
           serviceImpl.updateBrokerage((org.lgcy.Legacy.proto.Contract.UpdateBrokerageContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_VOTE_WITNESS_ACCOUNT:
           serviceImpl.voteWitnessAccount((org.lgcy.Legacy.proto.Contract.VoteWitnessContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
-          break;
-        case METHODID_VOTE_WITNESS_ACCOUNT2:
-          serviceImpl.voteWitnessAccount2((org.lgcy.Legacy.proto.Contract.VoteWitnessContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_FREEZE_BALANCE:
           serviceImpl.freezeBalance((org.lgcy.Legacy.proto.Contract.FreezeBalanceContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
-          break;
-        case METHODID_FREEZE_BALANCE2:
-          serviceImpl.freezeBalance2((org.lgcy.Legacy.proto.Contract.FreezeBalanceContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_UNFREEZE_BALANCE:
           serviceImpl.unfreezeBalance((org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
-          break;
-        case METHODID_UNFREEZE_BALANCE2:
-          serviceImpl.unfreezeBalance2((org.lgcy.Legacy.proto.Contract.UnfreezeBalanceContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_WITHDRAW_BALANCE:
           serviceImpl.withdrawBalance((org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
-        case METHODID_WITHDRAW_BALANCE2:
-          serviceImpl.withdrawBalance2((org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+        case METHODID_UPDATE_SETTING:
+          serviceImpl.updateSetting((org.lgcy.Legacy.proto.Contract.UpdateSettingContract) request,
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_PROPOSAL_CREATE:
           serviceImpl.proposalCreate((org.lgcy.Legacy.proto.Contract.ProposalCreateContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_PROPOSAL_APPROVE:
           serviceImpl.proposalApprove((org.lgcy.Legacy.proto.Contract.ProposalApproveContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_PROPOSAL_DELETE:
           serviceImpl.proposalDelete((org.lgcy.Legacy.proto.Contract.ProposalDeleteContract) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
           break;
         case METHODID_DEPLOY_CONTRACT:
           serviceImpl.deployContract((org.lgcy.Legacy.proto.Contract.CreateSmartContract) request,
@@ -8665,6 +6406,10 @@ public final class WalletGrpc {
         case METHODID_TRIGGER_CONSTANT_CONTRACT:
           serviceImpl.triggerConstantContract((org.lgcy.Legacy.proto.Contract.TriggerSmartContract) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
+          break;
+        case METHODID_TRIGGER_CONSTANT_CONTRACT2:
+          serviceImpl.triggerConstantContract2((org.lgcy.Legacy.proto.Contract.TriggerSmartContract) request,
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2>) responseObserver);
           break;
         case METHODID_GET_NODE_INFO:
           serviceImpl.getNodeInfo((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
@@ -8778,6 +6523,10 @@ public final class WalletGrpc {
           serviceImpl.getTransactionById((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Chain.Transaction>) responseObserver);
           break;
+        case METHODID_GET_TRANSACTION_BY_ID3:
+          serviceImpl.getTransactionById3((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction>) responseObserver);
+          break;
         case METHODID_GET_TRANSACTION_INFO_BY_ID:
           serviceImpl.getTransactionInfoById((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionInfo>) responseObserver);
@@ -8810,13 +6559,9 @@ public final class WalletGrpc {
           serviceImpl.getRewardInfo((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.NumberMessage>) responseObserver);
           break;
-        case METHODID_GET_DELEGATED_RESOURCE:
-          serviceImpl.getDelegatedResource((org.lgcy.Legacy.proto.Response.DelegatedResourceMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceList>) responseObserver);
-          break;
-        case METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX:
-          serviceImpl.getDelegatedResourceAccountIndex((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex>) responseObserver);
+        case METHODID_GET_REWARD:
+          serviceImpl.getReward((org.lgcy.Legacy.api.GrpcAPI.RewardMessage) request,
+                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.RewardOutput>) responseObserver);
           break;
         case METHODID_LIST_PROPOSALS:
           serviceImpl.listProposals((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
@@ -8830,10 +6575,6 @@ public final class WalletGrpc {
           serviceImpl.getPaginatedProposalList((org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ProposalList>) responseObserver);
           break;
-        case METHODID_LIST_EXCHANGES:
-          serviceImpl.listExchanges((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ExchangeList>) responseObserver);
-          break;
         case METHODID_GET_EXCHANGE_BY_ID:
           serviceImpl.getExchangeById((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.Exchange>) responseObserver);
@@ -8841,38 +6582,6 @@ public final class WalletGrpc {
         case METHODID_GET_PAGINATED_EXCHANGE_LIST:
           serviceImpl.getPaginatedExchangeList((org.lgcy.Legacy.api.GrpcAPI.PaginatedMessage) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.ExchangeList>) responseObserver);
-          break;
-        case METHODID_SCAN_SHIELDED_TRC20NOTES_BY_IVK:
-          serviceImpl.scanShieldedTRC20NotesByIvk((org.lgcy.Legacy.api.GrpcAPI.IvkDecryptTRC20Parameters) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20>) responseObserver);
-          break;
-        case METHODID_SCAN_SHIELDED_TRC20NOTES_BY_OVK:
-          serviceImpl.scanShieldedTRC20NotesByOvk((org.lgcy.Legacy.api.GrpcAPI.OvkDecryptTRC20Parameters) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DecryptNotesTRC20>) responseObserver);
-          break;
-        case METHODID_IS_SHIELDED_TRC20CONTRACT_NOTE_SPENT:
-          serviceImpl.isShieldedTRC20ContractNoteSpent((org.lgcy.Legacy.api.GrpcAPI.NfTRC20Parameters) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.NullifierResult>) responseObserver);
-          break;
-        case METHODID_GET_MARKET_ORDER_BY_ACCOUNT:
-          serviceImpl.getMarketOrderByAccount((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderList>) responseObserver);
-          break;
-        case METHODID_GET_MARKET_ORDER_BY_ID:
-          serviceImpl.getMarketOrderById((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrder>) responseObserver);
-          break;
-        case METHODID_GET_MARKET_PRICE_BY_PAIR:
-          serviceImpl.getMarketPriceByPair((org.lgcy.Legacy.proto.Response.MarketOrderPair) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketPriceList>) responseObserver);
-          break;
-        case METHODID_GET_MARKET_ORDER_LIST_BY_PAIR:
-          serviceImpl.getMarketOrderListByPair((org.lgcy.Legacy.proto.Response.MarketOrderPair) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderList>) responseObserver);
-          break;
-        case METHODID_GET_MARKET_PAIR_LIST:
-          serviceImpl.getMarketPairList((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.MarketOrderPairList>) responseObserver);
           break;
         case METHODID_GET_TRANSACTION_SIGN:
           serviceImpl.getTransactionSign((org.lgcy.Legacy.proto.Response.TransactionSign) request,
@@ -8909,74 +6618,6 @@ public final class WalletGrpc {
         case METHODID_ADD_SIGN:
           serviceImpl.addSign((org.lgcy.Legacy.proto.Response.TransactionSign) request,
                   (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.TransactionExtention>) responseObserver);
-          break;
-        case METHODID_GET_SPENDING_KEY:
-          serviceImpl.getSpendingKey((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage>) responseObserver);
-          break;
-        case METHODID_GET_EXPANDED_SPENDING_KEY:
-          serviceImpl.getExpandedSpendingKey((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ExpandedSpendingKeyMessage>) responseObserver);
-          break;
-        case METHODID_GET_AK_FROM_ASK:
-          serviceImpl.getAkFromAsk((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage>) responseObserver);
-          break;
-        case METHODID_GET_NK_FROM_NSK:
-          serviceImpl.getNkFromNsk((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage>) responseObserver);
-          break;
-        case METHODID_GET_INCOMING_VIEWING_KEY:
-          serviceImpl.getIncomingViewingKey((org.lgcy.Legacy.api.GrpcAPI.ViewingKeyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyMessage>) responseObserver);
-          break;
-        case METHODID_GET_DIVERSIFIER:
-          serviceImpl.getDiversifier((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.DiversifierMessage>) responseObserver);
-          break;
-        case METHODID_GET_ZEN_PAYMENT_ADDRESS:
-          serviceImpl.getZenPaymentAddress((org.lgcy.Legacy.api.GrpcAPI.IncomingViewingKeyDiversifierMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.PaymentAddressMessage>) responseObserver);
-          break;
-        case METHODID_GET_NEW_SHIELDED_ADDRESS:
-          serviceImpl.getNewShieldedAddress((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedAddressInfo>) responseObserver);
-          break;
-        case METHODID_GET_RCM:
-          serviceImpl.getRcm((org.lgcy.Legacy.api.GrpcAPI.EmptyMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage>) responseObserver);
-          break;
-        case METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS:
-          serviceImpl.createShieldedContractParameters((org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20Parameters) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters>) responseObserver);
-          break;
-        case METHODID_CREATE_SHIELDED_CONTRACT_PARAMETERS_WITHOUT_ASK:
-          serviceImpl.createShieldedContractParametersWithoutAsk((org.lgcy.Legacy.api.GrpcAPI.PrivateShieldedTRC20ParametersWithoutAsk) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20Parameters>) responseObserver);
-          break;
-        case METHODID_GET_TRIGGER_INPUT_FOR_SHIELDED_TRC20CONTRACT:
-          serviceImpl.getTriggerInputForShieldedTRC20Contract((org.lgcy.Legacy.api.GrpcAPI.ShieldedTRC20TriggerContractParameters) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.BytesMessage>) responseObserver);
-          break;
-        case METHODID_GET_AVAILABLE_UNFREEZE_COUNT:
-          serviceImpl.getAvailableUnfreezeCount((org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountRequestMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.GetAvailableUnfreezeCountResponseMessage>) responseObserver);
-          break;
-        case METHODID_GET_CAN_WITHDRAW_UNFREEZE_AMOUNT:
-          serviceImpl.getCanWithdrawUnfreezeAmount((org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage>) responseObserver);
-          break;
-        case METHODID_GET_CAN_DELEGATED_MAX_SIZE:
-          serviceImpl.getCanDelegatedMaxSize((org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeRequestMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.api.GrpcAPI.CanDelegatedMaxSizeResponseMessage>) responseObserver);
-          break;
-        case METHODID_GET_DELEGATED_RESOURCE_V2:
-          serviceImpl.getDelegatedResourceV2((org.lgcy.Legacy.proto.Response.DelegatedResourceMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceList>) responseObserver);
-          break;
-        case METHODID_GET_DELEGATED_RESOURCE_ACCOUNT_INDEX_V2:
-          serviceImpl.getDelegatedResourceAccountIndexV2((org.lgcy.Legacy.api.GrpcAPI.BytesMessage) request,
-                  (io.grpc.stub.StreamObserver<org.lgcy.Legacy.proto.Response.DelegatedResourceAccountIndex>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -9040,16 +6681,15 @@ public final class WalletGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
                   .setSchemaDescriptor(new WalletFileDescriptorSupplier())
                   .addMethod(getBroadcastTransactionMethod())
+                  .addMethod(getBroadcastTransactionDataMethod())
                   .addMethod(getCreateCommonTransactionMethod())
                   .addMethod(getCreateAccountMethod())
                   .addMethod(getCreateAccount2Method())
                   .addMethod(getUpdateAccountMethod())
-                  .addMethod(getUpdateAccount2Method())
                   .addMethod(getSetAccountIdMethod())
                   .addMethod(getAccountPermissionUpdateMethod())
                   .addMethod(getCreateTransactionMethod())
-                  .addMethod(getCreateTransaction2Method())
-                  .addMethod(getCreateTransaction3Method())
+                  .addMethod(getSignTransactionCreationMethod())
                   .addMethod(getCreateAssetIssueMethod())
                   .addMethod(getCreateAssetIssue2Method())
                   .addMethod(getUpdateAssetMethod())
@@ -9061,24 +6701,20 @@ public final class WalletGrpc {
                   .addMethod(getUnfreezeAssetMethod())
                   .addMethod(getUnfreezeAsset2Method())
                   .addMethod(getCreateWitnessMethod())
-                  .addMethod(getCreateWitness2Method())
                   .addMethod(getUpdateWitnessMethod())
-                  .addMethod(getUpdateWitness2Method())
                   .addMethod(getUpdateBrokerageMethod())
                   .addMethod(getVoteWitnessAccountMethod())
-                  .addMethod(getVoteWitnessAccount2Method())
                   .addMethod(getFreezeBalanceMethod())
-                  .addMethod(getFreezeBalance2Method())
                   .addMethod(getUnfreezeBalanceMethod())
-                  .addMethod(getUnfreezeBalance2Method())
                   .addMethod(getWithdrawBalanceMethod())
-                  .addMethod(getWithdrawBalance2Method())
+                  .addMethod(getUpdateSettingMethod())
                   .addMethod(getProposalCreateMethod())
                   .addMethod(getProposalApproveMethod())
                   .addMethod(getProposalDeleteMethod())
                   .addMethod(getDeployContractMethod())
                   .addMethod(getTriggerContractMethod())
                   .addMethod(getTriggerConstantContractMethod())
+                  .addMethod(getTriggerConstantContract2Method())
                   .addMethod(getGetNodeInfoMethod())
                   .addMethod(getListNodesMethod())
                   .addMethod(getGetChainParametersMethod())
@@ -9107,6 +6743,7 @@ public final class WalletGrpc {
                   .addMethod(getGetBlockByLatestNum2Method())
                   .addMethod(getGetTransactionCountByBlockNumMethod())
                   .addMethod(getGetTransactionByIdMethod())
+                  .addMethod(getGetTransactionById3Method())
                   .addMethod(getGetTransactionInfoByIdMethod())
                   .addMethod(getGetTransactionInfoByBlockNumMethod())
                   .addMethod(getGetContractMethod())
@@ -9115,22 +6752,12 @@ public final class WalletGrpc {
                   .addMethod(getGetBrokerageInfoMethod())
                   .addMethod(getGetBrokerageMethod())
                   .addMethod(getGetRewardInfoMethod())
-                  .addMethod(getGetDelegatedResourceMethod())
-                  .addMethod(getGetDelegatedResourceAccountIndexMethod())
+                  .addMethod(getGetRewardMethod())
                   .addMethod(getListProposalsMethod())
                   .addMethod(getGetProposalByIdMethod())
                   .addMethod(getGetPaginatedProposalListMethod())
-                  .addMethod(getListExchangesMethod())
                   .addMethod(getGetExchangeByIdMethod())
                   .addMethod(getGetPaginatedExchangeListMethod())
-                  .addMethod(getScanShieldedTRC20NotesByIvkMethod())
-                  .addMethod(getScanShieldedTRC20NotesByOvkMethod())
-                  .addMethod(getIsShieldedTRC20ContractNoteSpentMethod())
-                  .addMethod(getGetMarketOrderByAccountMethod())
-                  .addMethod(getGetMarketOrderByIdMethod())
-                  .addMethod(getGetMarketPriceByPairMethod())
-                  .addMethod(getGetMarketOrderListByPairMethod())
-                  .addMethod(getGetMarketPairListMethod())
                   .addMethod(getGetTransactionSignMethod())
                   .addMethod(getGetTransactionSign2Method())
                   .addMethod(getEasyTransferAssetMethod())
@@ -9140,23 +6767,6 @@ public final class WalletGrpc {
                   .addMethod(getCreateAddressMethod())
                   .addMethod(getGenerateAddressMethod())
                   .addMethod(getAddSignMethod())
-                  .addMethod(getGetSpendingKeyMethod())
-                  .addMethod(getGetExpandedSpendingKeyMethod())
-                  .addMethod(getGetAkFromAskMethod())
-                  .addMethod(getGetNkFromNskMethod())
-                  .addMethod(getGetIncomingViewingKeyMethod())
-                  .addMethod(getGetDiversifierMethod())
-                  .addMethod(getGetZenPaymentAddressMethod())
-                  .addMethod(getGetNewShieldedAddressMethod())
-                  .addMethod(getGetRcmMethod())
-                  .addMethod(getCreateShieldedContractParametersMethod())
-                  .addMethod(getCreateShieldedContractParametersWithoutAskMethod())
-                  .addMethod(getGetTriggerInputForShieldedTRC20ContractMethod())
-                  .addMethod(getGetAvailableUnfreezeCountMethod())
-                  .addMethod(getGetCanWithdrawUnfreezeAmountMethod())
-                  .addMethod(getGetCanDelegatedMaxSizeMethod())
-                  .addMethod(getGetDelegatedResourceV2Method())
-                  .addMethod(getGetDelegatedResourceAccountIndexV2Method())
                   .build();
         }
       }

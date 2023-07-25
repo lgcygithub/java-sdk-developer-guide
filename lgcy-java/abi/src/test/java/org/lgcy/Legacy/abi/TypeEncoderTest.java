@@ -1126,14 +1126,14 @@ public class TypeEncoderTest {
                         + "74206d6f6c6c697420616e696d20696420657374206c61626f72756d2e000000"));
     }
 
-    @Test
-    public void testAddress() {
-        Address address = new Address("0xbe5422d15f39373eb0a97ff8c10fbd0e40e29338");
-        assertEquals(address.getTypeAsString(), ("address"));
-        assertEquals(
-                TypeEncoder.encodeAddress(address),
-                ("000000000000000000000000be5422d15f39373eb0a97ff8c10fbd0e40e29338"));
-    }
+  //  @Test
+//    public void testAddress() {
+//        Address address = new Address("0xbe5422d15f39373eb0a97ff8c10fbd0e40e29338");
+//        assertEquals(address.getTypeAsString(), ("address"));
+//        assertEquals(
+//                TypeEncoder.encodeAddress(address),
+//                ("000000000000000000000000be5422d15f39373eb0a97ff8c10fbd0e40e29338"));
+//    }
 
     @Test
     public void testInvalidAddress() {

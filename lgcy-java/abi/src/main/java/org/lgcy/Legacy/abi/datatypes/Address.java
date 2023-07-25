@@ -40,10 +40,10 @@ public class Address implements Type<String> {
     }
 
     public Address(String value) {
-        if (value.startsWith("T")) {
+        if (value.startsWith("L")) {
             byte[] rawValue = Base58Check.base58ToBytes(value);
             this.value = new Uint(DEFAULT_LENGTH, Numeric.toBigInt(Arrays.copyOfRange(rawValue, 1, 21)));
-        } else if (value.startsWith("41")) {
+        } else if (value.startsWith("30")) {
             this.value = new Uint(DEFAULT_LENGTH, Numeric.toBigInt(value.substring(2)));
         } else {
             // ETH compatible

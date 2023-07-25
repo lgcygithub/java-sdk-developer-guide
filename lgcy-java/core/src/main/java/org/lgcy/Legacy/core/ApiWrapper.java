@@ -1,6 +1,8 @@
 package org.lgcy.Legacy.core;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
+import com.google.protobuf.util.JsonFormat;
 import org.lgcy.Legacy.core.transaction.TransactionBuilder;
 import org.lgcy.Legacy.core.transaction.TransactionCapsule;
 import org.lgcy.Legacy.abi.FunctionEncoder;
@@ -15,10 +17,12 @@ import org.lgcy.Legacy.core.exceptions.IllegalException;
 import org.lgcy.Legacy.core.key.KeyPair;
 import org.lgcy.Legacy.core.utils.Sha256Hash;
 import org.lgcy.Legacy.core.utils.Utils;
+import org.lgcy.Legacy.proto.Chain;
 import org.lgcy.Legacy.proto.Chain.Transaction;
 
 import org.lgcy.Legacy.proto.Chain.Block;
 
+import org.lgcy.Legacy.proto.Common;
 import org.lgcy.Legacy.proto.Common.SmartContract;
 
 import org.lgcy.Legacy.proto.Contract.TransferAssetContract;
@@ -97,7 +101,7 @@ import javax.xml.bind.DatatypeConverter;
  */
 
 public class ApiWrapper {
-    public static final long TRANSACTION_DEFAULT_EXPIRATION_TIME = 120 * 1_000L; //60 seconds
+    public static final long TRANSACTION_DEFAULT_EXPIRATION_TIME = 60 * 1_000L; //60 seconds
 
     public final WalletGrpc.WalletBlockingStub blockingStub;
 
@@ -173,7 +177,6 @@ public class ApiWrapper {
         } else {
             try {
                 raw = Hex.decode(address);
-                System.out.println("decode"+raw);
             } catch (Exception e) {
                 throw new IllegalArgumentException("Invalid address: " +ByteString.copyFrom(raw));
             }
@@ -182,7 +185,33 @@ public class ApiWrapper {
     }
 
 
+
+    public int getReward(String address){
+        ByteString rawFrom = parseAddress(address);
+        GrpcAPI.RewardMessage rewardMessage= GrpcAPI.RewardMessage.newBuilder()
+                .setAddress(rawFrom).build();
+         GrpcAPI.RewardOutput rewardOutput= blockingStub.getReward(rewardMessage);
+        int rewardData = rewardOutput.getReward();
+        return rewardData;
+    }
+
     public static byte[] calculateTransactionHash (Transaction txn) {
+        SHA256.Digest digest = new SHA256.Digest();
+        digest.update(txn.getRawData().toByteArray());
+        byte[] txid = digest.digest();
+
+        return txid;
+    }
+
+
+    public Response.AddressPrKeyPairMessage generateaddress(){
+        EmptyMessage emptyMessage= EmptyMessage.newBuilder().build();
+        Response.AddressPrKeyPairMessage addressPrKeyPairMessage= blockingStub.generateAddress(emptyMessage);
+        return addressPrKeyPairMessage;
+
+    }
+
+    public static byte[] calculateTransactionHash (NewTransactionOuterClass.NewTransaction txn) {
         SHA256.Digest digest = new SHA256.Digest();
         digest.update(txn.getRawData().toByteArray());
         byte[] txid = digest.digest();
@@ -231,59 +260,6 @@ public class ApiWrapper {
 
 
 
-    private TransactionCapsule createTransactionCapsuleWithoutValidate(
-            Message message, Transaction.Contract.ContractType contractType,BlockExtention solidHeadBlock, BlockExtention headBlock) throws Exception {
-        TransactionCapsule usdl = new TransactionCapsule(message, contractType);
-
-        if (contractType == Transaction.Contract.ContractType.CreateSmartContract) {
-            usdl.setTransactionCreate(true);
-            org.lgcy.Legacy.proto.Contract.CreateSmartContract contract = Utils.getSmartContractFromTransaction(usdl.getTransaction());
-            long percent = contract.getNewContract().getConsumeUserResourcePercent();
-            if (percent < 0 || percent > 100) {
-                throw new Exception("percent must be >= 0 and <= 100");
-            }
-        }
-        //build transaction
-        usdl.setTransactionCreate(false);
-        //get solid head blockId
-        byte[] blockHash = Utils.getBlockId(solidHeadBlock).getBytes();
-        usdl.setReference(solidHeadBlock.getBlockHeader().getRawData().getNumber(), blockHash);
-
-        //get expiration time from head block timestamp
-        long expiration = headBlock.getBlockHeader().getRawData().getTimestamp() + TRANSACTION_DEFAULT_EXPIRATION_TIME;
-        usdl.setExpiration(expiration);
-        usdl.setTimestamp();
-
-        return usdl;
-    }
-
-    private TransactionCapsule createTransaction(
-            Message message, Transaction.Contract.ContractType contractType) throws Exception {
-        BlockExtention solidHeadBlock = blockingStub.getNowBlock2(EmptyMessage.getDefaultInstance());
-        BlockExtention headBlock = blockingStub.getNowBlock2(EmptyMessage.getDefaultInstance());
-
-        return createTransactionCapsuleWithoutValidate(message,contractType,solidHeadBlock,headBlock);
-    }
-
-
-    /**
-     * build Transaction Extention in local.
-     * @param contractType transaction type.
-     * @param request transaction message object.
-     */
-    public TransactionExtention createTransactionExtention(Message request, Transaction.Contract.ContractType contractType) throws IllegalException {
-        TransactionExtention.Builder usdlExtBuilder = TransactionExtention.newBuilder();
-
-        try {
-            TransactionCapsule usdl = createTransaction(request, contractType);
-            usdlExtBuilder.setTransaction(usdl.getTransaction());
-            usdlExtBuilder.setTxid(ByteString.copyFrom(Sha256Hash.hash(true, usdl.getTransaction().getRawData().toByteArray())));
-        } catch (Exception e) {
-            throw new IllegalException("createTransactionExtention error,"+e.getMessage());
-        }
-
-        return usdlExtBuilder.build();
-    }
 
 
 
@@ -341,158 +317,36 @@ public class ApiWrapper {
      * @return a TransactionReturn object contains the broadcasting result
      * @throws RuntimeException if broadcastin fails
      */
-    public String broadcastTransaction(Transaction txn) throws RuntimeException{
-        System.out.println("txnDDDDD"+txn);
 
 
-        byte[] byteArray = txn.getRawData().getRefBlockHash().toByteArray();
 
-        // Convert byte array to hexadecimal string
-        String hexString = DatatypeConverter.printHexBinary(byteArray);
+    public Chain.TransactionReturnData broadcastTransaction(NewTransactionOuterClass.NewTransaction txn) throws RuntimeException{
 
-        System.out.println("datasssssssssssssss"+hexString);
-
-        System.out.println(toHex(txn.getRawData().getRefBlockHash()));
-        TransactionReturn ret = blockingStub.broadcastTransaction(txn);
-        if (!ret.getResult()) {
-            String message = resolveResultCode(ret.getCodeValue()) + ", " + ret.getMessage();
-            throw new RuntimeException(message);
-        } else {
-            byte[] txid = calculateTransactionHash(txn);
-            return ByteString.copyFrom(Hex.encode(txid)).toStringUtf8();
-        }
-    }
-
-    /**
-     * Transfer USDL. amount
-     * @param fromAddress owner address
-     * @param toAddress receive balance
-     * @param amount transfer amount
-     * @return TransactionExtention
-     * @throws IllegalException if fail to transfer
-     */
-    public TransactionExtention transfer(String fromAddress, String toAddress, long amount) throws IllegalException {
-
-        ByteString rawFrom = parseAddress(fromAddress);
-        ByteString rawTo = parseAddress(toAddress);
-
-        TransferContract req = TransferContract.newBuilder()
-                .setOwnerAddress(rawFrom)
-                .setToAddress(rawTo)
-                .setAmount(amount)
-                .build();
-        TransactionExtention txnExt = createTransactionExtention(req, Transaction.Contract.ContractType.TransferContract);
-
-        return txnExt;
+        Chain.TransactionReturnData ret = blockingStub.broadcastTransactionData(txn);
+          return ret;
     }
 
 
-    public TransactionExtention transferTrc10(String fromAddress, String toAddress, int tokenId, long amount) throws IllegalException {
-
-        ByteString rawFrom = parseAddress(fromAddress);
-        ByteString rawTo = parseAddress(toAddress);
-        byte[] rawTokenId = Integer.toString(tokenId).getBytes();
-
-        TransferAssetContract req = TransferAssetContract.newBuilder()
-                .setOwnerAddress(rawFrom)
-                .setToAddress(rawTo)
-                .setAssetName(ByteString.copyFrom(rawTokenId))
-                .setAmount(amount)
-                .build();
-
-        TransactionExtention txnExt = createTransactionExtention(req, Transaction.Contract.ContractType.TransferAssetContract);
-
-        return txnExt;
-    }
-
-    /**
-     * Freeze balance to get energy or bandwidth, for 3 days
-     * @param ownerAddress owner address
-     * @param frozenBalance frozen balance
-     * @param frozenDuration frozen duration
-     * @param resourceCode Resource type, can be 0("BANDWIDTH") or 1("ENERGY")
-     * @return TransactionExtention
-     * @throws IllegalException if fail to freeze balance
-     */
-    public TransactionExtention freezeBalance(String ownerAddress, long frozenBalance, long frozenDuration, int resourceCode) throws IllegalException {
-
-        return freezeBalance(ownerAddress,frozenBalance,frozenDuration,resourceCode,"");
-    }
-
-    /**
-     * Freeze balance to get energy or bandwidth, for 3 days
-     * @param ownerAddress owner address
-     * @param frozenBalance frozen balance
-     * @param frozenDuration frozen duration
-     * @param resourceCode Resource type, can be 0("BANDWIDTH") or 1("ENERGY")
-     * @param receiveAddress the address that will receive the resource, default hexString
-     * @return TransactionExtention
-     * @throws IllegalException if fail to freeze balance
-     */
-    public TransactionExtention freezeBalance(String ownerAddress, long frozenBalance, long frozenDuration, int resourceCode, String receiveAddress) throws IllegalException {
-        ByteString rawFrom = parseAddress(ownerAddress);
-        ByteString rawReceiveFrom = parseAddress(receiveAddress);
-        FreezeBalanceContract freezeBalanceContract=
-                FreezeBalanceContract.newBuilder()
-                        .setOwnerAddress(rawFrom)
-                        .setFrozenBalance(frozenBalance)
-                        .setFrozenDuration(frozenDuration)
-                        .setResourceValue(resourceCode)
-                        .setReceiverAddress(rawReceiveFrom)
-                        .build();
-        TransactionExtention txnExt = createTransactionExtention(freezeBalanceContract, Transaction.Contract.ContractType.FreezeBalanceContract);
-
-        return txnExt;
-    }
-
-    /**
-     * Stake2.0 API
-     * Stake an amount of USDL to obtain bandwidth or energy, and obtain equivalent Lgcy USDLPower according to the staked amount
-     * @param ownerAddress owner address
-     * @param frozenBalance USDL stake amount, the unit is sun
-     * @param resourceCode resource type, can be 0("BANDWIDTH") or 1("ENERGY")
-     * @return TransactionExtention
-     * @throws IllegalException if fail to freeze balance
-     */
 
 
 
-    /**
-     * Unfreeze balance to get USDL back
-     * @param ownerAddress owner address
-     * @param resourceCode Resource type, can be 0("BANDWIDTH") or 1("ENERGY")
-     * @return TransactionExtention
-     * @throws IllegalException if fail to unfreeze balance
-     */
-//    public TransactionExtention unfreezeBalance(String ownerAddress, int resourceCode) throws IllegalException {
-//
-//        return unfreezeBalance(ownerAddress,resourceCode,"");
-//    }
 
-    /**
-     * Unfreeze balance to get USDL back
-     * @param ownerAddress owner address
-     * @param resourceCode Resource type, can be 0("BANDWIDTH") or 1("ENERGY")
-     * @param receiveAddress the address that will lose the resource, default hexString
-     * @return TransactionExtention
-     * @throws IllegalException if fail to unfreeze balance
-     */
-    public TransactionExtention unfreezeBalance(String ownerAddress, int resourceCode) throws IllegalException {
+
+    public NewTransactionOuterClass.NewTransaction unfreezeBalance(String ownerAddress, String resourceCode) throws IllegalException {
 
         UnfreezeBalanceContract unfreeze =
                 UnfreezeBalanceContract.newBuilder()
                         .setOwnerAddress(parseAddress(ownerAddress))
-                        .setResourceValue(resourceCode)
-                       // .setReceiverAddress(parseAddress(receiveAddress))
+                        .setResource(Common.ResourceCode.valueOf(resourceCode))
                         .build();
-
-        TransactionExtention txnExt = createTransactionExtention(unfreeze, Transaction.Contract.ContractType.UnfreezeBalanceContract);
+        NewTransactionOuterClass.NewTransaction txnExt = blockingStub.unfreezeBalance(unfreeze);
 
         return txnExt;
     }
 
+
 //new impl for create transaction
-    public NewTransactionOuterClass.NewTransaction createTransaction3(String ownerAddress, String toAddress, long amount) throws IllegalException {
+    public NewTransactionOuterClass.NewTransaction createtransaction(String ownerAddress, String toAddress, long amount) throws IllegalException {
 
         ByteString rawFrom = parseAddress(ownerAddress);
         ByteString rawTo = parseAddress(toAddress);
@@ -503,13 +357,71 @@ public class ApiWrapper {
                 .setAmount(amount)
                 .build();
 
-        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.createTransaction3(req);
+        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.createTransaction(req);
 
         return newTransaction;
     }
 
 
-//new impl
+
+
+
+
+    public NewTransactionOuterClass.NewTransaction freezeBalance(String ownerAddress, long frozenBalance, long frozenDuration, String resourceCode) throws IllegalException {
+        ByteString rawFrom = parseAddress(ownerAddress);
+
+        FreezeBalanceContract freezeBalanceContract=
+                FreezeBalanceContract.newBuilder()
+                        .setOwnerAddress(rawFrom)
+                        .setFrozenBalance(frozenBalance)
+                        .setFrozenDuration(frozenDuration)
+                        .setResource(Common.ResourceCode.valueOf(resourceCode))
+                        .build();
+
+        Common.ResourceCode data=freezeBalanceContract.getResource();
+
+        NewTransactionOuterClass.NewTransaction txnExt = blockingStub.freezeBalance(freezeBalanceContract);
+
+        return txnExt;
+    }
+
+
+    public NewTransactionOuterClass.NewTransaction transactionSign(NewTransactionOuterClass.NewTransaction newTransaction, String privateKey) throws InvalidProtocolBufferException {
+
+        NewTransactionOuterClass.SignTransactionExtension  signTransactionExtension= NewTransactionOuterClass.SignTransactionExtension.newBuilder()
+                .setTransaction(newTransaction)
+                .setPrivateKey(privateKey).build();
+
+        NewTransactionOuterClass.NewTransaction newTransaction1=blockingStub.signTransactionCreation(signTransactionExtension);
+
+
+        return newTransaction1;
+    }
+
+
+
+
+    public NewTransactionOuterClass.NewTransaction createWitness(String address, String url){
+        ByteString bsAddress = parseAddress(address);
+
+        org.lgcy.Legacy.proto.Contract.WitnessCreateContract witnessCreateContract = org.lgcy.Legacy.proto.Contract.WitnessCreateContract.newBuilder()
+                .setOwnerAddress(bsAddress)
+                .setUrl(ByteString.copyFromUtf8(url)).build();
+
+      NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.createWitness(witnessCreateContract);
+      return newTransaction;
+
+
+    }
+
+
+
+
+
+
+
+
+    //new impl
     public  Block getBlockById(String value){
         ByteString rawOwner = parseAddress(value);
         BytesMessage bytesMessage= BytesMessage.newBuilder().setValue(rawOwner).build();
@@ -546,101 +458,22 @@ public class ApiWrapper {
 
 
 
+    public NewTransactionOuterClass.NewTransaction createProposal(String address, List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> parametersList){
 
+        ByteString private_key = parseAddress(address);
+        org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Builder proposalCreateContract= org.lgcy.Legacy.proto.Contract.ProposalCreateContract.newBuilder();
+        proposalCreateContract.setOwnerAddress(toHex(private_key));
+        proposalCreateContract.addAllParameters(parametersList);
 
-    /**
-     * Stake2.0 API
-     * unDelegate resource
-     * @param ownerAddress owner address
-     * @param balance  Amount of USDL staked for resources to be delegated, unit is sun
-     * @param resourceCode Resource type, can be 0("BANDWIDTH") or 1("ENERGY")
-     * @param receiverAddress  Resource receiver address
-     * @return TransactionExtention
-     * @throws IllegalException if fail to undelegate resource
-     */
-    public TransactionExtention undelegateResource(String ownerAddress, long balance, int resourceCode,String receiverAddress) throws IllegalException {
-        ByteString rawOwner = parseAddress(ownerAddress);
-        ByteString rawReciever = parseAddress(receiverAddress);
-        UnDelegateResourceContract unDelegateResourceContract =
-            UnDelegateResourceContract.newBuilder()
-                .setOwnerAddress(rawOwner)
-                .setBalance(balance)
-                .setReceiverAddress(rawReciever)
-                .setResourceValue(resourceCode)
-                .build();
-        TransactionExtention txnExt = createTransactionExtention(unDelegateResourceContract, Transaction.Contract.ContractType.UnDelegateResourceContract);
+        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.proposalCreate(proposalCreateContract.build());
 
-        return txnExt;
+        return newTransaction;
+
     }
 
 
-    /**
-     * Stake2.0 API
-     * withdraw unfrozen balance
-     * @param ownerAddress owner address
-     * @return TransactionExtention
-     * @throws IllegalException if fail to withdraw
-     */
-    public TransactionExtention withdrawExpireUnfreeze(String ownerAddress) throws IllegalException {
-        ByteString rawOwner = parseAddress(ownerAddress);
-        WithdrawExpireUnfreezeContract withdrawExpireUnfreezeContract =
-            WithdrawExpireUnfreezeContract.newBuilder()
-                .setOwnerAddress(rawOwner)
-                .build();
-        TransactionExtention txnExt = createTransactionExtention(withdrawExpireUnfreezeContract, Transaction.Contract.ContractType.WithdrawExpireUnfreezeContract);
 
-        return txnExt;
-    }
 
-    /**
-     * Stake2.0 API
-     * query remaining times of executing unstake operation
-     * @param ownerAddress owner address
-     */
-    public long getAvailableUnfreezeCount(String ownerAddress) {
-        ByteString rawOwner = parseAddress(ownerAddress);
-        GrpcAPI.GetAvailableUnfreezeCountRequestMessage getAvailableUnfreezeCountRequestMessage =
-            GrpcAPI.GetAvailableUnfreezeCountRequestMessage.newBuilder()
-                .setOwnerAddress(rawOwner)
-                .build();
-        GrpcAPI.GetAvailableUnfreezeCountResponseMessage responseMessage = blockingStub.getAvailableUnfreezeCount(getAvailableUnfreezeCountRequestMessage);
-
-        return responseMessage.getCount();
-    }
-
-    /**
-     * Stake2.0 API
-     * query the withdrawable balance at the specified timestamp
-     * @param ownerAddress owner address
-     */
-    public long getCanWithdrawUnfreezeAmount(String ownerAddress)  {
-        ByteString rawOwner = parseAddress(ownerAddress);
-        GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage getAvailableUnfreezeCountRequestMessage =
-            GrpcAPI.CanWithdrawUnfreezeAmountRequestMessage.newBuilder()
-                .setOwnerAddress(rawOwner)
-                .build();
-        GrpcAPI.CanWithdrawUnfreezeAmountResponseMessage responseMessage = blockingStub.getCanWithdrawUnfreezeAmount(getAvailableUnfreezeCountRequestMessage);
-
-        return responseMessage.getAmount();
-    }
-
-    /**
-     * Stake2.0 API
-     * query the amount of delegatable resources share of the specified resource type for an address, unit is sun.
-     * @param ownerAddress owner address
-     * @param type resource type, 0 is bandwidth, 1 is energy
-     */
-    public long getCanDelegatedMaxSize(String ownerAddress,int type)  {
-        ByteString rawFrom = parseAddress(ownerAddress);
-        GrpcAPI.CanDelegatedMaxSizeRequestMessage getAvailableUnfreezeCountRequestMessage =
-            GrpcAPI.CanDelegatedMaxSizeRequestMessage.newBuilder()
-                .setOwnerAddress(rawFrom)
-                .setType(type)
-                .build();
-        GrpcAPI.CanDelegatedMaxSizeResponseMessage responseMessage = blockingStub.getCanDelegatedMaxSize(getAvailableUnfreezeCountRequestMessage);
-
-        return responseMessage.getMaxSize();
-    }
 
 
 
@@ -654,53 +487,24 @@ public class ApiWrapper {
      * @return TransactionExtention
      * IllegalNumException if fail to vote witness
      */
-    public TransactionExtention voteWitness(String ownerAddress, HashMap<String, String> votes) throws IllegalException {
+    public NewTransactionOuterClass.NewTransaction voteWitness(String ownerAddress,List<org.lgcy.Legacy.proto.Contract.VoteWitnessContract.Vote> voteList) throws IllegalException {
         ByteString rawFrom = parseAddress(ownerAddress);
-        VoteWitnessContract voteWitnessContract = createVoteWitnessContract(rawFrom, votes);
-        TransactionExtention txnExt = createTransactionExtention(voteWitnessContract, Transaction.Contract.ContractType.VoteWitnessContract);
 
-        return txnExt;
+        VoteWitnessContract voteWitnessContract= VoteWitnessContract.newBuilder()
+                .setOwnerAddress(toHex(rawFrom))
+                .addAllVotes(voteList).build() ;
+
+
+      NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.voteWitnessAccount(voteWitnessContract);
+
+
+       // TransactionExtention txnExt = createTransactionExtention(voteWitnessContract, Transaction.Contract.ContractType.VoteWitnessContract);
+
+        return newTransaction;
     }
 
-    /**
-     * Create an account. Uses an already activated account to create a new account
-     * @param ownerAddress owner address, an activated account
-     * @param accountAddress the address of the new account
-     * @return TransactionExtention
-     * IllegalNumException if fail to create account
-     */
-    public TransactionExtention createAccount(String ownerAddress, String accountAddress) throws IllegalException {
-        ByteString bsOwnerAddress = parseAddress(ownerAddress);
-        ByteString bsAccountAddress = parseAddress(accountAddress);
 
-        AccountCreateContract contract = createAccountCreateContract(bsOwnerAddress,
-                bsAccountAddress);
 
-        TransactionExtention transactionExtention = createTransactionExtention(contract, Transaction.Contract.ContractType.AccountCreateContract);
-
-        return transactionExtention;
-    }
-
-    /**
-     * Modify account name
-     * @param address owner address
-     * @param accountName the name of the account
-     * @return TransactionExtention
-     * IllegalNumException if fail to update account name
-     */
-    //only if account.getAccountName() == null can update name
-    public TransactionExtention updateAccount(String address, String accountName) throws IllegalException {
-        ByteString bsAddress = parseAddress(address);
-        byte[] bytesAccountName = accountName.getBytes();
-        ByteString bsAccountName = ByteString.copyFrom(bytesAccountName);
-
-        AccountUpdateContract contract = createAccountUpdateContract(bsAccountName,
-                bsAddress);
-
-        TransactionExtention transactionExtention = createTransactionExtention(contract, Transaction.Contract.ContractType.AccountUpdateContract);
-
-        return transactionExtention;
-    }
 
 
     /**
@@ -724,7 +528,7 @@ public class ApiWrapper {
         return block;
     }
 
-    public TransactionExtention proposalApprove(String owner_address, long proposal_id, boolean is_add_approval){
+    public NewTransactionOuterClass.NewTransaction proposalapprove(String owner_address, long proposal_id, boolean is_add_approval){
         ByteString bsOwnerAddress = parseAddress(owner_address);
         org.lgcy.Legacy.proto.Contract.ProposalApproveContract proposalApproveContract= org.lgcy.Legacy.proto.Contract.ProposalApproveContract.newBuilder()
                 .setOwnerAddress(bsOwnerAddress)
@@ -732,10 +536,35 @@ public class ApiWrapper {
                 .setIsAddApproval(is_add_approval)
                 .build();
 
-        TransactionExtention transactionExtention = blockingStub.proposalApprove(proposalApproveContract);
+        NewTransactionOuterClass.NewTransaction transactionExtention = blockingStub.proposalApprove(proposalApproveContract);
         return transactionExtention;
 
     }
+
+
+
+    public NewTransactionOuterClass.NewTransaction proposalDelete(String owner_address, long proposal_id){
+        ByteString bsOwnerAddress = parseAddress(owner_address);
+        org.lgcy.Legacy.proto.Contract.ProposalDeleteContract proposalDeleteContract=org.lgcy.Legacy.proto.Contract.ProposalDeleteContract.newBuilder()
+                .setOwnerAddress(bsOwnerAddress)
+                .setProposalId(proposal_id).build();
+
+        NewTransactionOuterClass.NewTransaction transactionExtention = blockingStub.proposalDelete(proposalDeleteContract);
+        return transactionExtention;
+
+    }
+
+
+
+    public NewTransactionOuterClass.NewTransaction withdrawbalance(String address){
+        ByteString bsOwnerAddress = parseAddress(address);
+        org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract withdrawBalanceContract= org.lgcy.Legacy.proto.Contract.WithdrawBalanceContract.newBuilder()
+                .setOwnerAddress(bsOwnerAddress).build();
+        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.withdrawBalance(withdrawBalanceContract);
+        return newTransaction;
+
+    }
+
 
 
     /**
@@ -869,12 +698,12 @@ public class ApiWrapper {
      * @return Transaction
      * @throws IllegalException if the parameters are not correct
      */
-    public Transaction getTransactionById(String txID) throws IllegalException {
+    public NewTransactionOuterClass.NewTransaction getTransactionById(String txID) throws IllegalException {
         ByteString bsTxid = parseAddress(txID);
         BytesMessage request = BytesMessage.newBuilder()
                 .setValue(bsTxid)
                 .build();
-        Transaction transaction = blockingStub.getTransactionById(request);
+       NewTransactionOuterClass.NewTransaction transaction = blockingStub.getTransactionById3(request);
 
         if(transaction.getRetCount() == 0){
             throw new IllegalException();
@@ -939,28 +768,7 @@ public class ApiWrapper {
         return blockingStub.getAccountById(accountId);
     }
 
-    public Transaction setAccountId(String id, String address) throws IllegalException {
-        ByteString bsId = ByteString.copyFrom(id.getBytes());
-        ByteString bsAddress = parseAddress(address);
 
-        SetAccountIdContract contract = createSetAccountIdContract(bsId, bsAddress);
-
-        Transaction transaction = createTransactionExtention(contract, Transaction.Contract.ContractType.SetAccountIdContract).getTransaction();
-
-        return transaction;
-    }
-
-    //use this method instead of setAccountId
-    public TransactionExtention setAccountId2(String id, String address) throws IllegalException {
-        ByteString bsId = ByteString.copyFrom(id.getBytes());
-        ByteString bsAddress = parseAddress(address);
-
-        SetAccountIdContract contract = createSetAccountIdContract(bsId, bsAddress);
-
-        TransactionExtention extention = createTransactionExtention(contract, Transaction.Contract.ContractType.SetAccountIdContract);
-
-        return extention;
-    }
 
     /**
      * All parameters that the blockchain committee can set
@@ -977,50 +785,6 @@ public class ApiWrapper {
     }
 
 
-
-    /**
-     * Query the energy delegation by an account. i.e. list all addresses that have delegated resources to an account
-     * @param address address,, default hexString
-     * @return DelegatedResourceAccountIndex
-     */
-    public DelegatedResourceAccountIndex getDelegatedResourceAccountIndex(String address) {
-
-        ByteString addressBS = parseAddress(address);
-
-        BytesMessage bytesMessage = BytesMessage.newBuilder()
-                .setValue(addressBS)
-                .build();
-
-        DelegatedResourceAccountIndex accountIndex = blockingStub.getDelegatedResourceAccountIndex(bytesMessage);
-
-        return accountIndex;
-    }
-
-    /**
-     * Query the list of all the TRC10 tokens
-     * @return AssetIssueList
-     */
-    public AssetIssueList getAssetIssueList() {
-        AssetIssueList assetIssueList = blockingStub.getAssetIssueList(EmptyMessage.newBuilder().build());
-
-        return assetIssueList;
-    }
-
-    /**
-     * Query the list of all the tokens by pagination.
-     * @param offset the index of the start token
-     * @param limit the amount of tokens per page
-     * @return AssetIssueList, a list of Tokens that succeed the Token located at offset
-     */
-    public AssetIssueList getPaginatedAssetIssueList(long offset, long limit) {
-        PaginatedMessage pageMessage = PaginatedMessage.newBuilder()
-                .setOffset(offset)
-                .setLimit(limit)
-                .build();
-
-        AssetIssueList assetIssueList = blockingStub.getPaginatedAssetIssueList(pageMessage);
-        return assetIssueList;
-    }
 
     /**
      * Query the TRC10 token information issued by an account
@@ -1081,32 +845,7 @@ public class ApiWrapper {
         return assetIssueList;
     }
 
-    /**
-     * Participate a token
-     * @param toAddress the issuer address of the token, default hexString
-     * @param ownerAddress the participant address, default hexString
-     * @param assertName token id, default hexString
-     * @param amount participate token amount
-     * @return TransactionExtention
-     * @throws IllegalException if fail to participate AssetIssue
-     */
-    public TransactionExtention participateAssetIssue(String toAddress, String ownerAddress, String assertName, long amount) throws IllegalException {
 
-        ByteString bsTo = parseAddress(toAddress);
-        ByteString bsOwner = parseAddress(ownerAddress);
-        ByteString bsName = ByteString.copyFrom(assertName.getBytes());
-
-        ParticipateAssetIssueContract builder = ParticipateAssetIssueContract.newBuilder()
-                .setToAddress(bsTo)
-                .setAssetName(bsName)
-                .setOwnerAddress(bsOwner)
-                .setAmount(amount)
-                .build();
-
-        TransactionExtention transactionExtention = createTransactionExtention(builder, Transaction.Contract.ContractType.ParticipateAssetIssueContract);
-
-        return transactionExtention;
-    }
 
 
     /**
@@ -1125,20 +864,6 @@ public class ApiWrapper {
      * @return Proposal, proposal details
      * @throws IllegalException if fail to get proposal
      */
-    //1-17
-//    public Proposal getProposalById(String id) throws IllegalException {
-//        ByteString bsTxid = ByteString.copyFrom(ByteBuffer.allocate(8).putLong(Long.parseLong(id)).array());
-//
-//        BytesMessage request = BytesMessage.newBuilder()
-//                .setValue(bsTxid)
-//                .build();
-//        Proposal proposal = blockingStub.getProposalById(request);
-//
-//        if(proposal.getApprovalsCount() == 0){
-//            throw new IllegalException();
-//        }
-//        return proposal;
-//    }
 
 
     public Proposal getProposalById(int id) throws IllegalException {
@@ -1165,15 +890,6 @@ public class ApiWrapper {
         return witnessList;
     }
 
-    /**
-     * List all exchange pairs
-     * @return ExchangeList
-     */
-    public ExchangeList listExchanges() {
-        ExchangeList exchangeList = blockingStub
-                .listExchanges(EmptyMessage.newBuilder().build());
-        return exchangeList;
-    }
 
     /**
      * Query exchange pair based on id
@@ -1195,144 +911,7 @@ public class ApiWrapper {
         return exchange;
     }
 
-    /**
-     * Issue a token
-     * @param ownerAddress Owner address, default hexString
-     * @param name Token name, default hexString
-     * @param abbr Token name abbreviation, default hexString
-     * @param totalSupply Token total supply
-     * @param USDLNum Define the price by the ratio of usdl_num/num
-     * @param icoNum Define the price by the ratio of usdl_num/num
-     * @param startTime ICO start time
-     * @param endTime ICO end time
-     * @param url Token official website url, default hexString
-     * @param freeAssetNetLimit Token free asset net limit
-     * @param publicFreeAssetNetLimit Token public free asset net limit
-     * @param precision
-     * @param frozenSupply HashMap<frozenDay, frozenAmount>
-     * @param description Token description, default hexString
-     * @return TransactionExtention
-     * @throws IllegalException if fail to create AssetIssue
-     */
 
-    public TransactionExtention createAssetIssue(String ownerAddress, String name, String abbr,
-                                                 long totalSupply, int usdlNum, int icoNum, long startTime, long endTime,
-                                                 String url, long freeAssetNetLimit,
-                                                 long publicFreeAssetNetLimit, int precision, HashMap<String, String> frozenSupply, String description) throws IllegalException {
-
-        AssetIssueContract.Builder builder = assetIssueContractBuilder(ownerAddress, name, abbr, totalSupply, usdlNum, icoNum, startTime, endTime, url, freeAssetNetLimit,
-                publicFreeAssetNetLimit, precision, description);
-
-        for (String daysStr : frozenSupply.keySet()) {
-            String amountStr = frozenSupply.get(daysStr);
-            long amount = Long.parseLong(amountStr);
-            long days = Long.parseLong(daysStr);
-            AssetIssueContract.FrozenSupply.Builder frozenBuilder = AssetIssueContract.FrozenSupply
-                    .newBuilder();
-            frozenBuilder.setFrozenAmount(amount);
-            frozenBuilder.setFrozenDays(days);
-            builder.addFrozenSupply(frozenBuilder.build());
-        }
-
-        TransactionExtention transactionExtention = createTransactionExtention(builder.build(), Transaction.Contract.ContractType.AssetIssueContract);
-
-        return transactionExtention;
-    }
-
-    /**
-     * Issue a token
-     * @param ownerAddress Owner address, default hexString
-     * @param name Token name, default hexString
-     * @param abbr Token name abbreviation, default hexString
-     * @param totalSupply Token total supply
-     * @param usdlNum Define the price by the ratio of usdl_num/num
-     * @param icoNum Define the price by the ratio of usdl_num/num
-     * @param startTime ICO start time
-     * @param endTime ICO end time
-     * @param url Token official website url, default hexString
-     * @param freeAssetNetLimit Token free asset net limit
-     * @param publicFreeAssetNetLimit Token public free asset net limit
-     * @param precision
-     * @param description Token description, default hexString
-     * @return TransactionExtention
-     * @throws IllegalException if fail to create AssetIssue
-     */
-
-    public TransactionExtention createAssetIssue(String ownerAddress, String name, String abbr,
-                                                 long totalSupply, int usdlNum, int icoNum, long startTime, long endTime,
-                                                 String url, long freeAssetNetLimit,
-                                                 long publicFreeAssetNetLimit, int precision, String description) throws IllegalException {
-
-        AssetIssueContract.Builder builder = assetIssueContractBuilder(ownerAddress, name, abbr, totalSupply, usdlNum, icoNum, startTime, endTime, url, freeAssetNetLimit,
-                publicFreeAssetNetLimit, precision, description);
-
-        TransactionExtention transactionExtention = createTransactionExtention(builder.build(), Transaction.Contract.ContractType.AssetIssueContract);
-
-        return transactionExtention;
-    }
-
-    public AssetIssueContract.Builder assetIssueContractBuilder(String ownerAddress, String name, String abbr,
-                                                 long totalSupply, int usdlNum, int icoNum, long startTime, long endTime,
-                                                 String url, long freeAssetNetLimit,
-                                                 long publicFreeAssetNetLimit, int precision, String description) {
-
-        ByteString bsAddress = parseAddress(ownerAddress);
-
-        AssetIssueContract.Builder builder = AssetIssueContract.newBuilder()
-                .setOwnerAddress(bsAddress)
-                .setName(ByteString.copyFrom(name.getBytes()))
-                .setAbbr(ByteString.copyFrom(abbr.getBytes()))
-                .setTotalSupply(totalSupply)
-                .setUsdlNum(usdlNum)
-                .setNum(icoNum)
-                .setStartTime(startTime)
-                .setEndTime(endTime)
-                .setUrl(ByteString.copyFrom(url.getBytes()))
-                .setFreeAssetNetLimit(freeAssetNetLimit)
-                .setPublicFreeAssetNetLimit(publicFreeAssetNetLimit)
-                .setPrecision(precision)
-                .setDescription(ByteString.copyFrom(description.getBytes()));
-        return builder;
-    }
-
-        /**
-         * Update basic TRC10 token information
-         * @param ownerAddress Owner address, default hexString
-         * @param description The description of token, default hexString
-         * @param url The token's website url, default hexString
-         * @param newLimit Each token holder's free bandwidth
-         * @param newPublicLimit The total free bandwidth of the token
-         * @return TransactionExtention
-         * @throws IllegalException if fail to update asset
-         */
-    public TransactionExtention updateAsset(String ownerAddress, String description, String url, int newLimit, int newPublicLimit) throws IllegalException {
-        ByteString bsOwnerAddress = parseAddress(ownerAddress);
-        ByteString bsDescription = ByteString.copyFrom(description.getBytes());
-        ByteString bsUrl = ByteString.copyFrom(url.getBytes());
-
-        UpdateAssetContract contract = createUpdateAssetContract(bsOwnerAddress,
-                bsDescription,bsUrl,newLimit,newPublicLimit);
-
-        TransactionExtention transactionExtention = createTransactionExtention(contract, Transaction.Contract.ContractType.UpdateAssetContract);
-
-        return transactionExtention;
-    }
-
-    /**
-     * Unfreeze a token that has passed the minimum freeze duration
-     * @param ownerAddress Owner address, default hexString
-     * @return TransactionExtention
-     * @throws IllegalException if fail to unfreeze asset
-     */
-    public TransactionExtention unfreezeAsset(String ownerAddress) throws IllegalException {
-        ByteString bsOwnerAddress = parseAddress(ownerAddress);
-
-        UnfreezeAssetContract contract = createUnfreezeAssetContract(bsOwnerAddress);
-
-        TransactionExtention transactionExtention = createTransactionExtention(contract, Transaction.Contract.ContractType.UnfreezeAssetContract);
-
-        return transactionExtention;
-    }
 
     /**
      * Unfreeze a token that has passed the minimum freeze duration
@@ -1340,11 +919,19 @@ public class ApiWrapper {
      * @return TransactionExtention
      * @throws IllegalException if fail to update account permission
      */
-    public TransactionExtention accountPermissionUpdate(AccountPermissionUpdateContract contract) throws IllegalException {
+    public NewTransactionOuterClass.NewTransaction accountPermissionUpdate(String address, Common.Permission owner, Common.Permission witness, List<Common.Permission> actives) throws IllegalException {
+        ByteString bsAddress = parseAddress(address);
+        AccountPermissionUpdateContract.Builder accountPermissionUpdateContract= AccountPermissionUpdateContract.newBuilder();
+        accountPermissionUpdateContract.setOwnerAddress(toHex(bsAddress));
 
-        TransactionExtention transactionExtention = createTransactionExtention(contract, Transaction.Contract.ContractType.AccountPermissionUpdateContract);
+                accountPermissionUpdateContract.setOwner(owner);
+                accountPermissionUpdateContract.setWitness(witness);
+                accountPermissionUpdateContract.addAllActives(actives);
 
-        return transactionExtention;
+        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.accountPermissionUpdate(accountPermissionUpdateContract.build());
+
+
+        return newTransaction;
     }
 
     /**
@@ -1357,6 +944,19 @@ public class ApiWrapper {
         TransactionSignWeight transactionSignWeight = blockingStub.getTransactionSignWeight(usdl);
 
         return transactionSignWeight;
+    }
+
+
+    public NewTransactionOuterClass.NewTransaction updateWitness(String ownerAddress, String updateUrl){
+        ByteString bsAddress = parseAddress(ownerAddress);
+
+        org.lgcy.Legacy.proto.Contract.WitnessUpdateContract  witnessUpdateContract= org.lgcy.Legacy.proto.Contract.WitnessUpdateContract.newBuilder()
+                .setOwnerAddress(bsAddress)
+                .setUpdateUrl(ByteString.copyFromUtf8(updateUrl)).build();
+
+         NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.updateWitness(witnessUpdateContract);
+
+        return newTransaction;
     }
 
     /**
@@ -1437,32 +1037,10 @@ public class ApiWrapper {
         NumberMessage numberMessage = blockingStub.getRewardInfo(bytesMessage);
         return numberMessage;
     }
-    //All other solidified APIs end
-
-    public static VoteWitnessContract createVoteWitnessContract(ByteString ownerAddress,
-                                                                HashMap<String, String> votes) {
-        VoteWitnessContract.Builder builder = VoteWitnessContract.newBuilder();
-        builder.setOwnerAddress(ownerAddress);
-        for (String addressBase58 : votes.keySet()) {
-            String voteCount = votes.get(addressBase58);
-            long count = Long.parseLong(voteCount);
-            VoteWitnessContract.Vote.Builder voteBuilder = VoteWitnessContract.Vote.newBuilder();
-            ByteString voteAddress = parseAddress(addressBase58);
-            if (voteAddress == null) {
-                continue;
-            }
-            voteBuilder.setVoteAddress(voteAddress);
-            voteBuilder.setVoteCount(count);
-            builder.addVotes(voteBuilder.build());
-        }
-        return builder.build();
-    }
 
     public static AccountUpdateContract createAccountUpdateContract(ByteString accountName,
                                                                     ByteString address) {
         AccountUpdateContract.Builder builder = AccountUpdateContract.newBuilder();
-
-
         builder.setAccountName(accountName);
         builder.setOwnerAddress(address);
 
@@ -1474,16 +1052,27 @@ public class ApiWrapper {
         AccountCreateContract.Builder builder = AccountCreateContract.newBuilder();
         builder.setOwnerAddress(owner);
         builder.setAccountAddress(address);
-
         return builder.build();
     }
+
+
+    public NewTransactionOuterClass.NewTransaction createaccount(String owner_address, String account_address){
+        ByteString ownerAddress = parseAddress(owner_address);
+        ByteString accountAddress = parseAddress(account_address);
+
+        AccountCreateContract accountCreateContract= AccountCreateContract.newBuilder()
+                .setOwnerAddress(ownerAddress)
+                .setAccountAddress(accountAddress).build();
+        NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.createAccount(accountCreateContract);
+        return newTransaction;
+    }
+
 
     public static SetAccountIdContract createSetAccountIdContract(
             ByteString accountId, ByteString address) {
         SetAccountIdContract.Builder builder = SetAccountIdContract.newBuilder();
         builder.setAccountId(accountId);
         builder.setOwnerAddress(address);
-
         return builder.build();
     }
 
@@ -1507,17 +1096,7 @@ public class ApiWrapper {
         return builder.build();
     }
 
-    public TransactionExtention updateBrokerage(String address, int brokerage) throws IllegalException{
-        ByteString ownerAddr = parseAddress(address);
-        UpdateBrokerageContract upContract = 
-                           UpdateBrokerageContract.newBuilder()
-                                        .setOwnerAddress(ownerAddr)
-                                        .setBrokerage(brokerage)
-                                        .build();
-        TransactionExtention transactionExtention = createTransactionExtention(upContract, Transaction.Contract.ContractType.UpdateBrokerageContract);
 
-        return transactionExtention;
-    }
 
     public long getBrokerageInfo(String address) {
         ByteString sr = parseAddress(address);
@@ -1539,41 +1118,60 @@ public class ApiWrapper {
         return brokerageMessage;
     }
 
-    /*public void transferTrc20(String from, String to, String cntr, long feeLimit, long amount, int precision) {
-        System.out.println("============ TRC20 transfer =============");
 
-        // transfer(address _to,uint256 _amount) returns (bool)
-        // _to = TVjsyZ7fYF3qLF6BQgPmTEZy1xrNNyVAAA
-        // _amount = 10 * 10^18
-        Function trc20Transfer = new Function("transfer",
-            Arrays.asList(new Address(to),
-                new Uint256(BigInteger.valueOf(amount).multiply(BigInteger.valueOf(10).pow(precision)))),
-            Arrays.asList(new TypeReference<Bool>() {}));
 
-        String encodedHex = FunctionEncoder.encode(trc20Transfer);
-        TriggerSmartContract trigger =
-            TriggerSmartContract.newBuilder()
-                .setOwnerAddress(ApiWrapper.parseAddress(from))
-                .setContractAddress(ApiWrapper.parseAddress(cntr)) // JST
-                .setData(ApiWrapper.parseHex(encodedHex))
-                .build();
 
-        System.out.println("trigger:\n" + trigger);
+    public NewTransactionOuterClass.NewTransaction updateBrokerage(String address, int brokerage){
+        ByteString ownerAddr = parseAddress(address);
+        UpdateBrokerageContract upContract =
+                UpdateBrokerageContract.newBuilder()
+                        .setOwnerAddress(ownerAddr)
+                        .setBrokerage(brokerage)
+                        .build();
 
-        TransactionExtention txnExt = blockingStub.triggerContract(trigger);
-        System.out.println("txn id => " + ApiWrapper.toHex(txnExt.getTxid().toByteArray()));
-        System.out.println("contsant result :" + txnExt.getConstantResult(0));
+          NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.updateBrokerage(upContract);
+          return newTransaction;
 
-        Transaction unsignedTxn = txnExt.getTransaction().toBuilder()
-            .setRawData(txnExt.getTransaction().getRawData().toBuilder().setFeeLimit(feeLimit))
-            .build();
+    }
 
-        Transaction signedTxn = signTransaction(unsignedTxn);
 
-        System.out.println(signedTxn.toString());
-        TransactionReturn ret = blockingStub.broadcastTransaction(signedTxn);
-        System.out.println("======== Result ========\n" + ret.toString());
-    }*/
+
+    public NewTransactionOuterClass.NewTransaction updateAccount(String address,String accountName){
+
+        ByteString bsAddress = parseAddress(address);
+
+        AccountUpdateContract.Builder builder = AccountUpdateContract.newBuilder();
+        builder.setOwnerAddress(bsAddress);
+        builder.setAccountName(ByteString.copyFromUtf8(accountName));
+
+
+         NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.updateAccount(builder.build());
+        return newTransaction;
+
+    }
+
+
+
+
+    public NewTransactionOuterClass.NewTransaction updateSetting(String onwerAddress, String contractAddress, long consumeUserResourcePercent){
+
+        ByteString bsAddress = parseAddress(onwerAddress);
+        ByteString conAddress = parseAddress(contractAddress);
+
+        org.lgcy.Legacy.proto.Contract.UpdateSettingContract.Builder builder = org.lgcy.Legacy.proto.Contract.UpdateSettingContract.newBuilder();
+        builder.setOwnerAddress(bsAddress);
+        builder.setContractAddress(conAddress);
+        builder.setConsumeUserResourcePercent(consumeUserResourcePercent);
+
+
+       NewTransactionOuterClass.NewTransaction newTransaction= blockingStub.updateSetting(builder.build());
+       return newTransaction;
+
+    }
+
+
+
+
 
     /**
      * Obtain a {@code Contract} object via an address
@@ -1581,7 +1179,7 @@ public class ApiWrapper {
      * @return the smart contract obtained from the address
      * @throws Exception if contract address does not match
      */
-    public Contract getContract(String contractAddress) {
+    public SmartContract getContract(String contractAddress) {
         ByteString rawAddr = parseAddress(contractAddress);
         BytesMessage param =
                 BytesMessage.newBuilder()
@@ -1593,9 +1191,9 @@ public class ApiWrapper {
 
         Contract contract =
                 new Contract.Builder()
-                        .setOriginAddr(cntr.getOriginAddress())
-                        .setCntrAddr(cntr.getContractAddress())
-                        .setBytecode(cntr.getBytecode())
+                        .setOriginAddr(ByteString.copyFromUtf8(cntr.getOriginAddress()))
+                        .setCntrAddr(ByteString.copyFromUtf8(cntr.getContractAddress()))
+                        .setBytecode(ByteString.copyFromUtf8(cntr.getBytecode()))
                         .setName(cntr.getName())
                         .setAbi(cntr.getAbi())
                         .setOriginEnergyLimit(cntr.getOriginEnergyLimit())
@@ -1603,7 +1201,7 @@ public class ApiWrapper {
                         .build();
 
 
-        return contract;
+        return cntr;
     }
 
     /**
@@ -1620,6 +1218,20 @@ public class ApiWrapper {
             }
         }
         return false;
+    }
+
+
+
+    public NewTransactionOuterClass.TransactionExtention2 triggerconstantcontract(String address, String contract_address, String function_selector, String parameter){
+        ByteString rawAddr = parseAddress(address);
+        ByteString contractAddress = parseAddress(contract_address);
+        TriggerSmartContract triggerSmartContract = TriggerSmartContract.newBuilder()
+                .setOwnerAddress(rawAddr)
+                .setContractAddress(contractAddress)
+                .setFunctionSelector(function_selector)
+                .setParameter(ByteString.fromHex(parameter)).build();
+        NewTransactionOuterClass.TransactionExtention2 transactionExtention2 = blockingStub.triggerConstantContract2(triggerSmartContract);
+     return transactionExtention2;
     }
 
     /**
@@ -1640,62 +1252,17 @@ public class ApiWrapper {
                         .setData(parseHex(encodedHex))
                         .build();
 
-        // System.out.println("trigger:\n" + trigger);
 
         TransactionExtention txnExt = blockingStub.triggerConstantContract(trigger);
-        // System.out.println("txn id => " + toHex(txnExt.getTxid().toByteArray()));
 
         return txnExt;
     }
 
 
-//    private TransactionExtention callWithoutBroadcast(String ownerAddr, Contract cntr, Function function) {
-//        cntr.setOwnerAddr(parseAddress(ownerAddr));
-//        String encodedHex = FunctionEncoder.encode(function);
-//        // Make a TriggerSmartContract contract
-//        TriggerSmartContract trigger =
-//                TriggerSmartContract.newBuilder()
-//                        .setOwnerAddress(cntr.getOwnerAddr())
-//                        .setContractAddress(cntr.getCntrAddr())
-//                        .setData(parseHex(encodedHex))
-//                        .build();
-//
-//        // System.out.println("trigger:\n" + trigger);
-//
-//        TransactionExtention txnExt = blockingStub.triggerConstantContract(trigger);
-//        // System.out.println("txn id => " + toHex(txnExt.getTxid().toByteArray()));
-//
-//        return txnExt;
-//    }
 
-    /**
-     * make a constant call - no broadcasting
-     * @param ownerAddr the current caller.
-     * @param contractAddr smart contract address.
-     * @param function contract function.
-     * @return TransactionExtention.
-     */
-    public TransactionExtention constantCall(String ownerAddr, String contractAddr, Function function) {
-        Contract cntr = getContract(contractAddr);
 
-        TransactionExtention txnExt =  callWithoutBroadcast(ownerAddr, cntr, function);
-        
-        return txnExt;
-    }
 
-    /**
-     * make a trigger call. Trigger call consumes energy and bandwidth.
-     * @param ownerAddr the current caller
-     * @param contractAddr smart contract address
-     * @param function contract function
-     * @return transaction builder. Users may set other fields, e.g. feeLimit
-     */
-    public TransactionBuilder triggerCall(String ownerAddr, String contractAddr, Function function) {
-        Contract cntr = getContract(contractAddr);
 
-        TransactionExtention txnExt = callWithoutBroadcast(ownerAddr, cntr, function);
 
-        return new TransactionBuilder(txnExt.getTransaction());
-    }
 
 }

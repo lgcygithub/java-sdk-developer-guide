@@ -1,15 +1,52 @@
 syntax = "proto3";
 package protocol;
+
 option java_package = "org.lgcy.Legacy.proto";
 import "core/chain.proto";
+import "core/common.proto";
 
 
 message NewTransaction {
+
+  message Result {
+    Transaction.Result.contractResult contractRet = 1;
+    Transaction.Result.code ret =2;
+  }
 
   message Value {
     uint32 amount = 1;
     string owner_address = 2;
     string to_address = 3;
+    string update_url=4;
+    int32 brokerage = 5;
+    string account_name=6;
+    string contract_address = 7;
+    uint32 consume_user_resource_percent = 8;
+    uint32 frozen_balance = 9;
+    uint32 frozen_duration = 10;
+    ResourceCode resource = 11;
+    string data =12;
+    message Parameters {
+      uint32 key = 1;
+      uint32 value = 2;
+    }
+
+    message Votes {
+      string vote_address = 1;
+      uint32 vote_count = 2;
+    }
+
+    repeated Parameters parameters = 13;
+    string url =14;
+    uint32 proposal_id = 15;
+    bool is_add_approval = 16;
+    repeated Votes votes = 17;
+    Permission owner = 18;             // Empty is invalidate
+    Permission witness = 19;           // Can be empty
+    repeated Permission actives = 20;
+    string account_address= 21;
+
+
   }
 
   message Parameter {
@@ -26,12 +63,31 @@ message NewTransaction {
     repeated Contract contract = 1;
     string ref_block_bytes = 2;
     string ref_block_hash = 3;
-    uint64 expiration = 4;
-    uint64 timestamp = 5;
+    int64 expiration = 4;
+    int64 timestamp = 5;
   }
 
   bool visible = 1;
-  string txID = 2;
-  Raw_data raw_data = 3;
-  string raw_data_hex = 4;
+  repeated string signature = 2;
+  string txID = 3;
+  Raw_data raw_data = 4;
+  string raw_data_hex = 5;
+  repeated Result ret = 6;
+  string Error = 7;
+}
+
+
+message SignTransactionExtension {
+  NewTransaction transaction = 1;
+  string privateKey = 2;
+
+
+}
+
+message TransactionExtention2{
+  NewTransaction transaction = 1;
+  bytes txid = 2;  // transaction id = sha256(transaction.raw_data)
+  repeated string constant_result = 3;
+  TransactionReturnData result = 4;
+  int64 energy_used = 5;
 }

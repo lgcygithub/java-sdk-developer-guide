@@ -4,7 +4,7 @@ Lgcy-Java is a lightweight SDK that includes libraries for working with Lgcy sys
 
 Lgcy-Java makes it easy to build Lgcy applications with java.
 
-[Lgcy-Java document](https://test.lgcyscan.network/developer-guide/lgcy-java-sdk)
+[Lgcy-Java document](https://developers.tron.network/docs/Lgcy-java)
 
 Due to safety concerns, Lgcy-java will no longer upload packaged files to maven. Please clone the code from GitHub and do the packaging.
 

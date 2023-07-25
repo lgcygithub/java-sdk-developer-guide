@@ -26,7 +26,7 @@ message authority {
 }
 
 message Key {
-  bytes address = 1;
+  string address = 1;
   int64 weight = 2;
 }
 
@@ -41,7 +41,7 @@ message Permission {
   string permission_name = 3;
   int64 threshold = 4;
   int32 parent_id = 5;
-  bytes operations = 6;  // 1 bit 1 contract
+  string operations = 6;  // 1 bit 1 contract
   repeated Key keys = 7;
 }
 
@@ -80,16 +80,16 @@ message SmartContract {
     }
     repeated Entry entrys = 1;
   }
-  bytes origin_address = 1;
-  bytes contract_address = 2;
+  string origin_address = 1;
+  string contract_address = 2;
   ABI abi = 3;
-  bytes bytecode = 4;
+  string bytecode = 4;
   int64 call_value = 5;
   int64 consume_user_resource_percent = 6;
   string name = 7;
   int64 origin_energy_limit = 8;
-  bytes code_hash = 9;
-  bytes usdl_hash = 10;
+  string code_hash = 9;
+  string usdl_hash = 10;
 }
 
 message Vote {

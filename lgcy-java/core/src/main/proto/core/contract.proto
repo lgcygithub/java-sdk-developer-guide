@@ -25,7 +25,7 @@ message SetAccountIdContract {
 }
 
 message AccountPermissionUpdateContract {
-  bytes owner_address = 1;
+  string owner_address = 1;
   Permission owner = 2;             // Empty is invalidate
   Permission witness = 3;           // Can be empty
   repeated Permission actives = 4;  // Empty is invalidate
@@ -136,8 +136,12 @@ message ProposalApproveContract {
 }
 
 message ProposalCreateContract {
-  bytes owner_address = 1;
-  map<int64, int64> parameters = 2;
+  string owner_address = 1;
+  message Parameters {
+    uint32 key = 1;
+    uint32 value = 2;
+  }
+  repeated Parameters parameters = 2;
 }
 
 message ProposalDeleteContract {
@@ -206,10 +210,10 @@ message WitnessUpdateContract {
 
 message VoteWitnessContract {
   message Vote {
-    bytes vote_address = 1;
+    string vote_address = 1;
     int64 vote_count = 2;
   }
-  bytes owner_address = 1;
+  string owner_address = 1;
   repeated Vote votes = 2;
   bool support = 3;
 }

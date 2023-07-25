@@ -9,7 +9,7 @@ import "core/common.proto";
 message Transaction {
   message Contract {
     enum ContractType {
-      AccountCreateContract = 0;
+      DefaultContract=0;
       TransferContract = 1;
       TransferAssetContract = 2;
       VoteAssetContract = 3;
@@ -49,6 +49,7 @@ message Transaction {
       WithdrawExpireUnfreezeContract = 56;
       DelegateResourceContract = 57;
       UnDelegateResourceContract = 58;
+      AccountCreateContract = 59;
     }
     ContractType type = 1;
     google.protobuf.Any parameter = 2;
@@ -122,18 +123,18 @@ message Transaction {
 message BlockHeader {
   message raw {
     int64 timestamp = 1;
-    bytes txTrieRoot = 2;
-    bytes parentHash = 3;
+    string txTrieRoot = 2;
+    string parentHash = 3;
     // bytes nonce = 5;
     // bytes difficulty = 6;
     int64 number = 7;
     int64 witness_id = 8;
-    bytes witness_address = 9;
+    string witness_address = 9;
     int32 version = 10;
-    bytes accountStateRoot = 11;
+    string accountStateRoot = 11;
   }
   raw raw_data = 1;
-  bytes witness_signature = 2;
+  string witness_signature = 2;
 }
 
 // block
@@ -142,4 +143,26 @@ message Block {
   BlockHeader block_header = 2;
   //add blockID new
   string blockID = 3;
+}
+
+message TransactionReturnData{
+  enum response_code {
+    SUCCESS = 0;
+    SIGERROR = 1;  // error in signature
+    CONTRACT_VALIDATE_ERROR = 2;
+    CONTRACT_EXE_ERROR = 3;
+    BANDWITH_ERROR = 4;
+    DUP_TRANSACTION_ERROR = 5;
+    TAPOS_ERROR = 6;
+    TOO_BIG_TRANSACTION_ERROR = 7;
+    TRANSACTION_EXPIRATION_ERROR = 8;
+    SERVER_BUSY = 9;
+    NO_CONNECTION = 10;
+    NOT_ENOUGH_EFFECTIVE_CONNECTION = 11;
+    OTHER_ERROR = 20;
+  }
+  bool result = 1;
+  string txid = 2;
+  string message=3;
+  response_code code = 4;
 }
