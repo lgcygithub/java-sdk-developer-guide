@@ -1842,10 +1842,16 @@ public final class Contract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes owner_address = 1;</code>
+     * <code>string owner_address = 1;</code>
      * @return The ownerAddress.
      */
-    com.google.protobuf.ByteString getOwnerAddress();
+    java.lang.String getOwnerAddress();
+    /**
+     * <code>string owner_address = 1;</code>
+     * @return The bytes for ownerAddress.
+     */
+    com.google.protobuf.ByteString
+        getOwnerAddressBytes();
 
     /**
      * <pre>
@@ -1958,7 +1964,7 @@ public final class Contract {
       super(builder);
     }
     private AccountPermissionUpdateContract() {
-      ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+      ownerAddress_ = "";
       actives_ = java.util.Collections.emptyList();
     }
 
@@ -1994,8 +2000,9 @@ public final class Contract {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              ownerAddress_ = input.readBytes();
+              ownerAddress_ = s;
               break;
             }
             case 18: {
@@ -2069,14 +2076,41 @@ public final class Contract {
     }
 
     public static final int OWNER_ADDRESS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString ownerAddress_;
+    private volatile java.lang.Object ownerAddress_;
     /**
-     * <code>bytes owner_address = 1;</code>
+     * <code>string owner_address = 1;</code>
      * @return The ownerAddress.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getOwnerAddress() {
-      return ownerAddress_;
+    public java.lang.String getOwnerAddress() {
+      java.lang.Object ref = ownerAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ownerAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string owner_address = 1;</code>
+     * @return The bytes for ownerAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOwnerAddressBytes() {
+      java.lang.Object ref = ownerAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ownerAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int OWNER_FIELD_NUMBER = 2;
@@ -2229,8 +2263,8 @@ public final class Contract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!ownerAddress_.isEmpty()) {
-        output.writeBytes(1, ownerAddress_);
+      if (!getOwnerAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ownerAddress_);
       }
       if (owner_ != null) {
         output.writeMessage(2, getOwner());
@@ -2250,9 +2284,8 @@ public final class Contract {
       if (size != -1) return size;
 
       size = 0;
-      if (!ownerAddress_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, ownerAddress_);
+      if (!getOwnerAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ownerAddress_);
       }
       if (owner_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -2454,7 +2487,7 @@ public final class Contract {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+        ownerAddress_ = "";
 
         if (ownerBuilder_ == null) {
           owner_ = null;
@@ -2569,8 +2602,9 @@ public final class Contract {
 
       public Builder mergeFrom(org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract other) {
         if (other == org.lgcy.Legacy.proto.Contract.AccountPermissionUpdateContract.getDefaultInstance()) return this;
-        if (other.getOwnerAddress() != com.google.protobuf.ByteString.EMPTY) {
-          setOwnerAddress(other.getOwnerAddress());
+        if (!other.getOwnerAddress().isEmpty()) {
+          ownerAddress_ = other.ownerAddress_;
+          onChanged();
         }
         if (other.hasOwner()) {
           mergeOwner(other.getOwner());
@@ -2634,21 +2668,47 @@ public final class Contract {
       }
       private int bitField0_;
 
-      private com.google.protobuf.ByteString ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object ownerAddress_ = "";
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
        * @return The ownerAddress.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getOwnerAddress() {
-        return ownerAddress_;
+      public java.lang.String getOwnerAddress() {
+        java.lang.Object ref = ownerAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ownerAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
+       * @return The bytes for ownerAddress.
+       */
+      public com.google.protobuf.ByteString
+          getOwnerAddressBytes() {
+        java.lang.Object ref = ownerAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ownerAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string owner_address = 1;</code>
        * @param value The ownerAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setOwnerAddress(com.google.protobuf.ByteString value) {
+      public Builder setOwnerAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -2658,12 +2718,28 @@ public final class Contract {
         return this;
       }
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearOwnerAddress() {
         
         ownerAddress_ = getDefaultInstance().getOwnerAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string owner_address = 1;</code>
+       * @param value The bytes for ownerAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOwnerAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ownerAddress_ = value;
         onChanged();
         return this;
       }
@@ -13578,44 +13654,40 @@ public final class Contract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes owner_address = 1;</code>
+     * <code>string owner_address = 1;</code>
      * @return The ownerAddress.
      */
-    com.google.protobuf.ByteString getOwnerAddress();
+    java.lang.String getOwnerAddress();
+    /**
+     * <code>string owner_address = 1;</code>
+     * @return The bytes for ownerAddress.
+     */
+    com.google.protobuf.ByteString
+        getOwnerAddressBytes();
 
     /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+     */
+    java.util.List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> 
+        getParametersList();
+    /**
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+     */
+    org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters getParameters(int index);
+    /**
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
      */
     int getParametersCount();
     /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
      */
-    boolean containsParameters(
-        long key);
+    java.util.List<? extends org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder> 
+        getParametersOrBuilderList();
     /**
-     * Use {@link #getParametersMap()} instead.
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
      */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.Long, java.lang.Long>
-    getParameters();
-    /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-     */
-    java.util.Map<java.lang.Long, java.lang.Long>
-    getParametersMap();
-    /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-     */
-
-    long getParametersOrDefault(
-        long key,
-        long defaultValue);
-    /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-     */
-
-    long getParametersOrThrow(
-        long key);
+    org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder getParametersOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code protocol.ProposalCreateContract}
@@ -13630,7 +13702,8 @@ public final class Contract {
       super(builder);
     }
     private ProposalCreateContract() {
-      ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+      ownerAddress_ = "";
+      parameters_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -13665,21 +13738,18 @@ public final class Contract {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              ownerAddress_ = input.readBytes();
+              ownerAddress_ = s;
               break;
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                parameters_ = com.google.protobuf.MapField.newMapField(
-                    ParametersDefaultEntryHolder.defaultEntry);
+                parameters_ = new java.util.ArrayList<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
-              parameters__ = input.readMessage(
-                  ParametersDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              parameters_.getMutableMap().put(
-                  parameters__.getKey(), parameters__.getValue());
+              parameters_.add(
+                  input.readMessage(org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -13697,6 +13767,9 @@ public final class Contract {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          parameters_ = java.util.Collections.unmodifiableList(parameters_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -13706,18 +13779,6 @@ public final class Contract {
       return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 2:
-          return internalGetParameters();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -13726,96 +13787,640 @@ public final class Contract {
               org.lgcy.Legacy.proto.Contract.ProposalCreateContract.class, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Builder.class);
     }
 
-    public static final int OWNER_ADDRESS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString ownerAddress_;
+    public interface ParametersOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:protocol.ProposalCreateContract.Parameters)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>uint32 key = 1;</code>
+       * @return The key.
+       */
+      int getKey();
+
+      /**
+       * <code>uint32 value = 2;</code>
+       * @return The value.
+       */
+      int getValue();
+    }
     /**
-     * <code>bytes owner_address = 1;</code>
+     * Protobuf type {@code protocol.ProposalCreateContract.Parameters}
+     */
+    public static final class Parameters extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:protocol.ProposalCreateContract.Parameters)
+        ParametersOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Parameters.newBuilder() to construct.
+      private Parameters(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Parameters() {
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Parameters();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Parameters(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+
+                key_ = input.readUInt32();
+                break;
+              }
+              case 16: {
+
+                value_ = input.readUInt32();
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_Parameters_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_Parameters_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.class, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder.class);
+      }
+
+      public static final int KEY_FIELD_NUMBER = 1;
+      private int key_;
+      /**
+       * <code>uint32 key = 1;</code>
+       * @return The key.
+       */
+      @java.lang.Override
+      public int getKey() {
+        return key_;
+      }
+
+      public static final int VALUE_FIELD_NUMBER = 2;
+      private int value_;
+      /**
+       * <code>uint32 value = 2;</code>
+       * @return The value.
+       */
+      @java.lang.Override
+      public int getValue() {
+        return value_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (key_ != 0) {
+          output.writeUInt32(1, key_);
+        }
+        if (value_ != 0) {
+          output.writeUInt32(2, value_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (key_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(1, key_);
+        }
+        if (value_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(2, value_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters)) {
+          return super.equals(obj);
+        }
+        org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters other = (org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters) obj;
+
+        if (getKey()
+            != other.getKey()) return false;
+        if (getValue()
+            != other.getValue()) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + KEY_FIELD_NUMBER;
+        hash = (53 * hash) + getKey();
+        hash = (37 * hash) + VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + getValue();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code protocol.ProposalCreateContract.Parameters}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:protocol.ProposalCreateContract.Parameters)
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_Parameters_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_Parameters_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.class, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder.class);
+        }
+
+        // Construct using org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          key_ = 0;
+
+          value_ = 0;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_Parameters_descriptor;
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters getDefaultInstanceForType() {
+          return org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters build() {
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters buildPartial() {
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters result = new org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters(this);
+          result.key_ = key_;
+          result.value_ = value_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters) {
+            return mergeFrom((org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters other) {
+          if (other == org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.getDefaultInstance()) return this;
+          if (other.getKey() != 0) {
+            setKey(other.getKey());
+          }
+          if (other.getValue() != 0) {
+            setValue(other.getValue());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private int key_ ;
+        /**
+         * <code>uint32 key = 1;</code>
+         * @return The key.
+         */
+        @java.lang.Override
+        public int getKey() {
+          return key_;
+        }
+        /**
+         * <code>uint32 key = 1;</code>
+         * @param value The key to set.
+         * @return This builder for chaining.
+         */
+        public Builder setKey(int value) {
+          
+          key_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint32 key = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearKey() {
+          
+          key_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int value_ ;
+        /**
+         * <code>uint32 value = 2;</code>
+         * @return The value.
+         */
+        @java.lang.Override
+        public int getValue() {
+          return value_;
+        }
+        /**
+         * <code>uint32 value = 2;</code>
+         * @param value The value to set.
+         * @return This builder for chaining.
+         */
+        public Builder setValue(int value) {
+          
+          value_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint32 value = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearValue() {
+          
+          value_ = 0;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:protocol.ProposalCreateContract.Parameters)
+      }
+
+      // @@protoc_insertion_point(class_scope:protocol.ProposalCreateContract.Parameters)
+      private static final org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters();
+      }
+
+      public static org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Parameters>
+          PARSER = new com.google.protobuf.AbstractParser<Parameters>() {
+        @java.lang.Override
+        public Parameters parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Parameters(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Parameters> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Parameters> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public static final int OWNER_ADDRESS_FIELD_NUMBER = 1;
+    private volatile java.lang.Object ownerAddress_;
+    /**
+     * <code>string owner_address = 1;</code>
      * @return The ownerAddress.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getOwnerAddress() {
-      return ownerAddress_;
+    public java.lang.String getOwnerAddress() {
+      java.lang.Object ref = ownerAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ownerAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string owner_address = 1;</code>
+     * @return The bytes for ownerAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOwnerAddressBytes() {
+      java.lang.Object ref = ownerAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ownerAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int PARAMETERS_FIELD_NUMBER = 2;
-    private static final class ParametersDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.Long, java.lang.Long> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.Long, java.lang.Long>newDefaultInstance(
-                  org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_ParametersEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.INT64,
-                  0L,
-                  com.google.protobuf.WireFormat.FieldType.INT64,
-                  0L);
-    }
-    private com.google.protobuf.MapField<
-        java.lang.Long, java.lang.Long> parameters_;
-    private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
-    internalGetParameters() {
-      if (parameters_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            ParametersDefaultEntryHolder.defaultEntry);
-      }
+    private java.util.List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> parameters_;
+    /**
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> getParametersList() {
       return parameters_;
     }
-
+    /**
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder> 
+        getParametersOrBuilderList() {
+      return parameters_;
+    }
+    /**
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+     */
+    @java.lang.Override
     public int getParametersCount() {
-      return internalGetParameters().getMap().size();
+      return parameters_.size();
     }
     /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
      */
-
     @java.lang.Override
-    public boolean containsParameters(
-        long key) {
-      
-      return internalGetParameters().getMap().containsKey(key);
+    public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters getParameters(int index) {
+      return parameters_.get(index);
     }
     /**
-     * Use {@link #getParametersMap()} instead.
+     * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
      */
     @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.Long, java.lang.Long> getParameters() {
-      return getParametersMap();
-    }
-    /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-     */
-    @java.lang.Override
-
-    public java.util.Map<java.lang.Long, java.lang.Long> getParametersMap() {
-      return internalGetParameters().getMap();
-    }
-    /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-     */
-    @java.lang.Override
-
-    public long getParametersOrDefault(
-        long key,
-        long defaultValue) {
-      
-      java.util.Map<java.lang.Long, java.lang.Long> map =
-          internalGetParameters().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-     */
-    @java.lang.Override
-
-    public long getParametersOrThrow(
-        long key) {
-      
-      java.util.Map<java.lang.Long, java.lang.Long> map =
-          internalGetParameters().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
+    public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder getParametersOrBuilder(
+        int index) {
+      return parameters_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -13832,15 +14437,12 @@ public final class Contract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!ownerAddress_.isEmpty()) {
-        output.writeBytes(1, ownerAddress_);
+      if (!getOwnerAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ownerAddress_);
       }
-      com.google.protobuf.GeneratedMessageV3
-        .serializeLongMapTo(
-          output,
-          internalGetParameters(),
-          ParametersDefaultEntryHolder.defaultEntry,
-          2);
+      for (int i = 0; i < parameters_.size(); i++) {
+        output.writeMessage(2, parameters_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -13850,19 +14452,12 @@ public final class Contract {
       if (size != -1) return size;
 
       size = 0;
-      if (!ownerAddress_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, ownerAddress_);
+      if (!getOwnerAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ownerAddress_);
       }
-      for (java.util.Map.Entry<java.lang.Long, java.lang.Long> entry
-           : internalGetParameters().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.Long, java.lang.Long>
-        parameters__ = ParametersDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < parameters_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(2, parameters__);
+          .computeMessageSize(2, parameters_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -13881,8 +14476,8 @@ public final class Contract {
 
       if (!getOwnerAddress()
           .equals(other.getOwnerAddress())) return false;
-      if (!internalGetParameters().equals(
-          other.internalGetParameters())) return false;
+      if (!getParametersList()
+          .equals(other.getParametersList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -13896,9 +14491,9 @@ public final class Contract {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + OWNER_ADDRESS_FIELD_NUMBER;
       hash = (53 * hash) + getOwnerAddress().hashCode();
-      if (!internalGetParameters().getMap().isEmpty()) {
+      if (getParametersCount() > 0) {
         hash = (37 * hash) + PARAMETERS_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetParameters().hashCode();
+        hash = (53 * hash) + getParametersList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -14007,28 +14602,6 @@ public final class Contract {
         return org.lgcy.Legacy.proto.Contract.internal_static_protocol_ProposalCreateContract_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMapField(
-          int number) {
-        switch (number) {
-          case 2:
-            return internalGetParameters();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapField internalGetMutableMapField(
-          int number) {
-        switch (number) {
-          case 2:
-            return internalGetMutableParameters();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -14050,14 +14623,20 @@ public final class Contract {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getParametersFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+        ownerAddress_ = "";
 
-        internalGetMutableParameters().clear();
+        if (parametersBuilder_ == null) {
+          parameters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          parametersBuilder_.clear();
+        }
         return this;
       }
 
@@ -14086,8 +14665,15 @@ public final class Contract {
         org.lgcy.Legacy.proto.Contract.ProposalCreateContract result = new org.lgcy.Legacy.proto.Contract.ProposalCreateContract(this);
         int from_bitField0_ = bitField0_;
         result.ownerAddress_ = ownerAddress_;
-        result.parameters_ = internalGetParameters();
-        result.parameters_.makeImmutable();
+        if (parametersBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            parameters_ = java.util.Collections.unmodifiableList(parameters_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.parameters_ = parameters_;
+        } else {
+          result.parameters_ = parametersBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -14136,11 +14722,36 @@ public final class Contract {
 
       public Builder mergeFrom(org.lgcy.Legacy.proto.Contract.ProposalCreateContract other) {
         if (other == org.lgcy.Legacy.proto.Contract.ProposalCreateContract.getDefaultInstance()) return this;
-        if (other.getOwnerAddress() != com.google.protobuf.ByteString.EMPTY) {
-          setOwnerAddress(other.getOwnerAddress());
+        if (!other.getOwnerAddress().isEmpty()) {
+          ownerAddress_ = other.ownerAddress_;
+          onChanged();
         }
-        internalGetMutableParameters().mergeFrom(
-            other.internalGetParameters());
+        if (parametersBuilder_ == null) {
+          if (!other.parameters_.isEmpty()) {
+            if (parameters_.isEmpty()) {
+              parameters_ = other.parameters_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureParametersIsMutable();
+              parameters_.addAll(other.parameters_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.parameters_.isEmpty()) {
+            if (parametersBuilder_.isEmpty()) {
+              parametersBuilder_.dispose();
+              parametersBuilder_ = null;
+              parameters_ = other.parameters_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              parametersBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getParametersFieldBuilder() : null;
+            } else {
+              parametersBuilder_.addAllMessages(other.parameters_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -14171,21 +14782,47 @@ public final class Contract {
       }
       private int bitField0_;
 
-      private com.google.protobuf.ByteString ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object ownerAddress_ = "";
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
        * @return The ownerAddress.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getOwnerAddress() {
-        return ownerAddress_;
+      public java.lang.String getOwnerAddress() {
+        java.lang.Object ref = ownerAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ownerAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
+       * @return The bytes for ownerAddress.
+       */
+      public com.google.protobuf.ByteString
+          getOwnerAddressBytes() {
+        java.lang.Object ref = ownerAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ownerAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string owner_address = 1;</code>
        * @param value The ownerAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setOwnerAddress(com.google.protobuf.ByteString value) {
+      public Builder setOwnerAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -14195,7 +14832,7 @@ public final class Contract {
         return this;
       }
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearOwnerAddress() {
@@ -14204,133 +14841,261 @@ public final class Contract {
         onChanged();
         return this;
       }
-
-      private com.google.protobuf.MapField<
-          java.lang.Long, java.lang.Long> parameters_;
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
-      internalGetParameters() {
-        if (parameters_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              ParametersDefaultEntryHolder.defaultEntry);
-        }
-        return parameters_;
-      }
-      private com.google.protobuf.MapField<java.lang.Long, java.lang.Long>
-      internalGetMutableParameters() {
-        onChanged();;
-        if (parameters_ == null) {
-          parameters_ = com.google.protobuf.MapField.newMapField(
-              ParametersDefaultEntryHolder.defaultEntry);
-        }
-        if (!parameters_.isMutable()) {
-          parameters_ = parameters_.copy();
-        }
-        return parameters_;
+      /**
+       * <code>string owner_address = 1;</code>
+       * @param value The bytes for ownerAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOwnerAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ownerAddress_ = value;
+        onChanged();
+        return this;
       }
 
+      private java.util.List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> parameters_ =
+        java.util.Collections.emptyList();
+      private void ensureParametersIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          parameters_ = new java.util.ArrayList<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters>(parameters_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder> parametersBuilder_;
+
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public java.util.List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> getParametersList() {
+        if (parametersBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(parameters_);
+        } else {
+          return parametersBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
       public int getParametersCount() {
-        return internalGetParameters().getMap().size();
-      }
-      /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-       */
-
-      @java.lang.Override
-      public boolean containsParameters(
-          long key) {
-        
-        return internalGetParameters().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getParametersMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Long, java.lang.Long> getParameters() {
-        return getParametersMap();
-      }
-      /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-       */
-      @java.lang.Override
-
-      public java.util.Map<java.lang.Long, java.lang.Long> getParametersMap() {
-        return internalGetParameters().getMap();
-      }
-      /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-       */
-      @java.lang.Override
-
-      public long getParametersOrDefault(
-          long key,
-          long defaultValue) {
-        
-        java.util.Map<java.lang.Long, java.lang.Long> map =
-            internalGetParameters().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
-       */
-      @java.lang.Override
-
-      public long getParametersOrThrow(
-          long key) {
-        
-        java.util.Map<java.lang.Long, java.lang.Long> map =
-            internalGetParameters().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+        if (parametersBuilder_ == null) {
+          return parameters_.size();
+        } else {
+          return parametersBuilder_.getCount();
         }
-        return map.get(key);
       }
-
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters getParameters(int index) {
+        if (parametersBuilder_ == null) {
+          return parameters_.get(index);
+        } else {
+          return parametersBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder setParameters(
+          int index, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters value) {
+        if (parametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureParametersIsMutable();
+          parameters_.set(index, value);
+          onChanged();
+        } else {
+          parametersBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder setParameters(
+          int index, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder builderForValue) {
+        if (parametersBuilder_ == null) {
+          ensureParametersIsMutable();
+          parameters_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          parametersBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder addParameters(org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters value) {
+        if (parametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureParametersIsMutable();
+          parameters_.add(value);
+          onChanged();
+        } else {
+          parametersBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder addParameters(
+          int index, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters value) {
+        if (parametersBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureParametersIsMutable();
+          parameters_.add(index, value);
+          onChanged();
+        } else {
+          parametersBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder addParameters(
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder builderForValue) {
+        if (parametersBuilder_ == null) {
+          ensureParametersIsMutable();
+          parameters_.add(builderForValue.build());
+          onChanged();
+        } else {
+          parametersBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder addParameters(
+          int index, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder builderForValue) {
+        if (parametersBuilder_ == null) {
+          ensureParametersIsMutable();
+          parameters_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          parametersBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public Builder addAllParameters(
+          java.lang.Iterable<? extends org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters> values) {
+        if (parametersBuilder_ == null) {
+          ensureParametersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, parameters_);
+          onChanged();
+        } else {
+          parametersBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
       public Builder clearParameters() {
-        internalGetMutableParameters().getMutableMap()
-            .clear();
+        if (parametersBuilder_ == null) {
+          parameters_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          parametersBuilder_.clear();
+        }
         return this;
       }
       /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
        */
-
-      public Builder removeParameters(
-          long key) {
-        
-        internalGetMutableParameters().getMutableMap()
-            .remove(key);
+      public Builder removeParameters(int index) {
+        if (parametersBuilder_ == null) {
+          ensureParametersIsMutable();
+          parameters_.remove(index);
+          onChanged();
+        } else {
+          parametersBuilder_.remove(index);
+        }
         return this;
       }
       /**
-       * Use alternate mutation accessors instead.
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
        */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Long, java.lang.Long>
-      getMutableParameters() {
-        return internalGetMutableParameters().getMutableMap();
+      public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder getParametersBuilder(
+          int index) {
+        return getParametersFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
        */
-      public Builder putParameters(
-          long key,
-          long value) {
-        
-        
-        internalGetMutableParameters().getMutableMap()
-            .put(key, value);
-        return this;
+      public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder getParametersOrBuilder(
+          int index) {
+        if (parametersBuilder_ == null) {
+          return parameters_.get(index);  } else {
+          return parametersBuilder_.getMessageOrBuilder(index);
+        }
       }
       /**
-       * <code>map&lt;int64, int64&gt; parameters = 2;</code>
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
        */
-
-      public Builder putAllParameters(
-          java.util.Map<java.lang.Long, java.lang.Long> values) {
-        internalGetMutableParameters().getMutableMap()
-            .putAll(values);
-        return this;
+      public java.util.List<? extends org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder> 
+           getParametersOrBuilderList() {
+        if (parametersBuilder_ != null) {
+          return parametersBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(parameters_);
+        }
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder addParametersBuilder() {
+        return getParametersFieldBuilder().addBuilder(
+            org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder addParametersBuilder(
+          int index) {
+        return getParametersFieldBuilder().addBuilder(
+            index, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protocol.ProposalCreateContract.Parameters parameters = 2;</code>
+       */
+      public java.util.List<org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder> 
+           getParametersBuilderList() {
+        return getParametersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder> 
+          getParametersFieldBuilder() {
+        if (parametersBuilder_ == null) {
+          parametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.Parameters.Builder, org.lgcy.Legacy.proto.Contract.ProposalCreateContract.ParametersOrBuilder>(
+                  parameters_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          parameters_ = null;
+        }
+        return parametersBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -21269,10 +22034,16 @@ public final class Contract {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes owner_address = 1;</code>
+     * <code>string owner_address = 1;</code>
      * @return The ownerAddress.
      */
-    com.google.protobuf.ByteString getOwnerAddress();
+    java.lang.String getOwnerAddress();
+    /**
+     * <code>string owner_address = 1;</code>
+     * @return The bytes for ownerAddress.
+     */
+    com.google.protobuf.ByteString
+        getOwnerAddressBytes();
 
     /**
      * <code>repeated .protocol.VoteWitnessContract.Vote votes = 2;</code>
@@ -21317,7 +22088,7 @@ public final class Contract {
       super(builder);
     }
     private VoteWitnessContract() {
-      ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+      ownerAddress_ = "";
       votes_ = java.util.Collections.emptyList();
     }
 
@@ -21353,8 +22124,9 @@ public final class Contract {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              ownerAddress_ = input.readBytes();
+              ownerAddress_ = s;
               break;
             }
             case 18: {
@@ -21411,10 +22183,16 @@ public final class Contract {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>bytes vote_address = 1;</code>
+       * <code>string vote_address = 1;</code>
        * @return The voteAddress.
        */
-      com.google.protobuf.ByteString getVoteAddress();
+      java.lang.String getVoteAddress();
+      /**
+       * <code>string vote_address = 1;</code>
+       * @return The bytes for voteAddress.
+       */
+      com.google.protobuf.ByteString
+          getVoteAddressBytes();
 
       /**
        * <code>int64 vote_count = 2;</code>
@@ -21435,7 +22213,7 @@ public final class Contract {
         super(builder);
       }
       private Vote() {
-        voteAddress_ = com.google.protobuf.ByteString.EMPTY;
+        voteAddress_ = "";
       }
 
       @java.lang.Override
@@ -21469,8 +22247,9 @@ public final class Contract {
                 done = true;
                 break;
               case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
 
-                voteAddress_ = input.readBytes();
+                voteAddress_ = s;
                 break;
               }
               case 16: {
@@ -21511,14 +22290,41 @@ public final class Contract {
       }
 
       public static final int VOTE_ADDRESS_FIELD_NUMBER = 1;
-      private com.google.protobuf.ByteString voteAddress_;
+      private volatile java.lang.Object voteAddress_;
       /**
-       * <code>bytes vote_address = 1;</code>
+       * <code>string vote_address = 1;</code>
        * @return The voteAddress.
        */
       @java.lang.Override
-      public com.google.protobuf.ByteString getVoteAddress() {
-        return voteAddress_;
+      public java.lang.String getVoteAddress() {
+        java.lang.Object ref = voteAddress_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          voteAddress_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string vote_address = 1;</code>
+       * @return The bytes for voteAddress.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getVoteAddressBytes() {
+        java.lang.Object ref = voteAddress_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          voteAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
       }
 
       public static final int VOTE_COUNT_FIELD_NUMBER = 2;
@@ -21546,8 +22352,8 @@ public final class Contract {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (!voteAddress_.isEmpty()) {
-          output.writeBytes(1, voteAddress_);
+        if (!getVoteAddressBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, voteAddress_);
         }
         if (voteCount_ != 0L) {
           output.writeInt64(2, voteCount_);
@@ -21561,9 +22367,8 @@ public final class Contract {
         if (size != -1) return size;
 
         size = 0;
-        if (!voteAddress_.isEmpty()) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, voteAddress_);
+        if (!getVoteAddressBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, voteAddress_);
         }
         if (voteCount_ != 0L) {
           size += com.google.protobuf.CodedOutputStream
@@ -21737,7 +22542,7 @@ public final class Contract {
         @java.lang.Override
         public Builder clear() {
           super.clear();
-          voteAddress_ = com.google.protobuf.ByteString.EMPTY;
+          voteAddress_ = "";
 
           voteCount_ = 0L;
 
@@ -21817,8 +22622,9 @@ public final class Contract {
 
         public Builder mergeFrom(org.lgcy.Legacy.proto.Contract.VoteWitnessContract.Vote other) {
           if (other == org.lgcy.Legacy.proto.Contract.VoteWitnessContract.Vote.getDefaultInstance()) return this;
-          if (other.getVoteAddress() != com.google.protobuf.ByteString.EMPTY) {
-            setVoteAddress(other.getVoteAddress());
+          if (!other.getVoteAddress().isEmpty()) {
+            voteAddress_ = other.voteAddress_;
+            onChanged();
           }
           if (other.getVoteCount() != 0L) {
             setVoteCount(other.getVoteCount());
@@ -21852,21 +22658,47 @@ public final class Contract {
           return this;
         }
 
-        private com.google.protobuf.ByteString voteAddress_ = com.google.protobuf.ByteString.EMPTY;
+        private java.lang.Object voteAddress_ = "";
         /**
-         * <code>bytes vote_address = 1;</code>
+         * <code>string vote_address = 1;</code>
          * @return The voteAddress.
          */
-        @java.lang.Override
-        public com.google.protobuf.ByteString getVoteAddress() {
-          return voteAddress_;
+        public java.lang.String getVoteAddress() {
+          java.lang.Object ref = voteAddress_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            voteAddress_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
         }
         /**
-         * <code>bytes vote_address = 1;</code>
+         * <code>string vote_address = 1;</code>
+         * @return The bytes for voteAddress.
+         */
+        public com.google.protobuf.ByteString
+            getVoteAddressBytes() {
+          java.lang.Object ref = voteAddress_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            voteAddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string vote_address = 1;</code>
          * @param value The voteAddress to set.
          * @return This builder for chaining.
          */
-        public Builder setVoteAddress(com.google.protobuf.ByteString value) {
+        public Builder setVoteAddress(
+            java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
@@ -21876,12 +22708,28 @@ public final class Contract {
           return this;
         }
         /**
-         * <code>bytes vote_address = 1;</code>
+         * <code>string vote_address = 1;</code>
          * @return This builder for chaining.
          */
         public Builder clearVoteAddress() {
           
           voteAddress_ = getDefaultInstance().getVoteAddress();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string vote_address = 1;</code>
+         * @param value The bytes for voteAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setVoteAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          voteAddress_ = value;
           onChanged();
           return this;
         }
@@ -21970,14 +22818,41 @@ public final class Contract {
     }
 
     public static final int OWNER_ADDRESS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString ownerAddress_;
+    private volatile java.lang.Object ownerAddress_;
     /**
-     * <code>bytes owner_address = 1;</code>
+     * <code>string owner_address = 1;</code>
      * @return The ownerAddress.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getOwnerAddress() {
-      return ownerAddress_;
+    public java.lang.String getOwnerAddress() {
+      java.lang.Object ref = ownerAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        ownerAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string owner_address = 1;</code>
+     * @return The bytes for ownerAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOwnerAddressBytes() {
+      java.lang.Object ref = ownerAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ownerAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int VOTES_FIELD_NUMBER = 2;
@@ -22045,8 +22920,8 @@ public final class Contract {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!ownerAddress_.isEmpty()) {
-        output.writeBytes(1, ownerAddress_);
+      if (!getOwnerAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, ownerAddress_);
       }
       for (int i = 0; i < votes_.size(); i++) {
         output.writeMessage(2, votes_.get(i));
@@ -22063,9 +22938,8 @@ public final class Contract {
       if (size != -1) return size;
 
       size = 0;
-      if (!ownerAddress_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, ownerAddress_);
+      if (!getOwnerAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, ownerAddress_);
       }
       for (int i = 0; i < votes_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -22250,7 +23124,7 @@ public final class Contract {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+        ownerAddress_ = "";
 
         if (votesBuilder_ == null) {
           votes_ = java.util.Collections.emptyList();
@@ -22346,8 +23220,9 @@ public final class Contract {
 
       public Builder mergeFrom(org.lgcy.Legacy.proto.Contract.VoteWitnessContract other) {
         if (other == org.lgcy.Legacy.proto.Contract.VoteWitnessContract.getDefaultInstance()) return this;
-        if (other.getOwnerAddress() != com.google.protobuf.ByteString.EMPTY) {
-          setOwnerAddress(other.getOwnerAddress());
+        if (!other.getOwnerAddress().isEmpty()) {
+          ownerAddress_ = other.ownerAddress_;
+          onChanged();
         }
         if (votesBuilder_ == null) {
           if (!other.votes_.isEmpty()) {
@@ -22408,21 +23283,47 @@ public final class Contract {
       }
       private int bitField0_;
 
-      private com.google.protobuf.ByteString ownerAddress_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object ownerAddress_ = "";
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
        * @return The ownerAddress.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getOwnerAddress() {
-        return ownerAddress_;
+      public java.lang.String getOwnerAddress() {
+        java.lang.Object ref = ownerAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          ownerAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
+       * @return The bytes for ownerAddress.
+       */
+      public com.google.protobuf.ByteString
+          getOwnerAddressBytes() {
+        java.lang.Object ref = ownerAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ownerAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string owner_address = 1;</code>
        * @param value The ownerAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setOwnerAddress(com.google.protobuf.ByteString value) {
+      public Builder setOwnerAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -22432,12 +23333,28 @@ public final class Contract {
         return this;
       }
       /**
-       * <code>bytes owner_address = 1;</code>
+       * <code>string owner_address = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearOwnerAddress() {
         
         ownerAddress_ = getDefaultInstance().getOwnerAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string owner_address = 1;</code>
+       * @param value The bytes for ownerAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOwnerAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        ownerAddress_ = value;
         onChanged();
         return this;
       }
@@ -29232,10 +30149,10 @@ public final class Contract {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protocol_ProposalCreateContract_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_protocol_ProposalCreateContract_ParametersEntry_descriptor;
+    internal_static_protocol_ProposalCreateContract_Parameters_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_protocol_ProposalCreateContract_ParametersEntry_fieldAccessorTable;
+      internal_static_protocol_ProposalCreateContract_Parameters_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protocol_ProposalDeleteContract_descriptor;
   private static final 
@@ -29358,7 +30275,7 @@ public final class Contract {
       "e\030\001 \001(\014\022\025\n\rowner_address\030\002 \001(\014\"A\n\024SetAcc" +
       "ountIdContract\022\022\n\naccount_id\030\001 \001(\014\022\025\n\row" +
       "ner_address\030\002 \001(\014\"\253\001\n\037AccountPermissionU" +
-      "pdateContract\022\025\n\rowner_address\030\001 \001(\014\022#\n\005" +
+      "pdateContract\022\025\n\rowner_address\030\001 \001(\t\022#\n\005" +
       "owner\030\002 \001(\0132\024.protocol.Permission\022%\n\007wit" +
       "ness\030\003 \001(\0132\024.protocol.Permission\022%\n\007acti" +
       "ves\030\004 \003(\0132\024.protocol.Permission\"\221\004\n\022Asse" +
@@ -29403,67 +30320,67 @@ public final class Contract {
       "s\030\001 \001(\014\022\020\n\010order_id\030\002 \001(\014\"^\n\027ProposalApp" +
       "roveContract\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013p" +
       "roposal_id\030\002 \001(\003\022\027\n\017is_add_approval\030\003 \001(" +
-      "\010\"\250\001\n\026ProposalCreateContract\022\025\n\rowner_ad" +
-      "dress\030\001 \001(\014\022D\n\nparameters\030\002 \003(\01320.protoc" +
-      "ol.ProposalCreateContract.ParametersEntr" +
-      "y\0321\n\017ParametersEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005val" +
-      "ue\030\002 \001(\003:\0028\001\"D\n\026ProposalDeleteContract\022\025" +
-      "\n\rowner_address\030\001 \001(\014\022\023\n\013proposal_id\030\002 \001" +
-      "(\003\"\207\001\n\023CreateSmartContract\022\025\n\rowner_addr" +
-      "ess\030\001 \001(\014\022-\n\014new_contract\030\002 \001(\0132\027.protoc" +
-      "ol.SmartContract\022\030\n\020call_token_value\030\003 \001" +
-      "(\003\022\020\n\010token_id\030\004 \001(\003\"\303\001\n\024TriggerSmartCon" +
-      "tract\022\025\n\rowner_address\030\001 \001(\014\022\030\n\020contract" +
-      "_address\030\002 \001(\014\022\022\n\ncall_value\030\003 \001(\003\022\014\n\004da" +
-      "ta\030\004 \001(\014\022\030\n\020call_token_value\030\005 \001(\003\022\020\n\010to" +
-      "ken_id\030\006 \001(\003\022\031\n\021function_selector\030\007 \001(\t\022" +
-      "\021\n\tparameter\030\010 \001(\014\"C\n\020ClearABIContract\022\025" +
-      "\n\rowner_address\030\001 \001(\014\022\030\n\020contract_addres" +
-      "s\030\002 \001(\014\"o\n\025UpdateSettingContract\022\025\n\rowne" +
-      "r_address\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(" +
-      "\014\022%\n\035consume_user_resource_percent\030\003 \001(\003" +
-      "\"i\n\031UpdateEnergyLimitContract\022\025\n\rowner_a" +
-      "ddress\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(\014\022\033" +
-      "\n\023origin_energy_limit\030\003 \001(\003\"C\n\027UpdateBro" +
-      "kerageContract\022\025\n\rowner_address\030\001 \001(\014\022\021\n" +
-      "\tbrokerage\030\002 \001(\005\"`\n\021VoteAssetContract\022\025\n" +
-      "\rowner_address\030\001 \001(\014\022\024\n\014vote_address\030\002 \003" +
-      "(\014\022\017\n\007support\030\003 \001(\010\022\r\n\005count\030\005 \001(\005\";\n\025Wi" +
-      "tnessCreateContract\022\025\n\rowner_address\030\001 \001" +
-      "(\014\022\013\n\003url\030\002 \001(\014\"B\n\025WitnessUpdateContract" +
-      "\022\025\n\rowner_address\030\001 \001(\014\022\022\n\nupdate_url\030\014 " +
-      "\001(\014\"\242\001\n\023VoteWitnessContract\022\025\n\rowner_add" +
-      "ress\030\001 \001(\014\0221\n\005votes\030\002 \003(\0132\".protocol.Vot" +
-      "eWitnessContract.Vote\022\017\n\007support\030\003 \001(\010\0320" +
-      "\n\004Vote\022\024\n\014vote_address\030\001 \001(\014\022\022\n\nvote_cou" +
-      "nt\030\002 \001(\003\"\233\001\n\026ExchangeCreateContract\022\025\n\ro" +
-      "wner_address\030\001 \001(\014\022\026\n\016first_token_id\030\002 \001" +
-      "(\014\022\033\n\023first_token_balance\030\003 \001(\003\022\027\n\017secon" +
-      "d_token_id\030\004 \001(\014\022\034\n\024second_token_balance" +
-      "\030\005 \001(\003\"e\n\026ExchangeInjectContract\022\025\n\rowne" +
-      "r_address\030\001 \001(\014\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010" +
-      "token_id\030\003 \001(\014\022\r\n\005quant\030\004 \001(\003\"g\n\030Exchang" +
-      "eWithdrawContract\022\025\n\rowner_address\030\001 \001(\014" +
-      "\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022" +
-      "\r\n\005quant\030\004 \001(\003\"|\n\033ExchangeTransactionCon" +
-      "tract\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013exchange" +
-      "_id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022\r\n\005quant\030\004 \001" +
-      "(\003\022\020\n\010expected\030\005 \001(\003\"r\n\027FreezeBalanceV2C" +
-      "ontract\022\025\n\rowner_address\030\001 \001(\014\022\026\n\016frozen" +
-      "_balance\030\002 \001(\003\022(\n\010resource\030\003 \001(\0162\026.proto" +
-      "col.ResourceCode\"v\n\031UnfreezeBalanceV2Con" +
-      "tract\022\025\n\rowner_address\030\001 \001(\014\022\030\n\020unfreeze" +
-      "_balance\030\002 \001(\003\022(\n\010resource\030\003 \001(\0162\026.proto" +
-      "col.ResourceCode\"\224\001\n\030DelegateResourceCon" +
-      "tract\022\025\n\rowner_address\030\001 \001(\014\022(\n\010resource" +
-      "\030\002 \001(\0162\026.protocol.ResourceCode\022\017\n\007balanc" +
-      "e\030\003 \001(\003\022\030\n\020receiver_address\030\004 \001(\014\022\014\n\004loc" +
-      "k\030\005 \001(\010\"\210\001\n\032UnDelegateResourceContract\022\025" +
-      "\n\rowner_address\030\001 \001(\014\022(\n\010resource\030\002 \001(\0162" +
-      "\026.protocol.ResourceCode\022\017\n\007balance\030\003 \001(\003" +
-      "\022\030\n\020receiver_address\030\004 \001(\014\"7\n\036WithdrawEx" +
-      "pireUnfreezeContract\022\025\n\rowner_address\030\001 " +
-      "\001(\014B\027\n\025org.lgcy.Legacy.protob\006proto3"
+      "\010\"\232\001\n\026ProposalCreateContract\022\025\n\rowner_ad" +
+      "dress\030\001 \001(\t\022?\n\nparameters\030\002 \003(\0132+.protoc" +
+      "ol.ProposalCreateContract.Parameters\032(\n\n" +
+      "Parameters\022\013\n\003key\030\001 \001(\r\022\r\n\005value\030\002 \001(\r\"D" +
+      "\n\026ProposalDeleteContract\022\025\n\rowner_addres" +
+      "s\030\001 \001(\014\022\023\n\013proposal_id\030\002 \001(\003\"\207\001\n\023CreateS" +
+      "martContract\022\025\n\rowner_address\030\001 \001(\014\022-\n\014n" +
+      "ew_contract\030\002 \001(\0132\027.protocol.SmartContra" +
+      "ct\022\030\n\020call_token_value\030\003 \001(\003\022\020\n\010token_id" +
+      "\030\004 \001(\003\"\303\001\n\024TriggerSmartContract\022\025\n\rowner" +
+      "_address\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(\014" +
+      "\022\022\n\ncall_value\030\003 \001(\003\022\014\n\004data\030\004 \001(\014\022\030\n\020ca" +
+      "ll_token_value\030\005 \001(\003\022\020\n\010token_id\030\006 \001(\003\022\031" +
+      "\n\021function_selector\030\007 \001(\t\022\021\n\tparameter\030\010" +
+      " \001(\014\"C\n\020ClearABIContract\022\025\n\rowner_addres" +
+      "s\030\001 \001(\014\022\030\n\020contract_address\030\002 \001(\014\"o\n\025Upd" +
+      "ateSettingContract\022\025\n\rowner_address\030\001 \001(" +
+      "\014\022\030\n\020contract_address\030\002 \001(\014\022%\n\035consume_u" +
+      "ser_resource_percent\030\003 \001(\003\"i\n\031UpdateEner" +
+      "gyLimitContract\022\025\n\rowner_address\030\001 \001(\014\022\030" +
+      "\n\020contract_address\030\002 \001(\014\022\033\n\023origin_energ" +
+      "y_limit\030\003 \001(\003\"C\n\027UpdateBrokerageContract" +
+      "\022\025\n\rowner_address\030\001 \001(\014\022\021\n\tbrokerage\030\002 \001" +
+      "(\005\"`\n\021VoteAssetContract\022\025\n\rowner_address" +
+      "\030\001 \001(\014\022\024\n\014vote_address\030\002 \003(\014\022\017\n\007support\030" +
+      "\003 \001(\010\022\r\n\005count\030\005 \001(\005\";\n\025WitnessCreateCon" +
+      "tract\022\025\n\rowner_address\030\001 \001(\014\022\013\n\003url\030\002 \001(" +
+      "\014\"B\n\025WitnessUpdateContract\022\025\n\rowner_addr" +
+      "ess\030\001 \001(\014\022\022\n\nupdate_url\030\014 \001(\014\"\242\001\n\023VoteWi" +
+      "tnessContract\022\025\n\rowner_address\030\001 \001(\t\0221\n\005" +
+      "votes\030\002 \003(\0132\".protocol.VoteWitnessContra" +
+      "ct.Vote\022\017\n\007support\030\003 \001(\010\0320\n\004Vote\022\024\n\014vote" +
+      "_address\030\001 \001(\t\022\022\n\nvote_count\030\002 \001(\003\"\233\001\n\026E" +
+      "xchangeCreateContract\022\025\n\rowner_address\030\001" +
+      " \001(\014\022\026\n\016first_token_id\030\002 \001(\014\022\033\n\023first_to" +
+      "ken_balance\030\003 \001(\003\022\027\n\017second_token_id\030\004 \001" +
+      "(\014\022\034\n\024second_token_balance\030\005 \001(\003\"e\n\026Exch" +
+      "angeInjectContract\022\025\n\rowner_address\030\001 \001(" +
+      "\014\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014" +
+      "\022\r\n\005quant\030\004 \001(\003\"g\n\030ExchangeWithdrawContr" +
+      "act\022\025\n\rowner_address\030\001 \001(\014\022\023\n\013exchange_i" +
+      "d\030\002 \001(\003\022\020\n\010token_id\030\003 \001(\014\022\r\n\005quant\030\004 \001(\003" +
+      "\"|\n\033ExchangeTransactionContract\022\025\n\rowner" +
+      "_address\030\001 \001(\014\022\023\n\013exchange_id\030\002 \001(\003\022\020\n\010t" +
+      "oken_id\030\003 \001(\014\022\r\n\005quant\030\004 \001(\003\022\020\n\010expected" +
+      "\030\005 \001(\003\"r\n\027FreezeBalanceV2Contract\022\025\n\rown" +
+      "er_address\030\001 \001(\014\022\026\n\016frozen_balance\030\002 \001(\003" +
+      "\022(\n\010resource\030\003 \001(\0162\026.protocol.ResourceCo" +
+      "de\"v\n\031UnfreezeBalanceV2Contract\022\025\n\rowner" +
+      "_address\030\001 \001(\014\022\030\n\020unfreeze_balance\030\002 \001(\003" +
+      "\022(\n\010resource\030\003 \001(\0162\026.protocol.ResourceCo" +
+      "de\"\224\001\n\030DelegateResourceContract\022\025\n\rowner" +
+      "_address\030\001 \001(\014\022(\n\010resource\030\002 \001(\0162\026.proto" +
+      "col.ResourceCode\022\017\n\007balance\030\003 \001(\003\022\030\n\020rec" +
+      "eiver_address\030\004 \001(\014\022\014\n\004lock\030\005 \001(\010\"\210\001\n\032Un" +
+      "DelegateResourceContract\022\025\n\rowner_addres" +
+      "s\030\001 \001(\014\022(\n\010resource\030\002 \001(\0162\026.protocol.Res" +
+      "ourceCode\022\017\n\007balance\030\003 \001(\003\022\030\n\020receiver_a" +
+      "ddress\030\004 \001(\014\"7\n\036WithdrawExpireUnfreezeCo" +
+      "ntract\022\025\n\rowner_address\030\001 \001(\014B\027\n\025org.lgc" +
+      "y.Legacy.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -29578,11 +30495,11 @@ public final class Contract {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_ProposalCreateContract_descriptor,
         new java.lang.String[] { "OwnerAddress", "Parameters", });
-    internal_static_protocol_ProposalCreateContract_ParametersEntry_descriptor =
+    internal_static_protocol_ProposalCreateContract_Parameters_descriptor =
       internal_static_protocol_ProposalCreateContract_descriptor.getNestedTypes().get(0);
-    internal_static_protocol_ProposalCreateContract_ParametersEntry_fieldAccessorTable = new
+    internal_static_protocol_ProposalCreateContract_Parameters_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_protocol_ProposalCreateContract_ParametersEntry_descriptor,
+        internal_static_protocol_ProposalCreateContract_Parameters_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_protocol_ProposalDeleteContract_descriptor =
       getDescriptor().getMessageTypes().get(17);

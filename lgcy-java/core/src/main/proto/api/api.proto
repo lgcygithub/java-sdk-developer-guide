@@ -4,34 +4,30 @@ package protocol;
 option java_package = "org.lgcy.Legacy.api";
 option java_outer_classname = "GrpcAPI";
 
-
 import "core/common.proto";
 import "core/chain.proto";
 import "core/contract.proto";
-import "core/response.proto";
 import "core/newTransaction.proto";
+import "core/response.proto";
 
 service Wallet {
   // Transactions:
   rpc BroadcastTransaction(Transaction) returns (TransactionReturn) {}
-/*
- *  change to local build instead of remote build
- */
+  rpc BroadcastTransactionData(NewTransaction) returns (TransactionReturnData) {}
   rpc CreateCommonTransaction(Transaction) returns (TransactionExtention) {}
 
-  rpc CreateAccount(AccountCreateContract) returns (Transaction) {}
+  rpc CreateAccount(AccountCreateContract) returns (NewTransaction) {}
   rpc CreateAccount2(AccountCreateContract) returns (TransactionExtention) {}
 
-  rpc UpdateAccount(AccountUpdateContract) returns (Transaction) {}
-  rpc UpdateAccount2(AccountUpdateContract) returns (TransactionExtention) {}
+  rpc UpdateAccount(AccountUpdateContract) returns (NewTransaction) {}
 
   rpc SetAccountId(SetAccountIdContract) returns (Transaction) {}
 
-  rpc AccountPermissionUpdate(AccountPermissionUpdateContract) returns (TransactionExtention) {}
+  rpc AccountPermissionUpdate(AccountPermissionUpdateContract) returns (NewTransaction) {}
 
-  rpc CreateTransaction(TransferContract) returns (Transaction) {}
-  rpc CreateTransaction2(TransferContract) returns (TransactionExtention) {}
-  rpc CreateTransaction3(TransferContract) returns (NewTransaction) {}
+  rpc CreateTransaction(TransferContract) returns (NewTransaction) {}
+
+  rpc SignTransactionCreation(SignTransactionExtension)returns(NewTransaction){}
 
   rpc CreateAssetIssue(AssetIssueContract) returns (Transaction) {}
   rpc CreateAssetIssue2(AssetIssueContract) returns (TransactionExtention) {}
@@ -48,44 +44,37 @@ service Wallet {
   rpc UnfreezeAsset(UnfreezeAssetContract) returns (Transaction) {}
   rpc UnfreezeAsset2(UnfreezeAssetContract) returns (TransactionExtention) {}
 
-  rpc CreateWitness(WitnessCreateContract) returns (Transaction) {}
-  rpc CreateWitness2(WitnessCreateContract) returns (TransactionExtention) {}
+  rpc CreateWitness(WitnessCreateContract) returns (NewTransaction) {}
 
-  rpc UpdateWitness(WitnessUpdateContract) returns (Transaction) {}
-  rpc UpdateWitness2(WitnessUpdateContract) returns (TransactionExtention) {}
+  rpc UpdateWitness(WitnessUpdateContract) returns (NewTransaction) {}
 
-  rpc UpdateBrokerage(UpdateBrokerageContract) returns (TransactionExtention) {}
+  rpc UpdateBrokerage(UpdateBrokerageContract) returns (NewTransaction) {}
 
-  rpc VoteWitnessAccount(VoteWitnessContract) returns (Transaction) {}
-  rpc VoteWitnessAccount2(VoteWitnessContract) returns (TransactionExtention) {}
+  rpc VoteWitnessAccount(VoteWitnessContract) returns (NewTransaction) {}
 
-  rpc FreezeBalance(FreezeBalanceContract) returns (Transaction) {}
-  rpc FreezeBalance2(FreezeBalanceContract) returns (TransactionExtention) {}
+  rpc FreezeBalance(FreezeBalanceContract) returns (NewTransaction) {}
 
-  rpc UnfreezeBalance(UnfreezeBalanceContract) returns (Transaction) {}
-  rpc UnfreezeBalance2(UnfreezeBalanceContract) returns (TransactionExtention) {}
+  rpc UnfreezeBalance(UnfreezeBalanceContract) returns (NewTransaction) {}
 
-  rpc WithdrawBalance(WithdrawBalanceContract) returns (Transaction) {}
-  rpc WithdrawBalance2(WithdrawBalanceContract) returns (TransactionExtention) {}
+  rpc WithdrawBalance(WithdrawBalanceContract) returns (NewTransaction) {}
 
-  rpc ProposalCreate(ProposalCreateContract) returns (TransactionExtention) {}
-  rpc ProposalApprove(ProposalApproveContract) returns (TransactionExtention) {}
-  rpc ProposalDelete(ProposalDeleteContract) returns (TransactionExtention) {}
+  rpc UpdateSetting(UpdateSettingContract) returns (NewTransaction) {}
+
+  rpc ProposalCreate(ProposalCreateContract) returns (NewTransaction) {}
+  rpc ProposalApprove(ProposalApproveContract) returns (NewTransaction) {}
+  rpc ProposalDelete(ProposalDeleteContract) returns (NewTransaction) {}
+
+  //add new
+
+
 
   rpc DeployContract(CreateSmartContract) returns (TransactionExtention) {}
-//  rpc UpdateSetting(UpdateSettingContract) returns (TransactionExtention) {}          // consume_user_resource_percent
-//  rpc UpdateEnergyLimit(UpdateEnergyLimitContract) returns (TransactionExtention) {}  // origin_energy_limit
-//  rpc ClearContractABI(ClearABIContract) returns (TransactionExtention) {}
+
+
   rpc TriggerContract(TriggerSmartContract) returns (TransactionExtention) {}
   rpc TriggerConstantContract(TriggerSmartContract) returns (TransactionExtention) {}  // not a txn type
-//
-//  rpc ExchangeCreate(ExchangeCreateContract) returns (TransactionExtention) {}
-//  rpc ExchangeInject(ExchangeInjectContract) returns (TransactionExtention) {}
-//  rpc ExchangeWithdraw(ExchangeWithdrawContract) returns (TransactionExtention) {}
-//  rpc ExchangeTransaction(ExchangeTransactionContract) returns (TransactionExtention) {}
-//
-//  rpc MarketSellAsset(MarketSellAssetContract) returns (TransactionExtention) {}
-//  rpc MarketCancelOrder(MarketCancelOrderContract) returns (TransactionExtention) {}
+  rpc TriggerConstantContract2(TriggerSmartContract) returns (TransactionExtention2) {}
+
 
   // The real APIs:
   rpc GetNodeInfo(EmptyMessage) returns (NodeInfo) {}
@@ -131,8 +120,10 @@ service Wallet {
   rpc GetTransactionCountByBlockNum(NumberMessage) returns (Transactioncountbyblocknum) {}
 
   rpc GetTransactionById(BytesMessage) returns (Transaction) {}
+  rpc GetTransactionById3(BytesMessage) returns (NewTransaction) {}
 
   rpc GetTransactionInfoById(BytesMessage) returns (TransactionInfo) {}
+
   rpc GetTransactionInfoByBlockNum(NumberMessage) returns (TransactionInfoList) {}
 
   rpc GetContract(BytesMessage) returns (SmartContract) {}
@@ -145,9 +136,8 @@ service Wallet {
   //add new method
   rpc GetBrokerage(InputBrokerage) returns (BrokerageMessage){}
   rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}     // ???
+  rpc GetReward(RewardMessage) returns (RewardOutput) {}
 
-  rpc GetDelegatedResource(DelegatedResourceMessage) returns (DelegatedResourceList) {}
-  rpc GetDelegatedResourceAccountIndex(BytesMessage) returns (DelegatedResourceAccountIndex) {}
 
   rpc ListProposals(EmptyMessage) returns (ProposalList) {}
 
@@ -156,21 +146,9 @@ service Wallet {
   rpc GetProposalById(ProposalInput) returns (Proposal) {}
   rpc GetPaginatedProposalList(PaginatedMessage) returns (ProposalList) {}
 
-  rpc ListExchanges(EmptyMessage) returns (ExchangeList) {}
   rpc GetExchangeById(BytesMessage) returns (Exchange) {}
   rpc GetPaginatedExchangeList(PaginatedMessage) returns (ExchangeList) {}
 
-  // Shielded helpers:
-  rpc ScanShieldedTRC20NotesByIvk(IvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
-  rpc ScanShieldedTRC20NotesByOvk(OvkDecryptTRC20Parameters) returns (DecryptNotesTRC20) {}
-  rpc IsShieldedTRC20ContractNoteSpent(NfTRC20Parameters) returns (NullifierResult) {}
-
-  // Market API:
-  rpc GetMarketOrderByAccount(BytesMessage) returns (MarketOrderList) {}
-  rpc GetMarketOrderById(BytesMessage) returns (MarketOrder) {}
-  rpc GetMarketPriceByPair(MarketOrderPair) returns (MarketPriceList) {}
-  rpc GetMarketOrderListByPair(MarketOrderPair) returns (MarketOrderList) {}
-  rpc GetMarketPairList(EmptyMessage) returns (MarketOrderPairList) {}
 
   // FLAW: Unsafe junk.
   rpc GetTransactionSign(TransactionSign) returns (Transaction) {}
@@ -183,38 +161,8 @@ service Wallet {
   rpc GenerateAddress(EmptyMessage) returns (AddressPrKeyPairMessage) {}
   rpc AddSign(TransactionSign) returns (TransactionExtention) {}
 
-  // FLAW: Unsafe shielded junk(should be implemented offline).
-  rpc GetSpendingKey(EmptyMessage) returns (BytesMessage) {}
-  rpc GetExpandedSpendingKey(BytesMessage) returns (ExpandedSpendingKeyMessage) {}
-  rpc GetAkFromAsk(BytesMessage) returns (BytesMessage) {}
-  rpc GetNkFromNsk(BytesMessage) returns (BytesMessage) {}
-  rpc GetIncomingViewingKey(ViewingKeyMessage) returns (IncomingViewingKeyMessage) {}
-  rpc GetDiversifier(EmptyMessage) returns (DiversifierMessage) {}
-  rpc GetZenPaymentAddress(IncomingViewingKeyDiversifierMessage) returns (PaymentAddressMessage) {}
-  rpc GetNewShieldedAddress(EmptyMessage) returns (ShieldedAddressInfo) {}
-  rpc GetRcm(EmptyMessage) returns (BytesMessage) {}
-  rpc CreateShieldedContractParameters(PrivateShieldedTRC20Parameters) returns (ShieldedTRC20Parameters) {}
-  rpc CreateShieldedContractParametersWithoutAsk(PrivateShieldedTRC20ParametersWithoutAsk)
-      returns (ShieldedTRC20Parameters) {}
-  rpc GetTriggerInputForShieldedTRC20Contract(ShieldedTRC20TriggerContractParameters) returns (BytesMessage) {}
 
-  // Stake 2.0
-  /*
-  *  change to local build instead of remote build
-  */
-//  rpc FreezeBalanceV2 (FreezeBalanceV2Contract) returns (TransactionExtention) {}
-//  rpc UnfreezeBalanceV2 (UnfreezeBalanceV2Contract) returns (TransactionExtention) {}
-//  rpc DelegateResource (DelegateResourceContract) returns (TransactionExtention) {}
-//  rpc UnDelegateResource (UnDelegateResourceContract) returns (TransactionExtention) {}
-//  rpc WithdrawExpireUnfreeze (WithdrawExpireUnfreezeContract) returns (TransactionExtention) {}
-//
-  rpc GetAvailableUnfreezeCount (GetAvailableUnfreezeCountRequestMessage)
-      returns (GetAvailableUnfreezeCountResponseMessage) {}
-  rpc GetCanWithdrawUnfreezeAmount (CanWithdrawUnfreezeAmountRequestMessage)
-      returns (CanWithdrawUnfreezeAmountResponseMessage) {}
-  rpc GetCanDelegatedMaxSize (CanDelegatedMaxSizeRequestMessage) returns (CanDelegatedMaxSizeResponseMessage) {};
-  rpc GetDelegatedResourceV2 (DelegatedResourceMessage) returns (DelegatedResourceList) {}
-  rpc GetDelegatedResourceAccountIndexV2 (BytesMessage) returns (DelegatedResourceAccountIndex) {}
+
 };
 
 // NOTE: All other solidified APIs are useless.
@@ -226,6 +174,16 @@ service WalletSolidity {
   rpc GetRewardInfo(BytesMessage) returns (NumberMessage) {}     // ???
 };
 
+
+
+message RewardMessage{
+  bytes address =1;
+}
+
+
+message RewardOutput{
+  uint32 reward = 1;
+}
 
 message BrokerageMessage{
   uint32 brokerage = 1;
@@ -241,6 +199,7 @@ message Transactioncountbyblocknum{
 
 
 message EmptyMessage {}
+
 message NumberMessage {
   int64 num = 1;
 }

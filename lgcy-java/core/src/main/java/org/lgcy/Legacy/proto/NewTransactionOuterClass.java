@@ -25,43 +25,104 @@ public final class NewTransactionOuterClass {
     boolean getVisible();
 
     /**
-     * <code>string txID = 2;</code>
+     * <code>repeated string signature = 2;</code>
+     * @return A list containing the signature.
+     */
+    java.util.List<java.lang.String>
+        getSignatureList();
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @return The count of signature.
+     */
+    int getSignatureCount();
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @param index The index of the element to return.
+     * @return The signature at the given index.
+     */
+    java.lang.String getSignature(int index);
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the signature at the given index.
+     */
+    com.google.protobuf.ByteString
+        getSignatureBytes(int index);
+
+    /**
+     * <code>string txID = 3;</code>
      * @return The txID.
      */
     java.lang.String getTxID();
     /**
-     * <code>string txID = 2;</code>
+     * <code>string txID = 3;</code>
      * @return The bytes for txID.
      */
     com.google.protobuf.ByteString
         getTxIDBytes();
 
     /**
-     * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+     * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
      * @return Whether the rawData field is set.
      */
     boolean hasRawData();
     /**
-     * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+     * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
      * @return The rawData.
      */
     org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data getRawData();
     /**
-     * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+     * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
      */
     org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_dataOrBuilder getRawDataOrBuilder();
 
     /**
-     * <code>string raw_data_hex = 4;</code>
+     * <code>string raw_data_hex = 5;</code>
      * @return The rawDataHex.
      */
     java.lang.String getRawDataHex();
     /**
-     * <code>string raw_data_hex = 4;</code>
+     * <code>string raw_data_hex = 5;</code>
      * @return The bytes for rawDataHex.
      */
     com.google.protobuf.ByteString
         getRawDataHexBytes();
+
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result> 
+        getRetList();
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result getRet(int index);
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    int getRetCount();
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder> 
+        getRetOrBuilderList();
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder getRetOrBuilder(
+        int index);
+
+    /**
+     * <code>string Error = 7;</code>
+     * @return The error.
+     */
+    java.lang.String getError();
+    /**
+     * <code>string Error = 7;</code>
+     * @return The bytes for error.
+     */
+    com.google.protobuf.ByteString
+        getErrorBytes();
   }
   /**
    * Protobuf type {@code protocol.NewTransaction}
@@ -76,8 +137,11 @@ public final class NewTransactionOuterClass {
       super(builder);
     }
     private NewTransaction() {
+      signature_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       txID_ = "";
       rawDataHex_ = "";
+      ret_ = java.util.Collections.emptyList();
+      error_ = "";
     }
 
     @java.lang.Override
@@ -100,6 +164,7 @@ public final class NewTransactionOuterClass {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -117,11 +182,20 @@ public final class NewTransactionOuterClass {
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                signature_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              signature_.add(s);
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
 
               txID_ = s;
               break;
             }
-            case 26: {
+            case 34: {
               org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data.Builder subBuilder = null;
               if (rawData_ != null) {
                 subBuilder = rawData_.toBuilder();
@@ -134,10 +208,25 @@ public final class NewTransactionOuterClass {
 
               break;
             }
-            case 34: {
+            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
               rawDataHex_ = s;
+              break;
+            }
+            case 50: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                ret_ = new java.util.ArrayList<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              ret_.add(
+                  input.readMessage(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.parser(), extensionRegistry));
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              error_ = s;
               break;
             }
             default: {
@@ -155,6 +244,12 @@ public final class NewTransactionOuterClass {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          signature_ = signature_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          ret_ = java.util.Collections.unmodifiableList(ret_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -170,6 +265,638 @@ public final class NewTransactionOuterClass {
       return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder.class);
+    }
+
+    public interface ResultOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:protocol.NewTransaction.Result)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+       * @return The enum numeric value on the wire for contractRet.
+       */
+      int getContractRetValue();
+      /**
+       * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+       * @return The contractRet.
+       */
+      org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult getContractRet();
+
+      /**
+       * <code>.protocol.Transaction.Result.code ret = 2;</code>
+       * @return The enum numeric value on the wire for ret.
+       */
+      int getRetValue();
+      /**
+       * <code>.protocol.Transaction.Result.code ret = 2;</code>
+       * @return The ret.
+       */
+      org.lgcy.Legacy.proto.Chain.Transaction.Result.code getRet();
+    }
+    /**
+     * Protobuf type {@code protocol.NewTransaction.Result}
+     */
+    public static final class Result extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:protocol.NewTransaction.Result)
+        ResultOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use Result.newBuilder() to construct.
+      private Result(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private Result() {
+        contractRet_ = 0;
+        ret_ = 0;
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new Result();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private Result(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                int rawValue = input.readEnum();
+
+                contractRet_ = rawValue;
+                break;
+              }
+              case 16: {
+                int rawValue = input.readEnum();
+
+                ret_ = rawValue;
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Result_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Result_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder.class);
+      }
+
+      public static final int CONTRACTRET_FIELD_NUMBER = 1;
+      private int contractRet_;
+      /**
+       * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+       * @return The enum numeric value on the wire for contractRet.
+       */
+      @java.lang.Override public int getContractRetValue() {
+        return contractRet_;
+      }
+      /**
+       * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+       * @return The contractRet.
+       */
+      @java.lang.Override public org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult getContractRet() {
+        @SuppressWarnings("deprecation")
+        org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult result = org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult.valueOf(contractRet_);
+        return result == null ? org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult.UNRECOGNIZED : result;
+      }
+
+      public static final int RET_FIELD_NUMBER = 2;
+      private int ret_;
+      /**
+       * <code>.protocol.Transaction.Result.code ret = 2;</code>
+       * @return The enum numeric value on the wire for ret.
+       */
+      @java.lang.Override public int getRetValue() {
+        return ret_;
+      }
+      /**
+       * <code>.protocol.Transaction.Result.code ret = 2;</code>
+       * @return The ret.
+       */
+      @java.lang.Override public org.lgcy.Legacy.proto.Chain.Transaction.Result.code getRet() {
+        @SuppressWarnings("deprecation")
+        org.lgcy.Legacy.proto.Chain.Transaction.Result.code result = org.lgcy.Legacy.proto.Chain.Transaction.Result.code.valueOf(ret_);
+        return result == null ? org.lgcy.Legacy.proto.Chain.Transaction.Result.code.UNRECOGNIZED : result;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (contractRet_ != org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult.DEFAULT.getNumber()) {
+          output.writeEnum(1, contractRet_);
+        }
+        if (ret_ != org.lgcy.Legacy.proto.Chain.Transaction.Result.code.SUCESS.getNumber()) {
+          output.writeEnum(2, ret_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (contractRet_ != org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult.DEFAULT.getNumber()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(1, contractRet_);
+        }
+        if (ret_ != org.lgcy.Legacy.proto.Chain.Transaction.Result.code.SUCESS.getNumber()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(2, ret_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result)) {
+          return super.equals(obj);
+        }
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result other = (org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result) obj;
+
+        if (contractRet_ != other.contractRet_) return false;
+        if (ret_ != other.ret_) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + CONTRACTRET_FIELD_NUMBER;
+        hash = (53 * hash) + contractRet_;
+        hash = (37 * hash) + RET_FIELD_NUMBER;
+        hash = (53 * hash) + ret_;
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code protocol.NewTransaction.Result}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:protocol.NewTransaction.Result)
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Result_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Result_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder.class);
+        }
+
+        // Construct using org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          contractRet_ = 0;
+
+          ret_ = 0;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Result_descriptor;
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result getDefaultInstanceForType() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result build() {
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result buildPartial() {
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result(this);
+          result.contractRet_ = contractRet_;
+          result.ret_ = ret_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result) {
+            return mergeFrom((org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result other) {
+          if (other == org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.getDefaultInstance()) return this;
+          if (other.contractRet_ != 0) {
+            setContractRetValue(other.getContractRetValue());
+          }
+          if (other.ret_ != 0) {
+            setRetValue(other.getRetValue());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private int contractRet_ = 0;
+        /**
+         * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+         * @return The enum numeric value on the wire for contractRet.
+         */
+        @java.lang.Override public int getContractRetValue() {
+          return contractRet_;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+         * @param value The enum numeric value on the wire for contractRet to set.
+         * @return This builder for chaining.
+         */
+        public Builder setContractRetValue(int value) {
+          
+          contractRet_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+         * @return The contractRet.
+         */
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult getContractRet() {
+          @SuppressWarnings("deprecation")
+          org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult result = org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult.valueOf(contractRet_);
+          return result == null ? org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+         * @param value The contractRet to set.
+         * @return This builder for chaining.
+         */
+        public Builder setContractRet(org.lgcy.Legacy.proto.Chain.Transaction.Result.contractResult value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          
+          contractRet_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.contractResult contractRet = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearContractRet() {
+          
+          contractRet_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int ret_ = 0;
+        /**
+         * <code>.protocol.Transaction.Result.code ret = 2;</code>
+         * @return The enum numeric value on the wire for ret.
+         */
+        @java.lang.Override public int getRetValue() {
+          return ret_;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.code ret = 2;</code>
+         * @param value The enum numeric value on the wire for ret to set.
+         * @return This builder for chaining.
+         */
+        public Builder setRetValue(int value) {
+          
+          ret_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.code ret = 2;</code>
+         * @return The ret.
+         */
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.Chain.Transaction.Result.code getRet() {
+          @SuppressWarnings("deprecation")
+          org.lgcy.Legacy.proto.Chain.Transaction.Result.code result = org.lgcy.Legacy.proto.Chain.Transaction.Result.code.valueOf(ret_);
+          return result == null ? org.lgcy.Legacy.proto.Chain.Transaction.Result.code.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.code ret = 2;</code>
+         * @param value The ret to set.
+         * @return This builder for chaining.
+         */
+        public Builder setRet(org.lgcy.Legacy.proto.Chain.Transaction.Result.code value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          
+          ret_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.protocol.Transaction.Result.code ret = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearRet() {
+          
+          ret_ = 0;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:protocol.NewTransaction.Result)
+      }
+
+      // @@protoc_insertion_point(class_scope:protocol.NewTransaction.Result)
+      private static final org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result();
+      }
+
+      public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<Result>
+          PARSER = new com.google.protobuf.AbstractParser<Result>() {
+        @java.lang.Override
+        public Result parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Result(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<Result> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<Result> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     public interface ValueOrBuilder extends
@@ -205,6 +932,251 @@ public final class NewTransactionOuterClass {
        */
       com.google.protobuf.ByteString
           getToAddressBytes();
+
+      /**
+       * <code>string update_url = 4;</code>
+       * @return The updateUrl.
+       */
+      java.lang.String getUpdateUrl();
+      /**
+       * <code>string update_url = 4;</code>
+       * @return The bytes for updateUrl.
+       */
+      com.google.protobuf.ByteString
+          getUpdateUrlBytes();
+
+      /**
+       * <code>int32 brokerage = 5;</code>
+       * @return The brokerage.
+       */
+      int getBrokerage();
+
+      /**
+       * <code>string account_name = 6;</code>
+       * @return The accountName.
+       */
+      java.lang.String getAccountName();
+      /**
+       * <code>string account_name = 6;</code>
+       * @return The bytes for accountName.
+       */
+      com.google.protobuf.ByteString
+          getAccountNameBytes();
+
+      /**
+       * <code>string contract_address = 7;</code>
+       * @return The contractAddress.
+       */
+      java.lang.String getContractAddress();
+      /**
+       * <code>string contract_address = 7;</code>
+       * @return The bytes for contractAddress.
+       */
+      com.google.protobuf.ByteString
+          getContractAddressBytes();
+
+      /**
+       * <code>uint32 consume_user_resource_percent = 8;</code>
+       * @return The consumeUserResourcePercent.
+       */
+      int getConsumeUserResourcePercent();
+
+      /**
+       * <code>uint32 frozen_balance = 9;</code>
+       * @return The frozenBalance.
+       */
+      int getFrozenBalance();
+
+      /**
+       * <code>uint32 frozen_duration = 10;</code>
+       * @return The frozenDuration.
+       */
+      int getFrozenDuration();
+
+      /**
+       * <code>.protocol.ResourceCode resource = 11;</code>
+       * @return The enum numeric value on the wire for resource.
+       */
+      int getResourceValue();
+      /**
+       * <code>.protocol.ResourceCode resource = 11;</code>
+       * @return The resource.
+       */
+      org.lgcy.Legacy.proto.Common.ResourceCode getResource();
+
+      /**
+       * <code>string data = 12;</code>
+       * @return The data.
+       */
+      java.lang.String getData();
+      /**
+       * <code>string data = 12;</code>
+       * @return The bytes for data.
+       */
+      com.google.protobuf.ByteString
+          getDataBytes();
+
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters> 
+          getParametersList();
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters getParameters(int index);
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      int getParametersCount();
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder> 
+          getParametersOrBuilderList();
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder getParametersOrBuilder(
+          int index);
+
+      /**
+       * <code>string url = 14;</code>
+       * @return The url.
+       */
+      java.lang.String getUrl();
+      /**
+       * <code>string url = 14;</code>
+       * @return The bytes for url.
+       */
+      com.google.protobuf.ByteString
+          getUrlBytes();
+
+      /**
+       * <code>uint32 proposal_id = 15;</code>
+       * @return The proposalId.
+       */
+      int getProposalId();
+
+      /**
+       * <code>bool is_add_approval = 16;</code>
+       * @return The isAddApproval.
+       */
+      boolean getIsAddApproval();
+
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes> 
+          getVotesList();
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes getVotes(int index);
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      int getVotesCount();
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder> 
+          getVotesOrBuilderList();
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder getVotesOrBuilder(
+          int index);
+
+      /**
+       * <pre>
+       * Empty is invalidate
+       * </pre>
+       *
+       * <code>.protocol.Permission owner = 18;</code>
+       * @return Whether the owner field is set.
+       */
+      boolean hasOwner();
+      /**
+       * <pre>
+       * Empty is invalidate
+       * </pre>
+       *
+       * <code>.protocol.Permission owner = 18;</code>
+       * @return The owner.
+       */
+      org.lgcy.Legacy.proto.Common.Permission getOwner();
+      /**
+       * <pre>
+       * Empty is invalidate
+       * </pre>
+       *
+       * <code>.protocol.Permission owner = 18;</code>
+       */
+      org.lgcy.Legacy.proto.Common.PermissionOrBuilder getOwnerOrBuilder();
+
+      /**
+       * <pre>
+       * Can be empty
+       * </pre>
+       *
+       * <code>.protocol.Permission witness = 19;</code>
+       * @return Whether the witness field is set.
+       */
+      boolean hasWitness();
+      /**
+       * <pre>
+       * Can be empty
+       * </pre>
+       *
+       * <code>.protocol.Permission witness = 19;</code>
+       * @return The witness.
+       */
+      org.lgcy.Legacy.proto.Common.Permission getWitness();
+      /**
+       * <pre>
+       * Can be empty
+       * </pre>
+       *
+       * <code>.protocol.Permission witness = 19;</code>
+       */
+      org.lgcy.Legacy.proto.Common.PermissionOrBuilder getWitnessOrBuilder();
+
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      java.util.List<org.lgcy.Legacy.proto.Common.Permission> 
+          getActivesList();
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      org.lgcy.Legacy.proto.Common.Permission getActives(int index);
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      int getActivesCount();
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      java.util.List<? extends org.lgcy.Legacy.proto.Common.PermissionOrBuilder> 
+          getActivesOrBuilderList();
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      org.lgcy.Legacy.proto.Common.PermissionOrBuilder getActivesOrBuilder(
+          int index);
+
+      /**
+       * <code>string account_address = 21;</code>
+       * @return The accountAddress.
+       */
+      java.lang.String getAccountAddress();
+      /**
+       * <code>string account_address = 21;</code>
+       * @return The bytes for accountAddress.
+       */
+      com.google.protobuf.ByteString
+          getAccountAddressBytes();
     }
     /**
      * Protobuf type {@code protocol.NewTransaction.Value}
@@ -221,6 +1193,16 @@ public final class NewTransactionOuterClass {
       private Value() {
         ownerAddress_ = "";
         toAddress_ = "";
+        updateUrl_ = "";
+        accountName_ = "";
+        contractAddress_ = "";
+        resource_ = 0;
+        data_ = "";
+        parameters_ = java.util.Collections.emptyList();
+        url_ = "";
+        votes_ = java.util.Collections.emptyList();
+        actives_ = java.util.Collections.emptyList();
+        accountAddress_ = "";
       }
 
       @java.lang.Override
@@ -243,6 +1225,7 @@ public final class NewTransactionOuterClass {
         if (extensionRegistry == null) {
           throw new java.lang.NullPointerException();
         }
+        int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
         try {
@@ -270,6 +1253,131 @@ public final class NewTransactionOuterClass {
                 toAddress_ = s;
                 break;
               }
+              case 34: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                updateUrl_ = s;
+                break;
+              }
+              case 40: {
+
+                brokerage_ = input.readInt32();
+                break;
+              }
+              case 50: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                accountName_ = s;
+                break;
+              }
+              case 58: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                contractAddress_ = s;
+                break;
+              }
+              case 64: {
+
+                consumeUserResourcePercent_ = input.readUInt32();
+                break;
+              }
+              case 72: {
+
+                frozenBalance_ = input.readUInt32();
+                break;
+              }
+              case 80: {
+
+                frozenDuration_ = input.readUInt32();
+                break;
+              }
+              case 88: {
+                int rawValue = input.readEnum();
+
+                resource_ = rawValue;
+                break;
+              }
+              case 98: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                data_ = s;
+                break;
+              }
+              case 106: {
+                if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                  parameters_ = new java.util.ArrayList<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters>();
+                  mutable_bitField0_ |= 0x00000001;
+                }
+                parameters_.add(
+                    input.readMessage(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.parser(), extensionRegistry));
+                break;
+              }
+              case 114: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                url_ = s;
+                break;
+              }
+              case 120: {
+
+                proposalId_ = input.readUInt32();
+                break;
+              }
+              case 128: {
+
+                isAddApproval_ = input.readBool();
+                break;
+              }
+              case 138: {
+                if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                  votes_ = new java.util.ArrayList<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes>();
+                  mutable_bitField0_ |= 0x00000002;
+                }
+                votes_.add(
+                    input.readMessage(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.parser(), extensionRegistry));
+                break;
+              }
+              case 146: {
+                org.lgcy.Legacy.proto.Common.Permission.Builder subBuilder = null;
+                if (owner_ != null) {
+                  subBuilder = owner_.toBuilder();
+                }
+                owner_ = input.readMessage(org.lgcy.Legacy.proto.Common.Permission.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(owner_);
+                  owner_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
+              case 154: {
+                org.lgcy.Legacy.proto.Common.Permission.Builder subBuilder = null;
+                if (witness_ != null) {
+                  subBuilder = witness_.toBuilder();
+                }
+                witness_ = input.readMessage(org.lgcy.Legacy.proto.Common.Permission.parser(), extensionRegistry);
+                if (subBuilder != null) {
+                  subBuilder.mergeFrom(witness_);
+                  witness_ = subBuilder.buildPartial();
+                }
+
+                break;
+              }
+              case 162: {
+                if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                  actives_ = new java.util.ArrayList<org.lgcy.Legacy.proto.Common.Permission>();
+                  mutable_bitField0_ |= 0x00000004;
+                }
+                actives_.add(
+                    input.readMessage(org.lgcy.Legacy.proto.Common.Permission.parser(), extensionRegistry));
+                break;
+              }
+              case 170: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                accountAddress_ = s;
+                break;
+              }
               default: {
                 if (!parseUnknownField(
                     input, unknownFields, extensionRegistry, tag)) {
@@ -285,6 +1393,15 @@ public final class NewTransactionOuterClass {
           throw new com.google.protobuf.InvalidProtocolBufferException(
               e).setUnfinishedMessage(this);
         } finally {
+          if (((mutable_bitField0_ & 0x00000001) != 0)) {
+            parameters_ = java.util.Collections.unmodifiableList(parameters_);
+          }
+          if (((mutable_bitField0_ & 0x00000002) != 0)) {
+            votes_ = java.util.Collections.unmodifiableList(votes_);
+          }
+          if (((mutable_bitField0_ & 0x00000004) != 0)) {
+            actives_ = java.util.Collections.unmodifiableList(actives_);
+          }
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
         }
@@ -300,6 +1417,1202 @@ public final class NewTransactionOuterClass {
         return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Builder.class);
+      }
+
+      public interface ParametersOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:protocol.NewTransaction.Value.Parameters)
+          com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>uint32 key = 1;</code>
+         * @return The key.
+         */
+        int getKey();
+
+        /**
+         * <code>uint32 value = 2;</code>
+         * @return The value.
+         */
+        int getValue();
+      }
+      /**
+       * Protobuf type {@code protocol.NewTransaction.Value.Parameters}
+       */
+      public static final class Parameters extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:protocol.NewTransaction.Value.Parameters)
+          ParametersOrBuilder {
+      private static final long serialVersionUID = 0L;
+        // Use Parameters.newBuilder() to construct.
+        private Parameters(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+          super(builder);
+        }
+        private Parameters() {
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new Parameters();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+          return this.unknownFields;
+        }
+        private Parameters(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          this();
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 8: {
+
+                  key_ = input.readUInt32();
+                  break;
+                }
+                case 16: {
+
+                  value_ = input.readUInt32();
+                  break;
+                }
+                default: {
+                  if (!parseUnknownField(
+                      input, unknownFields, extensionRegistry, tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(this);
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+          } finally {
+            this.unknownFields = unknownFields.build();
+            makeExtensionsImmutable();
+          }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Parameters_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Parameters_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder.class);
+        }
+
+        public static final int KEY_FIELD_NUMBER = 1;
+        private int key_;
+        /**
+         * <code>uint32 key = 1;</code>
+         * @return The key.
+         */
+        @java.lang.Override
+        public int getKey() {
+          return key_;
+        }
+
+        public static final int VALUE_FIELD_NUMBER = 2;
+        private int value_;
+        /**
+         * <code>uint32 value = 2;</code>
+         * @return The value.
+         */
+        @java.lang.Override
+        public int getValue() {
+          return value_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (key_ != 0) {
+            output.writeUInt32(1, key_);
+          }
+          if (value_ != 0) {
+            output.writeUInt32(2, value_);
+          }
+          unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (key_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt32Size(1, key_);
+          }
+          if (value_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt32Size(2, value_);
+          }
+          size += unknownFields.getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+           return true;
+          }
+          if (!(obj instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters)) {
+            return super.equals(obj);
+          }
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters other = (org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters) obj;
+
+          if (getKey()
+              != other.getKey()) return false;
+          if (getValue()
+              != other.getValue()) return false;
+          if (!unknownFields.equals(other.unknownFields)) return false;
+          return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          hash = (37 * hash) + KEY_FIELD_NUMBER;
+          hash = (53 * hash) + getKey();
+          hash = (37 * hash) + VALUE_FIELD_NUMBER;
+          hash = (53 * hash) + getValue();
+          hash = (29 * hash) + unknownFields.hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * Protobuf type {@code protocol.NewTransaction.Value.Parameters}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:protocol.NewTransaction.Value.Parameters)
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+              getDescriptor() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Parameters_descriptor;
+          }
+
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+              internalGetFieldAccessorTable() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Parameters_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder.class);
+          }
+
+          // Construct using org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.newBuilder()
+          private Builder() {
+            maybeForceBuilderInitialization();
+          }
+
+          private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            super(parent);
+            maybeForceBuilderInitialization();
+          }
+          private void maybeForceBuilderInitialization() {
+            if (com.google.protobuf.GeneratedMessageV3
+                    .alwaysUseFieldBuilders) {
+            }
+          }
+          @java.lang.Override
+          public Builder clear() {
+            super.clear();
+            key_ = 0;
+
+            value_ = 0;
+
+            return this;
+          }
+
+          @java.lang.Override
+          public com.google.protobuf.Descriptors.Descriptor
+              getDescriptorForType() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Parameters_descriptor;
+          }
+
+          @java.lang.Override
+          public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters getDefaultInstanceForType() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.getDefaultInstance();
+          }
+
+          @java.lang.Override
+          public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters build() {
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          @java.lang.Override
+          public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters buildPartial() {
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters(this);
+            result.key_ = key_;
+            result.value_ = value_;
+            onBuilt();
+            return result;
+          }
+
+          @java.lang.Override
+          public Builder clone() {
+            return super.clone();
+          }
+          @java.lang.Override
+          public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+            return super.setField(field, value);
+          }
+          @java.lang.Override
+          public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+            return super.clearField(field);
+          }
+          @java.lang.Override
+          public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+            return super.clearOneof(oneof);
+          }
+          @java.lang.Override
+          public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+            return super.setRepeatedField(field, index, value);
+          }
+          @java.lang.Override
+          public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+            return super.addRepeatedField(field, value);
+          }
+          @java.lang.Override
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters) {
+              return mergeFrom((org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters other) {
+            if (other == org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.getDefaultInstance()) return this;
+            if (other.getKey() != 0) {
+              setKey(other.getKey());
+            }
+            if (other.getValue() != 0) {
+              setValue(other.getValue());
+            }
+            this.mergeUnknownFields(other.unknownFields);
+            onChanged();
+            return this;
+          }
+
+          @java.lang.Override
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters parsedMessage = null;
+            try {
+              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              parsedMessage = (org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters) e.getUnfinishedMessage();
+              throw e.unwrapIOException();
+            } finally {
+              if (parsedMessage != null) {
+                mergeFrom(parsedMessage);
+              }
+            }
+            return this;
+          }
+
+          private int key_ ;
+          /**
+           * <code>uint32 key = 1;</code>
+           * @return The key.
+           */
+          @java.lang.Override
+          public int getKey() {
+            return key_;
+          }
+          /**
+           * <code>uint32 key = 1;</code>
+           * @param value The key to set.
+           * @return This builder for chaining.
+           */
+          public Builder setKey(int value) {
+            
+            key_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>uint32 key = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearKey() {
+            
+            key_ = 0;
+            onChanged();
+            return this;
+          }
+
+          private int value_ ;
+          /**
+           * <code>uint32 value = 2;</code>
+           * @return The value.
+           */
+          @java.lang.Override
+          public int getValue() {
+            return value_;
+          }
+          /**
+           * <code>uint32 value = 2;</code>
+           * @param value The value to set.
+           * @return This builder for chaining.
+           */
+          public Builder setValue(int value) {
+            
+            value_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>uint32 value = 2;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearValue() {
+            
+            value_ = 0;
+            onChanged();
+            return this;
+          }
+          @java.lang.Override
+          public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.setUnknownFields(unknownFields);
+          }
+
+          @java.lang.Override
+          public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.mergeUnknownFields(unknownFields);
+          }
+
+
+          // @@protoc_insertion_point(builder_scope:protocol.NewTransaction.Value.Parameters)
+        }
+
+        // @@protoc_insertion_point(class_scope:protocol.NewTransaction.Value.Parameters)
+        private static final org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters();
+        }
+
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<Parameters>
+            PARSER = new com.google.protobuf.AbstractParser<Parameters>() {
+          @java.lang.Override
+          public Parameters parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Parameters(input, extensionRegistry);
+          }
+        };
+
+        public static com.google.protobuf.Parser<Parameters> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Parameters> getParserForType() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
+      }
+
+      public interface VotesOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:protocol.NewTransaction.Value.Votes)
+          com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>string vote_address = 1;</code>
+         * @return The voteAddress.
+         */
+        java.lang.String getVoteAddress();
+        /**
+         * <code>string vote_address = 1;</code>
+         * @return The bytes for voteAddress.
+         */
+        com.google.protobuf.ByteString
+            getVoteAddressBytes();
+
+        /**
+         * <code>uint32 vote_count = 2;</code>
+         * @return The voteCount.
+         */
+        int getVoteCount();
+      }
+      /**
+       * Protobuf type {@code protocol.NewTransaction.Value.Votes}
+       */
+      public static final class Votes extends
+          com.google.protobuf.GeneratedMessageV3 implements
+          // @@protoc_insertion_point(message_implements:protocol.NewTransaction.Value.Votes)
+          VotesOrBuilder {
+      private static final long serialVersionUID = 0L;
+        // Use Votes.newBuilder() to construct.
+        private Votes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+          super(builder);
+        }
+        private Votes() {
+          voteAddress_ = "";
+        }
+
+        @java.lang.Override
+        @SuppressWarnings({"unused"})
+        protected java.lang.Object newInstance(
+            UnusedPrivateParameter unused) {
+          return new Votes();
+        }
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+          return this.unknownFields;
+        }
+        private Votes(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          this();
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+              com.google.protobuf.UnknownFieldSet.newBuilder();
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  java.lang.String s = input.readStringRequireUtf8();
+
+                  voteAddress_ = s;
+                  break;
+                }
+                case 16: {
+
+                  voteCount_ = input.readUInt32();
+                  break;
+                }
+                default: {
+                  if (!parseUnknownField(
+                      input, unknownFields, extensionRegistry, tag)) {
+                    done = true;
+                  }
+                  break;
+                }
+              }
+            }
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(this);
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(
+                e).setUnfinishedMessage(this);
+          } finally {
+            this.unknownFields = unknownFields.build();
+            makeExtensionsImmutable();
+          }
+        }
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Votes_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Votes_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder.class);
+        }
+
+        public static final int VOTE_ADDRESS_FIELD_NUMBER = 1;
+        private volatile java.lang.Object voteAddress_;
+        /**
+         * <code>string vote_address = 1;</code>
+         * @return The voteAddress.
+         */
+        @java.lang.Override
+        public java.lang.String getVoteAddress() {
+          java.lang.Object ref = voteAddress_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
+          } else {
+            com.google.protobuf.ByteString bs = 
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            voteAddress_ = s;
+            return s;
+          }
+        }
+        /**
+         * <code>string vote_address = 1;</code>
+         * @return The bytes for voteAddress.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getVoteAddressBytes() {
+          java.lang.Object ref = voteAddress_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            voteAddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+
+        public static final int VOTE_COUNT_FIELD_NUMBER = 2;
+        private int voteCount_;
+        /**
+         * <code>uint32 vote_count = 2;</code>
+         * @return The voteCount.
+         */
+        @java.lang.Override
+        public int getVoteCount() {
+          return voteCount_;
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (!getVoteAddressBytes().isEmpty()) {
+            com.google.protobuf.GeneratedMessageV3.writeString(output, 1, voteAddress_);
+          }
+          if (voteCount_ != 0) {
+            output.writeUInt32(2, voteCount_);
+          }
+          unknownFields.writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (!getVoteAddressBytes().isEmpty()) {
+            size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, voteAddress_);
+          }
+          if (voteCount_ != 0) {
+            size += com.google.protobuf.CodedOutputStream
+              .computeUInt32Size(2, voteCount_);
+          }
+          size += unknownFields.getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+           return true;
+          }
+          if (!(obj instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes)) {
+            return super.equals(obj);
+          }
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes other = (org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes) obj;
+
+          if (!getVoteAddress()
+              .equals(other.getVoteAddress())) return false;
+          if (getVoteCount()
+              != other.getVoteCount()) return false;
+          if (!unknownFields.equals(other.unknownFields)) return false;
+          return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          hash = (37 * hash) + VOTE_ADDRESS_FIELD_NUMBER;
+          hash = (53 * hash) + getVoteAddress().hashCode();
+          hash = (37 * hash) + VOTE_COUNT_FIELD_NUMBER;
+          hash = (53 * hash) + getVoteCount();
+          hash = (29 * hash) + unknownFields.hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input);
+        }
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessageV3
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * Protobuf type {@code protocol.NewTransaction.Value.Votes}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:protocol.NewTransaction.Value.Votes)
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+              getDescriptor() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Votes_descriptor;
+          }
+
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+              internalGetFieldAccessorTable() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Votes_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder.class);
+          }
+
+          // Construct using org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.newBuilder()
+          private Builder() {
+            maybeForceBuilderInitialization();
+          }
+
+          private Builder(
+              com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+            super(parent);
+            maybeForceBuilderInitialization();
+          }
+          private void maybeForceBuilderInitialization() {
+            if (com.google.protobuf.GeneratedMessageV3
+                    .alwaysUseFieldBuilders) {
+            }
+          }
+          @java.lang.Override
+          public Builder clear() {
+            super.clear();
+            voteAddress_ = "";
+
+            voteCount_ = 0;
+
+            return this;
+          }
+
+          @java.lang.Override
+          public com.google.protobuf.Descriptors.Descriptor
+              getDescriptorForType() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_NewTransaction_Value_Votes_descriptor;
+          }
+
+          @java.lang.Override
+          public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes getDefaultInstanceForType() {
+            return org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.getDefaultInstance();
+          }
+
+          @java.lang.Override
+          public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes build() {
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          @java.lang.Override
+          public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes buildPartial() {
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes(this);
+            result.voteAddress_ = voteAddress_;
+            result.voteCount_ = voteCount_;
+            onBuilt();
+            return result;
+          }
+
+          @java.lang.Override
+          public Builder clone() {
+            return super.clone();
+          }
+          @java.lang.Override
+          public Builder setField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+            return super.setField(field, value);
+          }
+          @java.lang.Override
+          public Builder clearField(
+              com.google.protobuf.Descriptors.FieldDescriptor field) {
+            return super.clearField(field);
+          }
+          @java.lang.Override
+          public Builder clearOneof(
+              com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+            return super.clearOneof(oneof);
+          }
+          @java.lang.Override
+          public Builder setRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              int index, java.lang.Object value) {
+            return super.setRepeatedField(field, index, value);
+          }
+          @java.lang.Override
+          public Builder addRepeatedField(
+              com.google.protobuf.Descriptors.FieldDescriptor field,
+              java.lang.Object value) {
+            return super.addRepeatedField(field, value);
+          }
+          @java.lang.Override
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes) {
+              return mergeFrom((org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes other) {
+            if (other == org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.getDefaultInstance()) return this;
+            if (!other.getVoteAddress().isEmpty()) {
+              voteAddress_ = other.voteAddress_;
+              onChanged();
+            }
+            if (other.getVoteCount() != 0) {
+              setVoteCount(other.getVoteCount());
+            }
+            this.mergeUnknownFields(other.unknownFields);
+            onChanged();
+            return this;
+          }
+
+          @java.lang.Override
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes parsedMessage = null;
+            try {
+              parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              parsedMessage = (org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes) e.getUnfinishedMessage();
+              throw e.unwrapIOException();
+            } finally {
+              if (parsedMessage != null) {
+                mergeFrom(parsedMessage);
+              }
+            }
+            return this;
+          }
+
+          private java.lang.Object voteAddress_ = "";
+          /**
+           * <code>string vote_address = 1;</code>
+           * @return The voteAddress.
+           */
+          public java.lang.String getVoteAddress() {
+            java.lang.Object ref = voteAddress_;
+            if (!(ref instanceof java.lang.String)) {
+              com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
+              voteAddress_ = s;
+              return s;
+            } else {
+              return (java.lang.String) ref;
+            }
+          }
+          /**
+           * <code>string vote_address = 1;</code>
+           * @return The bytes for voteAddress.
+           */
+          public com.google.protobuf.ByteString
+              getVoteAddressBytes() {
+            java.lang.Object ref = voteAddress_;
+            if (ref instanceof String) {
+              com.google.protobuf.ByteString b = 
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                      (java.lang.String) ref);
+              voteAddress_ = b;
+              return b;
+            } else {
+              return (com.google.protobuf.ByteString) ref;
+            }
+          }
+          /**
+           * <code>string vote_address = 1;</code>
+           * @param value The voteAddress to set.
+           * @return This builder for chaining.
+           */
+          public Builder setVoteAddress(
+              java.lang.String value) {
+            if (value == null) {
+    throw new NullPointerException();
+  }
+  
+            voteAddress_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>string vote_address = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearVoteAddress() {
+            
+            voteAddress_ = getDefaultInstance().getVoteAddress();
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>string vote_address = 1;</code>
+           * @param value The bytes for voteAddress to set.
+           * @return This builder for chaining.
+           */
+          public Builder setVoteAddressBytes(
+              com.google.protobuf.ByteString value) {
+            if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+            
+            voteAddress_ = value;
+            onChanged();
+            return this;
+          }
+
+          private int voteCount_ ;
+          /**
+           * <code>uint32 vote_count = 2;</code>
+           * @return The voteCount.
+           */
+          @java.lang.Override
+          public int getVoteCount() {
+            return voteCount_;
+          }
+          /**
+           * <code>uint32 vote_count = 2;</code>
+           * @param value The voteCount to set.
+           * @return This builder for chaining.
+           */
+          public Builder setVoteCount(int value) {
+            
+            voteCount_ = value;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>uint32 vote_count = 2;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearVoteCount() {
+            
+            voteCount_ = 0;
+            onChanged();
+            return this;
+          }
+          @java.lang.Override
+          public final Builder setUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.setUnknownFields(unknownFields);
+          }
+
+          @java.lang.Override
+          public final Builder mergeUnknownFields(
+              final com.google.protobuf.UnknownFieldSet unknownFields) {
+            return super.mergeUnknownFields(unknownFields);
+          }
+
+
+          // @@protoc_insertion_point(builder_scope:protocol.NewTransaction.Value.Votes)
+        }
+
+        // @@protoc_insertion_point(class_scope:protocol.NewTransaction.Value.Votes)
+        private static final org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes();
+        }
+
+        public static org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<Votes>
+            PARSER = new com.google.protobuf.AbstractParser<Votes>() {
+          @java.lang.Override
+          public Votes parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            return new Votes(input, extensionRegistry);
+          }
+        };
+
+        public static com.google.protobuf.Parser<Votes> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Votes> getParserForType() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
       }
 
       public static final int AMOUNT_FIELD_NUMBER = 1;
@@ -389,6 +2702,515 @@ public final class NewTransactionOuterClass {
         }
       }
 
+      public static final int UPDATE_URL_FIELD_NUMBER = 4;
+      private volatile java.lang.Object updateUrl_;
+      /**
+       * <code>string update_url = 4;</code>
+       * @return The updateUrl.
+       */
+      @java.lang.Override
+      public java.lang.String getUpdateUrl() {
+        java.lang.Object ref = updateUrl_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          updateUrl_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string update_url = 4;</code>
+       * @return The bytes for updateUrl.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getUpdateUrlBytes() {
+        java.lang.Object ref = updateUrl_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          updateUrl_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int BROKERAGE_FIELD_NUMBER = 5;
+      private int brokerage_;
+      /**
+       * <code>int32 brokerage = 5;</code>
+       * @return The brokerage.
+       */
+      @java.lang.Override
+      public int getBrokerage() {
+        return brokerage_;
+      }
+
+      public static final int ACCOUNT_NAME_FIELD_NUMBER = 6;
+      private volatile java.lang.Object accountName_;
+      /**
+       * <code>string account_name = 6;</code>
+       * @return The accountName.
+       */
+      @java.lang.Override
+      public java.lang.String getAccountName() {
+        java.lang.Object ref = accountName_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          accountName_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string account_name = 6;</code>
+       * @return The bytes for accountName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAccountNameBytes() {
+        java.lang.Object ref = accountName_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          accountName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int CONTRACT_ADDRESS_FIELD_NUMBER = 7;
+      private volatile java.lang.Object contractAddress_;
+      /**
+       * <code>string contract_address = 7;</code>
+       * @return The contractAddress.
+       */
+      @java.lang.Override
+      public java.lang.String getContractAddress() {
+        java.lang.Object ref = contractAddress_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          contractAddress_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string contract_address = 7;</code>
+       * @return The bytes for contractAddress.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getContractAddressBytes() {
+        java.lang.Object ref = contractAddress_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contractAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int CONSUME_USER_RESOURCE_PERCENT_FIELD_NUMBER = 8;
+      private int consumeUserResourcePercent_;
+      /**
+       * <code>uint32 consume_user_resource_percent = 8;</code>
+       * @return The consumeUserResourcePercent.
+       */
+      @java.lang.Override
+      public int getConsumeUserResourcePercent() {
+        return consumeUserResourcePercent_;
+      }
+
+      public static final int FROZEN_BALANCE_FIELD_NUMBER = 9;
+      private int frozenBalance_;
+      /**
+       * <code>uint32 frozen_balance = 9;</code>
+       * @return The frozenBalance.
+       */
+      @java.lang.Override
+      public int getFrozenBalance() {
+        return frozenBalance_;
+      }
+
+      public static final int FROZEN_DURATION_FIELD_NUMBER = 10;
+      private int frozenDuration_;
+      /**
+       * <code>uint32 frozen_duration = 10;</code>
+       * @return The frozenDuration.
+       */
+      @java.lang.Override
+      public int getFrozenDuration() {
+        return frozenDuration_;
+      }
+
+      public static final int RESOURCE_FIELD_NUMBER = 11;
+      private int resource_;
+      /**
+       * <code>.protocol.ResourceCode resource = 11;</code>
+       * @return The enum numeric value on the wire for resource.
+       */
+      @java.lang.Override public int getResourceValue() {
+        return resource_;
+      }
+      /**
+       * <code>.protocol.ResourceCode resource = 11;</code>
+       * @return The resource.
+       */
+      @java.lang.Override public org.lgcy.Legacy.proto.Common.ResourceCode getResource() {
+        @SuppressWarnings("deprecation")
+        org.lgcy.Legacy.proto.Common.ResourceCode result = org.lgcy.Legacy.proto.Common.ResourceCode.valueOf(resource_);
+        return result == null ? org.lgcy.Legacy.proto.Common.ResourceCode.UNRECOGNIZED : result;
+      }
+
+      public static final int DATA_FIELD_NUMBER = 12;
+      private volatile java.lang.Object data_;
+      /**
+       * <code>string data = 12;</code>
+       * @return The data.
+       */
+      @java.lang.Override
+      public java.lang.String getData() {
+        java.lang.Object ref = data_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          data_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string data = 12;</code>
+       * @return The bytes for data.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getDataBytes() {
+        java.lang.Object ref = data_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          data_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PARAMETERS_FIELD_NUMBER = 13;
+      private java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters> parameters_;
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters> getParametersList() {
+        return parameters_;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      @java.lang.Override
+      public java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder> 
+          getParametersOrBuilderList() {
+        return parameters_;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      @java.lang.Override
+      public int getParametersCount() {
+        return parameters_.size();
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters getParameters(int index) {
+        return parameters_.get(index);
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder getParametersOrBuilder(
+          int index) {
+        return parameters_.get(index);
+      }
+
+      public static final int URL_FIELD_NUMBER = 14;
+      private volatile java.lang.Object url_;
+      /**
+       * <code>string url = 14;</code>
+       * @return The url.
+       */
+      @java.lang.Override
+      public java.lang.String getUrl() {
+        java.lang.Object ref = url_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          url_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string url = 14;</code>
+       * @return The bytes for url.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getUrlBytes() {
+        java.lang.Object ref = url_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          url_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int PROPOSAL_ID_FIELD_NUMBER = 15;
+      private int proposalId_;
+      /**
+       * <code>uint32 proposal_id = 15;</code>
+       * @return The proposalId.
+       */
+      @java.lang.Override
+      public int getProposalId() {
+        return proposalId_;
+      }
+
+      public static final int IS_ADD_APPROVAL_FIELD_NUMBER = 16;
+      private boolean isAddApproval_;
+      /**
+       * <code>bool is_add_approval = 16;</code>
+       * @return The isAddApproval.
+       */
+      @java.lang.Override
+      public boolean getIsAddApproval() {
+        return isAddApproval_;
+      }
+
+      public static final int VOTES_FIELD_NUMBER = 17;
+      private java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes> votes_;
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes> getVotesList() {
+        return votes_;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      @java.lang.Override
+      public java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder> 
+          getVotesOrBuilderList() {
+        return votes_;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      @java.lang.Override
+      public int getVotesCount() {
+        return votes_.size();
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes getVotes(int index) {
+        return votes_.get(index);
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder getVotesOrBuilder(
+          int index) {
+        return votes_.get(index);
+      }
+
+      public static final int OWNER_FIELD_NUMBER = 18;
+      private org.lgcy.Legacy.proto.Common.Permission owner_;
+      /**
+       * <pre>
+       * Empty is invalidate
+       * </pre>
+       *
+       * <code>.protocol.Permission owner = 18;</code>
+       * @return Whether the owner field is set.
+       */
+      @java.lang.Override
+      public boolean hasOwner() {
+        return owner_ != null;
+      }
+      /**
+       * <pre>
+       * Empty is invalidate
+       * </pre>
+       *
+       * <code>.protocol.Permission owner = 18;</code>
+       * @return The owner.
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Common.Permission getOwner() {
+        return owner_ == null ? org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance() : owner_;
+      }
+      /**
+       * <pre>
+       * Empty is invalidate
+       * </pre>
+       *
+       * <code>.protocol.Permission owner = 18;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Common.PermissionOrBuilder getOwnerOrBuilder() {
+        return getOwner();
+      }
+
+      public static final int WITNESS_FIELD_NUMBER = 19;
+      private org.lgcy.Legacy.proto.Common.Permission witness_;
+      /**
+       * <pre>
+       * Can be empty
+       * </pre>
+       *
+       * <code>.protocol.Permission witness = 19;</code>
+       * @return Whether the witness field is set.
+       */
+      @java.lang.Override
+      public boolean hasWitness() {
+        return witness_ != null;
+      }
+      /**
+       * <pre>
+       * Can be empty
+       * </pre>
+       *
+       * <code>.protocol.Permission witness = 19;</code>
+       * @return The witness.
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Common.Permission getWitness() {
+        return witness_ == null ? org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance() : witness_;
+      }
+      /**
+       * <pre>
+       * Can be empty
+       * </pre>
+       *
+       * <code>.protocol.Permission witness = 19;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Common.PermissionOrBuilder getWitnessOrBuilder() {
+        return getWitness();
+      }
+
+      public static final int ACTIVES_FIELD_NUMBER = 20;
+      private java.util.List<org.lgcy.Legacy.proto.Common.Permission> actives_;
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      @java.lang.Override
+      public java.util.List<org.lgcy.Legacy.proto.Common.Permission> getActivesList() {
+        return actives_;
+      }
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      @java.lang.Override
+      public java.util.List<? extends org.lgcy.Legacy.proto.Common.PermissionOrBuilder> 
+          getActivesOrBuilderList() {
+        return actives_;
+      }
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      @java.lang.Override
+      public int getActivesCount() {
+        return actives_.size();
+      }
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Common.Permission getActives(int index) {
+        return actives_.get(index);
+      }
+      /**
+       * <code>repeated .protocol.Permission actives = 20;</code>
+       */
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.Common.PermissionOrBuilder getActivesOrBuilder(
+          int index) {
+        return actives_.get(index);
+      }
+
+      public static final int ACCOUNT_ADDRESS_FIELD_NUMBER = 21;
+      private volatile java.lang.Object accountAddress_;
+      /**
+       * <code>string account_address = 21;</code>
+       * @return The accountAddress.
+       */
+      @java.lang.Override
+      public java.lang.String getAccountAddress() {
+        java.lang.Object ref = accountAddress_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          accountAddress_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string account_address = 21;</code>
+       * @return The bytes for accountAddress.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getAccountAddressBytes() {
+        java.lang.Object ref = accountAddress_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          accountAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -412,6 +3234,60 @@ public final class NewTransactionOuterClass {
         if (!getToAddressBytes().isEmpty()) {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 3, toAddress_);
         }
+        if (!getUpdateUrlBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 4, updateUrl_);
+        }
+        if (brokerage_ != 0) {
+          output.writeInt32(5, brokerage_);
+        }
+        if (!getAccountNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 6, accountName_);
+        }
+        if (!getContractAddressBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 7, contractAddress_);
+        }
+        if (consumeUserResourcePercent_ != 0) {
+          output.writeUInt32(8, consumeUserResourcePercent_);
+        }
+        if (frozenBalance_ != 0) {
+          output.writeUInt32(9, frozenBalance_);
+        }
+        if (frozenDuration_ != 0) {
+          output.writeUInt32(10, frozenDuration_);
+        }
+        if (resource_ != org.lgcy.Legacy.proto.Common.ResourceCode.BANDWIDTH.getNumber()) {
+          output.writeEnum(11, resource_);
+        }
+        if (!getDataBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 12, data_);
+        }
+        for (int i = 0; i < parameters_.size(); i++) {
+          output.writeMessage(13, parameters_.get(i));
+        }
+        if (!getUrlBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 14, url_);
+        }
+        if (proposalId_ != 0) {
+          output.writeUInt32(15, proposalId_);
+        }
+        if (isAddApproval_ != false) {
+          output.writeBool(16, isAddApproval_);
+        }
+        for (int i = 0; i < votes_.size(); i++) {
+          output.writeMessage(17, votes_.get(i));
+        }
+        if (owner_ != null) {
+          output.writeMessage(18, getOwner());
+        }
+        if (witness_ != null) {
+          output.writeMessage(19, getWitness());
+        }
+        for (int i = 0; i < actives_.size(); i++) {
+          output.writeMessage(20, actives_.get(i));
+        }
+        if (!getAccountAddressBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 21, accountAddress_);
+        }
         unknownFields.writeTo(output);
       }
 
@@ -430,6 +3306,72 @@ public final class NewTransactionOuterClass {
         }
         if (!getToAddressBytes().isEmpty()) {
           size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, toAddress_);
+        }
+        if (!getUpdateUrlBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, updateUrl_);
+        }
+        if (brokerage_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(5, brokerage_);
+        }
+        if (!getAccountNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, accountName_);
+        }
+        if (!getContractAddressBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, contractAddress_);
+        }
+        if (consumeUserResourcePercent_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(8, consumeUserResourcePercent_);
+        }
+        if (frozenBalance_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(9, frozenBalance_);
+        }
+        if (frozenDuration_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(10, frozenDuration_);
+        }
+        if (resource_ != org.lgcy.Legacy.proto.Common.ResourceCode.BANDWIDTH.getNumber()) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(11, resource_);
+        }
+        if (!getDataBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, data_);
+        }
+        for (int i = 0; i < parameters_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(13, parameters_.get(i));
+        }
+        if (!getUrlBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, url_);
+        }
+        if (proposalId_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeUInt32Size(15, proposalId_);
+        }
+        if (isAddApproval_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(16, isAddApproval_);
+        }
+        for (int i = 0; i < votes_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(17, votes_.get(i));
+        }
+        if (owner_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(18, getOwner());
+        }
+        if (witness_ != null) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(19, getWitness());
+        }
+        for (int i = 0; i < actives_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(20, actives_.get(i));
+        }
+        if (!getAccountAddressBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, accountAddress_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -452,6 +3394,47 @@ public final class NewTransactionOuterClass {
             .equals(other.getOwnerAddress())) return false;
         if (!getToAddress()
             .equals(other.getToAddress())) return false;
+        if (!getUpdateUrl()
+            .equals(other.getUpdateUrl())) return false;
+        if (getBrokerage()
+            != other.getBrokerage()) return false;
+        if (!getAccountName()
+            .equals(other.getAccountName())) return false;
+        if (!getContractAddress()
+            .equals(other.getContractAddress())) return false;
+        if (getConsumeUserResourcePercent()
+            != other.getConsumeUserResourcePercent()) return false;
+        if (getFrozenBalance()
+            != other.getFrozenBalance()) return false;
+        if (getFrozenDuration()
+            != other.getFrozenDuration()) return false;
+        if (resource_ != other.resource_) return false;
+        if (!getData()
+            .equals(other.getData())) return false;
+        if (!getParametersList()
+            .equals(other.getParametersList())) return false;
+        if (!getUrl()
+            .equals(other.getUrl())) return false;
+        if (getProposalId()
+            != other.getProposalId()) return false;
+        if (getIsAddApproval()
+            != other.getIsAddApproval()) return false;
+        if (!getVotesList()
+            .equals(other.getVotesList())) return false;
+        if (hasOwner() != other.hasOwner()) return false;
+        if (hasOwner()) {
+          if (!getOwner()
+              .equals(other.getOwner())) return false;
+        }
+        if (hasWitness() != other.hasWitness()) return false;
+        if (hasWitness()) {
+          if (!getWitness()
+              .equals(other.getWitness())) return false;
+        }
+        if (!getActivesList()
+            .equals(other.getActivesList())) return false;
+        if (!getAccountAddress()
+            .equals(other.getAccountAddress())) return false;
         if (!unknownFields.equals(other.unknownFields)) return false;
         return true;
       }
@@ -469,6 +3452,53 @@ public final class NewTransactionOuterClass {
         hash = (53 * hash) + getOwnerAddress().hashCode();
         hash = (37 * hash) + TO_ADDRESS_FIELD_NUMBER;
         hash = (53 * hash) + getToAddress().hashCode();
+        hash = (37 * hash) + UPDATE_URL_FIELD_NUMBER;
+        hash = (53 * hash) + getUpdateUrl().hashCode();
+        hash = (37 * hash) + BROKERAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getBrokerage();
+        hash = (37 * hash) + ACCOUNT_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getAccountName().hashCode();
+        hash = (37 * hash) + CONTRACT_ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getContractAddress().hashCode();
+        hash = (37 * hash) + CONSUME_USER_RESOURCE_PERCENT_FIELD_NUMBER;
+        hash = (53 * hash) + getConsumeUserResourcePercent();
+        hash = (37 * hash) + FROZEN_BALANCE_FIELD_NUMBER;
+        hash = (53 * hash) + getFrozenBalance();
+        hash = (37 * hash) + FROZEN_DURATION_FIELD_NUMBER;
+        hash = (53 * hash) + getFrozenDuration();
+        hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
+        hash = (53 * hash) + resource_;
+        hash = (37 * hash) + DATA_FIELD_NUMBER;
+        hash = (53 * hash) + getData().hashCode();
+        if (getParametersCount() > 0) {
+          hash = (37 * hash) + PARAMETERS_FIELD_NUMBER;
+          hash = (53 * hash) + getParametersList().hashCode();
+        }
+        hash = (37 * hash) + URL_FIELD_NUMBER;
+        hash = (53 * hash) + getUrl().hashCode();
+        hash = (37 * hash) + PROPOSAL_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getProposalId();
+        hash = (37 * hash) + IS_ADD_APPROVAL_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getIsAddApproval());
+        if (getVotesCount() > 0) {
+          hash = (37 * hash) + VOTES_FIELD_NUMBER;
+          hash = (53 * hash) + getVotesList().hashCode();
+        }
+        if (hasOwner()) {
+          hash = (37 * hash) + OWNER_FIELD_NUMBER;
+          hash = (53 * hash) + getOwner().hashCode();
+        }
+        if (hasWitness()) {
+          hash = (37 * hash) + WITNESS_FIELD_NUMBER;
+          hash = (53 * hash) + getWitness().hashCode();
+        }
+        if (getActivesCount() > 0) {
+          hash = (37 * hash) + ACTIVES_FIELD_NUMBER;
+          hash = (53 * hash) + getActivesList().hashCode();
+        }
+        hash = (37 * hash) + ACCOUNT_ADDRESS_FIELD_NUMBER;
+        hash = (53 * hash) + getAccountAddress().hashCode();
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
@@ -597,6 +3627,9 @@ public final class NewTransactionOuterClass {
         private void maybeForceBuilderInitialization() {
           if (com.google.protobuf.GeneratedMessageV3
                   .alwaysUseFieldBuilders) {
+            getParametersFieldBuilder();
+            getVotesFieldBuilder();
+            getActivesFieldBuilder();
           }
         }
         @java.lang.Override
@@ -607,6 +3640,62 @@ public final class NewTransactionOuterClass {
           ownerAddress_ = "";
 
           toAddress_ = "";
+
+          updateUrl_ = "";
+
+          brokerage_ = 0;
+
+          accountName_ = "";
+
+          contractAddress_ = "";
+
+          consumeUserResourcePercent_ = 0;
+
+          frozenBalance_ = 0;
+
+          frozenDuration_ = 0;
+
+          resource_ = 0;
+
+          data_ = "";
+
+          if (parametersBuilder_ == null) {
+            parameters_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            parametersBuilder_.clear();
+          }
+          url_ = "";
+
+          proposalId_ = 0;
+
+          isAddApproval_ = false;
+
+          if (votesBuilder_ == null) {
+            votes_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            votesBuilder_.clear();
+          }
+          if (ownerBuilder_ == null) {
+            owner_ = null;
+          } else {
+            owner_ = null;
+            ownerBuilder_ = null;
+          }
+          if (witnessBuilder_ == null) {
+            witness_ = null;
+          } else {
+            witness_ = null;
+            witnessBuilder_ = null;
+          }
+          if (activesBuilder_ == null) {
+            actives_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            activesBuilder_.clear();
+          }
+          accountAddress_ = "";
 
           return this;
         }
@@ -634,9 +3723,60 @@ public final class NewTransactionOuterClass {
         @java.lang.Override
         public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value buildPartial() {
           org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value(this);
+          int from_bitField0_ = bitField0_;
           result.amount_ = amount_;
           result.ownerAddress_ = ownerAddress_;
           result.toAddress_ = toAddress_;
+          result.updateUrl_ = updateUrl_;
+          result.brokerage_ = brokerage_;
+          result.accountName_ = accountName_;
+          result.contractAddress_ = contractAddress_;
+          result.consumeUserResourcePercent_ = consumeUserResourcePercent_;
+          result.frozenBalance_ = frozenBalance_;
+          result.frozenDuration_ = frozenDuration_;
+          result.resource_ = resource_;
+          result.data_ = data_;
+          if (parametersBuilder_ == null) {
+            if (((bitField0_ & 0x00000001) != 0)) {
+              parameters_ = java.util.Collections.unmodifiableList(parameters_);
+              bitField0_ = (bitField0_ & ~0x00000001);
+            }
+            result.parameters_ = parameters_;
+          } else {
+            result.parameters_ = parametersBuilder_.build();
+          }
+          result.url_ = url_;
+          result.proposalId_ = proposalId_;
+          result.isAddApproval_ = isAddApproval_;
+          if (votesBuilder_ == null) {
+            if (((bitField0_ & 0x00000002) != 0)) {
+              votes_ = java.util.Collections.unmodifiableList(votes_);
+              bitField0_ = (bitField0_ & ~0x00000002);
+            }
+            result.votes_ = votes_;
+          } else {
+            result.votes_ = votesBuilder_.build();
+          }
+          if (ownerBuilder_ == null) {
+            result.owner_ = owner_;
+          } else {
+            result.owner_ = ownerBuilder_.build();
+          }
+          if (witnessBuilder_ == null) {
+            result.witness_ = witness_;
+          } else {
+            result.witness_ = witnessBuilder_.build();
+          }
+          if (activesBuilder_ == null) {
+            if (((bitField0_ & 0x00000004) != 0)) {
+              actives_ = java.util.Collections.unmodifiableList(actives_);
+              bitField0_ = (bitField0_ & ~0x00000004);
+            }
+            result.actives_ = actives_;
+          } else {
+            result.actives_ = activesBuilder_.build();
+          }
+          result.accountAddress_ = accountAddress_;
           onBuilt();
           return result;
         }
@@ -696,6 +3836,135 @@ public final class NewTransactionOuterClass {
             toAddress_ = other.toAddress_;
             onChanged();
           }
+          if (!other.getUpdateUrl().isEmpty()) {
+            updateUrl_ = other.updateUrl_;
+            onChanged();
+          }
+          if (other.getBrokerage() != 0) {
+            setBrokerage(other.getBrokerage());
+          }
+          if (!other.getAccountName().isEmpty()) {
+            accountName_ = other.accountName_;
+            onChanged();
+          }
+          if (!other.getContractAddress().isEmpty()) {
+            contractAddress_ = other.contractAddress_;
+            onChanged();
+          }
+          if (other.getConsumeUserResourcePercent() != 0) {
+            setConsumeUserResourcePercent(other.getConsumeUserResourcePercent());
+          }
+          if (other.getFrozenBalance() != 0) {
+            setFrozenBalance(other.getFrozenBalance());
+          }
+          if (other.getFrozenDuration() != 0) {
+            setFrozenDuration(other.getFrozenDuration());
+          }
+          if (other.resource_ != 0) {
+            setResourceValue(other.getResourceValue());
+          }
+          if (!other.getData().isEmpty()) {
+            data_ = other.data_;
+            onChanged();
+          }
+          if (parametersBuilder_ == null) {
+            if (!other.parameters_.isEmpty()) {
+              if (parameters_.isEmpty()) {
+                parameters_ = other.parameters_;
+                bitField0_ = (bitField0_ & ~0x00000001);
+              } else {
+                ensureParametersIsMutable();
+                parameters_.addAll(other.parameters_);
+              }
+              onChanged();
+            }
+          } else {
+            if (!other.parameters_.isEmpty()) {
+              if (parametersBuilder_.isEmpty()) {
+                parametersBuilder_.dispose();
+                parametersBuilder_ = null;
+                parameters_ = other.parameters_;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                parametersBuilder_ = 
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                     getParametersFieldBuilder() : null;
+              } else {
+                parametersBuilder_.addAllMessages(other.parameters_);
+              }
+            }
+          }
+          if (!other.getUrl().isEmpty()) {
+            url_ = other.url_;
+            onChanged();
+          }
+          if (other.getProposalId() != 0) {
+            setProposalId(other.getProposalId());
+          }
+          if (other.getIsAddApproval() != false) {
+            setIsAddApproval(other.getIsAddApproval());
+          }
+          if (votesBuilder_ == null) {
+            if (!other.votes_.isEmpty()) {
+              if (votes_.isEmpty()) {
+                votes_ = other.votes_;
+                bitField0_ = (bitField0_ & ~0x00000002);
+              } else {
+                ensureVotesIsMutable();
+                votes_.addAll(other.votes_);
+              }
+              onChanged();
+            }
+          } else {
+            if (!other.votes_.isEmpty()) {
+              if (votesBuilder_.isEmpty()) {
+                votesBuilder_.dispose();
+                votesBuilder_ = null;
+                votes_ = other.votes_;
+                bitField0_ = (bitField0_ & ~0x00000002);
+                votesBuilder_ = 
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                     getVotesFieldBuilder() : null;
+              } else {
+                votesBuilder_.addAllMessages(other.votes_);
+              }
+            }
+          }
+          if (other.hasOwner()) {
+            mergeOwner(other.getOwner());
+          }
+          if (other.hasWitness()) {
+            mergeWitness(other.getWitness());
+          }
+          if (activesBuilder_ == null) {
+            if (!other.actives_.isEmpty()) {
+              if (actives_.isEmpty()) {
+                actives_ = other.actives_;
+                bitField0_ = (bitField0_ & ~0x00000004);
+              } else {
+                ensureActivesIsMutable();
+                actives_.addAll(other.actives_);
+              }
+              onChanged();
+            }
+          } else {
+            if (!other.actives_.isEmpty()) {
+              if (activesBuilder_.isEmpty()) {
+                activesBuilder_.dispose();
+                activesBuilder_ = null;
+                actives_ = other.actives_;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                activesBuilder_ = 
+                  com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                     getActivesFieldBuilder() : null;
+              } else {
+                activesBuilder_.addAllMessages(other.actives_);
+              }
+            }
+          }
+          if (!other.getAccountAddress().isEmpty()) {
+            accountAddress_ = other.accountAddress_;
+            onChanged();
+          }
           this.mergeUnknownFields(other.unknownFields);
           onChanged();
           return this;
@@ -724,6 +3993,7 @@ public final class NewTransactionOuterClass {
           }
           return this;
         }
+        private int bitField0_;
 
         private int amount_ ;
         /**
@@ -904,6 +4174,1732 @@ public final class NewTransactionOuterClass {
   checkByteStringIsUtf8(value);
           
           toAddress_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object updateUrl_ = "";
+        /**
+         * <code>string update_url = 4;</code>
+         * @return The updateUrl.
+         */
+        public java.lang.String getUpdateUrl() {
+          java.lang.Object ref = updateUrl_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            updateUrl_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string update_url = 4;</code>
+         * @return The bytes for updateUrl.
+         */
+        public com.google.protobuf.ByteString
+            getUpdateUrlBytes() {
+          java.lang.Object ref = updateUrl_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            updateUrl_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string update_url = 4;</code>
+         * @param value The updateUrl to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUpdateUrl(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          updateUrl_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string update_url = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearUpdateUrl() {
+          
+          updateUrl_ = getDefaultInstance().getUpdateUrl();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string update_url = 4;</code>
+         * @param value The bytes for updateUrl to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUpdateUrlBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          updateUrl_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int brokerage_ ;
+        /**
+         * <code>int32 brokerage = 5;</code>
+         * @return The brokerage.
+         */
+        @java.lang.Override
+        public int getBrokerage() {
+          return brokerage_;
+        }
+        /**
+         * <code>int32 brokerage = 5;</code>
+         * @param value The brokerage to set.
+         * @return This builder for chaining.
+         */
+        public Builder setBrokerage(int value) {
+          
+          brokerage_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 brokerage = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearBrokerage() {
+          
+          brokerage_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object accountName_ = "";
+        /**
+         * <code>string account_name = 6;</code>
+         * @return The accountName.
+         */
+        public java.lang.String getAccountName() {
+          java.lang.Object ref = accountName_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            accountName_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string account_name = 6;</code>
+         * @return The bytes for accountName.
+         */
+        public com.google.protobuf.ByteString
+            getAccountNameBytes() {
+          java.lang.Object ref = accountName_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            accountName_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string account_name = 6;</code>
+         * @param value The accountName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAccountName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          accountName_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string account_name = 6;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAccountName() {
+          
+          accountName_ = getDefaultInstance().getAccountName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string account_name = 6;</code>
+         * @param value The bytes for accountName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAccountNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          accountName_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object contractAddress_ = "";
+        /**
+         * <code>string contract_address = 7;</code>
+         * @return The contractAddress.
+         */
+        public java.lang.String getContractAddress() {
+          java.lang.Object ref = contractAddress_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            contractAddress_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string contract_address = 7;</code>
+         * @return The bytes for contractAddress.
+         */
+        public com.google.protobuf.ByteString
+            getContractAddressBytes() {
+          java.lang.Object ref = contractAddress_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            contractAddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string contract_address = 7;</code>
+         * @param value The contractAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setContractAddress(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          contractAddress_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string contract_address = 7;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearContractAddress() {
+          
+          contractAddress_ = getDefaultInstance().getContractAddress();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string contract_address = 7;</code>
+         * @param value The bytes for contractAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setContractAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          contractAddress_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int consumeUserResourcePercent_ ;
+        /**
+         * <code>uint32 consume_user_resource_percent = 8;</code>
+         * @return The consumeUserResourcePercent.
+         */
+        @java.lang.Override
+        public int getConsumeUserResourcePercent() {
+          return consumeUserResourcePercent_;
+        }
+        /**
+         * <code>uint32 consume_user_resource_percent = 8;</code>
+         * @param value The consumeUserResourcePercent to set.
+         * @return This builder for chaining.
+         */
+        public Builder setConsumeUserResourcePercent(int value) {
+          
+          consumeUserResourcePercent_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint32 consume_user_resource_percent = 8;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearConsumeUserResourcePercent() {
+          
+          consumeUserResourcePercent_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int frozenBalance_ ;
+        /**
+         * <code>uint32 frozen_balance = 9;</code>
+         * @return The frozenBalance.
+         */
+        @java.lang.Override
+        public int getFrozenBalance() {
+          return frozenBalance_;
+        }
+        /**
+         * <code>uint32 frozen_balance = 9;</code>
+         * @param value The frozenBalance to set.
+         * @return This builder for chaining.
+         */
+        public Builder setFrozenBalance(int value) {
+          
+          frozenBalance_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint32 frozen_balance = 9;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearFrozenBalance() {
+          
+          frozenBalance_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int frozenDuration_ ;
+        /**
+         * <code>uint32 frozen_duration = 10;</code>
+         * @return The frozenDuration.
+         */
+        @java.lang.Override
+        public int getFrozenDuration() {
+          return frozenDuration_;
+        }
+        /**
+         * <code>uint32 frozen_duration = 10;</code>
+         * @param value The frozenDuration to set.
+         * @return This builder for chaining.
+         */
+        public Builder setFrozenDuration(int value) {
+          
+          frozenDuration_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint32 frozen_duration = 10;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearFrozenDuration() {
+          
+          frozenDuration_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int resource_ = 0;
+        /**
+         * <code>.protocol.ResourceCode resource = 11;</code>
+         * @return The enum numeric value on the wire for resource.
+         */
+        @java.lang.Override public int getResourceValue() {
+          return resource_;
+        }
+        /**
+         * <code>.protocol.ResourceCode resource = 11;</code>
+         * @param value The enum numeric value on the wire for resource to set.
+         * @return This builder for chaining.
+         */
+        public Builder setResourceValue(int value) {
+          
+          resource_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.protocol.ResourceCode resource = 11;</code>
+         * @return The resource.
+         */
+        @java.lang.Override
+        public org.lgcy.Legacy.proto.Common.ResourceCode getResource() {
+          @SuppressWarnings("deprecation")
+          org.lgcy.Legacy.proto.Common.ResourceCode result = org.lgcy.Legacy.proto.Common.ResourceCode.valueOf(resource_);
+          return result == null ? org.lgcy.Legacy.proto.Common.ResourceCode.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.protocol.ResourceCode resource = 11;</code>
+         * @param value The resource to set.
+         * @return This builder for chaining.
+         */
+        public Builder setResource(org.lgcy.Legacy.proto.Common.ResourceCode value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          
+          resource_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.protocol.ResourceCode resource = 11;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearResource() {
+          
+          resource_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object data_ = "";
+        /**
+         * <code>string data = 12;</code>
+         * @return The data.
+         */
+        public java.lang.String getData() {
+          java.lang.Object ref = data_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            data_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string data = 12;</code>
+         * @return The bytes for data.
+         */
+        public com.google.protobuf.ByteString
+            getDataBytes() {
+          java.lang.Object ref = data_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            data_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string data = 12;</code>
+         * @param value The data to set.
+         * @return This builder for chaining.
+         */
+        public Builder setData(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          data_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string data = 12;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearData() {
+          
+          data_ = getDefaultInstance().getData();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string data = 12;</code>
+         * @param value The bytes for data to set.
+         * @return This builder for chaining.
+         */
+        public Builder setDataBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          data_ = value;
+          onChanged();
+          return this;
+        }
+
+        private java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters> parameters_ =
+          java.util.Collections.emptyList();
+        private void ensureParametersIsMutable() {
+          if (!((bitField0_ & 0x00000001) != 0)) {
+            parameters_ = new java.util.ArrayList<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters>(parameters_);
+            bitField0_ |= 0x00000001;
+           }
+        }
+
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder> parametersBuilder_;
+
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters> getParametersList() {
+          if (parametersBuilder_ == null) {
+            return java.util.Collections.unmodifiableList(parameters_);
+          } else {
+            return parametersBuilder_.getMessageList();
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public int getParametersCount() {
+          if (parametersBuilder_ == null) {
+            return parameters_.size();
+          } else {
+            return parametersBuilder_.getCount();
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters getParameters(int index) {
+          if (parametersBuilder_ == null) {
+            return parameters_.get(index);
+          } else {
+            return parametersBuilder_.getMessage(index);
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder setParameters(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters value) {
+          if (parametersBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureParametersIsMutable();
+            parameters_.set(index, value);
+            onChanged();
+          } else {
+            parametersBuilder_.setMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder setParameters(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder builderForValue) {
+          if (parametersBuilder_ == null) {
+            ensureParametersIsMutable();
+            parameters_.set(index, builderForValue.build());
+            onChanged();
+          } else {
+            parametersBuilder_.setMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder addParameters(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters value) {
+          if (parametersBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureParametersIsMutable();
+            parameters_.add(value);
+            onChanged();
+          } else {
+            parametersBuilder_.addMessage(value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder addParameters(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters value) {
+          if (parametersBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureParametersIsMutable();
+            parameters_.add(index, value);
+            onChanged();
+          } else {
+            parametersBuilder_.addMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder addParameters(
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder builderForValue) {
+          if (parametersBuilder_ == null) {
+            ensureParametersIsMutable();
+            parameters_.add(builderForValue.build());
+            onChanged();
+          } else {
+            parametersBuilder_.addMessage(builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder addParameters(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder builderForValue) {
+          if (parametersBuilder_ == null) {
+            ensureParametersIsMutable();
+            parameters_.add(index, builderForValue.build());
+            onChanged();
+          } else {
+            parametersBuilder_.addMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder addAllParameters(
+            java.lang.Iterable<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters> values) {
+          if (parametersBuilder_ == null) {
+            ensureParametersIsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, parameters_);
+            onChanged();
+          } else {
+            parametersBuilder_.addAllMessages(values);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder clearParameters() {
+          if (parametersBuilder_ == null) {
+            parameters_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000001);
+            onChanged();
+          } else {
+            parametersBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public Builder removeParameters(int index) {
+          if (parametersBuilder_ == null) {
+            ensureParametersIsMutable();
+            parameters_.remove(index);
+            onChanged();
+          } else {
+            parametersBuilder_.remove(index);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder getParametersBuilder(
+            int index) {
+          return getParametersFieldBuilder().getBuilder(index);
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder getParametersOrBuilder(
+            int index) {
+          if (parametersBuilder_ == null) {
+            return parameters_.get(index);  } else {
+            return parametersBuilder_.getMessageOrBuilder(index);
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder> 
+             getParametersOrBuilderList() {
+          if (parametersBuilder_ != null) {
+            return parametersBuilder_.getMessageOrBuilderList();
+          } else {
+            return java.util.Collections.unmodifiableList(parameters_);
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder addParametersBuilder() {
+          return getParametersFieldBuilder().addBuilder(
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder addParametersBuilder(
+            int index) {
+          return getParametersFieldBuilder().addBuilder(
+              index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Parameters parameters = 13;</code>
+         */
+        public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder> 
+             getParametersBuilderList() {
+          return getParametersFieldBuilder().getBuilderList();
+        }
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder> 
+            getParametersFieldBuilder() {
+          if (parametersBuilder_ == null) {
+            parametersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Parameters.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.ParametersOrBuilder>(
+                    parameters_,
+                    ((bitField0_ & 0x00000001) != 0),
+                    getParentForChildren(),
+                    isClean());
+            parameters_ = null;
+          }
+          return parametersBuilder_;
+        }
+
+        private java.lang.Object url_ = "";
+        /**
+         * <code>string url = 14;</code>
+         * @return The url.
+         */
+        public java.lang.String getUrl() {
+          java.lang.Object ref = url_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            url_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string url = 14;</code>
+         * @return The bytes for url.
+         */
+        public com.google.protobuf.ByteString
+            getUrlBytes() {
+          java.lang.Object ref = url_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            url_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string url = 14;</code>
+         * @param value The url to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUrl(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          url_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string url = 14;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearUrl() {
+          
+          url_ = getDefaultInstance().getUrl();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string url = 14;</code>
+         * @param value The bytes for url to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUrlBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          url_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int proposalId_ ;
+        /**
+         * <code>uint32 proposal_id = 15;</code>
+         * @return The proposalId.
+         */
+        @java.lang.Override
+        public int getProposalId() {
+          return proposalId_;
+        }
+        /**
+         * <code>uint32 proposal_id = 15;</code>
+         * @param value The proposalId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setProposalId(int value) {
+          
+          proposalId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>uint32 proposal_id = 15;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearProposalId() {
+          
+          proposalId_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private boolean isAddApproval_ ;
+        /**
+         * <code>bool is_add_approval = 16;</code>
+         * @return The isAddApproval.
+         */
+        @java.lang.Override
+        public boolean getIsAddApproval() {
+          return isAddApproval_;
+        }
+        /**
+         * <code>bool is_add_approval = 16;</code>
+         * @param value The isAddApproval to set.
+         * @return This builder for chaining.
+         */
+        public Builder setIsAddApproval(boolean value) {
+          
+          isAddApproval_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>bool is_add_approval = 16;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearIsAddApproval() {
+          
+          isAddApproval_ = false;
+          onChanged();
+          return this;
+        }
+
+        private java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes> votes_ =
+          java.util.Collections.emptyList();
+        private void ensureVotesIsMutable() {
+          if (!((bitField0_ & 0x00000002) != 0)) {
+            votes_ = new java.util.ArrayList<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes>(votes_);
+            bitField0_ |= 0x00000002;
+           }
+        }
+
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder> votesBuilder_;
+
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes> getVotesList() {
+          if (votesBuilder_ == null) {
+            return java.util.Collections.unmodifiableList(votes_);
+          } else {
+            return votesBuilder_.getMessageList();
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public int getVotesCount() {
+          if (votesBuilder_ == null) {
+            return votes_.size();
+          } else {
+            return votesBuilder_.getCount();
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes getVotes(int index) {
+          if (votesBuilder_ == null) {
+            return votes_.get(index);
+          } else {
+            return votesBuilder_.getMessage(index);
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder setVotes(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes value) {
+          if (votesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureVotesIsMutable();
+            votes_.set(index, value);
+            onChanged();
+          } else {
+            votesBuilder_.setMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder setVotes(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder builderForValue) {
+          if (votesBuilder_ == null) {
+            ensureVotesIsMutable();
+            votes_.set(index, builderForValue.build());
+            onChanged();
+          } else {
+            votesBuilder_.setMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder addVotes(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes value) {
+          if (votesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureVotesIsMutable();
+            votes_.add(value);
+            onChanged();
+          } else {
+            votesBuilder_.addMessage(value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder addVotes(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes value) {
+          if (votesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureVotesIsMutable();
+            votes_.add(index, value);
+            onChanged();
+          } else {
+            votesBuilder_.addMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder addVotes(
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder builderForValue) {
+          if (votesBuilder_ == null) {
+            ensureVotesIsMutable();
+            votes_.add(builderForValue.build());
+            onChanged();
+          } else {
+            votesBuilder_.addMessage(builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder addVotes(
+            int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder builderForValue) {
+          if (votesBuilder_ == null) {
+            ensureVotesIsMutable();
+            votes_.add(index, builderForValue.build());
+            onChanged();
+          } else {
+            votesBuilder_.addMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder addAllVotes(
+            java.lang.Iterable<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes> values) {
+          if (votesBuilder_ == null) {
+            ensureVotesIsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, votes_);
+            onChanged();
+          } else {
+            votesBuilder_.addAllMessages(values);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder clearVotes() {
+          if (votesBuilder_ == null) {
+            votes_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000002);
+            onChanged();
+          } else {
+            votesBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public Builder removeVotes(int index) {
+          if (votesBuilder_ == null) {
+            ensureVotesIsMutable();
+            votes_.remove(index);
+            onChanged();
+          } else {
+            votesBuilder_.remove(index);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder getVotesBuilder(
+            int index) {
+          return getVotesFieldBuilder().getBuilder(index);
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder getVotesOrBuilder(
+            int index) {
+          if (votesBuilder_ == null) {
+            return votes_.get(index);  } else {
+            return votesBuilder_.getMessageOrBuilder(index);
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder> 
+             getVotesOrBuilderList() {
+          if (votesBuilder_ != null) {
+            return votesBuilder_.getMessageOrBuilderList();
+          } else {
+            return java.util.Collections.unmodifiableList(votes_);
+          }
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder addVotesBuilder() {
+          return getVotesFieldBuilder().addBuilder(
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder addVotesBuilder(
+            int index) {
+          return getVotesFieldBuilder().addBuilder(
+              index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .protocol.NewTransaction.Value.Votes votes = 17;</code>
+         */
+        public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder> 
+             getVotesBuilderList() {
+          return getVotesFieldBuilder().getBuilderList();
+        }
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder> 
+            getVotesFieldBuilder() {
+          if (votesBuilder_ == null) {
+            votesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.Votes.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Value.VotesOrBuilder>(
+                    votes_,
+                    ((bitField0_ & 0x00000002) != 0),
+                    getParentForChildren(),
+                    isClean());
+            votes_ = null;
+          }
+          return votesBuilder_;
+        }
+
+        private org.lgcy.Legacy.proto.Common.Permission owner_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder> ownerBuilder_;
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         * @return Whether the owner field is set.
+         */
+        public boolean hasOwner() {
+          return ownerBuilder_ != null || owner_ != null;
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         * @return The owner.
+         */
+        public org.lgcy.Legacy.proto.Common.Permission getOwner() {
+          if (ownerBuilder_ == null) {
+            return owner_ == null ? org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance() : owner_;
+          } else {
+            return ownerBuilder_.getMessage();
+          }
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        public Builder setOwner(org.lgcy.Legacy.proto.Common.Permission value) {
+          if (ownerBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            owner_ = value;
+            onChanged();
+          } else {
+            ownerBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        public Builder setOwner(
+            org.lgcy.Legacy.proto.Common.Permission.Builder builderForValue) {
+          if (ownerBuilder_ == null) {
+            owner_ = builderForValue.build();
+            onChanged();
+          } else {
+            ownerBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        public Builder mergeOwner(org.lgcy.Legacy.proto.Common.Permission value) {
+          if (ownerBuilder_ == null) {
+            if (owner_ != null) {
+              owner_ =
+                org.lgcy.Legacy.proto.Common.Permission.newBuilder(owner_).mergeFrom(value).buildPartial();
+            } else {
+              owner_ = value;
+            }
+            onChanged();
+          } else {
+            ownerBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        public Builder clearOwner() {
+          if (ownerBuilder_ == null) {
+            owner_ = null;
+            onChanged();
+          } else {
+            owner_ = null;
+            ownerBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.Permission.Builder getOwnerBuilder() {
+          
+          onChanged();
+          return getOwnerFieldBuilder().getBuilder();
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.PermissionOrBuilder getOwnerOrBuilder() {
+          if (ownerBuilder_ != null) {
+            return ownerBuilder_.getMessageOrBuilder();
+          } else {
+            return owner_ == null ?
+                org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance() : owner_;
+          }
+        }
+        /**
+         * <pre>
+         * Empty is invalidate
+         * </pre>
+         *
+         * <code>.protocol.Permission owner = 18;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder> 
+            getOwnerFieldBuilder() {
+          if (ownerBuilder_ == null) {
+            ownerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder>(
+                    getOwner(),
+                    getParentForChildren(),
+                    isClean());
+            owner_ = null;
+          }
+          return ownerBuilder_;
+        }
+
+        private org.lgcy.Legacy.proto.Common.Permission witness_;
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder> witnessBuilder_;
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         * @return Whether the witness field is set.
+         */
+        public boolean hasWitness() {
+          return witnessBuilder_ != null || witness_ != null;
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         * @return The witness.
+         */
+        public org.lgcy.Legacy.proto.Common.Permission getWitness() {
+          if (witnessBuilder_ == null) {
+            return witness_ == null ? org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance() : witness_;
+          } else {
+            return witnessBuilder_.getMessage();
+          }
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        public Builder setWitness(org.lgcy.Legacy.proto.Common.Permission value) {
+          if (witnessBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            witness_ = value;
+            onChanged();
+          } else {
+            witnessBuilder_.setMessage(value);
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        public Builder setWitness(
+            org.lgcy.Legacy.proto.Common.Permission.Builder builderForValue) {
+          if (witnessBuilder_ == null) {
+            witness_ = builderForValue.build();
+            onChanged();
+          } else {
+            witnessBuilder_.setMessage(builderForValue.build());
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        public Builder mergeWitness(org.lgcy.Legacy.proto.Common.Permission value) {
+          if (witnessBuilder_ == null) {
+            if (witness_ != null) {
+              witness_ =
+                org.lgcy.Legacy.proto.Common.Permission.newBuilder(witness_).mergeFrom(value).buildPartial();
+            } else {
+              witness_ = value;
+            }
+            onChanged();
+          } else {
+            witnessBuilder_.mergeFrom(value);
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        public Builder clearWitness() {
+          if (witnessBuilder_ == null) {
+            witness_ = null;
+            onChanged();
+          } else {
+            witness_ = null;
+            witnessBuilder_ = null;
+          }
+
+          return this;
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.Permission.Builder getWitnessBuilder() {
+          
+          onChanged();
+          return getWitnessFieldBuilder().getBuilder();
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.PermissionOrBuilder getWitnessOrBuilder() {
+          if (witnessBuilder_ != null) {
+            return witnessBuilder_.getMessageOrBuilder();
+          } else {
+            return witness_ == null ?
+                org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance() : witness_;
+          }
+        }
+        /**
+         * <pre>
+         * Can be empty
+         * </pre>
+         *
+         * <code>.protocol.Permission witness = 19;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilderV3<
+            org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder> 
+            getWitnessFieldBuilder() {
+          if (witnessBuilder_ == null) {
+            witnessBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+                org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder>(
+                    getWitness(),
+                    getParentForChildren(),
+                    isClean());
+            witness_ = null;
+          }
+          return witnessBuilder_;
+        }
+
+        private java.util.List<org.lgcy.Legacy.proto.Common.Permission> actives_ =
+          java.util.Collections.emptyList();
+        private void ensureActivesIsMutable() {
+          if (!((bitField0_ & 0x00000004) != 0)) {
+            actives_ = new java.util.ArrayList<org.lgcy.Legacy.proto.Common.Permission>(actives_);
+            bitField0_ |= 0x00000004;
+           }
+        }
+
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder> activesBuilder_;
+
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public java.util.List<org.lgcy.Legacy.proto.Common.Permission> getActivesList() {
+          if (activesBuilder_ == null) {
+            return java.util.Collections.unmodifiableList(actives_);
+          } else {
+            return activesBuilder_.getMessageList();
+          }
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public int getActivesCount() {
+          if (activesBuilder_ == null) {
+            return actives_.size();
+          } else {
+            return activesBuilder_.getCount();
+          }
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.Permission getActives(int index) {
+          if (activesBuilder_ == null) {
+            return actives_.get(index);
+          } else {
+            return activesBuilder_.getMessage(index);
+          }
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder setActives(
+            int index, org.lgcy.Legacy.proto.Common.Permission value) {
+          if (activesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureActivesIsMutable();
+            actives_.set(index, value);
+            onChanged();
+          } else {
+            activesBuilder_.setMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder setActives(
+            int index, org.lgcy.Legacy.proto.Common.Permission.Builder builderForValue) {
+          if (activesBuilder_ == null) {
+            ensureActivesIsMutable();
+            actives_.set(index, builderForValue.build());
+            onChanged();
+          } else {
+            activesBuilder_.setMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder addActives(org.lgcy.Legacy.proto.Common.Permission value) {
+          if (activesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureActivesIsMutable();
+            actives_.add(value);
+            onChanged();
+          } else {
+            activesBuilder_.addMessage(value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder addActives(
+            int index, org.lgcy.Legacy.proto.Common.Permission value) {
+          if (activesBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureActivesIsMutable();
+            actives_.add(index, value);
+            onChanged();
+          } else {
+            activesBuilder_.addMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder addActives(
+            org.lgcy.Legacy.proto.Common.Permission.Builder builderForValue) {
+          if (activesBuilder_ == null) {
+            ensureActivesIsMutable();
+            actives_.add(builderForValue.build());
+            onChanged();
+          } else {
+            activesBuilder_.addMessage(builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder addActives(
+            int index, org.lgcy.Legacy.proto.Common.Permission.Builder builderForValue) {
+          if (activesBuilder_ == null) {
+            ensureActivesIsMutable();
+            actives_.add(index, builderForValue.build());
+            onChanged();
+          } else {
+            activesBuilder_.addMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder addAllActives(
+            java.lang.Iterable<? extends org.lgcy.Legacy.proto.Common.Permission> values) {
+          if (activesBuilder_ == null) {
+            ensureActivesIsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, actives_);
+            onChanged();
+          } else {
+            activesBuilder_.addAllMessages(values);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder clearActives() {
+          if (activesBuilder_ == null) {
+            actives_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000004);
+            onChanged();
+          } else {
+            activesBuilder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public Builder removeActives(int index) {
+          if (activesBuilder_ == null) {
+            ensureActivesIsMutable();
+            actives_.remove(index);
+            onChanged();
+          } else {
+            activesBuilder_.remove(index);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.Permission.Builder getActivesBuilder(
+            int index) {
+          return getActivesFieldBuilder().getBuilder(index);
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.PermissionOrBuilder getActivesOrBuilder(
+            int index) {
+          if (activesBuilder_ == null) {
+            return actives_.get(index);  } else {
+            return activesBuilder_.getMessageOrBuilder(index);
+          }
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public java.util.List<? extends org.lgcy.Legacy.proto.Common.PermissionOrBuilder> 
+             getActivesOrBuilderList() {
+          if (activesBuilder_ != null) {
+            return activesBuilder_.getMessageOrBuilderList();
+          } else {
+            return java.util.Collections.unmodifiableList(actives_);
+          }
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.Permission.Builder addActivesBuilder() {
+          return getActivesFieldBuilder().addBuilder(
+              org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public org.lgcy.Legacy.proto.Common.Permission.Builder addActivesBuilder(
+            int index) {
+          return getActivesFieldBuilder().addBuilder(
+              index, org.lgcy.Legacy.proto.Common.Permission.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .protocol.Permission actives = 20;</code>
+         */
+        public java.util.List<org.lgcy.Legacy.proto.Common.Permission.Builder> 
+             getActivesBuilderList() {
+          return getActivesFieldBuilder().getBuilderList();
+        }
+        private com.google.protobuf.RepeatedFieldBuilderV3<
+            org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder> 
+            getActivesFieldBuilder() {
+          if (activesBuilder_ == null) {
+            activesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+                org.lgcy.Legacy.proto.Common.Permission, org.lgcy.Legacy.proto.Common.Permission.Builder, org.lgcy.Legacy.proto.Common.PermissionOrBuilder>(
+                    actives_,
+                    ((bitField0_ & 0x00000004) != 0),
+                    getParentForChildren(),
+                    isClean());
+            actives_ = null;
+          }
+          return activesBuilder_;
+        }
+
+        private java.lang.Object accountAddress_ = "";
+        /**
+         * <code>string account_address = 21;</code>
+         * @return The accountAddress.
+         */
+        public java.lang.String getAccountAddress() {
+          java.lang.Object ref = accountAddress_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            accountAddress_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string account_address = 21;</code>
+         * @return The bytes for accountAddress.
+         */
+        public com.google.protobuf.ByteString
+            getAccountAddressBytes() {
+          java.lang.Object ref = accountAddress_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            accountAddress_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string account_address = 21;</code>
+         * @param value The accountAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAccountAddress(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          accountAddress_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string account_address = 21;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAccountAddress() {
+          
+          accountAddress_ = getDefaultInstance().getAccountAddress();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string account_address = 21;</code>
+         * @param value The bytes for accountAddress to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAccountAddressBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          accountAddress_ = value;
           onChanged();
           return this;
         }
@@ -1920,7 +6916,7 @@ public final class NewTransactionOuterClass {
         if (parameter_ != null) {
           output.writeMessage(1, getParameter());
         }
-        if (type_ != org.lgcy.Legacy.proto.Chain.Transaction.Contract.ContractType.AccountCreateContract.getNumber()) {
+        if (type_ != org.lgcy.Legacy.proto.Chain.Transaction.Contract.ContractType.DefaultContract.getNumber()) {
           output.writeEnum(2, type_);
         }
         unknownFields.writeTo(output);
@@ -1936,7 +6932,7 @@ public final class NewTransactionOuterClass {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, getParameter());
         }
-        if (type_ != org.lgcy.Legacy.proto.Chain.Transaction.Contract.ContractType.AccountCreateContract.getNumber()) {
+        if (type_ != org.lgcy.Legacy.proto.Chain.Transaction.Contract.ContractType.DefaultContract.getNumber()) {
           size += com.google.protobuf.CodedOutputStream
             .computeEnumSize(2, type_);
         }
@@ -2512,13 +7508,13 @@ public final class NewTransactionOuterClass {
           getRefBlockHashBytes();
 
       /**
-       * <code>uint64 expiration = 4;</code>
+       * <code>int64 expiration = 4;</code>
        * @return The expiration.
        */
       long getExpiration();
 
       /**
-       * <code>uint64 timestamp = 5;</code>
+       * <code>int64 timestamp = 5;</code>
        * @return The timestamp.
        */
       long getTimestamp();
@@ -2595,12 +7591,12 @@ public final class NewTransactionOuterClass {
               }
               case 32: {
 
-                expiration_ = input.readUInt64();
+                expiration_ = input.readInt64();
                 break;
               }
               case 40: {
 
-                timestamp_ = input.readUInt64();
+                timestamp_ = input.readInt64();
                 break;
               }
               default: {
@@ -2757,7 +7753,7 @@ public final class NewTransactionOuterClass {
       public static final int EXPIRATION_FIELD_NUMBER = 4;
       private long expiration_;
       /**
-       * <code>uint64 expiration = 4;</code>
+       * <code>int64 expiration = 4;</code>
        * @return The expiration.
        */
       @java.lang.Override
@@ -2768,7 +7764,7 @@ public final class NewTransactionOuterClass {
       public static final int TIMESTAMP_FIELD_NUMBER = 5;
       private long timestamp_;
       /**
-       * <code>uint64 timestamp = 5;</code>
+       * <code>int64 timestamp = 5;</code>
        * @return The timestamp.
        */
       @java.lang.Override
@@ -2800,10 +7796,10 @@ public final class NewTransactionOuterClass {
           com.google.protobuf.GeneratedMessageV3.writeString(output, 3, refBlockHash_);
         }
         if (expiration_ != 0L) {
-          output.writeUInt64(4, expiration_);
+          output.writeInt64(4, expiration_);
         }
         if (timestamp_ != 0L) {
-          output.writeUInt64(5, timestamp_);
+          output.writeInt64(5, timestamp_);
         }
         unknownFields.writeTo(output);
       }
@@ -2826,11 +7822,11 @@ public final class NewTransactionOuterClass {
         }
         if (expiration_ != 0L) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt64Size(4, expiration_);
+            .computeInt64Size(4, expiration_);
         }
         if (timestamp_ != 0L) {
           size += com.google.protobuf.CodedOutputStream
-            .computeUInt64Size(5, timestamp_);
+            .computeInt64Size(5, timestamp_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSize = size;
@@ -3582,7 +8578,7 @@ public final class NewTransactionOuterClass {
 
         private long expiration_ ;
         /**
-         * <code>uint64 expiration = 4;</code>
+         * <code>int64 expiration = 4;</code>
          * @return The expiration.
          */
         @java.lang.Override
@@ -3590,7 +8586,7 @@ public final class NewTransactionOuterClass {
           return expiration_;
         }
         /**
-         * <code>uint64 expiration = 4;</code>
+         * <code>int64 expiration = 4;</code>
          * @param value The expiration to set.
          * @return This builder for chaining.
          */
@@ -3601,7 +8597,7 @@ public final class NewTransactionOuterClass {
           return this;
         }
         /**
-         * <code>uint64 expiration = 4;</code>
+         * <code>int64 expiration = 4;</code>
          * @return This builder for chaining.
          */
         public Builder clearExpiration() {
@@ -3613,7 +8609,7 @@ public final class NewTransactionOuterClass {
 
         private long timestamp_ ;
         /**
-         * <code>uint64 timestamp = 5;</code>
+         * <code>int64 timestamp = 5;</code>
          * @return The timestamp.
          */
         @java.lang.Override
@@ -3621,7 +8617,7 @@ public final class NewTransactionOuterClass {
           return timestamp_;
         }
         /**
-         * <code>uint64 timestamp = 5;</code>
+         * <code>int64 timestamp = 5;</code>
          * @param value The timestamp to set.
          * @return This builder for chaining.
          */
@@ -3632,7 +8628,7 @@ public final class NewTransactionOuterClass {
           return this;
         }
         /**
-         * <code>uint64 timestamp = 5;</code>
+         * <code>int64 timestamp = 5;</code>
          * @return This builder for chaining.
          */
         public Builder clearTimestamp() {
@@ -3705,10 +8701,45 @@ public final class NewTransactionOuterClass {
       return visible_;
     }
 
-    public static final int TXID_FIELD_NUMBER = 2;
+    public static final int SIGNATURE_FIELD_NUMBER = 2;
+    private com.google.protobuf.LazyStringList signature_;
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @return A list containing the signature.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getSignatureList() {
+      return signature_;
+    }
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @return The count of signature.
+     */
+    public int getSignatureCount() {
+      return signature_.size();
+    }
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @param index The index of the element to return.
+     * @return The signature at the given index.
+     */
+    public java.lang.String getSignature(int index) {
+      return signature_.get(index);
+    }
+    /**
+     * <code>repeated string signature = 2;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the signature at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getSignatureBytes(int index) {
+      return signature_.getByteString(index);
+    }
+
+    public static final int TXID_FIELD_NUMBER = 3;
     private volatile java.lang.Object txID_;
     /**
-     * <code>string txID = 2;</code>
+     * <code>string txID = 3;</code>
      * @return The txID.
      */
     @java.lang.Override
@@ -3725,7 +8756,7 @@ public final class NewTransactionOuterClass {
       }
     }
     /**
-     * <code>string txID = 2;</code>
+     * <code>string txID = 3;</code>
      * @return The bytes for txID.
      */
     @java.lang.Override
@@ -3743,10 +8774,10 @@ public final class NewTransactionOuterClass {
       }
     }
 
-    public static final int RAW_DATA_FIELD_NUMBER = 3;
+    public static final int RAW_DATA_FIELD_NUMBER = 4;
     private org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data rawData_;
     /**
-     * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+     * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
      * @return Whether the rawData field is set.
      */
     @java.lang.Override
@@ -3754,7 +8785,7 @@ public final class NewTransactionOuterClass {
       return rawData_ != null;
     }
     /**
-     * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+     * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
      * @return The rawData.
      */
     @java.lang.Override
@@ -3762,17 +8793,17 @@ public final class NewTransactionOuterClass {
       return rawData_ == null ? org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data.getDefaultInstance() : rawData_;
     }
     /**
-     * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+     * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
      */
     @java.lang.Override
     public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_dataOrBuilder getRawDataOrBuilder() {
       return getRawData();
     }
 
-    public static final int RAW_DATA_HEX_FIELD_NUMBER = 4;
+    public static final int RAW_DATA_HEX_FIELD_NUMBER = 5;
     private volatile java.lang.Object rawDataHex_;
     /**
-     * <code>string raw_data_hex = 4;</code>
+     * <code>string raw_data_hex = 5;</code>
      * @return The rawDataHex.
      */
     @java.lang.Override
@@ -3789,7 +8820,7 @@ public final class NewTransactionOuterClass {
       }
     }
     /**
-     * <code>string raw_data_hex = 4;</code>
+     * <code>string raw_data_hex = 5;</code>
      * @return The bytes for rawDataHex.
      */
     @java.lang.Override
@@ -3801,6 +8832,84 @@ public final class NewTransactionOuterClass {
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         rawDataHex_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RET_FIELD_NUMBER = 6;
+    private java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result> ret_;
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result> getRetList() {
+      return ret_;
+    }
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder> 
+        getRetOrBuilderList() {
+      return ret_;
+    }
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    @java.lang.Override
+    public int getRetCount() {
+      return ret_.size();
+    }
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result getRet(int index) {
+      return ret_.get(index);
+    }
+    /**
+     * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder getRetOrBuilder(
+        int index) {
+      return ret_.get(index);
+    }
+
+    public static final int ERROR_FIELD_NUMBER = 7;
+    private volatile java.lang.Object error_;
+    /**
+     * <code>string Error = 7;</code>
+     * @return The error.
+     */
+    @java.lang.Override
+    public java.lang.String getError() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        error_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Error = 7;</code>
+     * @return The bytes for error.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getErrorBytes() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        error_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -3824,14 +8933,23 @@ public final class NewTransactionOuterClass {
       if (visible_ != false) {
         output.writeBool(1, visible_);
       }
+      for (int i = 0; i < signature_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, signature_.getRaw(i));
+      }
       if (!getTxIDBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, txID_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, txID_);
       }
       if (rawData_ != null) {
-        output.writeMessage(3, getRawData());
+        output.writeMessage(4, getRawData());
       }
       if (!getRawDataHexBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, rawDataHex_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, rawDataHex_);
+      }
+      for (int i = 0; i < ret_.size(); i++) {
+        output.writeMessage(6, ret_.get(i));
+      }
+      if (!getErrorBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, error_);
       }
       unknownFields.writeTo(output);
     }
@@ -3846,15 +8964,30 @@ public final class NewTransactionOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, visible_);
       }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < signature_.size(); i++) {
+          dataSize += computeStringSizeNoTag(signature_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getSignatureList().size();
+      }
       if (!getTxIDBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, txID_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, txID_);
       }
       if (rawData_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getRawData());
+          .computeMessageSize(4, getRawData());
       }
       if (!getRawDataHexBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, rawDataHex_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, rawDataHex_);
+      }
+      for (int i = 0; i < ret_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, ret_.get(i));
+      }
+      if (!getErrorBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, error_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3873,6 +9006,8 @@ public final class NewTransactionOuterClass {
 
       if (getVisible()
           != other.getVisible()) return false;
+      if (!getSignatureList()
+          .equals(other.getSignatureList())) return false;
       if (!getTxID()
           .equals(other.getTxID())) return false;
       if (hasRawData() != other.hasRawData()) return false;
@@ -3882,6 +9017,10 @@ public final class NewTransactionOuterClass {
       }
       if (!getRawDataHex()
           .equals(other.getRawDataHex())) return false;
+      if (!getRetList()
+          .equals(other.getRetList())) return false;
+      if (!getError()
+          .equals(other.getError())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3896,6 +9035,10 @@ public final class NewTransactionOuterClass {
       hash = (37 * hash) + VISIBLE_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getVisible());
+      if (getSignatureCount() > 0) {
+        hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
+        hash = (53 * hash) + getSignatureList().hashCode();
+      }
       hash = (37 * hash) + TXID_FIELD_NUMBER;
       hash = (53 * hash) + getTxID().hashCode();
       if (hasRawData()) {
@@ -3904,6 +9047,12 @@ public final class NewTransactionOuterClass {
       }
       hash = (37 * hash) + RAW_DATA_HEX_FIELD_NUMBER;
       hash = (53 * hash) + getRawDataHex().hashCode();
+      if (getRetCount() > 0) {
+        hash = (37 * hash) + RET_FIELD_NUMBER;
+        hash = (53 * hash) + getRetList().hashCode();
+      }
+      hash = (37 * hash) + ERROR_FIELD_NUMBER;
+      hash = (53 * hash) + getError().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4032,6 +9181,7 @@ public final class NewTransactionOuterClass {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getRetFieldBuilder();
         }
       }
       @java.lang.Override
@@ -4039,6 +9189,8 @@ public final class NewTransactionOuterClass {
         super.clear();
         visible_ = false;
 
+        signature_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         txID_ = "";
 
         if (rawDataBuilder_ == null) {
@@ -4048,6 +9200,14 @@ public final class NewTransactionOuterClass {
           rawDataBuilder_ = null;
         }
         rawDataHex_ = "";
+
+        if (retBuilder_ == null) {
+          ret_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          retBuilder_.clear();
+        }
+        error_ = "";
 
         return this;
       }
@@ -4075,7 +9235,13 @@ public final class NewTransactionOuterClass {
       @java.lang.Override
       public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction buildPartial() {
         org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction(this);
+        int from_bitField0_ = bitField0_;
         result.visible_ = visible_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          signature_ = signature_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.signature_ = signature_;
         result.txID_ = txID_;
         if (rawDataBuilder_ == null) {
           result.rawData_ = rawData_;
@@ -4083,6 +9249,16 @@ public final class NewTransactionOuterClass {
           result.rawData_ = rawDataBuilder_.build();
         }
         result.rawDataHex_ = rawDataHex_;
+        if (retBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            ret_ = java.util.Collections.unmodifiableList(ret_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.ret_ = ret_;
+        } else {
+          result.ret_ = retBuilder_.build();
+        }
+        result.error_ = error_;
         onBuilt();
         return result;
       }
@@ -4134,6 +9310,16 @@ public final class NewTransactionOuterClass {
         if (other.getVisible() != false) {
           setVisible(other.getVisible());
         }
+        if (!other.signature_.isEmpty()) {
+          if (signature_.isEmpty()) {
+            signature_ = other.signature_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureSignatureIsMutable();
+            signature_.addAll(other.signature_);
+          }
+          onChanged();
+        }
         if (!other.getTxID().isEmpty()) {
           txID_ = other.txID_;
           onChanged();
@@ -4143,6 +9329,36 @@ public final class NewTransactionOuterClass {
         }
         if (!other.getRawDataHex().isEmpty()) {
           rawDataHex_ = other.rawDataHex_;
+          onChanged();
+        }
+        if (retBuilder_ == null) {
+          if (!other.ret_.isEmpty()) {
+            if (ret_.isEmpty()) {
+              ret_ = other.ret_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRetIsMutable();
+              ret_.addAll(other.ret_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.ret_.isEmpty()) {
+            if (retBuilder_.isEmpty()) {
+              retBuilder_.dispose();
+              retBuilder_ = null;
+              ret_ = other.ret_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              retBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getRetFieldBuilder() : null;
+            } else {
+              retBuilder_.addAllMessages(other.ret_);
+            }
+          }
+        }
+        if (!other.getError().isEmpty()) {
+          error_ = other.error_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -4173,6 +9389,7 @@ public final class NewTransactionOuterClass {
         }
         return this;
       }
+      private int bitField0_;
 
       private boolean visible_ ;
       /**
@@ -4205,9 +9422,119 @@ public final class NewTransactionOuterClass {
         return this;
       }
 
+      private com.google.protobuf.LazyStringList signature_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureSignatureIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          signature_ = new com.google.protobuf.LazyStringArrayList(signature_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @return A list containing the signature.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getSignatureList() {
+        return signature_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @return The count of signature.
+       */
+      public int getSignatureCount() {
+        return signature_.size();
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @param index The index of the element to return.
+       * @return The signature at the given index.
+       */
+      public java.lang.String getSignature(int index) {
+        return signature_.get(index);
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the signature at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getSignatureBytes(int index) {
+        return signature_.getByteString(index);
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The signature to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSignature(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSignatureIsMutable();
+        signature_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @param value The signature to add.
+       * @return This builder for chaining.
+       */
+      public Builder addSignature(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureSignatureIsMutable();
+        signature_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @param values The signature to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllSignature(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureSignatureIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, signature_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSignature() {
+        signature_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string signature = 2;</code>
+       * @param value The bytes of the signature to add.
+       * @return This builder for chaining.
+       */
+      public Builder addSignatureBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureSignatureIsMutable();
+        signature_.add(value);
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object txID_ = "";
       /**
-       * <code>string txID = 2;</code>
+       * <code>string txID = 3;</code>
        * @return The txID.
        */
       public java.lang.String getTxID() {
@@ -4223,7 +9550,7 @@ public final class NewTransactionOuterClass {
         }
       }
       /**
-       * <code>string txID = 2;</code>
+       * <code>string txID = 3;</code>
        * @return The bytes for txID.
        */
       public com.google.protobuf.ByteString
@@ -4240,7 +9567,7 @@ public final class NewTransactionOuterClass {
         }
       }
       /**
-       * <code>string txID = 2;</code>
+       * <code>string txID = 3;</code>
        * @param value The txID to set.
        * @return This builder for chaining.
        */
@@ -4255,7 +9582,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>string txID = 2;</code>
+       * <code>string txID = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearTxID() {
@@ -4265,7 +9592,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>string txID = 2;</code>
+       * <code>string txID = 3;</code>
        * @param value The bytes for txID to set.
        * @return This builder for chaining.
        */
@@ -4285,14 +9612,14 @@ public final class NewTransactionOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_dataOrBuilder> rawDataBuilder_;
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        * @return Whether the rawData field is set.
        */
       public boolean hasRawData() {
         return rawDataBuilder_ != null || rawData_ != null;
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        * @return The rawData.
        */
       public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data getRawData() {
@@ -4303,7 +9630,7 @@ public final class NewTransactionOuterClass {
         }
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       public Builder setRawData(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data value) {
         if (rawDataBuilder_ == null) {
@@ -4319,7 +9646,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       public Builder setRawData(
           org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data.Builder builderForValue) {
@@ -4333,7 +9660,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       public Builder mergeRawData(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data value) {
         if (rawDataBuilder_ == null) {
@@ -4351,7 +9678,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       public Builder clearRawData() {
         if (rawDataBuilder_ == null) {
@@ -4365,7 +9692,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data.Builder getRawDataBuilder() {
         
@@ -4373,7 +9700,7 @@ public final class NewTransactionOuterClass {
         return getRawDataFieldBuilder().getBuilder();
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_dataOrBuilder getRawDataOrBuilder() {
         if (rawDataBuilder_ != null) {
@@ -4384,7 +9711,7 @@ public final class NewTransactionOuterClass {
         }
       }
       /**
-       * <code>.protocol.NewTransaction.Raw_data raw_data = 3;</code>
+       * <code>.protocol.NewTransaction.Raw_data raw_data = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_data.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Raw_dataOrBuilder> 
@@ -4402,7 +9729,7 @@ public final class NewTransactionOuterClass {
 
       private java.lang.Object rawDataHex_ = "";
       /**
-       * <code>string raw_data_hex = 4;</code>
+       * <code>string raw_data_hex = 5;</code>
        * @return The rawDataHex.
        */
       public java.lang.String getRawDataHex() {
@@ -4418,7 +9745,7 @@ public final class NewTransactionOuterClass {
         }
       }
       /**
-       * <code>string raw_data_hex = 4;</code>
+       * <code>string raw_data_hex = 5;</code>
        * @return The bytes for rawDataHex.
        */
       public com.google.protobuf.ByteString
@@ -4435,7 +9762,7 @@ public final class NewTransactionOuterClass {
         }
       }
       /**
-       * <code>string raw_data_hex = 4;</code>
+       * <code>string raw_data_hex = 5;</code>
        * @param value The rawDataHex to set.
        * @return This builder for chaining.
        */
@@ -4450,7 +9777,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>string raw_data_hex = 4;</code>
+       * <code>string raw_data_hex = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearRawDataHex() {
@@ -4460,7 +9787,7 @@ public final class NewTransactionOuterClass {
         return this;
       }
       /**
-       * <code>string raw_data_hex = 4;</code>
+       * <code>string raw_data_hex = 5;</code>
        * @param value The bytes for rawDataHex to set.
        * @return This builder for chaining.
        */
@@ -4472,6 +9799,322 @@ public final class NewTransactionOuterClass {
   checkByteStringIsUtf8(value);
         
         rawDataHex_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result> ret_ =
+        java.util.Collections.emptyList();
+      private void ensureRetIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          ret_ = new java.util.ArrayList<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result>(ret_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder> retBuilder_;
+
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result> getRetList() {
+        if (retBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(ret_);
+        } else {
+          return retBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public int getRetCount() {
+        if (retBuilder_ == null) {
+          return ret_.size();
+        } else {
+          return retBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result getRet(int index) {
+        if (retBuilder_ == null) {
+          return ret_.get(index);
+        } else {
+          return retBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder setRet(
+          int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result value) {
+        if (retBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRetIsMutable();
+          ret_.set(index, value);
+          onChanged();
+        } else {
+          retBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder setRet(
+          int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder builderForValue) {
+        if (retBuilder_ == null) {
+          ensureRetIsMutable();
+          ret_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          retBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder addRet(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result value) {
+        if (retBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRetIsMutable();
+          ret_.add(value);
+          onChanged();
+        } else {
+          retBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder addRet(
+          int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result value) {
+        if (retBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRetIsMutable();
+          ret_.add(index, value);
+          onChanged();
+        } else {
+          retBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder addRet(
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder builderForValue) {
+        if (retBuilder_ == null) {
+          ensureRetIsMutable();
+          ret_.add(builderForValue.build());
+          onChanged();
+        } else {
+          retBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder addRet(
+          int index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder builderForValue) {
+        if (retBuilder_ == null) {
+          ensureRetIsMutable();
+          ret_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          retBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder addAllRet(
+          java.lang.Iterable<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result> values) {
+        if (retBuilder_ == null) {
+          ensureRetIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, ret_);
+          onChanged();
+        } else {
+          retBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder clearRet() {
+        if (retBuilder_ == null) {
+          ret_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          retBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public Builder removeRet(int index) {
+        if (retBuilder_ == null) {
+          ensureRetIsMutable();
+          ret_.remove(index);
+          onChanged();
+        } else {
+          retBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder getRetBuilder(
+          int index) {
+        return getRetFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder getRetOrBuilder(
+          int index) {
+        if (retBuilder_ == null) {
+          return ret_.get(index);  } else {
+          return retBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public java.util.List<? extends org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder> 
+           getRetOrBuilderList() {
+        if (retBuilder_ != null) {
+          return retBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(ret_);
+        }
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder addRetBuilder() {
+        return getRetFieldBuilder().addBuilder(
+            org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder addRetBuilder(
+          int index) {
+        return getRetFieldBuilder().addBuilder(
+            index, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .protocol.NewTransaction.Result ret = 6;</code>
+       */
+      public java.util.List<org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder> 
+           getRetBuilderList() {
+        return getRetFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder> 
+          getRetFieldBuilder() {
+        if (retBuilder_ == null) {
+          retBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Result.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.ResultOrBuilder>(
+                  ret_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          ret_ = null;
+        }
+        return retBuilder_;
+      }
+
+      private java.lang.Object error_ = "";
+      /**
+       * <code>string Error = 7;</code>
+       * @return The error.
+       */
+      public java.lang.String getError() {
+        java.lang.Object ref = error_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          error_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Error = 7;</code>
+       * @return The bytes for error.
+       */
+      public com.google.protobuf.ByteString
+          getErrorBytes() {
+        java.lang.Object ref = error_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          error_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Error = 7;</code>
+       * @param value The error to set.
+       * @return This builder for chaining.
+       */
+      public Builder setError(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        error_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Error = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearError() {
+        
+        error_ = getDefaultInstance().getError();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Error = 7;</code>
+       * @param value The bytes for error to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErrorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        error_ = value;
         onChanged();
         return this;
       }
@@ -4528,16 +10171,2011 @@ public final class NewTransactionOuterClass {
 
   }
 
+  public interface SignTransactionExtensionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protocol.SignTransactionExtension)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return Whether the transaction field is set.
+     */
+    boolean hasTransaction();
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return The transaction.
+     */
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransaction();
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     */
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder getTransactionOrBuilder();
+
+    /**
+     * <code>string privateKey = 2;</code>
+     * @return The privateKey.
+     */
+    java.lang.String getPrivateKey();
+    /**
+     * <code>string privateKey = 2;</code>
+     * @return The bytes for privateKey.
+     */
+    com.google.protobuf.ByteString
+        getPrivateKeyBytes();
+  }
+  /**
+   * Protobuf type {@code protocol.SignTransactionExtension}
+   */
+  public static final class SignTransactionExtension extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protocol.SignTransactionExtension)
+      SignTransactionExtensionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SignTransactionExtension.newBuilder() to construct.
+    private SignTransactionExtension(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SignTransactionExtension() {
+      privateKey_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new SignTransactionExtension();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SignTransactionExtension(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder subBuilder = null;
+              if (transaction_ != null) {
+                subBuilder = transaction_.toBuilder();
+              }
+              transaction_ = input.readMessage(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(transaction_);
+                transaction_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              privateKey_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_SignTransactionExtension_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_SignTransactionExtension_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.Builder.class);
+    }
+
+    public static final int TRANSACTION_FIELD_NUMBER = 1;
+    private org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction transaction_;
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return Whether the transaction field is set.
+     */
+    @java.lang.Override
+    public boolean hasTransaction() {
+      return transaction_ != null;
+    }
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return The transaction.
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransaction() {
+      return transaction_ == null ? org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance() : transaction_;
+    }
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder getTransactionOrBuilder() {
+      return getTransaction();
+    }
+
+    public static final int PRIVATEKEY_FIELD_NUMBER = 2;
+    private volatile java.lang.Object privateKey_;
+    /**
+     * <code>string privateKey = 2;</code>
+     * @return The privateKey.
+     */
+    @java.lang.Override
+    public java.lang.String getPrivateKey() {
+      java.lang.Object ref = privateKey_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        privateKey_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string privateKey = 2;</code>
+     * @return The bytes for privateKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPrivateKeyBytes() {
+      java.lang.Object ref = privateKey_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        privateKey_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (transaction_ != null) {
+        output.writeMessage(1, getTransaction());
+      }
+      if (!getPrivateKeyBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, privateKey_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (transaction_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTransaction());
+      }
+      if (!getPrivateKeyBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, privateKey_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension)) {
+        return super.equals(obj);
+      }
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension other = (org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension) obj;
+
+      if (hasTransaction() != other.hasTransaction()) return false;
+      if (hasTransaction()) {
+        if (!getTransaction()
+            .equals(other.getTransaction())) return false;
+      }
+      if (!getPrivateKey()
+          .equals(other.getPrivateKey())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTransaction()) {
+        hash = (37 * hash) + TRANSACTION_FIELD_NUMBER;
+        hash = (53 * hash) + getTransaction().hashCode();
+      }
+      hash = (37 * hash) + PRIVATEKEY_FIELD_NUMBER;
+      hash = (53 * hash) + getPrivateKey().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protocol.SignTransactionExtension}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protocol.SignTransactionExtension)
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtensionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_SignTransactionExtension_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_SignTransactionExtension_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.Builder.class);
+      }
+
+      // Construct using org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (transactionBuilder_ == null) {
+          transaction_ = null;
+        } else {
+          transaction_ = null;
+          transactionBuilder_ = null;
+        }
+        privateKey_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_SignTransactionExtension_descriptor;
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension getDefaultInstanceForType() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension build() {
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension buildPartial() {
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension(this);
+        if (transactionBuilder_ == null) {
+          result.transaction_ = transaction_;
+        } else {
+          result.transaction_ = transactionBuilder_.build();
+        }
+        result.privateKey_ = privateKey_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension) {
+          return mergeFrom((org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension other) {
+        if (other == org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension.getDefaultInstance()) return this;
+        if (other.hasTransaction()) {
+          mergeTransaction(other.getTransaction());
+        }
+        if (!other.getPrivateKey().isEmpty()) {
+          privateKey_ = other.privateKey_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction transaction_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder> transactionBuilder_;
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       * @return Whether the transaction field is set.
+       */
+      public boolean hasTransaction() {
+        return transactionBuilder_ != null || transaction_ != null;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       * @return The transaction.
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransaction() {
+        if (transactionBuilder_ == null) {
+          return transaction_ == null ? org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance() : transaction_;
+        } else {
+          return transactionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder setTransaction(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction value) {
+        if (transactionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          transaction_ = value;
+          onChanged();
+        } else {
+          transactionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder setTransaction(
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder builderForValue) {
+        if (transactionBuilder_ == null) {
+          transaction_ = builderForValue.build();
+          onChanged();
+        } else {
+          transactionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder mergeTransaction(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction value) {
+        if (transactionBuilder_ == null) {
+          if (transaction_ != null) {
+            transaction_ =
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.newBuilder(transaction_).mergeFrom(value).buildPartial();
+          } else {
+            transaction_ = value;
+          }
+          onChanged();
+        } else {
+          transactionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder clearTransaction() {
+        if (transactionBuilder_ == null) {
+          transaction_ = null;
+          onChanged();
+        } else {
+          transaction_ = null;
+          transactionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder getTransactionBuilder() {
+        
+        onChanged();
+        return getTransactionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder getTransactionOrBuilder() {
+        if (transactionBuilder_ != null) {
+          return transactionBuilder_.getMessageOrBuilder();
+        } else {
+          return transaction_ == null ?
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance() : transaction_;
+        }
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder> 
+          getTransactionFieldBuilder() {
+        if (transactionBuilder_ == null) {
+          transactionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder>(
+                  getTransaction(),
+                  getParentForChildren(),
+                  isClean());
+          transaction_ = null;
+        }
+        return transactionBuilder_;
+      }
+
+      private java.lang.Object privateKey_ = "";
+      /**
+       * <code>string privateKey = 2;</code>
+       * @return The privateKey.
+       */
+      public java.lang.String getPrivateKey() {
+        java.lang.Object ref = privateKey_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          privateKey_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string privateKey = 2;</code>
+       * @return The bytes for privateKey.
+       */
+      public com.google.protobuf.ByteString
+          getPrivateKeyBytes() {
+        java.lang.Object ref = privateKey_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          privateKey_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string privateKey = 2;</code>
+       * @param value The privateKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrivateKey(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        privateKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string privateKey = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPrivateKey() {
+        
+        privateKey_ = getDefaultInstance().getPrivateKey();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string privateKey = 2;</code>
+       * @param value The bytes for privateKey to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPrivateKeyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        privateKey_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protocol.SignTransactionExtension)
+    }
+
+    // @@protoc_insertion_point(class_scope:protocol.SignTransactionExtension)
+    private static final org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension();
+    }
+
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SignTransactionExtension>
+        PARSER = new com.google.protobuf.AbstractParser<SignTransactionExtension>() {
+      @java.lang.Override
+      public SignTransactionExtension parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SignTransactionExtension(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SignTransactionExtension> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SignTransactionExtension> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.SignTransactionExtension getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TransactionExtention2OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:protocol.TransactionExtention2)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return Whether the transaction field is set.
+     */
+    boolean hasTransaction();
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return The transaction.
+     */
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransaction();
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     */
+    org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder getTransactionOrBuilder();
+
+    /**
+     * <pre>
+     * transaction id = sha256(transaction.raw_data)
+     * </pre>
+     *
+     * <code>bytes txid = 2;</code>
+     * @return The txid.
+     */
+    com.google.protobuf.ByteString getTxid();
+
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @return A list containing the constantResult.
+     */
+    java.util.List<java.lang.String>
+        getConstantResultList();
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @return The count of constantResult.
+     */
+    int getConstantResultCount();
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @param index The index of the element to return.
+     * @return The constantResult at the given index.
+     */
+    java.lang.String getConstantResult(int index);
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the constantResult at the given index.
+     */
+    com.google.protobuf.ByteString
+        getConstantResultBytes(int index);
+
+    /**
+     * <code>.protocol.TransactionReturnData result = 4;</code>
+     * @return Whether the result field is set.
+     */
+    boolean hasResult();
+    /**
+     * <code>.protocol.TransactionReturnData result = 4;</code>
+     * @return The result.
+     */
+    org.lgcy.Legacy.proto.Chain.TransactionReturnData getResult();
+    /**
+     * <code>.protocol.TransactionReturnData result = 4;</code>
+     */
+    org.lgcy.Legacy.proto.Chain.TransactionReturnDataOrBuilder getResultOrBuilder();
+
+    /**
+     * <code>int64 energy_used = 5;</code>
+     * @return The energyUsed.
+     */
+    long getEnergyUsed();
+  }
+  /**
+   * Protobuf type {@code protocol.TransactionExtention2}
+   */
+  public static final class TransactionExtention2 extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:protocol.TransactionExtention2)
+      TransactionExtention2OrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TransactionExtention2.newBuilder() to construct.
+    private TransactionExtention2(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TransactionExtention2() {
+      txid_ = com.google.protobuf.ByteString.EMPTY;
+      constantResult_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TransactionExtention2();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TransactionExtention2(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder subBuilder = null;
+              if (transaction_ != null) {
+                subBuilder = transaction_.toBuilder();
+              }
+              transaction_ = input.readMessage(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(transaction_);
+                transaction_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+
+              txid_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                constantResult_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              constantResult_.add(s);
+              break;
+            }
+            case 34: {
+              org.lgcy.Legacy.proto.Chain.TransactionReturnData.Builder subBuilder = null;
+              if (result_ != null) {
+                subBuilder = result_.toBuilder();
+              }
+              result_ = input.readMessage(org.lgcy.Legacy.proto.Chain.TransactionReturnData.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(result_);
+                result_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 40: {
+
+              energyUsed_ = input.readInt64();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          constantResult_ = constantResult_.getUnmodifiableView();
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_TransactionExtention2_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_TransactionExtention2_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.Builder.class);
+    }
+
+    public static final int TRANSACTION_FIELD_NUMBER = 1;
+    private org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction transaction_;
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return Whether the transaction field is set.
+     */
+    @java.lang.Override
+    public boolean hasTransaction() {
+      return transaction_ != null;
+    }
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     * @return The transaction.
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransaction() {
+      return transaction_ == null ? org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance() : transaction_;
+    }
+    /**
+     * <code>.protocol.NewTransaction transaction = 1;</code>
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder getTransactionOrBuilder() {
+      return getTransaction();
+    }
+
+    public static final int TXID_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString txid_;
+    /**
+     * <pre>
+     * transaction id = sha256(transaction.raw_data)
+     * </pre>
+     *
+     * <code>bytes txid = 2;</code>
+     * @return The txid.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getTxid() {
+      return txid_;
+    }
+
+    public static final int CONSTANT_RESULT_FIELD_NUMBER = 3;
+    private com.google.protobuf.LazyStringList constantResult_;
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @return A list containing the constantResult.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getConstantResultList() {
+      return constantResult_;
+    }
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @return The count of constantResult.
+     */
+    public int getConstantResultCount() {
+      return constantResult_.size();
+    }
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @param index The index of the element to return.
+     * @return The constantResult at the given index.
+     */
+    public java.lang.String getConstantResult(int index) {
+      return constantResult_.get(index);
+    }
+    /**
+     * <code>repeated string constant_result = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the constantResult at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getConstantResultBytes(int index) {
+      return constantResult_.getByteString(index);
+    }
+
+    public static final int RESULT_FIELD_NUMBER = 4;
+    private org.lgcy.Legacy.proto.Chain.TransactionReturnData result_;
+    /**
+     * <code>.protocol.TransactionReturnData result = 4;</code>
+     * @return Whether the result field is set.
+     */
+    @java.lang.Override
+    public boolean hasResult() {
+      return result_ != null;
+    }
+    /**
+     * <code>.protocol.TransactionReturnData result = 4;</code>
+     * @return The result.
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.Chain.TransactionReturnData getResult() {
+      return result_ == null ? org.lgcy.Legacy.proto.Chain.TransactionReturnData.getDefaultInstance() : result_;
+    }
+    /**
+     * <code>.protocol.TransactionReturnData result = 4;</code>
+     */
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.Chain.TransactionReturnDataOrBuilder getResultOrBuilder() {
+      return getResult();
+    }
+
+    public static final int ENERGY_USED_FIELD_NUMBER = 5;
+    private long energyUsed_;
+    /**
+     * <code>int64 energy_used = 5;</code>
+     * @return The energyUsed.
+     */
+    @java.lang.Override
+    public long getEnergyUsed() {
+      return energyUsed_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (transaction_ != null) {
+        output.writeMessage(1, getTransaction());
+      }
+      if (!txid_.isEmpty()) {
+        output.writeBytes(2, txid_);
+      }
+      for (int i = 0; i < constantResult_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, constantResult_.getRaw(i));
+      }
+      if (result_ != null) {
+        output.writeMessage(4, getResult());
+      }
+      if (energyUsed_ != 0L) {
+        output.writeInt64(5, energyUsed_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (transaction_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getTransaction());
+      }
+      if (!txid_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, txid_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < constantResult_.size(); i++) {
+          dataSize += computeStringSizeNoTag(constantResult_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getConstantResultList().size();
+      }
+      if (result_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getResult());
+      }
+      if (energyUsed_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(5, energyUsed_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2)) {
+        return super.equals(obj);
+      }
+      org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 other = (org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2) obj;
+
+      if (hasTransaction() != other.hasTransaction()) return false;
+      if (hasTransaction()) {
+        if (!getTransaction()
+            .equals(other.getTransaction())) return false;
+      }
+      if (!getTxid()
+          .equals(other.getTxid())) return false;
+      if (!getConstantResultList()
+          .equals(other.getConstantResultList())) return false;
+      if (hasResult() != other.hasResult()) return false;
+      if (hasResult()) {
+        if (!getResult()
+            .equals(other.getResult())) return false;
+      }
+      if (getEnergyUsed()
+          != other.getEnergyUsed()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasTransaction()) {
+        hash = (37 * hash) + TRANSACTION_FIELD_NUMBER;
+        hash = (53 * hash) + getTransaction().hashCode();
+      }
+      hash = (37 * hash) + TXID_FIELD_NUMBER;
+      hash = (53 * hash) + getTxid().hashCode();
+      if (getConstantResultCount() > 0) {
+        hash = (37 * hash) + CONSTANT_RESULT_FIELD_NUMBER;
+        hash = (53 * hash) + getConstantResultList().hashCode();
+      }
+      if (hasResult()) {
+        hash = (37 * hash) + RESULT_FIELD_NUMBER;
+        hash = (53 * hash) + getResult().hashCode();
+      }
+      hash = (37 * hash) + ENERGY_USED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getEnergyUsed());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code protocol.TransactionExtention2}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:protocol.TransactionExtention2)
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_TransactionExtention2_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_TransactionExtention2_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.class, org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.Builder.class);
+      }
+
+      // Construct using org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (transactionBuilder_ == null) {
+          transaction_ = null;
+        } else {
+          transaction_ = null;
+          transactionBuilder_ = null;
+        }
+        txid_ = com.google.protobuf.ByteString.EMPTY;
+
+        constantResult_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (resultBuilder_ == null) {
+          result_ = null;
+        } else {
+          result_ = null;
+          resultBuilder_ = null;
+        }
+        energyUsed_ = 0L;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.internal_static_protocol_TransactionExtention2_descriptor;
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 getDefaultInstanceForType() {
+        return org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 build() {
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 buildPartial() {
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 result = new org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2(this);
+        int from_bitField0_ = bitField0_;
+        if (transactionBuilder_ == null) {
+          result.transaction_ = transaction_;
+        } else {
+          result.transaction_ = transactionBuilder_.build();
+        }
+        result.txid_ = txid_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          constantResult_ = constantResult_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.constantResult_ = constantResult_;
+        if (resultBuilder_ == null) {
+          result.result_ = result_;
+        } else {
+          result.result_ = resultBuilder_.build();
+        }
+        result.energyUsed_ = energyUsed_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2) {
+          return mergeFrom((org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 other) {
+        if (other == org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2.getDefaultInstance()) return this;
+        if (other.hasTransaction()) {
+          mergeTransaction(other.getTransaction());
+        }
+        if (other.getTxid() != com.google.protobuf.ByteString.EMPTY) {
+          setTxid(other.getTxid());
+        }
+        if (!other.constantResult_.isEmpty()) {
+          if (constantResult_.isEmpty()) {
+            constantResult_ = other.constantResult_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureConstantResultIsMutable();
+            constantResult_.addAll(other.constantResult_);
+          }
+          onChanged();
+        }
+        if (other.hasResult()) {
+          mergeResult(other.getResult());
+        }
+        if (other.getEnergyUsed() != 0L) {
+          setEnergyUsed(other.getEnergyUsed());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction transaction_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder> transactionBuilder_;
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       * @return Whether the transaction field is set.
+       */
+      public boolean hasTransaction() {
+        return transactionBuilder_ != null || transaction_ != null;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       * @return The transaction.
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction getTransaction() {
+        if (transactionBuilder_ == null) {
+          return transaction_ == null ? org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance() : transaction_;
+        } else {
+          return transactionBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder setTransaction(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction value) {
+        if (transactionBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          transaction_ = value;
+          onChanged();
+        } else {
+          transactionBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder setTransaction(
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder builderForValue) {
+        if (transactionBuilder_ == null) {
+          transaction_ = builderForValue.build();
+          onChanged();
+        } else {
+          transactionBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder mergeTransaction(org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction value) {
+        if (transactionBuilder_ == null) {
+          if (transaction_ != null) {
+            transaction_ =
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.newBuilder(transaction_).mergeFrom(value).buildPartial();
+          } else {
+            transaction_ = value;
+          }
+          onChanged();
+        } else {
+          transactionBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public Builder clearTransaction() {
+        if (transactionBuilder_ == null) {
+          transaction_ = null;
+          onChanged();
+        } else {
+          transaction_ = null;
+          transactionBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder getTransactionBuilder() {
+        
+        onChanged();
+        return getTransactionFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      public org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder getTransactionOrBuilder() {
+        if (transactionBuilder_ != null) {
+          return transactionBuilder_.getMessageOrBuilder();
+        } else {
+          return transaction_ == null ?
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.getDefaultInstance() : transaction_;
+        }
+      }
+      /**
+       * <code>.protocol.NewTransaction transaction = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder> 
+          getTransactionFieldBuilder() {
+        if (transactionBuilder_ == null) {
+          transactionBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransaction.Builder, org.lgcy.Legacy.proto.NewTransactionOuterClass.NewTransactionOrBuilder>(
+                  getTransaction(),
+                  getParentForChildren(),
+                  isClean());
+          transaction_ = null;
+        }
+        return transactionBuilder_;
+      }
+
+      private com.google.protobuf.ByteString txid_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <pre>
+       * transaction id = sha256(transaction.raw_data)
+       * </pre>
+       *
+       * <code>bytes txid = 2;</code>
+       * @return The txid.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getTxid() {
+        return txid_;
+      }
+      /**
+       * <pre>
+       * transaction id = sha256(transaction.raw_data)
+       * </pre>
+       *
+       * <code>bytes txid = 2;</code>
+       * @param value The txid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTxid(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        txid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * transaction id = sha256(transaction.raw_data)
+       * </pre>
+       *
+       * <code>bytes txid = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTxid() {
+        
+        txid_ = getDefaultInstance().getTxid();
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList constantResult_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureConstantResultIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          constantResult_ = new com.google.protobuf.LazyStringArrayList(constantResult_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @return A list containing the constantResult.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getConstantResultList() {
+        return constantResult_.getUnmodifiableView();
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @return The count of constantResult.
+       */
+      public int getConstantResultCount() {
+        return constantResult_.size();
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @param index The index of the element to return.
+       * @return The constantResult at the given index.
+       */
+      public java.lang.String getConstantResult(int index) {
+        return constantResult_.get(index);
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the constantResult at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getConstantResultBytes(int index) {
+        return constantResult_.getByteString(index);
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The constantResult to set.
+       * @return This builder for chaining.
+       */
+      public Builder setConstantResult(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureConstantResultIsMutable();
+        constantResult_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @param value The constantResult to add.
+       * @return This builder for chaining.
+       */
+      public Builder addConstantResult(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureConstantResultIsMutable();
+        constantResult_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @param values The constantResult to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllConstantResult(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureConstantResultIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, constantResult_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearConstantResult() {
+        constantResult_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string constant_result = 3;</code>
+       * @param value The bytes of the constantResult to add.
+       * @return This builder for chaining.
+       */
+      public Builder addConstantResultBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureConstantResultIsMutable();
+        constantResult_.add(value);
+        onChanged();
+        return this;
+      }
+
+      private org.lgcy.Legacy.proto.Chain.TransactionReturnData result_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.lgcy.Legacy.proto.Chain.TransactionReturnData, org.lgcy.Legacy.proto.Chain.TransactionReturnData.Builder, org.lgcy.Legacy.proto.Chain.TransactionReturnDataOrBuilder> resultBuilder_;
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       * @return Whether the result field is set.
+       */
+      public boolean hasResult() {
+        return resultBuilder_ != null || result_ != null;
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       * @return The result.
+       */
+      public org.lgcy.Legacy.proto.Chain.TransactionReturnData getResult() {
+        if (resultBuilder_ == null) {
+          return result_ == null ? org.lgcy.Legacy.proto.Chain.TransactionReturnData.getDefaultInstance() : result_;
+        } else {
+          return resultBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      public Builder setResult(org.lgcy.Legacy.proto.Chain.TransactionReturnData value) {
+        if (resultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          result_ = value;
+          onChanged();
+        } else {
+          resultBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      public Builder setResult(
+          org.lgcy.Legacy.proto.Chain.TransactionReturnData.Builder builderForValue) {
+        if (resultBuilder_ == null) {
+          result_ = builderForValue.build();
+          onChanged();
+        } else {
+          resultBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      public Builder mergeResult(org.lgcy.Legacy.proto.Chain.TransactionReturnData value) {
+        if (resultBuilder_ == null) {
+          if (result_ != null) {
+            result_ =
+              org.lgcy.Legacy.proto.Chain.TransactionReturnData.newBuilder(result_).mergeFrom(value).buildPartial();
+          } else {
+            result_ = value;
+          }
+          onChanged();
+        } else {
+          resultBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      public Builder clearResult() {
+        if (resultBuilder_ == null) {
+          result_ = null;
+          onChanged();
+        } else {
+          result_ = null;
+          resultBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      public org.lgcy.Legacy.proto.Chain.TransactionReturnData.Builder getResultBuilder() {
+        
+        onChanged();
+        return getResultFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      public org.lgcy.Legacy.proto.Chain.TransactionReturnDataOrBuilder getResultOrBuilder() {
+        if (resultBuilder_ != null) {
+          return resultBuilder_.getMessageOrBuilder();
+        } else {
+          return result_ == null ?
+              org.lgcy.Legacy.proto.Chain.TransactionReturnData.getDefaultInstance() : result_;
+        }
+      }
+      /**
+       * <code>.protocol.TransactionReturnData result = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          org.lgcy.Legacy.proto.Chain.TransactionReturnData, org.lgcy.Legacy.proto.Chain.TransactionReturnData.Builder, org.lgcy.Legacy.proto.Chain.TransactionReturnDataOrBuilder> 
+          getResultFieldBuilder() {
+        if (resultBuilder_ == null) {
+          resultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              org.lgcy.Legacy.proto.Chain.TransactionReturnData, org.lgcy.Legacy.proto.Chain.TransactionReturnData.Builder, org.lgcy.Legacy.proto.Chain.TransactionReturnDataOrBuilder>(
+                  getResult(),
+                  getParentForChildren(),
+                  isClean());
+          result_ = null;
+        }
+        return resultBuilder_;
+      }
+
+      private long energyUsed_ ;
+      /**
+       * <code>int64 energy_used = 5;</code>
+       * @return The energyUsed.
+       */
+      @java.lang.Override
+      public long getEnergyUsed() {
+        return energyUsed_;
+      }
+      /**
+       * <code>int64 energy_used = 5;</code>
+       * @param value The energyUsed to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnergyUsed(long value) {
+        
+        energyUsed_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 energy_used = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnergyUsed() {
+        
+        energyUsed_ = 0L;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:protocol.TransactionExtention2)
+    }
+
+    // @@protoc_insertion_point(class_scope:protocol.TransactionExtention2)
+    private static final org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2();
+    }
+
+    public static org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TransactionExtention2>
+        PARSER = new com.google.protobuf.AbstractParser<TransactionExtention2>() {
+      @java.lang.Override
+      public TransactionExtention2 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TransactionExtention2(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TransactionExtention2> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TransactionExtention2> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public org.lgcy.Legacy.proto.NewTransactionOuterClass.TransactionExtention2 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protocol_NewTransaction_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protocol_NewTransaction_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protocol_NewTransaction_Result_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protocol_NewTransaction_Result_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protocol_NewTransaction_Value_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protocol_NewTransaction_Value_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protocol_NewTransaction_Value_Parameters_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protocol_NewTransaction_Value_Parameters_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protocol_NewTransaction_Value_Votes_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protocol_NewTransaction_Value_Votes_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_protocol_NewTransaction_Parameter_descriptor;
   private static final 
@@ -4553,6 +12191,16 @@ public final class NewTransactionOuterClass {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_protocol_NewTransaction_Raw_data_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protocol_SignTransactionExtension_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protocol_SignTransactionExtension_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_protocol_TransactionExtention2_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_protocol_TransactionExtention2_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4563,58 +12211,119 @@ public final class NewTransactionOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\031core/newTransaction.proto\022\010protocol\032\020c" +
-      "ore/chain.proto\"\244\004\n\016NewTransaction\022\017\n\007vi" +
-      "sible\030\001 \001(\010\022\014\n\004txID\030\002 \001(\t\0223\n\010raw_data\030\003 " +
-      "\001(\0132!.protocol.NewTransaction.Raw_data\022\024" +
-      "\n\014raw_data_hex\030\004 \001(\t\032B\n\005Value\022\016\n\006amount\030" +
-      "\001 \001(\r\022\025\n\rowner_address\030\002 \001(\t\022\022\n\nto_addre" +
-      "ss\030\003 \001(\t\032L\n\tParameter\022-\n\005value\030\001 \001(\0132\036.p" +
-      "rotocol.NewTransaction.Value\022\020\n\010type_url" +
-      "\030\002 \001(\t\032|\n\010Contract\0225\n\tparameter\030\001 \001(\0132\"." +
-      "protocol.NewTransaction.Parameter\0229\n\004typ" +
-      "e\030\002 \001(\0162+.protocol.Transaction.Contract." +
-      "ContractType\032\227\001\n\010Raw_data\0223\n\010contract\030\001 " +
-      "\003(\0132!.protocol.NewTransaction.Contract\022\027" +
-      "\n\017ref_block_bytes\030\002 \001(\t\022\026\n\016ref_block_has" +
-      "h\030\003 \001(\t\022\022\n\nexpiration\030\004 \001(\004\022\021\n\ttimestamp" +
-      "\030\005 \001(\004B\027\n\025org.lgcy.Legacy.protob\006proto3"
+      "ore/chain.proto\032\021core/common.proto\"\360\n\n\016N" +
+      "ewTransaction\022\017\n\007visible\030\001 \001(\010\022\021\n\tsignat" +
+      "ure\030\002 \003(\t\022\014\n\004txID\030\003 \001(\t\0223\n\010raw_data\030\004 \001(" +
+      "\0132!.protocol.NewTransaction.Raw_data\022\024\n\014" +
+      "raw_data_hex\030\005 \001(\t\022,\n\003ret\030\006 \003(\0132\037.protoc" +
+      "ol.NewTransaction.Result\022\r\n\005Error\030\007 \001(\t\032" +
+      "z\n\006Result\022@\n\013contractRet\030\001 \001(\0162+.protoco" +
+      "l.Transaction.Result.contractResult\022.\n\003r" +
+      "et\030\002 \001(\0162!.protocol.Transaction.Result.c" +
+      "ode\032\301\005\n\005Value\022\016\n\006amount\030\001 \001(\r\022\025\n\rowner_a" +
+      "ddress\030\002 \001(\t\022\022\n\nto_address\030\003 \001(\t\022\022\n\nupda" +
+      "te_url\030\004 \001(\t\022\021\n\tbrokerage\030\005 \001(\005\022\024\n\014accou" +
+      "nt_name\030\006 \001(\t\022\030\n\020contract_address\030\007 \001(\t\022" +
+      "%\n\035consume_user_resource_percent\030\010 \001(\r\022\026" +
+      "\n\016frozen_balance\030\t \001(\r\022\027\n\017frozen_duratio" +
+      "n\030\n \001(\r\022(\n\010resource\030\013 \001(\0162\026.protocol.Res" +
+      "ourceCode\022\014\n\004data\030\014 \001(\t\022=\n\nparameters\030\r " +
+      "\003(\0132).protocol.NewTransaction.Value.Para" +
+      "meters\022\013\n\003url\030\016 \001(\t\022\023\n\013proposal_id\030\017 \001(\r" +
+      "\022\027\n\017is_add_approval\030\020 \001(\010\0223\n\005votes\030\021 \003(\013" +
+      "2$.protocol.NewTransaction.Value.Votes\022#" +
+      "\n\005owner\030\022 \001(\0132\024.protocol.Permission\022%\n\007w" +
+      "itness\030\023 \001(\0132\024.protocol.Permission\022%\n\007ac" +
+      "tives\030\024 \003(\0132\024.protocol.Permission\022\027\n\017acc" +
+      "ount_address\030\025 \001(\t\032(\n\nParameters\022\013\n\003key\030" +
+      "\001 \001(\r\022\r\n\005value\030\002 \001(\r\0321\n\005Votes\022\024\n\014vote_ad" +
+      "dress\030\001 \001(\t\022\022\n\nvote_count\030\002 \001(\r\032L\n\tParam" +
+      "eter\022-\n\005value\030\001 \001(\0132\036.protocol.NewTransa" +
+      "ction.Value\022\020\n\010type_url\030\002 \001(\t\032|\n\010Contrac" +
+      "t\0225\n\tparameter\030\001 \001(\0132\".protocol.NewTrans" +
+      "action.Parameter\0229\n\004type\030\002 \001(\0162+.protoco" +
+      "l.Transaction.Contract.ContractType\032\227\001\n\010" +
+      "Raw_data\0223\n\010contract\030\001 \003(\0132!.protocol.Ne" +
+      "wTransaction.Contract\022\027\n\017ref_block_bytes" +
+      "\030\002 \001(\t\022\026\n\016ref_block_hash\030\003 \001(\t\022\022\n\nexpira" +
+      "tion\030\004 \001(\003\022\021\n\ttimestamp\030\005 \001(\003\"]\n\030SignTra" +
+      "nsactionExtension\022-\n\013transaction\030\001 \001(\0132\030" +
+      ".protocol.NewTransaction\022\022\n\nprivateKey\030\002" +
+      " \001(\t\"\263\001\n\025TransactionExtention2\022-\n\013transa" +
+      "ction\030\001 \001(\0132\030.protocol.NewTransaction\022\014\n" +
+      "\004txid\030\002 \001(\014\022\027\n\017constant_result\030\003 \003(\t\022/\n\006" +
+      "result\030\004 \001(\0132\037.protocol.TransactionRetur" +
+      "nData\022\023\n\013energy_used\030\005 \001(\003B\027\n\025org.lgcy.L" +
+      "egacy.protob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           org.lgcy.Legacy.proto.Chain.getDescriptor(),
+          org.lgcy.Legacy.proto.Common.getDescriptor(),
         });
     internal_static_protocol_NewTransaction_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protocol_NewTransaction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_NewTransaction_descriptor,
-        new java.lang.String[] { "Visible", "TxID", "RawData", "RawDataHex", });
-    internal_static_protocol_NewTransaction_Value_descriptor =
+        new java.lang.String[] { "Visible", "Signature", "TxID", "RawData", "RawDataHex", "Ret", "Error", });
+    internal_static_protocol_NewTransaction_Result_descriptor =
       internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(0);
+    internal_static_protocol_NewTransaction_Result_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protocol_NewTransaction_Result_descriptor,
+        new java.lang.String[] { "ContractRet", "Ret", });
+    internal_static_protocol_NewTransaction_Value_descriptor =
+      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(1);
     internal_static_protocol_NewTransaction_Value_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_NewTransaction_Value_descriptor,
-        new java.lang.String[] { "Amount", "OwnerAddress", "ToAddress", });
+        new java.lang.String[] { "Amount", "OwnerAddress", "ToAddress", "UpdateUrl", "Brokerage", "AccountName", "ContractAddress", "ConsumeUserResourcePercent", "FrozenBalance", "FrozenDuration", "Resource", "Data", "Parameters", "Url", "ProposalId", "IsAddApproval", "Votes", "Owner", "Witness", "Actives", "AccountAddress", });
+    internal_static_protocol_NewTransaction_Value_Parameters_descriptor =
+      internal_static_protocol_NewTransaction_Value_descriptor.getNestedTypes().get(0);
+    internal_static_protocol_NewTransaction_Value_Parameters_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protocol_NewTransaction_Value_Parameters_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_protocol_NewTransaction_Value_Votes_descriptor =
+      internal_static_protocol_NewTransaction_Value_descriptor.getNestedTypes().get(1);
+    internal_static_protocol_NewTransaction_Value_Votes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protocol_NewTransaction_Value_Votes_descriptor,
+        new java.lang.String[] { "VoteAddress", "VoteCount", });
     internal_static_protocol_NewTransaction_Parameter_descriptor =
-      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(1);
+      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(2);
     internal_static_protocol_NewTransaction_Parameter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_NewTransaction_Parameter_descriptor,
         new java.lang.String[] { "Value", "TypeUrl", });
     internal_static_protocol_NewTransaction_Contract_descriptor =
-      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(2);
+      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(3);
     internal_static_protocol_NewTransaction_Contract_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_NewTransaction_Contract_descriptor,
         new java.lang.String[] { "Parameter", "Type", });
     internal_static_protocol_NewTransaction_Raw_data_descriptor =
-      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(3);
+      internal_static_protocol_NewTransaction_descriptor.getNestedTypes().get(4);
     internal_static_protocol_NewTransaction_Raw_data_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protocol_NewTransaction_Raw_data_descriptor,
         new java.lang.String[] { "Contract", "RefBlockBytes", "RefBlockHash", "Expiration", "Timestamp", });
+    internal_static_protocol_SignTransactionExtension_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_protocol_SignTransactionExtension_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protocol_SignTransactionExtension_descriptor,
+        new java.lang.String[] { "Transaction", "PrivateKey", });
+    internal_static_protocol_TransactionExtention2_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_protocol_TransactionExtention2_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_protocol_TransactionExtention2_descriptor,
+        new java.lang.String[] { "Transaction", "Txid", "ConstantResult", "Result", "EnergyUsed", });
     org.lgcy.Legacy.proto.Chain.getDescriptor();
+    org.lgcy.Legacy.proto.Common.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1514,10 +1514,16 @@ public final class Common {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes address = 1;</code>
+     * <code>string address = 1;</code>
      * @return The address.
      */
-    com.google.protobuf.ByteString getAddress();
+    java.lang.String getAddress();
+    /**
+     * <code>string address = 1;</code>
+     * @return The bytes for address.
+     */
+    com.google.protobuf.ByteString
+        getAddressBytes();
 
     /**
      * <code>int64 weight = 2;</code>
@@ -1538,7 +1544,7 @@ public final class Common {
       super(builder);
     }
     private Key() {
-      address_ = com.google.protobuf.ByteString.EMPTY;
+      address_ = "";
     }
 
     @java.lang.Override
@@ -1572,8 +1578,9 @@ public final class Common {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              address_ = input.readBytes();
+              address_ = s;
               break;
             }
             case 16: {
@@ -1614,14 +1621,41 @@ public final class Common {
     }
 
     public static final int ADDRESS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString address_;
+    private volatile java.lang.Object address_;
     /**
-     * <code>bytes address = 1;</code>
+     * <code>string address = 1;</code>
      * @return The address.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getAddress() {
-      return address_;
+    public java.lang.String getAddress() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        address_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string address = 1;</code>
+     * @return The bytes for address.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getAddressBytes() {
+      java.lang.Object ref = address_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        address_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int WEIGHT_FIELD_NUMBER = 2;
@@ -1649,8 +1683,8 @@ public final class Common {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!address_.isEmpty()) {
-        output.writeBytes(1, address_);
+      if (!getAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, address_);
       }
       if (weight_ != 0L) {
         output.writeInt64(2, weight_);
@@ -1664,9 +1698,8 @@ public final class Common {
       if (size != -1) return size;
 
       size = 0;
-      if (!address_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, address_);
+      if (!getAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, address_);
       }
       if (weight_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -1840,7 +1873,7 @@ public final class Common {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        address_ = com.google.protobuf.ByteString.EMPTY;
+        address_ = "";
 
         weight_ = 0L;
 
@@ -1920,8 +1953,9 @@ public final class Common {
 
       public Builder mergeFrom(org.lgcy.Legacy.proto.Common.Key other) {
         if (other == org.lgcy.Legacy.proto.Common.Key.getDefaultInstance()) return this;
-        if (other.getAddress() != com.google.protobuf.ByteString.EMPTY) {
-          setAddress(other.getAddress());
+        if (!other.getAddress().isEmpty()) {
+          address_ = other.address_;
+          onChanged();
         }
         if (other.getWeight() != 0L) {
           setWeight(other.getWeight());
@@ -1955,21 +1989,47 @@ public final class Common {
         return this;
       }
 
-      private com.google.protobuf.ByteString address_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object address_ = "";
       /**
-       * <code>bytes address = 1;</code>
+       * <code>string address = 1;</code>
        * @return The address.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getAddress() {
-        return address_;
+      public java.lang.String getAddress() {
+        java.lang.Object ref = address_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          address_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes address = 1;</code>
+       * <code>string address = 1;</code>
+       * @return The bytes for address.
+       */
+      public com.google.protobuf.ByteString
+          getAddressBytes() {
+        java.lang.Object ref = address_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          address_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string address = 1;</code>
        * @param value The address to set.
        * @return This builder for chaining.
        */
-      public Builder setAddress(com.google.protobuf.ByteString value) {
+      public Builder setAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -1979,12 +2039,28 @@ public final class Common {
         return this;
       }
       /**
-       * <code>bytes address = 1;</code>
+       * <code>string address = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearAddress() {
         
         address_ = getDefaultInstance().getAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string address = 1;</code>
+       * @param value The bytes for address to set.
+       * @return This builder for chaining.
+       */
+      public Builder setAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        address_ = value;
         onChanged();
         return this;
       }
@@ -2126,10 +2202,20 @@ public final class Common {
      * 1 bit 1 contract
      * </pre>
      *
-     * <code>bytes operations = 6;</code>
+     * <code>string operations = 6;</code>
      * @return The operations.
      */
-    com.google.protobuf.ByteString getOperations();
+    java.lang.String getOperations();
+    /**
+     * <pre>
+     * 1 bit 1 contract
+     * </pre>
+     *
+     * <code>string operations = 6;</code>
+     * @return The bytes for operations.
+     */
+    com.google.protobuf.ByteString
+        getOperationsBytes();
 
     /**
      * <code>repeated .protocol.Key keys = 7;</code>
@@ -2170,7 +2256,7 @@ public final class Common {
     private Permission() {
       type_ = 0;
       permissionName_ = "";
-      operations_ = com.google.protobuf.ByteString.EMPTY;
+      operations_ = "";
       keys_ = java.util.Collections.emptyList();
     }
 
@@ -2233,8 +2319,9 @@ public final class Common {
               break;
             }
             case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              operations_ = input.readBytes();
+              operations_ = s;
               break;
             }
             case 58: {
@@ -2493,18 +2580,49 @@ public final class Common {
     }
 
     public static final int OPERATIONS_FIELD_NUMBER = 6;
-    private com.google.protobuf.ByteString operations_;
+    private volatile java.lang.Object operations_;
     /**
      * <pre>
      * 1 bit 1 contract
      * </pre>
      *
-     * <code>bytes operations = 6;</code>
+     * <code>string operations = 6;</code>
      * @return The operations.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getOperations() {
-      return operations_;
+    public java.lang.String getOperations() {
+      java.lang.Object ref = operations_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        operations_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * 1 bit 1 contract
+     * </pre>
+     *
+     * <code>string operations = 6;</code>
+     * @return The bytes for operations.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOperationsBytes() {
+      java.lang.Object ref = operations_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        operations_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int KEYS_FIELD_NUMBER = 7;
@@ -2576,8 +2694,8 @@ public final class Common {
       if (parentId_ != 0) {
         output.writeInt32(5, parentId_);
       }
-      if (!operations_.isEmpty()) {
-        output.writeBytes(6, operations_);
+      if (!getOperationsBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, operations_);
       }
       for (int i = 0; i < keys_.size(); i++) {
         output.writeMessage(7, keys_.get(i));
@@ -2610,9 +2728,8 @@ public final class Common {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, parentId_);
       }
-      if (!operations_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, operations_);
+      if (!getOperationsBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, operations_);
       }
       for (int i = 0; i < keys_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
@@ -2818,7 +2935,7 @@ public final class Common {
 
         parentId_ = 0;
 
-        operations_ = com.google.protobuf.ByteString.EMPTY;
+        operations_ = "";
 
         if (keysBuilder_ == null) {
           keys_ = java.util.Collections.emptyList();
@@ -2932,8 +3049,9 @@ public final class Common {
         if (other.getParentId() != 0) {
           setParentId(other.getParentId());
         }
-        if (other.getOperations() != com.google.protobuf.ByteString.EMPTY) {
-          setOperations(other.getOperations());
+        if (!other.getOperations().isEmpty()) {
+          operations_ = other.operations_;
+          onChanged();
         }
         if (keysBuilder_ == null) {
           if (!other.keys_.isEmpty()) {
@@ -3226,29 +3344,59 @@ public final class Common {
         return this;
       }
 
-      private com.google.protobuf.ByteString operations_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object operations_ = "";
       /**
        * <pre>
        * 1 bit 1 contract
        * </pre>
        *
-       * <code>bytes operations = 6;</code>
+       * <code>string operations = 6;</code>
        * @return The operations.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getOperations() {
-        return operations_;
+      public java.lang.String getOperations() {
+        java.lang.Object ref = operations_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          operations_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
        * <pre>
        * 1 bit 1 contract
        * </pre>
        *
-       * <code>bytes operations = 6;</code>
+       * <code>string operations = 6;</code>
+       * @return The bytes for operations.
+       */
+      public com.google.protobuf.ByteString
+          getOperationsBytes() {
+        java.lang.Object ref = operations_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          operations_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * 1 bit 1 contract
+       * </pre>
+       *
+       * <code>string operations = 6;</code>
        * @param value The operations to set.
        * @return This builder for chaining.
        */
-      public Builder setOperations(com.google.protobuf.ByteString value) {
+      public Builder setOperations(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -3262,12 +3410,32 @@ public final class Common {
        * 1 bit 1 contract
        * </pre>
        *
-       * <code>bytes operations = 6;</code>
+       * <code>string operations = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearOperations() {
         
         operations_ = getDefaultInstance().getOperations();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 1 bit 1 contract
+       * </pre>
+       *
+       * <code>string operations = 6;</code>
+       * @param value The bytes for operations to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOperationsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        operations_ = value;
         onChanged();
         return this;
       }
@@ -3569,16 +3737,28 @@ public final class Common {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes origin_address = 1;</code>
+     * <code>string origin_address = 1;</code>
      * @return The originAddress.
      */
-    com.google.protobuf.ByteString getOriginAddress();
+    java.lang.String getOriginAddress();
+    /**
+     * <code>string origin_address = 1;</code>
+     * @return The bytes for originAddress.
+     */
+    com.google.protobuf.ByteString
+        getOriginAddressBytes();
 
     /**
-     * <code>bytes contract_address = 2;</code>
+     * <code>string contract_address = 2;</code>
      * @return The contractAddress.
      */
-    com.google.protobuf.ByteString getContractAddress();
+    java.lang.String getContractAddress();
+    /**
+     * <code>string contract_address = 2;</code>
+     * @return The bytes for contractAddress.
+     */
+    com.google.protobuf.ByteString
+        getContractAddressBytes();
 
     /**
      * <code>.protocol.SmartContract.ABI abi = 3;</code>
@@ -3596,10 +3776,16 @@ public final class Common {
     org.lgcy.Legacy.proto.Common.SmartContract.ABIOrBuilder getAbiOrBuilder();
 
     /**
-     * <code>bytes bytecode = 4;</code>
+     * <code>string bytecode = 4;</code>
      * @return The bytecode.
      */
-    com.google.protobuf.ByteString getBytecode();
+    java.lang.String getBytecode();
+    /**
+     * <code>string bytecode = 4;</code>
+     * @return The bytes for bytecode.
+     */
+    com.google.protobuf.ByteString
+        getBytecodeBytes();
 
     /**
      * <code>int64 call_value = 5;</code>
@@ -3632,16 +3818,28 @@ public final class Common {
     long getOriginEnergyLimit();
 
     /**
-     * <code>bytes code_hash = 9;</code>
+     * <code>string code_hash = 9;</code>
      * @return The codeHash.
      */
-    com.google.protobuf.ByteString getCodeHash();
+    java.lang.String getCodeHash();
+    /**
+     * <code>string code_hash = 9;</code>
+     * @return The bytes for codeHash.
+     */
+    com.google.protobuf.ByteString
+        getCodeHashBytes();
 
     /**
-     * <code>bytes usdl_hash = 10;</code>
+     * <code>string usdl_hash = 10;</code>
      * @return The usdlHash.
      */
-    com.google.protobuf.ByteString getUsdlHash();
+    java.lang.String getUsdlHash();
+    /**
+     * <code>string usdl_hash = 10;</code>
+     * @return The bytes for usdlHash.
+     */
+    com.google.protobuf.ByteString
+        getUsdlHashBytes();
   }
   /**
    * Protobuf type {@code protocol.SmartContract}
@@ -3656,12 +3854,12 @@ public final class Common {
       super(builder);
     }
     private SmartContract() {
-      originAddress_ = com.google.protobuf.ByteString.EMPTY;
-      contractAddress_ = com.google.protobuf.ByteString.EMPTY;
-      bytecode_ = com.google.protobuf.ByteString.EMPTY;
+      originAddress_ = "";
+      contractAddress_ = "";
+      bytecode_ = "";
       name_ = "";
-      codeHash_ = com.google.protobuf.ByteString.EMPTY;
-      usdlHash_ = com.google.protobuf.ByteString.EMPTY;
+      codeHash_ = "";
+      usdlHash_ = "";
     }
 
     @java.lang.Override
@@ -3695,13 +3893,15 @@ public final class Common {
               done = true;
               break;
             case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              originAddress_ = input.readBytes();
+              originAddress_ = s;
               break;
             }
             case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              contractAddress_ = input.readBytes();
+              contractAddress_ = s;
               break;
             }
             case 26: {
@@ -3718,8 +3918,9 @@ public final class Common {
               break;
             }
             case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              bytecode_ = input.readBytes();
+              bytecode_ = s;
               break;
             }
             case 40: {
@@ -3744,13 +3945,15 @@ public final class Common {
               break;
             }
             case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              codeHash_ = input.readBytes();
+              codeHash_ = s;
               break;
             }
             case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              usdlHash_ = input.readBytes();
+              usdlHash_ = s;
               break;
             }
             default: {
@@ -7416,25 +7619,79 @@ public final class Common {
     }
 
     public static final int ORIGIN_ADDRESS_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString originAddress_;
+    private volatile java.lang.Object originAddress_;
     /**
-     * <code>bytes origin_address = 1;</code>
+     * <code>string origin_address = 1;</code>
      * @return The originAddress.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getOriginAddress() {
-      return originAddress_;
+    public java.lang.String getOriginAddress() {
+      java.lang.Object ref = originAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        originAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string origin_address = 1;</code>
+     * @return The bytes for originAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOriginAddressBytes() {
+      java.lang.Object ref = originAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        originAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int CONTRACT_ADDRESS_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString contractAddress_;
+    private volatile java.lang.Object contractAddress_;
     /**
-     * <code>bytes contract_address = 2;</code>
+     * <code>string contract_address = 2;</code>
      * @return The contractAddress.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getContractAddress() {
-      return contractAddress_;
+    public java.lang.String getContractAddress() {
+      java.lang.Object ref = contractAddress_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        contractAddress_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string contract_address = 2;</code>
+     * @return The bytes for contractAddress.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getContractAddressBytes() {
+      java.lang.Object ref = contractAddress_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        contractAddress_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int ABI_FIELD_NUMBER = 3;
@@ -7464,14 +7721,41 @@ public final class Common {
     }
 
     public static final int BYTECODE_FIELD_NUMBER = 4;
-    private com.google.protobuf.ByteString bytecode_;
+    private volatile java.lang.Object bytecode_;
     /**
-     * <code>bytes bytecode = 4;</code>
+     * <code>string bytecode = 4;</code>
      * @return The bytecode.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getBytecode() {
-      return bytecode_;
+    public java.lang.String getBytecode() {
+      java.lang.Object ref = bytecode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        bytecode_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string bytecode = 4;</code>
+     * @return The bytes for bytecode.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBytecodeBytes() {
+      java.lang.Object ref = bytecode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        bytecode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int CALL_VALUE_FIELD_NUMBER = 5;
@@ -7546,25 +7830,79 @@ public final class Common {
     }
 
     public static final int CODE_HASH_FIELD_NUMBER = 9;
-    private com.google.protobuf.ByteString codeHash_;
+    private volatile java.lang.Object codeHash_;
     /**
-     * <code>bytes code_hash = 9;</code>
+     * <code>string code_hash = 9;</code>
      * @return The codeHash.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getCodeHash() {
-      return codeHash_;
+    public java.lang.String getCodeHash() {
+      java.lang.Object ref = codeHash_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        codeHash_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string code_hash = 9;</code>
+     * @return The bytes for codeHash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCodeHashBytes() {
+      java.lang.Object ref = codeHash_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        codeHash_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int USDL_HASH_FIELD_NUMBER = 10;
-    private com.google.protobuf.ByteString usdlHash_;
+    private volatile java.lang.Object usdlHash_;
     /**
-     * <code>bytes usdl_hash = 10;</code>
+     * <code>string usdl_hash = 10;</code>
      * @return The usdlHash.
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString getUsdlHash() {
-      return usdlHash_;
+    public java.lang.String getUsdlHash() {
+      java.lang.Object ref = usdlHash_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        usdlHash_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string usdl_hash = 10;</code>
+     * @return The bytes for usdlHash.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUsdlHashBytes() {
+      java.lang.Object ref = usdlHash_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        usdlHash_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -7581,17 +7919,17 @@ public final class Common {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!originAddress_.isEmpty()) {
-        output.writeBytes(1, originAddress_);
+      if (!getOriginAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, originAddress_);
       }
-      if (!contractAddress_.isEmpty()) {
-        output.writeBytes(2, contractAddress_);
+      if (!getContractAddressBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, contractAddress_);
       }
       if (abi_ != null) {
         output.writeMessage(3, getAbi());
       }
-      if (!bytecode_.isEmpty()) {
-        output.writeBytes(4, bytecode_);
+      if (!getBytecodeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, bytecode_);
       }
       if (callValue_ != 0L) {
         output.writeInt64(5, callValue_);
@@ -7605,11 +7943,11 @@ public final class Common {
       if (originEnergyLimit_ != 0L) {
         output.writeInt64(8, originEnergyLimit_);
       }
-      if (!codeHash_.isEmpty()) {
-        output.writeBytes(9, codeHash_);
+      if (!getCodeHashBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, codeHash_);
       }
-      if (!usdlHash_.isEmpty()) {
-        output.writeBytes(10, usdlHash_);
+      if (!getUsdlHashBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, usdlHash_);
       }
       unknownFields.writeTo(output);
     }
@@ -7620,21 +7958,18 @@ public final class Common {
       if (size != -1) return size;
 
       size = 0;
-      if (!originAddress_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, originAddress_);
+      if (!getOriginAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, originAddress_);
       }
-      if (!contractAddress_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, contractAddress_);
+      if (!getContractAddressBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, contractAddress_);
       }
       if (abi_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getAbi());
       }
-      if (!bytecode_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, bytecode_);
+      if (!getBytecodeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, bytecode_);
       }
       if (callValue_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
@@ -7651,13 +7986,11 @@ public final class Common {
         size += com.google.protobuf.CodedOutputStream
           .computeInt64Size(8, originEnergyLimit_);
       }
-      if (!codeHash_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(9, codeHash_);
+      if (!getCodeHashBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, codeHash_);
       }
-      if (!usdlHash_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, usdlHash_);
+      if (!getUsdlHashBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, usdlHash_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7866,9 +8199,9 @@ public final class Common {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        originAddress_ = com.google.protobuf.ByteString.EMPTY;
+        originAddress_ = "";
 
-        contractAddress_ = com.google.protobuf.ByteString.EMPTY;
+        contractAddress_ = "";
 
         if (abiBuilder_ == null) {
           abi_ = null;
@@ -7876,7 +8209,7 @@ public final class Common {
           abi_ = null;
           abiBuilder_ = null;
         }
-        bytecode_ = com.google.protobuf.ByteString.EMPTY;
+        bytecode_ = "";
 
         callValue_ = 0L;
 
@@ -7886,9 +8219,9 @@ public final class Common {
 
         originEnergyLimit_ = 0L;
 
-        codeHash_ = com.google.protobuf.ByteString.EMPTY;
+        codeHash_ = "";
 
-        usdlHash_ = com.google.protobuf.ByteString.EMPTY;
+        usdlHash_ = "";
 
         return this;
       }
@@ -7978,17 +8311,20 @@ public final class Common {
 
       public Builder mergeFrom(org.lgcy.Legacy.proto.Common.SmartContract other) {
         if (other == org.lgcy.Legacy.proto.Common.SmartContract.getDefaultInstance()) return this;
-        if (other.getOriginAddress() != com.google.protobuf.ByteString.EMPTY) {
-          setOriginAddress(other.getOriginAddress());
+        if (!other.getOriginAddress().isEmpty()) {
+          originAddress_ = other.originAddress_;
+          onChanged();
         }
-        if (other.getContractAddress() != com.google.protobuf.ByteString.EMPTY) {
-          setContractAddress(other.getContractAddress());
+        if (!other.getContractAddress().isEmpty()) {
+          contractAddress_ = other.contractAddress_;
+          onChanged();
         }
         if (other.hasAbi()) {
           mergeAbi(other.getAbi());
         }
-        if (other.getBytecode() != com.google.protobuf.ByteString.EMPTY) {
-          setBytecode(other.getBytecode());
+        if (!other.getBytecode().isEmpty()) {
+          bytecode_ = other.bytecode_;
+          onChanged();
         }
         if (other.getCallValue() != 0L) {
           setCallValue(other.getCallValue());
@@ -8003,11 +8339,13 @@ public final class Common {
         if (other.getOriginEnergyLimit() != 0L) {
           setOriginEnergyLimit(other.getOriginEnergyLimit());
         }
-        if (other.getCodeHash() != com.google.protobuf.ByteString.EMPTY) {
-          setCodeHash(other.getCodeHash());
+        if (!other.getCodeHash().isEmpty()) {
+          codeHash_ = other.codeHash_;
+          onChanged();
         }
-        if (other.getUsdlHash() != com.google.protobuf.ByteString.EMPTY) {
-          setUsdlHash(other.getUsdlHash());
+        if (!other.getUsdlHash().isEmpty()) {
+          usdlHash_ = other.usdlHash_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8038,21 +8376,47 @@ public final class Common {
         return this;
       }
 
-      private com.google.protobuf.ByteString originAddress_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object originAddress_ = "";
       /**
-       * <code>bytes origin_address = 1;</code>
+       * <code>string origin_address = 1;</code>
        * @return The originAddress.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getOriginAddress() {
-        return originAddress_;
+      public java.lang.String getOriginAddress() {
+        java.lang.Object ref = originAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          originAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes origin_address = 1;</code>
+       * <code>string origin_address = 1;</code>
+       * @return The bytes for originAddress.
+       */
+      public com.google.protobuf.ByteString
+          getOriginAddressBytes() {
+        java.lang.Object ref = originAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          originAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string origin_address = 1;</code>
        * @param value The originAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setOriginAddress(com.google.protobuf.ByteString value) {
+      public Builder setOriginAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8062,7 +8426,7 @@ public final class Common {
         return this;
       }
       /**
-       * <code>bytes origin_address = 1;</code>
+       * <code>string origin_address = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearOriginAddress() {
@@ -8071,22 +8435,64 @@ public final class Common {
         onChanged();
         return this;
       }
-
-      private com.google.protobuf.ByteString contractAddress_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes contract_address = 2;</code>
+       * <code>string origin_address = 1;</code>
+       * @param value The bytes for originAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOriginAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        originAddress_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object contractAddress_ = "";
+      /**
+       * <code>string contract_address = 2;</code>
        * @return The contractAddress.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getContractAddress() {
-        return contractAddress_;
+      public java.lang.String getContractAddress() {
+        java.lang.Object ref = contractAddress_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          contractAddress_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes contract_address = 2;</code>
+       * <code>string contract_address = 2;</code>
+       * @return The bytes for contractAddress.
+       */
+      public com.google.protobuf.ByteString
+          getContractAddressBytes() {
+        java.lang.Object ref = contractAddress_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contractAddress_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string contract_address = 2;</code>
        * @param value The contractAddress to set.
        * @return This builder for chaining.
        */
-      public Builder setContractAddress(com.google.protobuf.ByteString value) {
+      public Builder setContractAddress(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8096,12 +8502,28 @@ public final class Common {
         return this;
       }
       /**
-       * <code>bytes contract_address = 2;</code>
+       * <code>string contract_address = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearContractAddress() {
         
         contractAddress_ = getDefaultInstance().getContractAddress();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string contract_address = 2;</code>
+       * @param value The bytes for contractAddress to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContractAddressBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        contractAddress_ = value;
         onChanged();
         return this;
       }
@@ -8225,21 +8647,47 @@ public final class Common {
         return abiBuilder_;
       }
 
-      private com.google.protobuf.ByteString bytecode_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object bytecode_ = "";
       /**
-       * <code>bytes bytecode = 4;</code>
+       * <code>string bytecode = 4;</code>
        * @return The bytecode.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getBytecode() {
-        return bytecode_;
+      public java.lang.String getBytecode() {
+        java.lang.Object ref = bytecode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          bytecode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes bytecode = 4;</code>
+       * <code>string bytecode = 4;</code>
+       * @return The bytes for bytecode.
+       */
+      public com.google.protobuf.ByteString
+          getBytecodeBytes() {
+        java.lang.Object ref = bytecode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          bytecode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string bytecode = 4;</code>
        * @param value The bytecode to set.
        * @return This builder for chaining.
        */
-      public Builder setBytecode(com.google.protobuf.ByteString value) {
+      public Builder setBytecode(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8249,12 +8697,28 @@ public final class Common {
         return this;
       }
       /**
-       * <code>bytes bytecode = 4;</code>
+       * <code>string bytecode = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearBytecode() {
         
         bytecode_ = getDefaultInstance().getBytecode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string bytecode = 4;</code>
+       * @param value The bytes for bytecode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBytecodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        bytecode_ = value;
         onChanged();
         return this;
       }
@@ -8428,21 +8892,47 @@ public final class Common {
         return this;
       }
 
-      private com.google.protobuf.ByteString codeHash_ = com.google.protobuf.ByteString.EMPTY;
+      private java.lang.Object codeHash_ = "";
       /**
-       * <code>bytes code_hash = 9;</code>
+       * <code>string code_hash = 9;</code>
        * @return The codeHash.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getCodeHash() {
-        return codeHash_;
+      public java.lang.String getCodeHash() {
+        java.lang.Object ref = codeHash_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          codeHash_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes code_hash = 9;</code>
+       * <code>string code_hash = 9;</code>
+       * @return The bytes for codeHash.
+       */
+      public com.google.protobuf.ByteString
+          getCodeHashBytes() {
+        java.lang.Object ref = codeHash_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          codeHash_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string code_hash = 9;</code>
        * @param value The codeHash to set.
        * @return This builder for chaining.
        */
-      public Builder setCodeHash(com.google.protobuf.ByteString value) {
+      public Builder setCodeHash(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8452,7 +8942,7 @@ public final class Common {
         return this;
       }
       /**
-       * <code>bytes code_hash = 9;</code>
+       * <code>string code_hash = 9;</code>
        * @return This builder for chaining.
        */
       public Builder clearCodeHash() {
@@ -8461,22 +8951,64 @@ public final class Common {
         onChanged();
         return this;
       }
-
-      private com.google.protobuf.ByteString usdlHash_ = com.google.protobuf.ByteString.EMPTY;
       /**
-       * <code>bytes usdl_hash = 10;</code>
+       * <code>string code_hash = 9;</code>
+       * @param value The bytes for codeHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeHashBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        codeHash_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object usdlHash_ = "";
+      /**
+       * <code>string usdl_hash = 10;</code>
        * @return The usdlHash.
        */
-      @java.lang.Override
-      public com.google.protobuf.ByteString getUsdlHash() {
-        return usdlHash_;
+      public java.lang.String getUsdlHash() {
+        java.lang.Object ref = usdlHash_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          usdlHash_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>bytes usdl_hash = 10;</code>
+       * <code>string usdl_hash = 10;</code>
+       * @return The bytes for usdlHash.
+       */
+      public com.google.protobuf.ByteString
+          getUsdlHashBytes() {
+        java.lang.Object ref = usdlHash_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          usdlHash_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string usdl_hash = 10;</code>
        * @param value The usdlHash to set.
        * @return This builder for chaining.
        */
-      public Builder setUsdlHash(com.google.protobuf.ByteString value) {
+      public Builder setUsdlHash(
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -8486,12 +9018,28 @@ public final class Common {
         return this;
       }
       /**
-       * <code>bytes usdl_hash = 10;</code>
+       * <code>string usdl_hash = 10;</code>
        * @return This builder for chaining.
        */
       public Builder clearUsdlHash() {
         
         usdlHash_ = getDefaultInstance().getUsdlHash();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string usdl_hash = 10;</code>
+       * @param value The bytes for usdlHash to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUsdlHashBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        usdlHash_ = value;
         onChanged();
         return this;
       }
@@ -9981,20 +10529,20 @@ public final class Common {
       "Id\022\014\n\004name\030\001 \001(\014\022\017\n\007address\030\002 \001(\014\"J\n\taut" +
       "hority\022$\n\007account\030\001 \001(\0132\023.protocol.Accou" +
       "ntId\022\027\n\017permission_name\030\002 \001(\014\"&\n\003Key\022\017\n\007" +
-      "address\030\001 \001(\014\022\016\n\006weight\030\002 \001(\003\"\361\001\n\nPermis" +
+      "address\030\001 \001(\t\022\016\n\006weight\030\002 \001(\003\"\361\001\n\nPermis" +
       "sion\0221\n\004type\030\001 \001(\0162#.protocol.Permission" +
       ".PermissionType\022\n\n\002id\030\002 \001(\005\022\027\n\017permissio" +
       "n_name\030\003 \001(\t\022\021\n\tthreshold\030\004 \001(\003\022\021\n\tparen" +
-      "t_id\030\005 \001(\005\022\022\n\noperations\030\006 \001(\014\022\033\n\004keys\030\007" +
+      "t_id\030\005 \001(\005\022\022\n\noperations\030\006 \001(\t\022\033\n\004keys\030\007" +
       " \003(\0132\r.protocol.Key\"4\n\016PermissionType\022\t\n" +
       "\005Owner\020\000\022\013\n\007Witness\020\001\022\n\n\006Active\020\002\"\204\007\n\rSm" +
-      "artContract\022\026\n\016origin_address\030\001 \001(\014\022\030\n\020c" +
-      "ontract_address\030\002 \001(\014\022(\n\003abi\030\003 \001(\0132\033.pro" +
+      "artContract\022\026\n\016origin_address\030\001 \001(\t\022\030\n\020c" +
+      "ontract_address\030\002 \001(\t\022(\n\003abi\030\003 \001(\0132\033.pro" +
       "tocol.SmartContract.ABI\022\020\n\010bytecode\030\004 \001(" +
-      "\014\022\022\n\ncall_value\030\005 \001(\003\022%\n\035consume_user_re" +
+      "\t\022\022\n\ncall_value\030\005 \001(\003\022%\n\035consume_user_re" +
       "source_percent\030\006 \001(\003\022\014\n\004name\030\007 \001(\t\022\033\n\023or" +
       "igin_energy_limit\030\010 \001(\003\022\021\n\tcode_hash\030\t \001" +
-      "(\014\022\021\n\tusdl_hash\030\n \001(\014\032\370\004\n\003ABI\0221\n\006entrys\030" +
+      "(\t\022\021\n\tusdl_hash\030\n \001(\t\032\370\004\n\003ABI\0221\n\006entrys\030" +
       "\001 \003(\0132!.protocol.SmartContract.ABI.Entry" +
       "\032\275\004\n\005Entry\022\021\n\tanonymous\030\001 \001(\010\022\020\n\010constan" +
       "t\030\002 \001(\010\022\014\n\004name\030\003 \001(\t\0227\n\006inputs\030\004 \003(\0132\'." +

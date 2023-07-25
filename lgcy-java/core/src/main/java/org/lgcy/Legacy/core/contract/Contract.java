@@ -3,6 +3,7 @@ package org.lgcy.Legacy.core.contract;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.util.JsonFormat;
 
+import org.bouncycastle.util.encoders.Hex;
 import org.lgcy.Legacy.core.ApiWrapper;
 import org.lgcy.Legacy.core.exceptions.ContractCreateException;
 import org.lgcy.Legacy.core.transaction.TransactionBuilder;
@@ -350,21 +351,25 @@ public class Contract {
         return ret;
     }
 
+    public static String toHex(byte[] raw) {
+        return Hex.toHexString(raw);
+    }
+
   /**
    * build a SmartContract object
    * @return SmartContract object
    */
   public SmartContract toProto() {
         return SmartContract.newBuilder()
-                   .setOriginAddress(originAddr)
-                   .setContractAddress(cntrAddr)
+                   .setOriginAddress(toHex(originAddr.toByteArray()))
+                   .setContractAddress(toHex(cntrAddr.toByteArray()))
                    .setAbi(abi)
-                   .setBytecode(bytecode)
+                   .setBytecode(toHex(bytecode.toByteArray()))
                    .setCallValue(callValue)
                    .setConsumeUserResourcePercent(consumeUserResourcePercent)
                    .setName(name)
                    .setOriginEnergyLimit(originEnergyLimit)
-                   .setUsdlHash(usdlHash)
+                   .setUsdlHash(toHex(usdlHash.toByteArray()))
                    .build();
     }
 
